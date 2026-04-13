@@ -1484,11 +1484,15 @@ function submitGame() {
 
 function showResult(correct, total, stars) {
   let emoji, label;
-  if (stars === 3) { emoji = '🏆'; label = 'Sempurna! Luar biasa!'; confetti(); }
-  else if (stars === 2) { emoji = '😊'; label = 'Bagus! Hampir sempurna!'; }
-  else if (stars === 1) { emoji = '💪'; label = 'Teruskan usaha!'; }
-  else { emoji = '😅'; label = 'Jangan give up, cuba lagi!'; }
+  if (stars === 5) { emoji = '🏆'; label = 'Sempurna! Luar biasa!'; confetti(); }
+  else if (stars === 4) { emoji = '🥳'; label = 'Bagus! Hampir sempurna!'; confetti(); }
+  else if (stars === 3) { emoji = '💪'; label = 'Teruskan usaha!'; }
+  else if (stars === 2) { emoji = '😤'; label = 'Jangan putus asa!'; }
+  else if (stars === 1) { emoji = '😅'; label = 'Cuba lagi ye!'; }
+  else { emoji = '😢'; label = 'Jangan give up, cuba lagi!'; }
 
+  // Hide toast if still showing
+  $('toast').classList.remove('show');
   $('result-emoji').textContent = emoji;
   $('result-name').innerHTML = `Tahniah <span>${playerName}</span>!`;
   $('result-stars').textContent = renderStars(stars);
@@ -1497,7 +1501,7 @@ function showResult(correct, total, stars) {
   $('result-label').textContent = label;
   $('stat-correct').textContent = correct;
   $('stat-wrong').textContent = total - correct;
-  $('stat-stars').textContent = `⭐ ${stars}`;
+  $('stat-stars').textContent = `${renderStars(stars)}`;
 
   showScreen('screen-result');
 }
@@ -1551,17 +1555,22 @@ function generateMathDynamic(game, total) {
     let q, a, opts;
 
     if (op === 'multiply') {
-      const rangeA = game.rangeA || [1, 9];
-      const rangeB = game.rangeB || [1, 12];
+      const rangeA = game.rangeA || [2, 9];
+      const rangeB = game.rangeB || [2, 12];
+      // Avoid 1x — min start from 2
+      const minA = Math.max(2, rangeA[0]);
+      const minB = Math.max(2, rangeB[0]);
       let a1, b1, key;
+      let attempt = 0;
       do {
-        a1 = randInt(rangeA[0], rangeA[1]);
-        b1 = randInt(rangeB[0], rangeB[1]);
-        key = `${a1}x${b1}`;
-      } while (usedPairs.has(key) && usedPairs.size < rangeA[1] * rangeB[1]);
+        a1 = randInt(minA, rangeA[1]);
+        b1 = randInt(minB, rangeB[1]);
+        key = `${Math.min(a1,b1)}x${Math.max(a1,b1)}`;
+        attempt++;
+      } while (usedPairs.has(key) && attempt < 50);
       usedPairs.add(key);
       a = a1 * b1;
-      q = { q: `${a1} × ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 3) };
+      q = { q: `${a1} × ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 5) };
 
     } else if (op === 'divide') {
       const rangeA = game.rangeA || [1, 9];
