@@ -1306,14 +1306,24 @@ function startGame(gameKey) {
   const game = zone.games[gameKey];
   const total = zone.questionsPerSession;
 
-  // Random pick from bank
-  sessionQuestions = shuffle(game.questions).slice(0, total);
+  // Generate questions based on game type
+  if (game.type === 'math_dynamic') {
+    sessionQuestions = generateMathDynamic(game, total);
+  } else if (game.type === 'math_hybrid') {
+    sessionQuestions = generateMathHybrid(game, total);
+  } else if (game.type === 'mcq_exam') {
+    sessionQuestions = generateExam(game);
+  } else {
+    sessionQuestions = shuffle(game.questions || []).slice(0, total);
+  }
 
   $('game-header-name').textContent = `${game.icon} ${game.name}`;
   $('game-header-score').textContent = '⭐ 0';
 
   // Timer
-  timerLeft = 300;
+  // Timer — zone4 exam = 3600s, others = 300s
+  const gameTimer = (allData[currentZone]?.timer) || 300;
+  timerLeft = gameTimer;
   startTimer(total);
 
   showScreen('screen-game');
@@ -1359,7 +1369,7 @@ function renderQuestion() {
   answered = false;
   const card = $('q-card');
 
-  if (game.type === 'counting') {
+  if (game.type === 'counting' || game.type === 'counting_dynamic') {
     renderCounting(card, q);
   } else if (game.type === 'letters') {
     renderLetters(card, q);
@@ -1511,6 +1521,117 @@ function switchLbZone(zone, el) {
   loadLeaderboard();
 }
 
+
+// =================== MATH DYNAMIC GENERATORS ===================
+
+function randInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function nearbyOpts(answer, variance, count = 4) {
+  const opts = new Set([answer]);
+  let tries = 0;
+  while (opts.size < count && tries < 50) {
+    const v = answer + randInt(-variance, variance);
+    if (v > 0 && v !== answer) opts.add(v);
+    tries++;
+  }
+  // fill if needed
+  let i = 1;
+  while (opts.size < count) { opts.add(answer + i++); }
+  return shuffle([...opts]).map(String);
+}
+
+function generateMathDynamic(game, total) {
+  const op = game.operation;
+  const questions = [];
+  const usedPairs = new Set();
+
+  for (let i = 0; i < total; i++) {
+    let q, a, opts;
+
+    if (op === 'multiply') {
+      const rangeA = game.rangeA || [1, 9];
+      const rangeB = game.rangeB || [1, 12];
+      let a1, b1, key;
+      do {
+        a1 = randInt(rangeA[0], rangeA[1]);
+        b1 = randInt(rangeB[0], rangeB[1]);
+        key = `${a1}x${b1}`;
+      } while (usedPairs.has(key) && usedPairs.size < rangeA[1] * rangeB[1]);
+      usedPairs.add(key);
+      a = a1 * b1;
+      q = { q: `${a1} × ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 3) };
+
+    } else if (op === 'divide') {
+      const rangeA = game.rangeA || [1, 9];
+      const rangeB = game.rangeB || [1, 12];
+      const pairs = game.pairs || [];
+      if (pairs.length > 0) {
+        const pair = pairs[i % pairs.length];
+        a = pair[0] / pair[1];
+        q = { q: `${pair[0]} ÷ ${pair[1]} = ?`, a: String(a), opts: nearbyOpts(a, 2) };
+      } else {
+        const b1 = randInt(rangeA[0], rangeA[1]);
+        const b2 = randInt(rangeB[0], rangeB[1]);
+        const dividend = b1 * b2;
+        a = b1;
+        q = { q: `${dividend} ÷ ${b2} = ?`, a: String(a), opts: nearbyOpts(a, 2) };
+      }
+
+    } else if (op === 'add') {
+      const range = game.range || [1, 99];
+      const a1 = randInt(range[0], Math.min(range[1], 999));
+      const b1 = randInt(1, Math.min(99, range[1] - a1));
+      a = a1 + b1;
+      q = { q: `${a1} + ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 5) };
+
+    } else if (op === 'subtract') {
+      const range = game.range || [1, 99];
+      const a1 = randInt(range[0] + 1, Math.min(range[1], 999));
+      const b1 = randInt(1, a1 - 1);
+      a = a1 - b1;
+      q = { q: `${a1} - ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 5) };
+    }
+
+    if (q) questions.push(q);
+  }
+  return questions;
+}
+
+function generateMathHybrid(game, total) {
+  const questions = [];
+  const dynamicCount = game.sessionCount || 5;
+  const staticCount = total - dynamicCount;
+
+  // Generate dynamic tambah/tolak
+  const templates = (game.templates || []).filter(t => t.type === 'operation');
+  for (let i = 0; i < dynamicCount; i++) {
+    if (templates.length === 0) break;
+    const tmpl = templates[i % templates.length];
+    const fakeGame = { operation: tmpl.operation, range: [tmpl.a_range?.[0]||10, tmpl.a_range?.[1]||99] };
+    const q = generateMathDynamic(fakeGame, 1);
+    if (q[0]) questions.push(q[0]);
+  }
+
+  // Pick static questions from fixed templates
+  const fixedTemplates = (game.templates || []).filter(t => t.type === 'fixed');
+  const staticPool = [];
+  fixedTemplates.forEach(t => staticPool.push(...(t.questions || [])));
+  const picked = shuffle(staticPool).slice(0, staticCount);
+  questions.push(...picked);
+
+  return shuffle(questions);
+}
+
+function generateExam(game) {
+  const dist = game.distribution || { easy: 15, medium: 15, hard: 10 };
+  const easy = shuffle(game.questions.filter(q => q.difficulty === 'easy')).slice(0, dist.easy);
+  const medium = shuffle(game.questions.filter(q => q.difficulty === 'medium')).slice(0, dist.medium);
+  const hard = shuffle(game.questions.filter(q => q.difficulty === 'hard')).slice(0, dist.hard);
+  return shuffle([...easy, ...medium, ...hard]);
+}
+
 // =================== LEADERBOARD ===================
 async function saveToLeaderboard() {
   if (!window._fbReady) return;
@@ -1561,7 +1682,7 @@ async function loadLeaderboard() {
   try {
     console.log('Loading leaderboard for zone:', lbCurrentZone);
     const q = window._fbQuery(
-      window._fbCollection('leaderboard'),
+      window._fbCollection('leaderboard_' + lbCurrentZone),
       window._fbOrderBy('totalStars', 'desc'),
       window._fbLimit(50)
     );
