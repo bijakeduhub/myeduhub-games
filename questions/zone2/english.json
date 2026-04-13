@@ -1,0 +1,707 @@
+{
+  "name": "English",
+  "icon": "🇬🇧",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Opposite of 'big'?",
+      "a": "Small",
+      "opts": [
+        "Small",
+        "Tiny",
+        "Large",
+        "Huge"
+      ]
+    },
+    {
+      "q": "Opposite of 'hot'?",
+      "a": "Cold",
+      "opts": [
+        "Cold",
+        "Cool",
+        "Warm",
+        "Chilly"
+      ]
+    },
+    {
+      "q": "Opposite of 'happy'?",
+      "a": "Sad",
+      "opts": [
+        "Sad",
+        "Angry",
+        "Upset",
+        "Bored"
+      ]
+    },
+    {
+      "q": "Opposite of 'fast'?",
+      "a": "Slow",
+      "opts": [
+        "Slow",
+        "Late",
+        "Quiet",
+        "Lazy"
+      ]
+    },
+    {
+      "q": "Opposite of 'dark'?",
+      "a": "Light",
+      "opts": [
+        "Light",
+        "Bright",
+        "Clear",
+        "White"
+      ]
+    },
+    {
+      "q": "Opposite of 'old'?",
+      "a": "New",
+      "opts": [
+        "New",
+        "Young",
+        "Fresh",
+        "Clean"
+      ]
+    },
+    {
+      "q": "Opposite of 'tall'?",
+      "a": "Short",
+      "opts": [
+        "Short",
+        "Small",
+        "Low",
+        "Thin"
+      ]
+    },
+    {
+      "q": "Opposite of 'clean'?",
+      "a": "Dirty",
+      "opts": [
+        "Dirty",
+        "Messy",
+        "Ugly",
+        "Smelly"
+      ]
+    },
+    {
+      "q": "'The cat ___ sleeping.'",
+      "a": "is",
+      "opts": [
+        "is",
+        "are",
+        "am",
+        "was"
+      ]
+    },
+    {
+      "q": "'They ___ playing football.'",
+      "a": "are",
+      "opts": [
+        "are",
+        "is",
+        "am",
+        "were"
+      ]
+    },
+    {
+      "q": "'I ___ a student.'",
+      "a": "am",
+      "opts": [
+        "am",
+        "is",
+        "are",
+        "be"
+      ]
+    },
+    {
+      "q": "'She ___ to school yesterday.'",
+      "a": "went",
+      "opts": [
+        "went",
+        "go",
+        "goes",
+        "going"
+      ]
+    },
+    {
+      "q": "'We ___ eating lunch now.'",
+      "a": "are",
+      "opts": [
+        "are",
+        "is",
+        "am",
+        "was"
+      ]
+    },
+    {
+      "q": "Plural of 'child'?",
+      "a": "Children",
+      "opts": [
+        "Children",
+        "Childs",
+        "Childrens",
+        "Child"
+      ]
+    },
+    {
+      "q": "Plural of 'man'?",
+      "a": "Men",
+      "opts": [
+        "Men",
+        "Mans",
+        "Manes",
+        "Menn"
+      ]
+    },
+    {
+      "q": "Plural of 'mouse'?",
+      "a": "Mice",
+      "opts": [
+        "Mice",
+        "Mouses",
+        "Mouse",
+        "Mousies"
+      ]
+    },
+    {
+      "q": "Animal that says 'moo'?",
+      "a": "Cow",
+      "opts": [
+        "Cow",
+        "Goat",
+        "Sheep",
+        "Horse"
+      ]
+    },
+    {
+      "q": "Animal that says 'oink'?",
+      "a": "Pig",
+      "opts": [
+        "Pig",
+        "Cow",
+        "Sheep",
+        "Duck"
+      ]
+    },
+    {
+      "q": "Animal that says 'baa'?",
+      "a": "Sheep",
+      "opts": [
+        "Sheep",
+        "Goat",
+        "Cow",
+        "Lamb"
+      ]
+    },
+    {
+      "q": "Animal that says 'roar'?",
+      "a": "Lion",
+      "opts": [
+        "Lion",
+        "Tiger",
+        "Bear",
+        "Wolf"
+      ]
+    },
+    {
+      "q": "Animal that says 'quack'?",
+      "a": "Duck",
+      "opts": [
+        "Duck",
+        "Goose",
+        "Swan",
+        "Hen"
+      ]
+    },
+    {
+      "q": "Animal that says 'meow'?",
+      "a": "Cat",
+      "opts": [
+        "Cat",
+        "Dog",
+        "Rabbit",
+        "Mouse"
+      ]
+    },
+    {
+      "q": "'Apple' in Malay?",
+      "a": "Epal",
+      "opts": [
+        "Epal",
+        "Anggur",
+        "Oren",
+        "Pisang"
+      ]
+    },
+    {
+      "q": "'School' in Malay?",
+      "a": "Sekolah",
+      "opts": [
+        "Sekolah",
+        "Rumah",
+        "Kedai",
+        "Hospital"
+      ]
+    },
+    {
+      "q": "'Water' in Malay?",
+      "a": "Air",
+      "opts": [
+        "Air",
+        "Api",
+        "Angin",
+        "Tanah"
+      ]
+    },
+    {
+      "q": "'Book' in Malay?",
+      "a": "Buku",
+      "opts": [
+        "Buku",
+        "Meja",
+        "Kerusi",
+        "Pena"
+      ]
+    },
+    {
+      "q": "'Friend' in Malay?",
+      "a": "Kawan",
+      "opts": [
+        "Kawan",
+        "Adik",
+        "Abang",
+        "Ibu"
+      ]
+    },
+    {
+      "q": "'Teacher' in Malay?",
+      "a": "Guru",
+      "opts": [
+        "Guru",
+        "Doktor",
+        "Polis",
+        "Jurutera"
+      ]
+    },
+    {
+      "q": "'House' in Malay?",
+      "a": "Rumah",
+      "opts": [
+        "Rumah",
+        "Kereta",
+        "Pokok",
+        "Buku"
+      ]
+    },
+    {
+      "q": "'Mother' in Malay?",
+      "a": "Ibu",
+      "opts": [
+        "Ibu",
+        "Ayah",
+        "Adik",
+        "Kakak"
+      ]
+    },
+    {
+      "q": "How many days in a week?",
+      "a": "7",
+      "opts": [
+        "7",
+        "5",
+        "6",
+        "8"
+      ]
+    },
+    {
+      "q": "How many months in a year?",
+      "a": "12",
+      "opts": [
+        "12",
+        "10",
+        "11",
+        "13"
+      ]
+    },
+    {
+      "q": "First month of the year?",
+      "a": "January",
+      "opts": [
+        "January",
+        "February",
+        "March",
+        "December"
+      ]
+    },
+    {
+      "q": "Last month of the year?",
+      "a": "December",
+      "opts": [
+        "December",
+        "November",
+        "January",
+        "October"
+      ]
+    },
+    {
+      "q": "Capital of Malaysia?",
+      "a": "Kuala Lumpur",
+      "opts": [
+        "Kuala Lumpur",
+        "Johor Bahru",
+        "Penang",
+        "Ipoh"
+      ]
+    },
+    {
+      "q": "'Beautiful' is a?",
+      "a": "Adjective",
+      "opts": [
+        "Adjective",
+        "Noun",
+        "Verb",
+        "Adverb"
+      ]
+    },
+    {
+      "q": "'Run' is a?",
+      "a": "Verb",
+      "opts": [
+        "Verb",
+        "Noun",
+        "Adjective",
+        "Adverb"
+      ]
+    },
+    {
+      "q": "How many seasons in a year?",
+      "a": "4",
+      "opts": [
+        "4",
+        "2",
+        "3",
+        "6"
+      ]
+    },
+    {
+      "q": "Which is a vowel?",
+      "a": "A",
+      "opts": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ]
+    },
+    {
+      "q": "How many vowels in English?",
+      "a": "5",
+      "opts": [
+        "5",
+        "4",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "q": "Which is a noun?",
+      "a": "Cat",
+      "opts": [
+        "Cat",
+        "Run",
+        "Happy",
+        "Quickly"
+      ]
+    },
+    {
+      "q": "Which is a verb?",
+      "a": "Jump",
+      "opts": [
+        "Jump",
+        "Blue",
+        "Table",
+        "Slowly"
+      ]
+    },
+    {
+      "q": "Which is an adjective?",
+      "a": "Beautiful",
+      "opts": [
+        "Beautiful",
+        "Eat",
+        "Chair",
+        "Slowly"
+      ]
+    },
+    {
+      "q": "'She has ___ apple.'",
+      "a": "an",
+      "opts": [
+        "an",
+        "a",
+        "the",
+        "no"
+      ]
+    },
+    {
+      "q": "'___ cat is on the table.'",
+      "a": "The",
+      "opts": [
+        "The",
+        "A",
+        "An",
+        "Some"
+      ]
+    },
+    {
+      "q": "Plural of 'fish'?",
+      "a": "Fish",
+      "opts": [
+        "Fish",
+        "Fishes",
+        "Fishies",
+        "Fishs"
+      ]
+    },
+    {
+      "q": "Plural of 'tooth'?",
+      "a": "Teeth",
+      "opts": [
+        "Teeth",
+        "Tooths",
+        "Teeths",
+        "Tooth"
+      ]
+    },
+    {
+      "q": "Past tense of 'run'?",
+      "a": "Ran",
+      "opts": [
+        "Ran",
+        "Runned",
+        "Running",
+        "Runs"
+      ]
+    },
+    {
+      "q": "Past tense of 'eat'?",
+      "a": "Ate",
+      "opts": [
+        "Ate",
+        "Eated",
+        "Eating",
+        "Eats"
+      ]
+    },
+    {
+      "q": "Past tense of 'see'?",
+      "a": "Saw",
+      "opts": [
+        "Saw",
+        "Seed",
+        "Seen",
+        "Sees"
+      ]
+    },
+    {
+      "q": "Opposite of 'easy'?",
+      "a": "Difficult",
+      "opts": [
+        "Difficult",
+        "Simple",
+        "Soft",
+        "Light"
+      ]
+    },
+    {
+      "q": "Opposite of 'early'?",
+      "a": "Late",
+      "opts": [
+        "Late",
+        "Soon",
+        "Fast",
+        "Quick"
+      ]
+    },
+    {
+      "q": "Opposite of 'strong'?",
+      "a": "Weak",
+      "opts": [
+        "Weak",
+        "Big",
+        "Tall",
+        "Fast"
+      ]
+    },
+    {
+      "q": "'He ___ playing now.'",
+      "a": "is",
+      "opts": [
+        "is",
+        "are",
+        "am",
+        "was"
+      ]
+    },
+    {
+      "q": "'We ___ to school every day.'",
+      "a": "go",
+      "opts": [
+        "go",
+        "goes",
+        "went",
+        "going"
+      ]
+    },
+    {
+      "q": "'She ___ a book yesterday.'",
+      "a": "read",
+      "opts": [
+        "read",
+        "reads",
+        "reading",
+        "readed"
+      ]
+    },
+    {
+      "q": "Plural of 'foot'?",
+      "a": "Feet",
+      "opts": [
+        "Feet",
+        "Foots",
+        "Footes",
+        "Foot"
+      ]
+    },
+    {
+      "q": "Plural of 'person'?",
+      "a": "People",
+      "opts": [
+        "People",
+        "Persons",
+        "Peoples",
+        "Person"
+      ]
+    },
+    {
+      "q": "Animal that says 'neigh'?",
+      "a": "Horse",
+      "opts": [
+        "Horse",
+        "Cow",
+        "Goat",
+        "Dog"
+      ]
+    },
+    {
+      "q": "Animal that says 'buzz'?",
+      "a": "Bee",
+      "opts": [
+        "Bee",
+        "Fly",
+        "Bird",
+        "Duck"
+      ]
+    },
+    {
+      "q": "'Chair' is a?",
+      "a": "Noun",
+      "opts": [
+        "Noun",
+        "Verb",
+        "Adjective",
+        "Adverb"
+      ]
+    },
+    {
+      "q": "'Quickly' is a?",
+      "a": "Adverb",
+      "opts": [
+        "Adverb",
+        "Verb",
+        "Noun",
+        "Adjective"
+      ]
+    },
+    {
+      "q": "'Blue' is a?",
+      "a": "Adjective",
+      "opts": [
+        "Adjective",
+        "Noun",
+        "Verb",
+        "Adverb"
+      ]
+    },
+    {
+      "q": "'I ___ my homework.'",
+      "a": "did",
+      "opts": [
+        "did",
+        "do",
+        "does",
+        "doing"
+      ]
+    },
+    {
+      "q": "Past tense of 'go'?",
+      "a": "Went",
+      "opts": [
+        "Went",
+        "Goed",
+        "Going",
+        "Goes"
+      ]
+    },
+    {
+      "q": "Past tense of 'take'?",
+      "a": "Took",
+      "opts": [
+        "Took",
+        "Taked",
+        "Taking",
+        "Takes"
+      ]
+    },
+    {
+      "q": "'An ___ a day keeps doctor away.'",
+      "a": "apple",
+      "opts": [
+        "apple",
+        "banana",
+        "orange",
+        "egg"
+      ]
+    },
+    {
+      "q": "Opposite of 'wet'?",
+      "a": "Dry",
+      "opts": [
+        "Dry",
+        "Hot",
+        "Cold",
+        "Warm"
+      ]
+    },
+    {
+      "q": "Past tense of 'write'?",
+      "a": "Wrote",
+      "opts": [
+        "Wrote",
+        "Writed",
+        "Writing",
+        "Writes"
+      ]
+    },
+    {
+      "q": "'She is ___ teacher.'",
+      "a": "a",
+      "opts": [
+        "a",
+        "an",
+        "the",
+        "some"
+      ]
+    }
+  ]
+}

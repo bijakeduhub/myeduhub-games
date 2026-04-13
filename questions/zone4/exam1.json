@@ -1,0 +1,1114 @@
+{
+  "name": "Peperiksaan 1",
+  "icon": "📝",
+  "type": "mcq_exam",
+  "questionsPerSession": 40,
+  "timer": 3600,
+  "distribution": {
+    "easy": 15,
+    "medium": 15,
+    "hard": 10
+  },
+  "questions": [
+    {
+      "q": "Apakah nama ibu negara Malaysia?",
+      "a": "Kuala Lumpur",
+      "opts": [
+        "Kuala Lumpur",
+        "Putrajaya",
+        "Johor Bahru",
+        "Shah Alam"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Berapa bilangan negeri di Malaysia?",
+      "a": "13",
+      "opts": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Siapakah Perdana Menteri pertama Malaysia?",
+      "a": "Tunku Abdul Rahman",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Tun Abdul Razak",
+        "Tun Hussein Onn",
+        "Tun Dr. Mahathir Mohamad"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama gunung tertinggi di Malaysia?",
+      "a": "Gunung Kinabalu",
+      "opts": [
+        "Gunung Tahan",
+        "Gunung Kinabalu",
+        "Gunung Ledang",
+        "Gunung Jerai"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Bilakah Malaysia mencapai kemerdekaan?",
+      "a": "31 Ogos 1957",
+      "opts": [
+        "31 Ogos 1957",
+        "16 September 1963",
+        "31 Ogos 1963",
+        "1 Januari 1957"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah bunga kebangsaan Malaysia?",
+      "a": "Bunga Raya",
+      "opts": [
+        "Bunga Tanjung",
+        "Bunga Raya",
+        "Bunga Orkid",
+        "Bunga Melati"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Berapakah bilangan jalur dalam Jalur Gemilang?",
+      "a": "14",
+      "opts": [
+        "11",
+        "12",
+        "13",
+        "14"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Siapakah Bapa Kemerdekaan Malaysia?",
+      "a": "Tunku Abdul Rahman",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Tun Abdul Razak",
+        "Tun Hussein Onn",
+        "Tun Dr. Mahathir"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama laut yang memisahkan Semenanjung Malaysia dengan Sabah dan Sarawak?",
+      "a": "Laut China Selatan",
+      "opts": [
+        "Laut China Selatan",
+        "Laut Sulu",
+        "Laut Jawa",
+        "Laut Banda"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah haiwan kebangsaan Malaysia?",
+      "a": "Harimau Belang",
+      "opts": [
+        "Gajah",
+        "Harimau",
+        "Harimau Belang",
+        "Tapir"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama mata wang Malaysia?",
+      "a": "Ringgit",
+      "opts": [
+        "Rupiah",
+        "Baht",
+        "Ringgit",
+        "Dollar"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah sukan tradisional yang terkenal di Malaysia?",
+      "a": "Sepak Takraw",
+      "opts": [
+        "Bola Sepak",
+        "Badminton",
+        "Sepak Takraw",
+        "Hoki"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Bilakah Malaysia dibentuk?",
+      "a": "16 September 1963",
+      "opts": [
+        "31 Ogos 1957",
+        "16 September 1963",
+        "1 Januari 1963",
+        "31 Ogos 1963"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama sungai terpanjang di Malaysia?",
+      "a": "Sungai Rajang",
+      "opts": [
+        "Sungai Klang",
+        "Sungai Pahang",
+        "Sungai Rajang",
+        "Sungai Perak"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Di negeri manakah Petronas Twin Towers terletak?",
+      "a": "Wilayah Persekutuan Kuala Lumpur",
+      "opts": [
+        "Selangor",
+        "Wilayah Persekutuan Kuala Lumpur",
+        "Putrajaya",
+        "Negeri Sembilan"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah maksud warna merah dalam Jalur Gemilang?",
+      "a": "Keberanian",
+      "opts": [
+        "Keamanan",
+        "Keberanian",
+        "Kesucian",
+        "Kemakmuran"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Siapakah Yang di-Pertuan Agong Malaysia yang pertama?",
+      "a": "Sultan Hisamuddin Alam Shah",
+      "opts": [
+        "Tuanku Abdul Rahman",
+        "Sultan Hisamuddin Alam Shah",
+        "Tuanku Syed Putra",
+        "Sultan Abu Bakar"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama perjanjian yang membawa kemerdekaan Tanah Melayu?",
+      "a": "Perjanjian London",
+      "opts": [
+        "Perjanjian Pangkor",
+        "Perjanjian London",
+        "Perjanjian Persekutuan Tanah Melayu",
+        "Perjanjian Inggeris-Melayu"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Berapa bilangan bintang dalam bulan pada bendera Malaysia?",
+      "a": "14",
+      "opts": [
+        "11",
+        "13",
+        "14",
+        "15"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama pusat pentadbiran persekutuan Malaysia?",
+      "a": "Putrajaya",
+      "opts": [
+        "Kuala Lumpur",
+        "Putrajaya",
+        "Cyberjaya",
+        "Shah Alam"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Negeri manakah yang terbesar di Malaysia?",
+      "a": "Sarawak",
+      "opts": [
+        "Pahang",
+        "Johor",
+        "Sarawak",
+        "Sabah"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama lagu kebangsaan Malaysia?",
+      "a": "Negaraku",
+      "opts": [
+        "Jalur Gemilang",
+        "Malaysia Berjaya",
+        "Negaraku",
+        "Tanah Pusaka"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Siapakah tokoh yang digelar 'Bapa Pembangunan Malaysia'?",
+      "a": "Tun Abdul Razak",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Tun Abdul Razak",
+        "Tun Hussein Onn",
+        "Tun Dr. Mahathir"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama istana rasmi Yang di-Pertuan Agong?",
+      "a": "Istana Negara",
+      "opts": [
+        "Istana Negara",
+        "Istana Melawati",
+        "Istana Bukit Serene",
+        "Istana Abu Bakar"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Berapa tahun sekali pemilihan Yang di-Pertuan Agong?",
+      "a": "5 tahun",
+      "opts": [
+        "3 tahun",
+        "4 tahun",
+        "5 tahun",
+        "6 tahun"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama kod pos Malaysia?",
+      "a": "Poskod",
+      "opts": [
+        "Poskod",
+        "Zipcode",
+        "Postcode",
+        "Kodpos"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Negeri manakah yang dikenali sebagai 'Darul Ridzuan'?",
+      "a": "Perak",
+      "opts": [
+        "Pahang",
+        "Perak",
+        "Perlis",
+        "Kedah"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama pelabuhan terbesar di Malaysia?",
+      "a": "Pelabuhan Klang",
+      "opts": [
+        "Pelabuhan Klang",
+        "Pelabuhan Johor",
+        "Pelabuhan Penang",
+        "Pelabuhan Kuantan"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama lapangan terbang antarabangsa utama di Kuala Lumpur?",
+      "a": "KLIA",
+      "opts": [
+        "KLIA",
+        "Subang",
+        "Senai",
+        "Pulau Pinang"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Apakah nama hutan simpan yang terbesar di Semenanjung Malaysia?",
+      "a": "Taman Negara",
+      "opts": [
+        "Taman Negara",
+        "Endau-Rompin",
+        "Belum",
+        "Krau"
+      ],
+      "difficulty": "easy"
+    },
+    {
+      "q": "Berapa bilangan planet dalam sistem suria?",
+      "a": "8",
+      "opts": [
+        "7",
+        "8",
+        "9",
+        "10"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama benua terbesar di dunia?",
+      "a": "Asia",
+      "opts": [
+        "Afrika",
+        "Asia",
+        "Amerika Utara",
+        "Eropah"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa bilangan benua di Bumi?",
+      "a": "7",
+      "opts": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama lautan terbesar di dunia?",
+      "a": "Lautan Pasifik",
+      "opts": [
+        "Lautan Atlantik",
+        "Lautan Hindi",
+        "Lautan Pasifik",
+        "Lautan Artik"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama negara terbesar di dunia dari segi keluasan?",
+      "a": "Rusia",
+      "opts": [
+        "China",
+        "Kanada",
+        "Amerika Syarikat",
+        "Rusia"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah pelukis terkenal yang melukis 'Mona Lisa'?",
+      "a": "Leonardo da Vinci",
+      "opts": [
+        "Pablo Picasso",
+        "Vincent van Gogh",
+        "Leonardo da Vinci",
+        "Michelangelo"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah ibukota Jepun?",
+      "a": "Tokyo",
+      "opts": [
+        "Tokyo",
+        "Kyoto",
+        "Osaka",
+        "Yokohama"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah penulis buku 'Harry Potter'?",
+      "a": "J.K. Rowling",
+      "opts": [
+        "J.R.R. Tolkien",
+        "C.S. Lewis",
+        "J.K. Rowling",
+        "Roald Dahl"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama sungai terpanjang di dunia?",
+      "a": "Sungai Nil",
+      "opts": [
+        "Sungai Amazon",
+        "Sungai Nil",
+        "Sungai Yangtze",
+        "Sungai Mississippi"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah presiden pertama Amerika Syarikat?",
+      "a": "George Washington",
+      "opts": [
+        "Abraham Lincoln",
+        "Thomas Jefferson",
+        "George Washington",
+        "John Adams"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama landasan kereta api terpanjang di dunia?",
+      "a": "Trans-Siberian",
+      "opts": [
+        "Orient Express",
+        "Trans-Siberian",
+        "Eurostar",
+        "Shinkansen"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama haiwan terbesar di dunia?",
+      "a": "Paus Biru",
+      "opts": [
+        "Gajah Afrika",
+        "Ikan Jerung Paus",
+        "Paus Biru",
+        "Zirafah"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Di negara manakah Menara Eiffel terletak?",
+      "a": "Perancis",
+      "opts": [
+        "Itali",
+        "Sepanyol",
+        "Perancis",
+        "Jerman"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama hutan hujan terbesar di dunia?",
+      "a": "Hutan Amazon",
+      "opts": [
+        "Hutan Amazon",
+        "Hutan Congo",
+        "Hutan Borneo",
+        "Hutan Taiga"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah tokoh yang terkenal dengan teori relativiti?",
+      "a": "Albert Einstein",
+      "opts": [
+        "Isaac Newton",
+        "Albert Einstein",
+        "Galileo Galilei",
+        "Stephen Hawking"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama piramid terkenal di Mesir?",
+      "a": "Piramid Giza",
+      "opts": [
+        "Piramid Giza",
+        "Piramid Saqqara",
+        "Piramid Dahshur",
+        "Piramid Meidum"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa bilangan jam dalam sehari?",
+      "a": "24",
+      "opts": [
+        "12",
+        "20",
+        "24",
+        "30"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah ibukota China?",
+      "a": "Beijing",
+      "opts": [
+        "Shanghai",
+        "Beijing",
+        "Hong Kong",
+        "Guangzhou"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah pengasas syarikat Apple?",
+      "a": "Steve Jobs",
+      "opts": [
+        "Bill Gates",
+        "Steve Jobs",
+        "Mark Zuckerberg",
+        "Elon Musk"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah logam yang paling terkenal sebagai bahan perhiasan?",
+      "a": "Emas",
+      "opts": [
+        "Emas",
+        "Perak",
+        "Platinum",
+        "Rhodium"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah gas yang diperlukan oleh tumbuhan untuk fotosintesis?",
+      "a": "Karbon dioksida",
+      "opts": [
+        "Oksigen",
+        "Nitrogen",
+        "Karbon dioksida",
+        "Hidrogen"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa peratus air yang menutup permukaan Bumi?",
+      "a": "70%",
+      "opts": [
+        "50%",
+        "60%",
+        "70%",
+        "80%"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah organ terbesar dalam badan manusia?",
+      "a": "Kulit",
+      "opts": [
+        "Jantung",
+        "Paru-paru",
+        "Kulit",
+        "Hati"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa bilangan tulang dalam badan manusia dewasa?",
+      "a": "206",
+      "opts": [
+        "186",
+        "206",
+        "226",
+        "246"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah proses perubahan air kepada wap?",
+      "a": "Penyejatan",
+      "opts": [
+        "Penyejatan",
+        "Kondensasi",
+        "Pemendakan",
+        "Sublimasi"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama proses tumbuhan membuat makanan sendiri?",
+      "a": "Fotosintesis",
+      "opts": [
+        "Respirasi",
+        "Fotosintesis",
+        "Transpirasi",
+        "Fermentasi"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah penemu telefon?",
+      "a": "Alexander Graham Bell",
+      "opts": [
+        "Thomas Edison",
+        "Alexander Graham Bell",
+        "Nikola Tesla",
+        "Benjamin Franklin"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama satelit semula jadi Bumi?",
+      "a": "Bulan",
+      "opts": [
+        "Phobos",
+        "Titan",
+        "Bulan",
+        "Europa"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa lama masa yang diambil Bumi untuk mengelilingi Matahari?",
+      "a": "365 hari",
+      "opts": [
+        "24 jam",
+        "30 hari",
+        "365 hari",
+        "12 bulan"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa jumlah gigi dalam mulut manusia dewasa?",
+      "a": "32",
+      "opts": [
+        "28",
+        "30",
+        "32",
+        "34"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama proses air berubah menjadi ais?",
+      "a": "Pembekuan",
+      "opts": [
+        "Penyejatan",
+        "Pembekuan",
+        "Peleburan",
+        "Kondensasi"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Siapakah ahli sains yang menemui graviti?",
+      "a": "Isaac Newton",
+      "opts": [
+        "Albert Einstein",
+        "Isaac Newton",
+        "Galileo Galilei",
+        "Stephen Hawking"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah makanan utama panda?",
+      "a": "Buluh",
+      "opts": [
+        "Daging",
+        "Ikan",
+        "Buluh",
+        "Buah-buahan"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa bilangan warna dalam pelangi?",
+      "a": "7",
+      "opts": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah vitamin yang diperolehi daripada cahaya matahari?",
+      "a": "Vitamin D",
+      "opts": [
+        "Vitamin A",
+        "Vitamin B",
+        "Vitamin C",
+        "Vitamin D"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa bilangan hari dalam tahun lompat?",
+      "a": "366",
+      "opts": [
+        "364",
+        "365",
+        "366",
+        "367"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah nama proses anak pokok menjadi pokok dewasa?",
+      "a": "Pertumbuhan",
+      "opts": [
+        "Pembiakan",
+        "Pertumbuhan",
+        "Perkembangan",
+        "Fotosintesis"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah sumber tenaga utama untuk Bumi?",
+      "a": "Matahari",
+      "opts": [
+        "Angin",
+        "Air",
+        "Matahari",
+        "Petrol"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Apakah gas yang paling banyak dalam udara?",
+      "a": "Nitrogen",
+      "opts": [
+        "Oksigen",
+        "Nitrogen",
+        "Karbon dioksida",
+        "Hidrogen"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapa darjah Celsius titik beku air?",
+      "a": "0°C",
+      "opts": [
+        "0°C",
+        "32°C",
+        "100°C",
+        "-10°C"
+      ],
+      "difficulty": "medium"
+    },
+    {
+      "q": "Berapakah hasil tambah 25 + 37?",
+      "a": "62",
+      "opts": [
+        "52",
+        "62",
+        "72",
+        "82"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah hasil darab 8 × 9?",
+      "a": "72",
+      "opts": [
+        "63",
+        "72",
+        "81",
+        "90"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapa bilangan sisi pada segi enam?",
+      "a": "6",
+      "opts": [
+        "5",
+        "6",
+        "7",
+        "8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapa darjah dalam satu bulatan penuh?",
+      "a": "360",
+      "opts": [
+        "180",
+        "270",
+        "360",
+        "450"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Siapakah ahli matematik yang terkenal dengan teorem Pythagoras?",
+      "a": "Pythagoras",
+      "opts": [
+        "Archimedes",
+        "Euclid",
+        "Pythagoras",
+        "Plato"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah hasil tolak 100 - 47?",
+      "a": "53",
+      "opts": [
+        "43",
+        "47",
+        "53",
+        "57"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah hasil bahagi 144 ÷ 12?",
+      "a": "12",
+      "opts": [
+        "10",
+        "11",
+        "12",
+        "13"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapa sisi pada segi tiga?",
+      "a": "3",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah 50% daripada 200?",
+      "a": "100",
+      "opts": [
+        "50",
+        "75",
+        "100",
+        "150"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah hasil 15 × 4?",
+      "a": "60",
+      "opts": [
+        "40",
+        "50",
+        "60",
+        "70"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapa sudut dalam segi empat sama?",
+      "a": "4",
+      "opts": [
+        "2",
+        "3",
+        "4",
+        "5"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah jumlah sudut dalam segi tiga?",
+      "a": "180°",
+      "opts": [
+        "90°",
+        "180°",
+        "270°",
+        "360°"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Apakah nombor perdana yang terkecil?",
+      "a": "2",
+      "opts": [
+        "1",
+        "2",
+        "3",
+        "5"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapakah 1/2 + 1/4?",
+      "a": "3/4",
+      "opts": [
+        "1/6",
+        "2/6",
+        "3/4",
+        "1/8"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Berapa meter dalam 1 kilometer?",
+      "a": "1000",
+      "opts": [
+        "10",
+        "100",
+        "1000",
+        "10000"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the opposite of 'hot'?",
+      "a": "Cold",
+      "opts": [
+        "Warm",
+        "Cold",
+        "Cool",
+        "Freezing"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which word is a noun?",
+      "a": "Book",
+      "opts": [
+        "Run",
+        "Beautiful",
+        "Book",
+        "Quickly"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Choose the correct spelling:",
+      "a": "Receive",
+      "opts": [
+        "Recieve",
+        "Receive",
+        "Recive",
+        "Receeve"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the past tense of 'go'?",
+      "a": "Went",
+      "opts": [
+        "Goed",
+        "Gone",
+        "Went",
+        "Going"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which is a proper noun?",
+      "a": "Malaysia",
+      "opts": [
+        "city",
+        "Malaysia",
+        "country",
+        "building"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Choose the correct article: '__ apple a day'",
+      "a": "An",
+      "opts": [
+        "A",
+        "An",
+        "The",
+        "Some"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What type of word is 'quickly'?",
+      "a": "Adverb",
+      "opts": [
+        "Noun",
+        "Verb",
+        "Adjective",
+        "Adverb"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which sentence is correct?",
+      "a": "She doesn't like apples",
+      "opts": [
+        "She don't like apples",
+        "She doesn't like apples",
+        "She doesn't likes apples",
+        "She not like apples"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is the plural of 'child'?",
+      "a": "Children",
+      "opts": [
+        "Childs",
+        "Children",
+        "Childes",
+        "Childrens"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Choose the correct pronoun: 'John and ___ went to school'",
+      "a": "I",
+      "opts": [
+        "me",
+        "I",
+        "myself",
+        "mine"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What does 'enormous' mean?",
+      "a": "Very large",
+      "opts": [
+        "Very small",
+        "Very large",
+        "Very fast",
+        "Very slow"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Which is a complete sentence?",
+      "a": "The dog barks",
+      "opts": [
+        "Running fast",
+        "The dog barks",
+        "In the park",
+        "Very happy"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What is a synonym for 'happy'?",
+      "a": "Joyful",
+      "opts": [
+        "Sad",
+        "Angry",
+        "Joyful",
+        "Tired"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "Choose the correct verb: 'They ___ playing football'",
+      "a": "are",
+      "opts": [
+        "is",
+        "am",
+        "are",
+        "be"
+      ],
+      "difficulty": "hard"
+    },
+    {
+      "q": "What punctuation mark ends a question?",
+      "a": "Question mark (?)",
+      "opts": [
+        "Period (.)",
+        "Question mark (?)",
+        "Exclamation mark (!)",
+        "Comma (,)"
+      ],
+      "difficulty": "hard"
+    }
+  ]
+}

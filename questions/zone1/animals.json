@@ -1,0 +1,507 @@
+{
+  "name": "Dunia Haiwan",
+  "icon": "🦁",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Haiwan yang hidup di laut?",
+      "a": "Ikan paus",
+      "opts": [
+        "Ikan paus",
+        "Singa",
+        "Gajah",
+        "Ayam"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh terbang?",
+      "a": "Helang",
+      "opts": [
+        "Kura-kura",
+        "Helang",
+        "Ular",
+        "Buaya"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada belalai?",
+      "a": "Gajah",
+      "opts": [
+        "Zirafah",
+        "Gajah",
+        "Zebra",
+        "Singa"
+      ]
+    },
+    {
+      "q": "Haiwan yang buat madu?",
+      "a": "Lebah",
+      "opts": [
+        "Rama-rama",
+        "Ulat",
+        "Lebah",
+        "Ladybug"
+      ]
+    },
+    {
+      "q": "Raja hutan?",
+      "a": "Singa",
+      "opts": [
+        "Harimau",
+        "Singa",
+        "Gajah",
+        "Beruang"
+      ]
+    },
+    {
+      "q": "Haiwan paling besar di darat?",
+      "a": "Gajah",
+      "opts": [
+        "Gajah",
+        "Badak",
+        "Zirafah",
+        "Kuda Nil"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada jalur hitam putih?",
+      "a": "Zebra",
+      "opts": [
+        "Zebra",
+        "Harimau",
+        "Panda",
+        "Lembu"
+      ]
+    },
+    {
+      "q": "Haiwan yang tidur waktu siang?",
+      "a": "Kelawar",
+      "opts": [
+        "Kelawar",
+        "Arnab",
+        "Kucing",
+        "Burung"
+      ]
+    },
+    {
+      "q": "Burung yang tidak boleh terbang?",
+      "a": "Penguin",
+      "opts": [
+        "Penguin",
+        "Helang",
+        "Merpati",
+        "Kakak tua"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada bisa berbahaya?",
+      "a": "Ular",
+      "opts": [
+        "Ular",
+        "Cicak",
+        "Katak",
+        "Arnab"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada lapan kaki?",
+      "a": "Labah-labah",
+      "opts": [
+        "Labah-labah",
+        "Semut",
+        "Rama-rama",
+        "Lipas"
+      ]
+    },
+    {
+      "q": "Haiwan yang bertelur di pasir?",
+      "a": "Penyu",
+      "opts": [
+        "Penyu",
+        "Buaya",
+        "Ular",
+        "Katak"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada perut berkantung?",
+      "a": "Kanggaru",
+      "opts": [
+        "Kanggaru",
+        "Koala",
+        "Wombat",
+        "Possum"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada tanduk bercabang?",
+      "a": "Rusa",
+      "opts": [
+        "Rusa",
+        "Lembu",
+        "Kambing",
+        "Kerbau"
+      ]
+    },
+    {
+      "q": "Serangga yang buat sarang di tanah?",
+      "a": "Semut",
+      "opts": [
+        "Semut",
+        "Nyamuk",
+        "Lalat",
+        "Lipas"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada sirip?",
+      "a": "Ikan",
+      "opts": [
+        "Ikan",
+        "Katak",
+        "Penyu",
+        "Buaya"
+      ]
+    },
+    {
+      "q": "Haiwan air tawar Malaysia?",
+      "a": "Ikan keli",
+      "opts": [
+        "Ikan keli",
+        "Ikan yu",
+        "Ikan paus",
+        "Ikan todak"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada cangkerang?",
+      "a": "Kura-kura",
+      "opts": [
+        "Kura-kura",
+        "Biawak",
+        "Buaya",
+        "Ular"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada poket di perut untuk anak?",
+      "a": "Kanggaru",
+      "opts": [
+        "Kanggaru",
+        "Koala",
+        "Arnab",
+        "Wombat"
+      ]
+    },
+    {
+      "q": "Haiwan yang hidup di pokok?",
+      "a": "Tupai",
+      "opts": [
+        "Tupai",
+        "Landak",
+        "Arnab",
+        "Tikus"
+      ]
+    },
+    {
+      "q": "Haiwan melata yang menelan mangsa bulat-bulat?",
+      "a": "Ular",
+      "opts": [
+        "Ular",
+        "Cicak",
+        "Biawak",
+        "Buaya"
+      ]
+    },
+    {
+      "q": "Haiwan laut yang terkenal laju dan bergigi tajam?",
+      "a": "Ikan yu",
+      "opts": [
+        "Ikan yu",
+        "Ikan paus",
+        "Lumba-lumba",
+        "Penyu"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada kulit berduri?",
+      "a": "Landak",
+      "opts": [
+        "Landak",
+        "Biawak",
+        "Buaya",
+        "Kura-kura"
+      ]
+    },
+    {
+      "q": "Proses ulat jadi rama-rama?",
+      "a": "Metamorfosis",
+      "opts": [
+        "Metamorfosis",
+        "Fotosintesis",
+        "Hibernasi",
+        "Evolusi"
+      ]
+    },
+    {
+      "q": "Berapa kaki serangga?",
+      "a": "6",
+      "opts": [
+        "6",
+        "8",
+        "4",
+        "10"
+      ]
+    },
+    {
+      "q": "Haiwan yang menggunakan ekornya untuk keseimbangan?",
+      "a": "Kanggaru",
+      "opts": [
+        "Kanggaru",
+        "Arnab",
+        "Kuda",
+        "Lembu"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh terbang pada waktu malam?",
+      "a": "Kelawar",
+      "opts": [
+        "Kelawar",
+        "Burung",
+        "Helang",
+        "Merpati"
+      ]
+    },
+    {
+      "q": "Haiwan yang suka makan wortel?",
+      "a": "Arnab",
+      "opts": [
+        "Arnab",
+        "Kucing",
+        "Anjing",
+        "Ular"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada garis-garis hitam?",
+      "a": "Zebra",
+      "opts": [
+        "Zebra",
+        "Kuda",
+        "Lembu",
+        "Kambing"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh berubah warna?",
+      "a": "Bunglon",
+      "opts": [
+        "Bunglon",
+        "Katak",
+        "Cicak",
+        "Ular"
+      ]
+    },
+    {
+      "q": "Haiwan terbesar di laut?",
+      "a": "Ikan paus",
+      "opts": [
+        "Ikan paus",
+        "Jerung",
+        "Lumba-lumba",
+        "Penyu"
+      ]
+    },
+    {
+      "q": "Haiwan yang tidur berdiri?",
+      "a": "Kuda",
+      "opts": [
+        "Kuda",
+        "Lembu",
+        "Kambing",
+        "Gajah"
+      ]
+    },
+    {
+      "q": "Haiwan yang suka makan semut?",
+      "a": "Tenggiling",
+      "opts": [
+        "Tenggiling",
+        "Arnab",
+        "Tupai",
+        "Tikus"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh melompat tinggi?",
+      "a": "Kanggaru",
+      "opts": [
+        "Kanggaru",
+        "Arnab",
+        "Katak",
+        "Kucing"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada bisa di ekornya?",
+      "a": "Kala jengking",
+      "opts": [
+        "Kala jengking",
+        "Lipas",
+        "Semut",
+        "Lalat"
+      ]
+    },
+    {
+      "q": "Haiwan yang hidup dalam tanah?",
+      "a": "Cacing",
+      "opts": [
+        "Cacing",
+        "Semut",
+        "Lipas",
+        "Ulat"
+      ]
+    },
+    {
+      "q": "Burung yang boleh tiru suara manusia?",
+      "a": "Kakak tua",
+      "opts": [
+        "Kakak tua",
+        "Merpati",
+        "Helang",
+        "Gagak"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada leher paling panjang?",
+      "a": "Zirafah",
+      "opts": [
+        "Zirafah",
+        "Gajah",
+        "Kuda",
+        "Unta"
+      ]
+    },
+    {
+      "q": "Haiwan yang suka makan madu?",
+      "a": "Beruang",
+      "opts": [
+        "Beruang",
+        "Tupai",
+        "Arnab",
+        "Tikus"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada sayap tapi tak boleh terbang?",
+      "a": "Penguin",
+      "opts": [
+        "Penguin",
+        "Helang",
+        "Merpati",
+        "Gagak"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada bulu ekor berwarna-warni?",
+      "a": "Merak",
+      "opts": [
+        "Merak",
+        "Merpati",
+        "Helang",
+        "Gagak"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh simpan air dalam badan?",
+      "a": "Unta",
+      "opts": [
+        "Unta",
+        "Kuda",
+        "Lembu",
+        "Kambing"
+      ]
+    },
+    {
+      "q": "Haiwan yang ada bulu perisai tajam?",
+      "a": "Landak",
+      "opts": [
+        "Landak",
+        "Arnab",
+        "Tupai",
+        "Beruang"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh hidup di gurun?",
+      "a": "Unta",
+      "opts": [
+        "Unta",
+        "Kuda",
+        "Lembu",
+        "Kambing"
+      ]
+    },
+    {
+      "q": "Haiwan yang makan buluh?",
+      "a": "Panda",
+      "opts": [
+        "Panda",
+        "Beruang",
+        "Koala",
+        "Arnab"
+      ]
+    },
+    {
+      "q": "Haiwan yang tidur waktu musim sejuk?",
+      "a": "Beruang",
+      "opts": [
+        "Beruang",
+        "Arnab",
+        "Tupai",
+        "Landak"
+      ]
+    },
+    {
+      "q": "Haiwan ikonik Malaysia yang hampir pupus?",
+      "a": "Tapir",
+      "opts": [
+        "Tapir",
+        "Gajah",
+        "Harimau",
+        "Badak"
+      ]
+    },
+    {
+      "q": "Haiwan primata Malaysia yang pandai memanjat?",
+      "a": "Orang Utan",
+      "opts": [
+        "Orang Utan",
+        "Monyet",
+        "Beruk",
+        "Gibbon"
+      ]
+    },
+    {
+      "q": "Haiwan Malaysia yang ada corak hitam putih di badan?",
+      "a": "Tapir",
+      "opts": [
+        "Tapir",
+        "Zebra",
+        "Panda",
+        "Badak"
+      ]
+    },
+    {
+      "q": "Haiwan nocturnal (aktif waktu malam) di Malaysia?",
+      "a": "Kelawar",
+      "opts": [
+        "Kelawar",
+        "Burung",
+        "Tupai",
+        "Arnab"
+      ]
+    }
+  ]
+}

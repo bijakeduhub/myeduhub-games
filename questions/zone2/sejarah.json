@@ -1,0 +1,707 @@
+{
+  "name": "Sejarah",
+  "icon": "📜",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Kesultanan Melayu Melaka diasaskan oleh?",
+      "a": "Parameswara",
+      "opts": [
+        "Parameswara",
+        "Sultan Mahmud",
+        "Hang Tuah",
+        "Tun Perak"
+      ]
+    },
+    {
+      "q": "Melaka ditawan oleh Portugis pada tahun?",
+      "a": "1511",
+      "opts": [
+        "1511",
+        "1611",
+        "1411",
+        "1711"
+      ]
+    },
+    {
+      "q": "Pahlawan Melayu yang terkenal 'Tak Melayu Hilang di Dunia'?",
+      "a": "Hang Tuah",
+      "opts": [
+        "Hang Tuah",
+        "Hang Jebat",
+        "Hang Kasturi",
+        "Hang Lekir"
+      ]
+    },
+    {
+      "q": "British mula menjajah Tanah Melayu bermula di?",
+      "a": "Pulau Pinang",
+      "opts": [
+        "Pulau Pinang",
+        "Melaka",
+        "Singapura",
+        "Perak"
+      ]
+    },
+    {
+      "q": "Francis Light menduduki Pulau Pinang pada tahun?",
+      "a": "1786",
+      "opts": [
+        "1786",
+        "1819",
+        "1824",
+        "1874"
+      ]
+    },
+    {
+      "q": "Perjanjian Pangkor ditandatangani pada tahun?",
+      "a": "1874",
+      "opts": [
+        "1874",
+        "1786",
+        "1824",
+        "1900"
+      ]
+    },
+    {
+      "q": "Negeri-negeri Melayu Bersekutu (FMS) dibentuk pada?",
+      "a": "1895",
+      "opts": [
+        "1895",
+        "1874",
+        "1900",
+        "1920"
+      ]
+    },
+    {
+      "q": "Jepun menakluki Tanah Melayu pada tahun?",
+      "a": "1941",
+      "opts": [
+        "1941",
+        "1939",
+        "1945",
+        "1942"
+      ]
+    },
+    {
+      "q": "Darurat Tanah Melayu bermula pada tahun?",
+      "a": "1948",
+      "opts": [
+        "1948",
+        "1945",
+        "1950",
+        "1955"
+      ]
+    },
+    {
+      "q": "Pilihanraya umum pertama Tanah Melayu pada tahun?",
+      "a": "1955",
+      "opts": [
+        "1955",
+        "1950",
+        "1957",
+        "1960"
+      ]
+    },
+    {
+      "q": "Malaysia mencapai kemerdekaan pada?",
+      "a": "31 Ogos 1957",
+      "opts": [
+        "31 Ogos 1957",
+        "16 September 1963",
+        "31 Ogos 1963",
+        "1 Januari 1957"
+      ]
+    },
+    {
+      "q": "Malaysia dibentuk pada?",
+      "a": "16 September 1963",
+      "opts": [
+        "16 September 1963",
+        "31 Ogos 1957",
+        "31 Ogos 1963",
+        "1 Januari 1963"
+      ]
+    },
+    {
+      "q": "Bapa Malaysia?",
+      "a": "Tunku Abdul Rahman",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Abdul Razak",
+        "Hussein Onn",
+        "Mahathir"
+      ]
+    },
+    {
+      "q": "PM Malaysia ke-2?",
+      "a": "Tun Abdul Razak",
+      "opts": [
+        "Tun Abdul Razak",
+        "Hussein Onn",
+        "Mahathir",
+        "Abdullah Ahmad"
+      ]
+    },
+    {
+      "q": "PM Malaysia yang paling lama memerintah?",
+      "a": "Tun Mahathir",
+      "opts": [
+        "Tun Mahathir",
+        "Tunku Abdul Rahman",
+        "Tun Abdul Razak",
+        "Najib Razak"
+      ]
+    },
+    {
+      "q": "Singapura keluar dari Malaysia pada tahun?",
+      "a": "1965",
+      "opts": [
+        "1965",
+        "1963",
+        "1970",
+        "1957"
+      ]
+    },
+    {
+      "q": "Peristiwa 13 Mei berlaku pada tahun?",
+      "a": "1969",
+      "opts": [
+        "1969",
+        "1957",
+        "1965",
+        "1971"
+      ]
+    },
+    {
+      "q": "Dasar Ekonomi Baru (DEB) dilancarkan pada?",
+      "a": "1971",
+      "opts": [
+        "1971",
+        "1969",
+        "1975",
+        "1980"
+      ]
+    },
+    {
+      "q": "Rukun Negara digubal pada tahun?",
+      "a": "1970",
+      "opts": [
+        "1970",
+        "1957",
+        "1963",
+        "1969"
+      ]
+    },
+    {
+      "q": "KLCC siap dibina pada tahun?",
+      "a": "1998",
+      "opts": [
+        "1998",
+        "1995",
+        "2000",
+        "2003"
+      ]
+    },
+    {
+      "q": "Pengarang 'Hikayat Hang Tuah'?",
+      "a": "Tidak diketahui",
+      "opts": [
+        "Tidak diketahui",
+        "Tun Perak",
+        "Hang Tuah",
+        "Parameswara"
+      ]
+    },
+    {
+      "q": "Raja Adil Raja Disembah, Raja Zalim?",
+      "a": "Raja Zalim Raja Disanggah",
+      "opts": [
+        "Raja Zalim Raja Disanggah",
+        "Raja Baik Raja Dipuja",
+        "Raja Jahat Raja Ditentang",
+        "Raja Lemah Raja Dijatuh"
+      ]
+    },
+    {
+      "q": "Tokoh wanita pertama Doktor Falsafah di Malaysia?",
+      "a": "Ibu Zain",
+      "opts": [
+        "Ibu Zain",
+        "Siti Hasmah",
+        "Endon Mahmood",
+        "Wan Azizah"
+      ]
+    },
+    {
+      "q": "Sasterawan Negara pertama Malaysia?",
+      "a": "Keris Mas",
+      "opts": [
+        "Keris Mas",
+        "Usman Awang",
+        "A. Samad Said",
+        "Shahnon Ahmad"
+      ]
+    },
+    {
+      "q": "Tokoh sains Malaysia pertama ke angkasa?",
+      "a": "Sheikh Muszaphar",
+      "opts": [
+        "Sheikh Muszaphar",
+        "Faiz Khaleed",
+        "Azri Anuar",
+        "Zulkifli Ahmad"
+      ]
+    },
+    {
+      "q": "Pengasas AirAsia?",
+      "a": "Tony Fernandes",
+      "opts": [
+        "Tony Fernandes",
+        "Syed Mokhtar",
+        "Ananda Krishnan",
+        "Robert Kuok"
+      ]
+    },
+    {
+      "q": "Bapa Perpaduan Malaysia?",
+      "a": "Tun Abdul Razak",
+      "opts": [
+        "Tun Abdul Razak",
+        "Tunku Abdul Rahman",
+        "Hussein Onn",
+        "Mahathir"
+      ]
+    },
+    {
+      "q": "Wira Bukit Kepong dikenali sebagai?",
+      "a": "Mat Ariffin",
+      "opts": [
+        "Mat Ariffin",
+        "Mat Kilau",
+        "Tok Janggut",
+        "Dato Bahaman"
+      ]
+    },
+    {
+      "q": "Pahlawan yang menentang British di Kelantan?",
+      "a": "Tok Janggut",
+      "opts": [
+        "Tok Janggut",
+        "Mat Kilau",
+        "Dol Said",
+        "Dato Bahaman"
+      ]
+    },
+    {
+      "q": "Pahlawan yang menentang British di Pahang?",
+      "a": "Dato Bahaman",
+      "opts": [
+        "Dato Bahaman",
+        "Tok Janggut",
+        "Mat Kilau",
+        "Dol Said"
+      ]
+    },
+    {
+      "q": "Perang Dunia Pertama berlaku pada?",
+      "a": "1914-1918",
+      "opts": [
+        "1914-1918",
+        "1939-1945",
+        "1900-1910",
+        "1920-1930"
+      ]
+    },
+    {
+      "q": "Perang Dunia Kedua berlaku pada?",
+      "a": "1939-1945",
+      "opts": [
+        "1939-1945",
+        "1914-1918",
+        "1950-1960",
+        "1930-1940"
+      ]
+    },
+    {
+      "q": "Negara pertama ke bulan?",
+      "a": "Amerika Syarikat",
+      "opts": [
+        "Amerika Syarikat",
+        "Rusia",
+        "China",
+        "Britain"
+      ]
+    },
+    {
+      "q": "Tahun manusia pertama ke bulan?",
+      "a": "1969",
+      "opts": [
+        "1969",
+        "1965",
+        "1975",
+        "1980"
+      ]
+    },
+    {
+      "q": "Tembok Besar China dibina untuk?",
+      "a": "Pertahanan dari musuh",
+      "opts": [
+        "Pertahanan dari musuh",
+        "Pengangkutan",
+        "Perdagangan",
+        "Pelancongan"
+      ]
+    },
+    {
+      "q": "Piramid dibina di negara mana?",
+      "a": "Mesir",
+      "opts": [
+        "Mesir",
+        "Greece",
+        "Iraq",
+        "India"
+      ]
+    },
+    {
+      "q": "Christopher Columbus menemui Amerika pada tahun?",
+      "a": "1492",
+      "opts": [
+        "1492",
+        "1592",
+        "1392",
+        "1692"
+      ]
+    },
+    {
+      "q": "Revolusi Industri bermula di?",
+      "a": "Britain",
+      "opts": [
+        "Britain",
+        "Perancis",
+        "Jerman",
+        "Amerika"
+      ]
+    },
+    {
+      "q": "PBB (Pertubuhan Bangsa-Bangsa Bersatu) ditubuhkan pada?",
+      "a": "1945",
+      "opts": [
+        "1945",
+        "1919",
+        "1950",
+        "1939"
+      ]
+    },
+    {
+      "q": "Nelson Mandela adalah pemimpin dari negara?",
+      "a": "Afrika Selatan",
+      "opts": [
+        "Afrika Selatan",
+        "Nigeria",
+        "Kenya",
+        "Ethiopia"
+      ]
+    },
+    {
+      "q": "UNESCO mengiktiraf Melaka sebagai?",
+      "a": "Tapak Warisan Dunia",
+      "opts": [
+        "Tapak Warisan Dunia",
+        "Ibu Kota Pelancongan",
+        "Pusat Perdagangan",
+        "Kota Bersejarah"
+      ]
+    },
+    {
+      "q": "Bangunan bersejarah di Melaka?",
+      "a": "Stadthuys",
+      "opts": [
+        "Stadthuys",
+        "Petronas",
+        "Menara KL",
+        "Istana Negara"
+      ]
+    },
+    {
+      "q": "Tarian tradisional Melayu yang terkenal?",
+      "a": "Zapin",
+      "opts": [
+        "Zapin",
+        "Joget",
+        "Inang",
+        "Semua betul"
+      ]
+    },
+    {
+      "q": "Rumah tradisional Melayu dipanggil?",
+      "a": "Rumah Melayu",
+      "opts": [
+        "Rumah Melayu",
+        "Longhouse",
+        "Rumah Pangkat",
+        "Rumah Batu"
+      ]
+    },
+    {
+      "q": "Wayang Kulit berasal dari mana?",
+      "a": "Kelantan",
+      "opts": [
+        "Kelantan",
+        "Melaka",
+        "Pahang",
+        "Kedah"
+      ]
+    },
+    {
+      "q": "Alat muzik tradisional Melayu?",
+      "a": "Kompang",
+      "opts": [
+        "Kompang",
+        "Gitar",
+        "Piano",
+        "Biola"
+      ]
+    },
+    {
+      "q": "Permainan tradisional yang menggunakan layang-layang?",
+      "a": "Main Wau",
+      "opts": [
+        "Main Wau",
+        "Main Gasing",
+        "Congkak",
+        "Sepak Raga"
+      ]
+    },
+    {
+      "q": "Congkak dimainkan menggunakan?",
+      "a": "Biji-bijian",
+      "opts": [
+        "Biji-bijian",
+        "Bola",
+        "Kayu",
+        "Batu"
+      ]
+    },
+    {
+      "q": "Seni bela diri tradisional Melayu?",
+      "a": "Silat",
+      "opts": [
+        "Silat",
+        "Karate",
+        "Taekwondo",
+        "Kung Fu"
+      ]
+    },
+    {
+      "q": "Ukiran kayu terkenal dari negeri?",
+      "a": "Kelantan",
+      "opts": [
+        "Kelantan",
+        "Johor",
+        "Selangor",
+        "Sabah"
+      ]
+    },
+    {
+      "q": "Siapakah Perdana Menteri pertama Malaysia?",
+      "a": "Tunku Abdul Rahman",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Tun Razak",
+        "Tun Hussein Onn",
+        "Tun Mahathir"
+      ]
+    },
+    {
+      "q": "Bilakah Malaysia merdeka?",
+      "a": "31 Ogos 1957",
+      "opts": [
+        "31 Ogos 1957",
+        "16 September 1963",
+        "1 Januari 1957",
+        "31 Disember 1957"
+      ]
+    },
+    {
+      "q": "Apakah nama lama Malaysia?",
+      "a": "Tanah Melayu",
+      "opts": [
+        "Tanah Melayu",
+        "Borneo",
+        "Malaya Raya",
+        "Nusantara"
+      ]
+    },
+    {
+      "q": "Siapakah penjajah pertama di Melaka?",
+      "a": "Portugis",
+      "opts": [
+        "Portugis",
+        "Belanda",
+        "British",
+        "Jepun"
+      ]
+    },
+    {
+      "q": "Tahun pembentukan Malaysia?",
+      "a": "1963",
+      "opts": [
+        "1963",
+        "1957",
+        "1965",
+        "1970"
+      ]
+    },
+    {
+      "q": "Negara mana menjajah selepas Portugis?",
+      "a": "Belanda",
+      "opts": [
+        "Belanda",
+        "British",
+        "Sepanyol",
+        "Perancis"
+      ]
+    },
+    {
+      "q": "Siapakah penjajah terakhir sebelum merdeka?",
+      "a": "British",
+      "opts": [
+        "British",
+        "Belanda",
+        "Jepun",
+        "Portugis"
+      ]
+    },
+    {
+      "q": "Pendudukan Jepun berlaku pada tahun?",
+      "a": "1941",
+      "opts": [
+        "1941",
+        "1939",
+        "1957",
+        "1963"
+      ]
+    },
+    {
+      "q": "Apakah nama bendera Malaysia?",
+      "a": "Jalur Gemilang",
+      "opts": [
+        "Jalur Gemilang",
+        "Bintang Timur",
+        "Merah Putih",
+        "Sang Saka"
+      ]
+    },
+    {
+      "q": "Di manakah pengisytiharan merdeka dibuat?",
+      "a": "Stadium Merdeka",
+      "opts": [
+        "Stadium Merdeka",
+        "KLCC",
+        "Putrajaya",
+        "Istana Negara"
+      ]
+    },
+    {
+      "q": "Siapakah yang melaungkan 'Merdeka'?",
+      "a": "Tunku Abdul Rahman",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Tun Razak",
+        "Tun Mahathir",
+        "Tun Hussein Onn"
+      ]
+    },
+    {
+      "q": "Apakah lagu kebangsaan Malaysia?",
+      "a": "Negaraku",
+      "opts": [
+        "Negaraku",
+        "Malaysia Boleh",
+        "Setia",
+        "Gemilang"
+      ]
+    },
+    {
+      "q": "Apakah tujuan sejarah dipelajari?",
+      "a": "Mengetahui masa lalu",
+      "opts": [
+        "Mengetahui masa lalu",
+        "Menjadi kaya",
+        "Menjadi kuat",
+        "Bermain"
+      ]
+    },
+    {
+      "q": "Apakah tarikh Hari Malaysia?",
+      "a": "16 September",
+      "opts": [
+        "16 September",
+        "31 Ogos",
+        "1 Januari",
+        "1 Mei"
+      ]
+    },
+    {
+      "q": "Siapakah Hang Tuah?",
+      "a": "Pahlawan Melaka",
+      "opts": [
+        "Pahlawan Melaka",
+        "Raja",
+        "Pedagang",
+        "Penjajah"
+      ]
+    },
+    {
+      "q": "Siapakah sahabat Hang Tuah?",
+      "a": "Hang Jebat",
+      "opts": [
+        "Hang Jebat",
+        "Hang Nadim",
+        "Hang Lekir",
+        "Hang Iskandar"
+      ]
+    },
+    {
+      "q": "Apakah alat senjata tradisional Melayu?",
+      "a": "Keris",
+      "opts": [
+        "Keris",
+        "Pistol",
+        "Rifle",
+        "Bom"
+      ]
+    },
+    {
+      "q": "Apakah hasil utama Tanah Melayu dahulu?",
+      "a": "Bijih timah",
+      "opts": [
+        "Bijih timah",
+        "Emas",
+        "Besi",
+        "Arang"
+      ]
+    },
+    {
+      "q": "Apakah hasil pertanian utama dahulu?",
+      "a": "Getah",
+      "opts": [
+        "Getah",
+        "Padi",
+        "Jagung",
+        "Teh"
+      ]
+    },
+    {
+      "q": "Apakah maksud merdeka?",
+      "a": "Bebas daripada penjajah",
+      "opts": [
+        "Bebas daripada penjajah",
+        "Kaya",
+        "Kuat",
+        "Berkuasa"
+      ]
+    }
+  ]
+}

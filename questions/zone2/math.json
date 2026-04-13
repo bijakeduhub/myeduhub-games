@@ -1,0 +1,196 @@
+{
+  "name": "Matematik",
+  "icon": "➕",
+  "type": "math_dynamic",
+  "sessionCount": 10,
+  "distribution": "balanced",
+  "min_per_template_group": 1,
+  "option_rules": {
+    "nearby": "answer ± variance (integer, no negatives, no duplicates)",
+    "nearby_decimal": "answer ± variance (2dp, no negatives, no duplicates)"
+  },
+  "templates": [
+    {
+      "id": "addition_2d1d",
+      "label": "Tambah",
+      "type": "operation",
+      "operation": "add",
+      "weight": 2,
+      "a_range": [10, 99],
+      "b_range": [1, 9],
+      "option_strategy": "nearby",
+      "option_variance": 3
+    },
+    {
+      "id": "addition_2d2d",
+      "label": "Tambah",
+      "type": "operation",
+      "operation": "add",
+      "weight": 2,
+      "a_range": [10, 99],
+      "b_range": [10, 99],
+      "option_strategy": "nearby",
+      "option_variance": 5
+    },
+    {
+      "id": "addition_3d2d",
+      "label": "Tambah",
+      "type": "operation",
+      "operation": "add",
+      "weight": 1,
+      "a_range": [100, 999],
+      "b_range": [10, 99],
+      "option_strategy": "nearby",
+      "option_variance": 10
+    },
+    {
+      "id": "subtraction_2d1d",
+      "label": "Tolak",
+      "type": "operation",
+      "operation": "subtract",
+      "weight": 2,
+      "a_range": [10, 99],
+      "b_range": [1, 9],
+      "ensure_positive": true,
+      "option_strategy": "nearby",
+      "option_variance": 3
+    },
+    {
+      "id": "subtraction_2d2d",
+      "label": "Tolak",
+      "type": "operation",
+      "operation": "subtract",
+      "weight": 2,
+      "a_range": [20, 99],
+      "b_range": [10, 50],
+      "ensure_positive": true,
+      "option_strategy": "nearby",
+      "option_variance": 5
+    },
+    {
+      "id": "subtraction_3d2d",
+      "label": "Tolak",
+      "type": "operation",
+      "operation": "subtract",
+      "weight": 1,
+      "a_range": [100, 999],
+      "b_range": [10, 99],
+      "ensure_positive": true,
+      "option_strategy": "nearby",
+      "option_variance": 10
+    },
+    {
+      "id": "division",
+      "label": "Bahagi",
+      "type": "operation_pairs",
+      "operation": "divide",
+      "weight": 2,
+      "no_repeat_pair_in_session": true,
+      "pairs": [
+        [18,3],[24,4],[36,6],[48,6],
+        [56,7],[63,9],[72,8],[81,9],
+        [24,3],[32,4],[35,5],[42,6],
+        [45,5],[45,9],[54,6],[54,9],
+        [64,8],[72,9],[49,7],[42,7]
+      ],
+      "option_strategy": "nearby",
+      "option_variance": 2
+    },
+    {
+      "id": "fraction_of",
+      "label": "Pecahan",
+      "type": "fraction",
+      "weight": 2,
+      "compute": "(base * num) / den",
+      "ensure_integer": true,
+      "fractions": [
+        {"symbol": "½",  "num": 1, "den": 2},
+        {"symbol": "¼",  "num": 1, "den": 4},
+        {"symbol": "⅓",  "num": 1, "den": 3},
+        {"symbol": "¾",  "num": 3, "den": 4},
+        {"symbol": "⅕",  "num": 1, "den": 5},
+        {"symbol": "⅔",  "num": 2, "den": 3}
+      ],
+      "base_values": [20, 30, 40, 50, 60, 80, 100, 120, 150, 200],
+      "option_strategy": "nearby",
+      "option_variance": 5
+    },
+    {
+      "id": "money_add",
+      "label": "Wang",
+      "type": "money",
+      "operation": "add",
+      "compute": "a + b",
+      "weight": 1,
+      "pairs": [
+        [2.00, 0.50],
+        [3.00, 2.50],
+        [5.00, 1.50],
+        [4.50, 3.50],
+        [7.00, 2.50],
+        [10.00, 4.50],
+        [1.50, 0.50],
+        [6.50, 1.50]
+      ],
+      "format": "RM",
+      "option_strategy": "nearby_decimal",
+      "option_variance": 0.50
+    },
+    {
+      "id": "money_word",
+      "label": "Wang",
+      "type": "money_word",
+      "compute": "paid - cost",
+      "weight": 1,
+      "format": "RM",
+      "option_strategy": "nearby_decimal",
+      "option_variance": 1.00,
+      "problems": [
+        {"paid": 10,  "cost": 4,     "q": "Ali ada RM10. Beli buku RM{cost}. Baki?"},
+        {"paid": 20,  "cost": 13,    "q": "Siti ada RM20. Beli kasut RM{cost}. Baki?"},
+        {"paid": 50,  "cost": 23.50, "q": "Bayar RM50, barang RM{cost}. Baki?"},
+        {"paid": 100, "cost": 67,    "q": "Ibu ada RM100. Beli barang RM{cost}. Baki?"},
+        {"paid": 10,  "cost": 7,     "q": "Bayar RM10, barang RM{cost}. Baki?"},
+        {"paid": 5,   "cost": 2.50,  "q": "Ada RM5, beli RM{cost}. Baki?"},
+        {"paid": 20,  "cost": 8.50,  "q": "Bayar RM20, barang RM{cost}. Baki?"},
+        {"paid": 50,  "cost": 35,    "q": "Ada RM50, beli barang RM{cost}. Baki?"}
+      ]
+    },
+    {
+      "id": "decimal",
+      "label": "Perpuluhan",
+      "type": "fixed",
+      "weight": 1,
+      "questions": [
+        {"q": "0.5 + 0.5 = ?", "a": "1",   "opts": ["1",   "0.5", "1.5", "0.1"]},
+        {"q": "1.5 + 1.5 = ?", "a": "3",   "opts": ["3",   "2.5", "3.5", "2"]},
+        {"q": "2.5 - 1 = ?",   "a": "1.5", "opts": ["1.5", "1",   "2",   "0.5"]},
+        {"q": "0.1 + 0.9 = ?", "a": "1",   "opts": ["1",   "0.0", "1.1", "0.8"]},
+        {"q": "3.5 - 0.5 = ?", "a": "3",   "opts": ["3",   "2.5", "3.5", "4"]},
+        {"q": "4.5 ÷ 3 = ?",   "a": "1.5", "opts": ["1.5", "1",   "2",   "1.25"]},
+        {"q": "5.5 + 4.5 = ?", "a": "10",  "opts": ["10",  "9.5", "10.5","9"]},
+        {"q": "7.5 - 2.5 = ?", "a": "5",   "opts": ["5",   "4.5", "5.5", "4"]},
+        {"q": "6.5 + 3.5 = ?", "a": "10",  "opts": ["10",  "9.5", "10.5","9"]},
+        {"q": "8.5 - 3.5 = ?", "a": "5",   "opts": ["5",   "4.5", "5.5", "4"]}
+      ]
+    },
+    {
+      "id": "time",
+      "label": "Masa & Waktu",
+      "type": "fixed",
+      "weight": 1,
+      "questions": [
+        {"q": "1 jam = berapa minit?",                     "a": "60 minit",  "opts": ["60 minit",  "30 minit",  "100 minit", "45 minit"]},
+        {"q": "1 hari = berapa jam?",                      "a": "24 jam",    "opts": ["24 jam",    "12 jam",    "48 jam",    "20 jam"]},
+        {"q": "1 minggu = berapa hari?",                   "a": "7 hari",    "opts": ["7 hari",    "5 hari",    "6 hari",    "8 hari"]},
+        {"q": "1 tahun = berapa bulan?",                   "a": "12 bulan",  "opts": ["12 bulan",  "10 bulan",  "11 bulan",  "13 bulan"]},
+        {"q": "2 jam = berapa minit?",                     "a": "120 minit", "opts": ["120 minit", "60 minit",  "90 minit",  "100 minit"]},
+        {"q": "90 minit = berapa jam?",                    "a": "1.5 jam",   "opts": ["1.5 jam",   "2 jam",     "1 jam",     "2.5 jam"]},
+        {"q": "Sekolah mula 7:30, tamat 1:30. Berapa lama?", "a": "6 jam",  "opts": ["6 jam",     "5 jam",     "7 jam",     "8 jam"]},
+        {"q": "Hari selepas Isnin?",                       "a": "Selasa",    "opts": ["Selasa",    "Ahad",      "Rabu",      "Jumaat"]},
+        {"q": "Hari sebelum Jumaat?",                      "a": "Khamis",    "opts": ["Khamis",    "Rabu",      "Sabtu",     "Ahad"]},
+        {"q": "Bulan ke-6 dalam tahun?",                   "a": "Jun",       "opts": ["Jun",       "Julai",     "Mei",       "Ogos"]}
+      ]
+    }
+  ]
+}

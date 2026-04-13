@@ -1,0 +1,457 @@
+{
+  "name": "Huruf Kecil",
+  "icon": "🔤",
+  "type": "letters",
+  "questions": [
+    {
+      "upper": "A",
+      "lower": "a",
+      "wrong": [
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "upper": "B",
+      "lower": "b",
+      "wrong": [
+        "d",
+        "p",
+        "q"
+      ]
+    },
+    {
+      "upper": "C",
+      "lower": "c",
+      "wrong": [
+        "o",
+        "e",
+        "a"
+      ]
+    },
+    {
+      "upper": "D",
+      "lower": "d",
+      "wrong": [
+        "b",
+        "p",
+        "q"
+      ]
+    },
+    {
+      "upper": "E",
+      "lower": "e",
+      "wrong": [
+        "a",
+        "o",
+        "f"
+      ]
+    },
+    {
+      "upper": "F",
+      "lower": "f",
+      "wrong": [
+        "t",
+        "l",
+        "i"
+      ]
+    },
+    {
+      "upper": "G",
+      "lower": "g",
+      "wrong": [
+        "q",
+        "p",
+        "j"
+      ]
+    },
+    {
+      "upper": "H",
+      "lower": "h",
+      "wrong": [
+        "n",
+        "m",
+        "k"
+      ]
+    },
+    {
+      "upper": "I",
+      "lower": "i",
+      "wrong": [
+        "l",
+        "j",
+        "t"
+      ]
+    },
+    {
+      "upper": "J",
+      "lower": "j",
+      "wrong": [
+        "i",
+        "l",
+        "g"
+      ]
+    },
+    {
+      "upper": "K",
+      "lower": "k",
+      "wrong": [
+        "h",
+        "x",
+        "r"
+      ]
+    },
+    {
+      "upper": "L",
+      "lower": "l",
+      "wrong": [
+        "i",
+        "t",
+        "f"
+      ]
+    },
+    {
+      "upper": "M",
+      "lower": "m",
+      "wrong": [
+        "n",
+        "w",
+        "h"
+      ]
+    },
+    {
+      "upper": "N",
+      "lower": "n",
+      "wrong": [
+        "m",
+        "u",
+        "h"
+      ]
+    },
+    {
+      "upper": "O",
+      "lower": "o",
+      "wrong": [
+        "c",
+        "e",
+        "a"
+      ]
+    },
+    {
+      "upper": "P",
+      "lower": "p",
+      "wrong": [
+        "q",
+        "b",
+        "d"
+      ]
+    },
+    {
+      "upper": "Q",
+      "lower": "q",
+      "wrong": [
+        "p",
+        "g",
+        "d"
+      ]
+    },
+    {
+      "upper": "R",
+      "lower": "r",
+      "wrong": [
+        "n",
+        "v",
+        "m"
+      ]
+    },
+    {
+      "upper": "S",
+      "lower": "s",
+      "wrong": [
+        "z",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "upper": "T",
+      "lower": "t",
+      "wrong": [
+        "f",
+        "l",
+        "i"
+      ]
+    },
+    {
+      "upper": "U",
+      "lower": "u",
+      "wrong": [
+        "v",
+        "n",
+        "w"
+      ]
+    },
+    {
+      "upper": "V",
+      "lower": "v",
+      "wrong": [
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "upper": "W",
+      "lower": "w",
+      "wrong": [
+        "m",
+        "v",
+        "u"
+      ]
+    },
+    {
+      "upper": "X",
+      "lower": "x",
+      "wrong": [
+        "k",
+        "z",
+        "y"
+      ]
+    },
+    {
+      "upper": "Y",
+      "lower": "y",
+      "wrong": [
+        "v",
+        "g",
+        "j"
+      ]
+    },
+    {
+      "upper": "Z",
+      "lower": "z",
+      "wrong": [
+        "s",
+        "x",
+        "n"
+      ]
+    },
+    {
+      "upper": "Kucing bermula dengan huruf?",
+      "lower": "k",
+      "wrong": [
+        "m",
+        "p",
+        "r"
+      ]
+    },
+    {
+      "upper": "Meja bermula dengan huruf?",
+      "lower": "m",
+      "wrong": [
+        "n",
+        "k",
+        "b"
+      ]
+    },
+    {
+      "upper": "Pokok bermula dengan huruf?",
+      "lower": "p",
+      "wrong": [
+        "b",
+        "q",
+        "d"
+      ]
+    },
+    {
+      "upper": "Rumah bermula dengan huruf?",
+      "lower": "r",
+      "wrong": [
+        "n",
+        "m",
+        "v"
+      ]
+    },
+    {
+      "upper": "Sekolah bermula dengan huruf?",
+      "lower": "s",
+      "wrong": [
+        "z",
+        "c",
+        "e"
+      ]
+    },
+    {
+      "upper": "Ikan bermula dengan huruf?",
+      "lower": "i",
+      "wrong": [
+        "l",
+        "j",
+        "t"
+      ]
+    },
+    {
+      "upper": "Buku bermula dengan huruf?",
+      "lower": "b",
+      "wrong": [
+        "d",
+        "p",
+        "q"
+      ]
+    },
+    {
+      "upper": "Gajah bermula dengan huruf?",
+      "lower": "g",
+      "wrong": [
+        "q",
+        "p",
+        "j"
+      ]
+    },
+    {
+      "upper": "Harimau bermula dengan huruf?",
+      "lower": "h",
+      "wrong": [
+        "n",
+        "m",
+        "k"
+      ]
+    },
+    {
+      "upper": "Lampu bermula dengan huruf?",
+      "lower": "l",
+      "wrong": [
+        "i",
+        "t",
+        "f"
+      ]
+    },
+    {
+      "upper": "Nasi bermula dengan huruf?",
+      "lower": "n",
+      "wrong": [
+        "m",
+        "u",
+        "h"
+      ]
+    },
+    {
+      "upper": "Orang bermula dengan huruf?",
+      "lower": "o",
+      "wrong": [
+        "c",
+        "e",
+        "a"
+      ]
+    },
+    {
+      "upper": "Tangan bermula dengan huruf?",
+      "lower": "t",
+      "wrong": [
+        "f",
+        "l",
+        "i"
+      ]
+    },
+    {
+      "upper": "Ubat bermula dengan huruf?",
+      "lower": "u",
+      "wrong": [
+        "v",
+        "n",
+        "w"
+      ]
+    },
+    {
+      "upper": "Jalan bermula dengan huruf?",
+      "lower": "j",
+      "wrong": [
+        "i",
+        "l",
+        "g"
+      ]
+    },
+    {
+      "upper": "Waktu bermula dengan huruf?",
+      "lower": "w",
+      "wrong": [
+        "m",
+        "v",
+        "u"
+      ]
+    },
+    {
+      "upper": "Epal bermula dengan huruf?",
+      "lower": "e",
+      "wrong": [
+        "a",
+        "o",
+        "f"
+      ]
+    },
+    {
+      "upper": "Faham bermula dengan huruf?",
+      "lower": "f",
+      "wrong": [
+        "t",
+        "l",
+        "i"
+      ]
+    },
+    {
+      "upper": "Duit bermula dengan huruf?",
+      "lower": "d",
+      "wrong": [
+        "b",
+        "p",
+        "q"
+      ]
+    },
+    {
+      "upper": "Ayah bermula dengan huruf?",
+      "lower": "a",
+      "wrong": [
+        "b",
+        "c",
+        "d"
+      ]
+    },
+    {
+      "upper": "Zambia bermula dengan huruf?",
+      "lower": "z",
+      "wrong": [
+        "s",
+        "x",
+        "n"
+      ]
+    },
+    {
+      "upper": "Viral bermula dengan huruf?",
+      "lower": "v",
+      "wrong": [
+        "u",
+        "w",
+        "y"
+      ]
+    },
+    {
+      "upper": "Kelas bermula dengan huruf?",
+      "lower": "k",
+      "wrong": [
+        "h",
+        "m",
+        "g"
+      ]
+    },
+    {
+      "upper": "Taman bermula dengan huruf?",
+      "lower": "t",
+      "wrong": [
+        "f",
+        "l",
+        "d"
+      ]
+    }
+  ]
+}

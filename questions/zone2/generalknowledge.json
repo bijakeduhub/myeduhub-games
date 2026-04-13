@@ -1,0 +1,707 @@
+{
+  "name": "Pengetahuan Am",
+  "icon": "🌍",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Ibu negeri Selangor?",
+      "a": "Shah Alam",
+      "opts": [
+        "Shah Alam",
+        "Klang",
+        "Petaling Jaya",
+        "Subang"
+      ]
+    },
+    {
+      "q": "Ibu negeri Johor?",
+      "a": "Johor Bahru",
+      "opts": [
+        "Johor Bahru",
+        "Muar",
+        "Batu Pahat",
+        "Kluang"
+      ]
+    },
+    {
+      "q": "Ibu negeri Kedah?",
+      "a": "Alor Setar",
+      "opts": [
+        "Alor Setar",
+        "Sungai Petani",
+        "Kulim",
+        "Langkawi"
+      ]
+    },
+    {
+      "q": "Ibu negeri Kelantan?",
+      "a": "Kota Bharu",
+      "opts": [
+        "Kota Bharu",
+        "Kuala Krai",
+        "Tanah Merah",
+        "Machang"
+      ]
+    },
+    {
+      "q": "Ibu negeri Sabah?",
+      "a": "Kota Kinabalu",
+      "opts": [
+        "Kota Kinabalu",
+        "Sandakan",
+        "Tawau",
+        "Lahad Datu"
+      ]
+    },
+    {
+      "q": "Ibu negeri Sarawak?",
+      "a": "Kuching",
+      "opts": [
+        "Kuching",
+        "Miri",
+        "Sibu",
+        "Bintulu"
+      ]
+    },
+    {
+      "q": "Ibu negeri Perak?",
+      "a": "Ipoh",
+      "opts": [
+        "Ipoh",
+        "Taiping",
+        "Teluk Intan",
+        "Sitiawan"
+      ]
+    },
+    {
+      "q": "Ibu negeri Pahang?",
+      "a": "Kuantan",
+      "opts": [
+        "Kuantan",
+        "Temerloh",
+        "Raub",
+        "Bentong"
+      ]
+    },
+    {
+      "q": "Ibu negeri Perlis?",
+      "a": "Kangar",
+      "opts": [
+        "Kangar",
+        "Arau",
+        "Padang Besar",
+        "Wang Kelian"
+      ]
+    },
+    {
+      "q": "Ibu negeri Terengganu?",
+      "a": "Kuala Terengganu",
+      "opts": [
+        "Kuala Terengganu",
+        "Dungun",
+        "Kemaman",
+        "Besut"
+      ]
+    },
+    {
+      "q": "Ibu negeri Negeri Sembilan?",
+      "a": "Seremban",
+      "opts": [
+        "Seremban",
+        "Port Dickson",
+        "Nilai",
+        "Rembau"
+      ]
+    },
+    {
+      "q": "Ibu negeri Melaka?",
+      "a": "Melaka",
+      "opts": [
+        "Melaka",
+        "Alor Gajah",
+        "Jasin",
+        "Merlimau"
+      ]
+    },
+    {
+      "q": "Ibu negeri Pulau Pinang?",
+      "a": "George Town",
+      "opts": [
+        "George Town",
+        "Butterworth",
+        "Balik Pulau",
+        "Bayan Lepas"
+      ]
+    },
+    {
+      "q": "Berapa negeri di Malaysia (tanpa wilayah persekutuan)?",
+      "a": "13",
+      "opts": [
+        "13",
+        "14",
+        "12",
+        "15"
+      ]
+    },
+    {
+      "q": "Bendera Malaysia dipanggil?",
+      "a": "Jalur Gemilang",
+      "opts": [
+        "Jalur Gemilang",
+        "Bintang Timur",
+        "Merah Putih",
+        "Union Jack"
+      ]
+    },
+    {
+      "q": "Bunga kebangsaan Malaysia?",
+      "a": "Bunga Raya",
+      "opts": [
+        "Bunga Raya",
+        "Bunga Melur",
+        "Bunga Orkid",
+        "Bunga Ros"
+      ]
+    },
+    {
+      "q": "Haiwan kebangsaan Malaysia?",
+      "a": "Harimau Malaya",
+      "opts": [
+        "Harimau Malaya",
+        "Gajah",
+        "Orang Utan",
+        "Tapir"
+      ]
+    },
+    {
+      "q": "Mata wang Malaysia?",
+      "a": "Ringgit Malaysia",
+      "opts": [
+        "Ringgit Malaysia",
+        "Dollar",
+        "Peso",
+        "Baht"
+      ]
+    },
+    {
+      "q": "Hari Merdeka Malaysia?",
+      "a": "31 Ogos",
+      "opts": [
+        "31 Ogos",
+        "16 September",
+        "1 Januari",
+        "1 Mac"
+      ]
+    },
+    {
+      "q": "Hari Malaysia?",
+      "a": "16 September",
+      "opts": [
+        "16 September",
+        "31 Ogos",
+        "1 Mac",
+        "31 Disember"
+      ]
+    },
+    {
+      "q": "Sungai terpanjang Malaysia?",
+      "a": "Sungai Rajang",
+      "opts": [
+        "Sungai Rajang",
+        "Sungai Pahang",
+        "Sungai Perak",
+        "Sungai Kelantan"
+      ]
+    },
+    {
+      "q": "Gunung tertinggi Malaysia?",
+      "a": "Gunung Kinabalu",
+      "opts": [
+        "Gunung Kinabalu",
+        "Gunung Tahan",
+        "Gunung Ledang",
+        "Gunung Mulu"
+      ]
+    },
+    {
+      "q": "Bahasa rasmi Malaysia?",
+      "a": "Bahasa Melayu",
+      "opts": [
+        "Bahasa Melayu",
+        "Bahasa Inggeris",
+        "Bahasa Cina",
+        "Bahasa Tamil"
+      ]
+    },
+    {
+      "q": "PM Malaysia pertama?",
+      "a": "Tunku Abdul Rahman",
+      "opts": [
+        "Tunku Abdul Rahman",
+        "Abdul Razak",
+        "Hussein Onn",
+        "Mahathir"
+      ]
+    },
+    {
+      "q": "KLCC terletak di?",
+      "a": "Kuala Lumpur",
+      "opts": [
+        "Kuala Lumpur",
+        "Selangor",
+        "Putrajaya",
+        "Johor"
+      ]
+    },
+    {
+      "q": "Agama rasmi Malaysia?",
+      "a": "Islam",
+      "opts": [
+        "Islam",
+        "Buddha",
+        "Hindu",
+        "Kristian"
+      ]
+    },
+    {
+      "q": "Makanan kebangsaan Malaysia?",
+      "a": "Nasi Lemak",
+      "opts": [
+        "Nasi Lemak",
+        "Roti Canai",
+        "Laksa",
+        "Rendang"
+      ]
+    },
+    {
+      "q": "Hari perayaan Cina?",
+      "a": "Tahun Baru Cina",
+      "opts": [
+        "Tahun Baru Cina",
+        "Deepavali",
+        "Wesak",
+        "Thaipusam"
+      ]
+    },
+    {
+      "q": "Hari perayaan India?",
+      "a": "Deepavali",
+      "opts": [
+        "Deepavali",
+        "Tahun Baru Cina",
+        "Wesak",
+        "Krismas"
+      ]
+    },
+    {
+      "q": "Gelaran ketua negara Malaysia?",
+      "a": "Yang di-Pertuan Agong",
+      "opts": [
+        "Yang di-Pertuan Agong",
+        "Perdana Menteri",
+        "Sultan",
+        "Raja"
+      ]
+    },
+    {
+      "q": "Berapa rukun Islam?",
+      "a": "5",
+      "opts": [
+        "5",
+        "6",
+        "4",
+        "7"
+      ]
+    },
+    {
+      "q": "Berapa rukun Iman?",
+      "a": "6",
+      "opts": [
+        "6",
+        "5",
+        "7",
+        "4"
+      ]
+    },
+    {
+      "q": "Batik popular di negeri mana?",
+      "a": "Kelantan & Terengganu",
+      "opts": [
+        "Kelantan & Terengganu",
+        "Johor & Pahang",
+        "Selangor & KL",
+        "Sabah & Sarawak"
+      ]
+    },
+    {
+      "q": "Pakaian tradisional Melayu lelaki?",
+      "a": "Baju Melayu",
+      "opts": [
+        "Baju Melayu",
+        "Baju Kurung",
+        "Kebaya",
+        "Songket"
+      ]
+    },
+    {
+      "q": "Permainan tradisional Malaysia?",
+      "a": "Gasing",
+      "opts": [
+        "Gasing",
+        "Bola Sepak",
+        "Badminton",
+        "Catur"
+      ]
+    },
+    {
+      "q": "Benua paling besar?",
+      "a": "Asia",
+      "opts": [
+        "Asia",
+        "Afrika",
+        "Amerika",
+        "Eropah"
+      ]
+    },
+    {
+      "q": "Lautan paling besar?",
+      "a": "Lautan Pasifik",
+      "opts": [
+        "Lautan Pasifik",
+        "Lautan Atlantik",
+        "Lautan Hindi",
+        "Lautan Artik"
+      ]
+    },
+    {
+      "q": "Negara paling ramai penduduk?",
+      "a": "India",
+      "opts": [
+        "India",
+        "China",
+        "Amerika Syarikat",
+        "Indonesia"
+      ]
+    },
+    {
+      "q": "Gunung tertinggi dunia?",
+      "a": "Gunung Everest",
+      "opts": [
+        "Gunung Everest",
+        "Gunung Kinabalu",
+        "Gunung Fuji",
+        "Gunung Kilimanjaro"
+      ]
+    },
+    {
+      "q": "Sungai terpanjang dunia?",
+      "a": "Sungai Nil",
+      "opts": [
+        "Sungai Nil",
+        "Sungai Amazon",
+        "Sungai Yangtze",
+        "Sungai Mississippi"
+      ]
+    },
+    {
+      "q": "Berapa warna dalam pelangi?",
+      "a": "7",
+      "opts": [
+        "7",
+        "6",
+        "5",
+        "8"
+      ]
+    },
+    {
+      "q": "Haiwan yang boleh terbang selain burung?",
+      "a": "Kelawar",
+      "opts": [
+        "Kelawar",
+        "Ikan",
+        "Ular",
+        "Arnab"
+      ]
+    },
+    {
+      "q": "Bahan asas roti?",
+      "a": "Tepung",
+      "opts": [
+        "Tepung",
+        "Beras",
+        "Jagung",
+        "Ubi"
+      ]
+    },
+    {
+      "q": "Alat untuk ukur suhu?",
+      "a": "Termometer",
+      "opts": [
+        "Termometer",
+        "Pembaris",
+        "Penimbang",
+        "Jam"
+      ]
+    },
+    {
+      "q": "Warna lampu isyarat berhenti?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Hijau",
+        "Kuning",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Berapa sisi segitiga?",
+      "a": "3",
+      "opts": [
+        "3",
+        "4",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "q": "Berapa sisi segi empat?",
+      "a": "4",
+      "opts": [
+        "4",
+        "3",
+        "5",
+        "6"
+      ]
+    },
+    {
+      "q": "Alat muzik yang dipetik?",
+      "a": "Gitar",
+      "opts": [
+        "Gitar",
+        "Dram",
+        "Seruling",
+        "Trompet"
+      ]
+    },
+    {
+      "q": "Haiwan yang hidup di dua alam?",
+      "a": "Katak",
+      "opts": [
+        "Katak",
+        "Ikan",
+        "Burung",
+        "Ular"
+      ]
+    },
+    {
+      "q": "Benda yang menghasilkan cahaya sendiri?",
+      "a": "Matahari",
+      "opts": [
+        "Matahari",
+        "Bulan",
+        "Bintang timur",
+        "Cermin"
+      ]
+    },
+    {
+      "q": "Bendera Malaysia ada berapa jalur?",
+      "a": "14",
+      "opts": [
+        "14",
+        "13",
+        "12",
+        "15"
+      ]
+    },
+    {
+      "q": "Warna bendera Malaysia?",
+      "a": "Merah, putih, biru, kuning",
+      "opts": [
+        "Merah, putih, biru, kuning",
+        "Merah, putih",
+        "Biru, kuning",
+        "Hitam, putih"
+      ]
+    },
+    {
+      "q": "Ukiran kayu terkenal dari negeri?",
+      "a": "Kelantan",
+      "opts": [
+        "Kelantan",
+        "Johor",
+        "Selangor",
+        "Sabah"
+      ]
+    },
+    {
+      "q": "Negara jiran Malaysia di utara?",
+      "a": "Thailand",
+      "opts": [
+        "Thailand",
+        "Indonesia",
+        "Brunei",
+        "Singapura"
+      ]
+    },
+    {
+      "q": "Negara jiran Malaysia di selatan?",
+      "a": "Singapura",
+      "opts": [
+        "Singapura",
+        "Thailand",
+        "Indonesia",
+        "Brunei"
+      ]
+    },
+    {
+      "q": "Apakah maksud 'SOS'?",
+      "a": "Tanda memerlukan bantuan",
+      "opts": [
+        "Tanda memerlukan bantuan",
+        "Tanda bahaya api",
+        "Tanda larangan",
+        "Tanda henti"
+      ]
+    },
+    {
+      "q": "Bahasa kebangsaan Malaysia?",
+      "a": "Bahasa Melayu",
+      "opts": [
+        "Bahasa Melayu",
+        "Bahasa Inggeris",
+        "Bahasa Mandarin",
+        "Bahasa Tamil"
+      ]
+    },
+    {
+      "q": "Lagu kebangsaan Malaysia?",
+      "a": "Negaraku",
+      "opts": [
+        "Negaraku",
+        "Malaysia Berjaya",
+        "Setia",
+        "Gemilang"
+      ]
+    },
+    {
+      "q": "Lambang negara Malaysia dipanggil?",
+      "a": "Jata Negara",
+      "opts": [
+        "Jata Negara",
+        "Jalur Gemilang",
+        "Bunga Raya",
+        "Negaraku"
+      ]
+    },
+    {
+      "q": "PM Malaysia pertama dipanggil?",
+      "a": "Bapa Malaysia",
+      "opts": [
+        "Bapa Malaysia",
+        "Bapa Kemerdekaan",
+        "Bapa Perpaduan",
+        "Bapa Pembangunan"
+      ]
+    },
+    {
+      "q": "Pakaian tradisional wanita Melayu?",
+      "a": "Baju Kurung",
+      "opts": [
+        "Baju Kurung",
+        "Baju Melayu",
+        "Kebaya",
+        "Songket"
+      ]
+    },
+    {
+      "q": "Seni bela diri tradisional Malaysia?",
+      "a": "Silat",
+      "opts": [
+        "Silat",
+        "Karate",
+        "Taekwondo",
+        "Kung Fu"
+      ]
+    },
+    {
+      "q": "Permainan tradisional guna layang-layang?",
+      "a": "Main Wau",
+      "opts": [
+        "Main Wau",
+        "Gasing",
+        "Congkak",
+        "Sepak Raga"
+      ]
+    },
+    {
+      "q": "Congkak dimainkan menggunakan?",
+      "a": "Biji-bijian",
+      "opts": [
+        "Biji-bijian",
+        "Bola",
+        "Kayu",
+        "Batu"
+      ]
+    },
+    {
+      "q": "Alat muzik tradisional Melayu?",
+      "a": "Kompang",
+      "opts": [
+        "Kompang",
+        "Gitar",
+        "Piano",
+        "Biola"
+      ]
+    },
+    {
+      "q": "Makanan tradisional Hari Raya?",
+      "a": "Ketupat",
+      "opts": [
+        "Ketupat",
+        "Nasi Lemak",
+        "Laksa",
+        "Mee Goreng"
+      ]
+    },
+    {
+      "q": "Buah tempatan Malaysia yang berbau kuat?",
+      "a": "Durian",
+      "opts": [
+        "Durian",
+        "Rambutan",
+        "Manggis",
+        "Langsat"
+      ]
+    },
+    {
+      "q": "Negeri yang terkenal dengan batik?",
+      "a": "Kelantan",
+      "opts": [
+        "Kelantan",
+        "Johor",
+        "Selangor",
+        "Sabah"
+      ]
+    },
+    {
+      "q": "Waktu Malaysia terletak dalam zon waktu?",
+      "a": "UTC+8",
+      "opts": [
+        "UTC+8",
+        "UTC+7",
+        "UTC+9",
+        "UTC+6"
+      ]
+    },
+    {
+      "q": "Apa itu rukun negara?",
+      "a": "Prinsip negara Malaysia",
+      "opts": [
+        "Prinsip negara Malaysia",
+        "Lagu negara",
+        "Bendera negara",
+        "Perlembagaan negara"
+      ]
+    }
+  ]
+}
