@@ -1,0 +1,707 @@
+{
+  "name": "Bahasa Melayu",
+  "icon": "📖",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Sinonim 'cantik'?",
+      "a": "Indah",
+      "opts": [
+        "Indah",
+        "Hodoh",
+        "Buruk",
+        "Kemas"
+      ]
+    },
+    {
+      "q": "Sinonim 'besar'?",
+      "a": "Gergasi",
+      "opts": [
+        "Gergasi",
+        "Kecil",
+        "Nipis",
+        "Rendah"
+      ]
+    },
+    {
+      "q": "Sinonim 'cepat'?",
+      "a": "Laju",
+      "opts": [
+        "Laju",
+        "Lambat",
+        "Perlahan",
+        "Deras"
+      ]
+    },
+    {
+      "q": "Sinonim 'sedih'?",
+      "a": "Dukacita",
+      "opts": [
+        "Dukacita",
+        "Gembira",
+        "Seronok",
+        "Ceria"
+      ]
+    },
+    {
+      "q": "Sinonim 'pandai'?",
+      "a": "Bijak",
+      "opts": [
+        "Bijak",
+        "Bodoh",
+        "Malas",
+        "Nakal"
+      ]
+    },
+    {
+      "q": "Sinonim 'takut'?",
+      "a": "Gentar",
+      "opts": [
+        "Gentar",
+        "Berani",
+        "Gagah",
+        "Kuat"
+      ]
+    },
+    {
+      "q": "Sinonim 'kawan'?",
+      "a": "Sahabat",
+      "opts": [
+        "Sahabat",
+        "Musuh",
+        "Lawan",
+        "Saingan"
+      ]
+    },
+    {
+      "q": "Sinonim 'berjalan'?",
+      "a": "Melangkah",
+      "opts": [
+        "Melangkah",
+        "Berlari",
+        "Melompat",
+        "Berhenti"
+      ]
+    },
+    {
+      "q": "Antonim 'panas'?",
+      "a": "Sejuk",
+      "opts": [
+        "Sejuk",
+        "Suam",
+        "Hangat",
+        "Biasa"
+      ]
+    },
+    {
+      "q": "Antonim 'tinggi'?",
+      "a": "Rendah",
+      "opts": [
+        "Rendah",
+        "Pendek",
+        "Kecil",
+        "Nipis"
+      ]
+    },
+    {
+      "q": "Antonim 'terang'?",
+      "a": "Gelap",
+      "opts": [
+        "Gelap",
+        "Suram",
+        "Redup",
+        "Malap"
+      ]
+    },
+    {
+      "q": "Antonim 'buka'?",
+      "a": "Tutup",
+      "opts": [
+        "Tutup",
+        "Kunci",
+        "Halang",
+        "Sekat"
+      ]
+    },
+    {
+      "q": "Antonim 'naik'?",
+      "a": "Turun",
+      "opts": [
+        "Turun",
+        "Jatuh",
+        "Terbang",
+        "Melompat"
+      ]
+    },
+    {
+      "q": "Antonim 'siang'?",
+      "a": "Malam",
+      "opts": [
+        "Malam",
+        "Petang",
+        "Pagi",
+        "Subuh"
+      ]
+    },
+    {
+      "q": "Antonim 'mahal'?",
+      "a": "Murah",
+      "opts": [
+        "Murah",
+        "Jimat",
+        "Kedekut",
+        "Simpan"
+      ]
+    },
+    {
+      "q": "Antonim 'rajin'?",
+      "a": "Malas",
+      "opts": [
+        "Malas",
+        "Penat",
+        "Sibuk",
+        "Lemah"
+      ]
+    },
+    {
+      "q": "Ejaan betul?",
+      "a": "kucing",
+      "opts": [
+        "kucing",
+        "kuceng",
+        "kusing",
+        "kuciing"
+      ]
+    },
+    {
+      "q": "'Berlari' ialah?",
+      "a": "Kata Kerja",
+      "opts": [
+        "Kata Kerja",
+        "Kata Nama",
+        "Kata Adjektif",
+        "Kata Sendi"
+      ]
+    },
+    {
+      "q": "'Cantik' ialah?",
+      "a": "Kata Adjektif",
+      "opts": [
+        "Kata Adjektif",
+        "Kata Nama",
+        "Kata Kerja",
+        "Kata Hubung"
+      ]
+    },
+    {
+      "q": "'Meja' ialah?",
+      "a": "Kata Nama",
+      "opts": [
+        "Kata Nama",
+        "Kata Kerja",
+        "Kata Adjektif",
+        "Kata Sendi"
+      ]
+    },
+    {
+      "q": "'Dan' ialah?",
+      "a": "Kata Hubung",
+      "opts": [
+        "Kata Hubung",
+        "Kata Nama",
+        "Kata Kerja",
+        "Kata Adjektif"
+      ]
+    },
+    {
+      "q": "'Di' dalam ayat ialah?",
+      "a": "Kata Sendi",
+      "opts": [
+        "Kata Sendi",
+        "Kata Nama",
+        "Kata Kerja",
+        "Kata Hubung"
+      ]
+    },
+    {
+      "q": "'Indah' ialah?",
+      "a": "Kata Adjektif",
+      "opts": [
+        "Kata Adjektif",
+        "Kata Nama",
+        "Kata Kerja",
+        "Kata Hubung"
+      ]
+    },
+    {
+      "q": "Berapa suku kata 'bu-ku'?",
+      "a": "2",
+      "opts": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "q": "Berapa suku kata 'se-ko-lah'?",
+      "a": "3",
+      "opts": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ]
+    },
+    {
+      "q": "Tanda baca di hujung ayat tanya?",
+      "a": "?",
+      "opts": [
+        "?",
+        ".",
+        "!",
+        ","
+      ]
+    },
+    {
+      "q": "Tanda baca di hujung ayat biasa?",
+      "a": ".",
+      "opts": [
+        ".",
+        "?",
+        "!",
+        ","
+      ]
+    },
+    {
+      "q": "Subjek dalam 'Ali pergi sekolah'?",
+      "a": "Ali",
+      "opts": [
+        "Ali",
+        "pergi",
+        "sekolah",
+        "ke"
+      ]
+    },
+    {
+      "q": "Peribahasa 'bagai aur dengan tebing'?",
+      "a": "Tolong-menolong",
+      "opts": [
+        "Tolong-menolong",
+        "Bergaduh",
+        "Berpisah",
+        "Bersaing"
+      ]
+    },
+    {
+      "q": "Kata ganda 'buah-buahan' bermaksud?",
+      "a": "Pelbagai buah",
+      "opts": [
+        "Pelbagai buah",
+        "Dua biji buah",
+        "Buah besar",
+        "Buah manis"
+      ]
+    },
+    {
+      "q": "Imbuhan 'me-' dalam 'menulis'?",
+      "a": "Melakukan sesuatu",
+      "opts": [
+        "Melakukan sesuatu",
+        "Selesai buat",
+        "Disuruh buat",
+        "Boleh buat"
+      ]
+    },
+    {
+      "q": "Huruf besar digunakan untuk?",
+      "a": "Nama khas",
+      "opts": [
+        "Nama khas",
+        "Kata kerja",
+        "Kata adjektif",
+        "Semua perkataan"
+      ]
+    },
+    {
+      "q": "Peribahasa 'berat sama dipikul ringan sama dijinjing'?",
+      "a": "Berkongsi tanggungjawab",
+      "opts": [
+        "Berkongsi tanggungjawab",
+        "Bergaduh",
+        "Berpisah",
+        "Bersaing"
+      ]
+    },
+    {
+      "q": "Ayat manakah betul?",
+      "a": "Ali pergi ke sekolah.",
+      "opts": [
+        "Ali pergi ke sekolah.",
+        "ali pergi ke sekolah.",
+        "Ali Pergi Ke Sekolah.",
+        "ALI pergi ke sekolah."
+      ]
+    },
+    {
+      "q": "Kata ganti nama diri pertama?",
+      "a": "Saya",
+      "opts": [
+        "Saya",
+        "Dia",
+        "Mereka",
+        "Kamu"
+      ]
+    },
+    {
+      "q": "Kata ganti nama diri kedua?",
+      "a": "Kamu",
+      "opts": [
+        "Kamu",
+        "Saya",
+        "Dia",
+        "Kami"
+      ]
+    },
+    {
+      "q": "Kata ganti nama diri ketiga?",
+      "a": "Dia",
+      "opts": [
+        "Dia",
+        "Saya",
+        "Kamu",
+        "Kami"
+      ]
+    },
+    {
+      "q": "Apakah imbuhan 'pelajar'?",
+      "a": "pe-",
+      "opts": [
+        "pe-",
+        "me-",
+        "ber-",
+        "ke-"
+      ]
+    },
+    {
+      "q": "Apakah imbuhan 'berlari'?",
+      "a": "ber-",
+      "opts": [
+        "ber-",
+        "me-",
+        "pe-",
+        "ke-"
+      ]
+    },
+    {
+      "q": "Sinonim 'marah'?",
+      "a": "Geram",
+      "opts": [
+        "Geram",
+        "Gembira",
+        "Tenang",
+        "Sedih"
+      ]
+    },
+    {
+      "q": "Sinonim 'tinggi'?",
+      "a": "Menjulang",
+      "opts": [
+        "Menjulang",
+        "Rendah",
+        "Pendek",
+        "Kecil"
+      ]
+    },
+    {
+      "q": "Antonim 'besar'?",
+      "a": "Kecil",
+      "opts": [
+        "Kecil",
+        "Tinggi",
+        "Luas",
+        "Panjang"
+      ]
+    },
+    {
+      "q": "Antonim 'laju'?",
+      "a": "Perlahan",
+      "opts": [
+        "Perlahan",
+        "Cepat",
+        "Deras",
+        "Pantas"
+      ]
+    },
+    {
+      "q": "Antonim 'gelap'?",
+      "a": "Terang",
+      "opts": [
+        "Terang",
+        "Suram",
+        "Malap",
+        "Redup"
+      ]
+    },
+    {
+      "q": "Perkataan 'lari' ialah?",
+      "a": "Kata Kerja",
+      "opts": [
+        "Kata Kerja",
+        "Kata Nama",
+        "Kata Adjektif",
+        "Kata Sendi"
+      ]
+    },
+    {
+      "q": "Berapa suku kata 'ke-ru-si'?",
+      "a": "3",
+      "opts": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ]
+    },
+    {
+      "q": "Tanda seru digunakan untuk?",
+      "a": "Ayat seruan",
+      "opts": [
+        "Ayat seruan",
+        "Ayat tanya",
+        "Ayat biasa",
+        "Ayat panjang"
+      ]
+    },
+    {
+      "q": "Kata hubung dalam 'Ali dan Abu'?",
+      "a": "dan",
+      "opts": [
+        "dan",
+        "Ali",
+        "Abu",
+        "dan Abu"
+      ]
+    },
+    {
+      "q": "Peribahasa 'bagai isi dengan kuku'?",
+      "a": "Sangat rapat",
+      "opts": [
+        "Sangat rapat",
+        "Bergaduh",
+        "Berpisah",
+        "Jauh"
+      ]
+    },
+    {
+      "q": "Ayat betul?",
+      "a": "Saya makan nasi.",
+      "opts": [
+        "Saya makan nasi.",
+        "saya makan nasi.",
+        "Saya Makan Nasi.",
+        "SAYA makan nasi."
+      ]
+    },
+    {
+      "q": "Imbuhan 'ber-' dalam 'berjalan'?",
+      "a": "ber-",
+      "opts": [
+        "ber-",
+        "me-",
+        "pe-",
+        "ke-"
+      ]
+    },
+    {
+      "q": "Kata ganda 'rumah-rumah' bermaksud?",
+      "a": "Banyak rumah",
+      "opts": [
+        "Banyak rumah",
+        "Satu rumah",
+        "Rumah besar",
+        "Rumah kecil"
+      ]
+    },
+    {
+      "q": "Sinonim 'berani'?",
+      "a": "Gagah",
+      "opts": [
+        "Gagah",
+        "Pengecut",
+        "Lemah",
+        "Takut"
+      ]
+    },
+    {
+      "q": "Antonim 'gemuk'?",
+      "a": "Kurus",
+      "opts": [
+        "Kurus",
+        "Besar",
+        "Tinggi",
+        "Rendah"
+      ]
+    },
+    {
+      "q": "Kata nama am contoh?",
+      "a": "meja",
+      "opts": [
+        "meja",
+        "Ali",
+        "Malaysia",
+        "Kuala Lumpur"
+      ]
+    },
+    {
+      "q": "Sinonim 'baik'?",
+      "a": "Mulia",
+      "opts": [
+        "Mulia",
+        "Jahat",
+        "Nakal",
+        "Buruk"
+      ]
+    },
+    {
+      "q": "Sinonim 'gelap'?",
+      "a": "Suram",
+      "opts": [
+        "Suram",
+        "Terang",
+        "Cerah",
+        "Bersinar"
+      ]
+    },
+    {
+      "q": "Antonim 'panjang'?",
+      "a": "Pendek",
+      "opts": [
+        "Pendek",
+        "Kecil",
+        "Nipis",
+        "Rendah"
+      ]
+    },
+    {
+      "q": "Antonim 'berat'?",
+      "a": "Ringan",
+      "opts": [
+        "Ringan",
+        "Kurus",
+        "Kecil",
+        "Nipis"
+      ]
+    },
+    {
+      "q": "Antonim 'senyap'?",
+      "a": "Bising",
+      "opts": [
+        "Bising",
+        "Kuat",
+        "Keras",
+        "Riuh"
+      ]
+    },
+    {
+      "q": "Berapa suku kata 'ma-kan'?",
+      "a": "2",
+      "opts": [
+        "2",
+        "1",
+        "3",
+        "4"
+      ]
+    },
+    {
+      "q": "Berapa suku kata 'ba-ha-sa'?",
+      "a": "3",
+      "opts": [
+        "3",
+        "2",
+        "4",
+        "1"
+      ]
+    },
+    {
+      "q": "Peribahasa 'seperti ketam mengajar anaknya berjalan lurus'?",
+      "a": "Jangan ajar benda yang kita sendiri tak buat",
+      "opts": [
+        "Jangan ajar benda yang kita sendiri tak buat",
+        "Rajin berusaha",
+        "Tolong-menolong",
+        "Bergotong-royong"
+      ]
+    },
+    {
+      "q": "Antonim 'maju'?",
+      "a": "Mundur",
+      "opts": [
+        "Mundur",
+        "Lambat",
+        "Lemah",
+        "Ketinggalan"
+      ]
+    },
+    {
+      "q": "Sinonim 'sabar'?",
+      "a": "Tenang",
+      "opts": [
+        "Tenang",
+        "Marah",
+        "Gelisah",
+        "Resah"
+      ]
+    },
+    {
+      "q": "Kata adjektif dalam 'budak itu pandai'?",
+      "a": "pandai",
+      "opts": [
+        "pandai",
+        "budak",
+        "itu",
+        "dan"
+      ]
+    },
+    {
+      "q": "Sinonim 'rajin'?",
+      "a": "Tekun",
+      "opts": [
+        "Tekun",
+        "Malas",
+        "Leka",
+        "Lalai"
+      ]
+    },
+    {
+      "q": "Antonim 'cerah'?",
+      "a": "Mendung",
+      "opts": [
+        "Mendung",
+        "Gelap",
+        "Suram",
+        "Malap"
+      ]
+    },
+    {
+      "q": "Kata kerja dalam 'dia berlari laju'?",
+      "a": "berlari",
+      "opts": [
+        "berlari",
+        "dia",
+        "laju",
+        "dan"
+      ]
+    },
+    {
+      "q": "Sinonim 'duka'?",
+      "a": "Sedih",
+      "opts": [
+        "Sedih",
+        "Gembira",
+        "Ceria",
+        "Riang"
+      ]
+    }
+  ]
+}

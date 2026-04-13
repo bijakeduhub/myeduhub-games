@@ -1,0 +1,38 @@
+{
+  "zone1": {
+    "label": "Zon 1",
+    "age": "Umur 2–7 Tahun",
+    "questionsPerSession": 10,
+    "games": [
+      "counting",
+      "colors",
+      "letters",
+      "animals",
+      "fruits",
+      "shapes"
+    ]
+  },
+  "zone2": {
+    "label": "Zon 2",
+    "age": "Umur 7–10 Tahun",
+    "questionsPerSession": 15,
+    "games": [
+      "math_sifir",
+      "math",
+      "bm",
+      "english",
+      "generalknowledge",
+      "science",
+      "sejarah"
+    ]
+  },
+  "zone4": {
+    "label": "Zon 4",
+    "age": "Umur 10-12 Tahun",
+    "questionsPerSession": 40,
+    "timer": 3600,
+    "games": [
+      "exam1"
+    ]
+  }
+}

@@ -1,0 +1,507 @@
+{
+  "name": "Kenali Bentuk",
+  "icon": "🔷",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Bentuk buku?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk tanda amaran jalan?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk bintang?",
+      "a": "Bintang",
+      "opts": [
+        "Berlian",
+        "Bulatan",
+        "Bintang",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk layang-layang?",
+      "a": "Berlian",
+      "opts": [
+        "Berlian",
+        "Bintang",
+        "Segi Empat",
+        "Bulatan"
+      ]
+    },
+    {
+      "q": "Bentuk jam dinding?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk pintu?",
+      "a": "Segi Empat",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk pizza slice?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Bulatan",
+        "Segi Empat",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk cincin?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Berlian",
+        "Bintang",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk layar kapal?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Berlian",
+        "Bulatan"
+      ]
+    },
+    {
+      "q": "Bentuk kotak hadiah?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk bulan penuh?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Berlian",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk kad kredit?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk bola?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Bintang",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk tingkap?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Berlian",
+        "Bulatan"
+      ]
+    },
+    {
+      "q": "Bentuk planet bumi?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Bujur",
+        "Segi Empat",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk bingkai gambar?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Bintang",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk permata?",
+      "a": "Berlian",
+      "opts": [
+        "Berlian",
+        "Bintang",
+        "Bulatan",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk papan tanda bahaya?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk skrin TV?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk bola sepak?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Berlian",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk kad nama?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk tanda amaran elektrik?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Berlian",
+        "Bulatan"
+      ]
+    },
+    {
+      "q": "Bentuk matahari?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Bintang",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk cermin bulat?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Bintang",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk sapu tangan?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk tanda kitar semula?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Bulatan",
+        "Segi Empat",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk bintang laut?",
+      "a": "Bintang",
+      "opts": [
+        "Bintang",
+        "Berlian",
+        "Bulatan",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk papan tulis bilik darjah?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk telur?",
+      "a": "Bujur",
+      "opts": [
+        "Bujur",
+        "Bulatan",
+        "Segi Empat",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk pizza (keseluruhan)?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Tiga",
+        "Segi Empat",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk buku nota?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk hati?",
+      "a": "Hati",
+      "opts": [
+        "Hati",
+        "Bulatan",
+        "Berlian",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk manik bulat?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Berlian",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk telur ayam?",
+      "a": "Bujur",
+      "opts": [
+        "Bujur",
+        "Bulatan",
+        "Segi Empat",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk papan catur?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk bulan sabit?",
+      "a": "Sabit",
+      "opts": [
+        "Sabit",
+        "Bulatan",
+        "Bintang",
+        "Segi Tiga"
+      ]
+    },
+    {
+      "q": "Bentuk atap rumah?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk kertas A4?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk bola golf?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Berlian",
+        "Bintang"
+      ]
+    },
+    {
+      "q": "Bentuk selendang lipat?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk dadu?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk jendela biasa?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk tanda amaran?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk map dunia?",
+      "a": "Tidak Sekata",
+      "opts": [
+        "Tidak Sekata",
+        "Bulatan",
+        "Segi Empat",
+        "Bujur"
+      ]
+    },
+    {
+      "q": "Bentuk jam tangan (muka)?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Berlian",
+        "Bujur"
+      ]
+    },
+    {
+      "q": "Bentuk roda kereta?",
+      "a": "Bulatan",
+      "opts": [
+        "Bulatan",
+        "Segi Empat",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk sandwich?",
+      "a": "Segi Tiga",
+      "opts": [
+        "Segi Tiga",
+        "Segi Empat",
+        "Bulatan",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk penghapus?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk jendela bilik?",
+      "a": "Segi Empat",
+      "opts": [
+        "Segi Empat",
+        "Bulatan",
+        "Segi Tiga",
+        "Berlian"
+      ]
+    },
+    {
+      "q": "Bentuk tanda tambah (+)?",
+      "a": "Tidak Sekata",
+      "opts": [
+        "Tidak Sekata",
+        "Segi Empat",
+        "Bulatan",
+        "Bintang"
+      ]
+    }
+  ]
+}

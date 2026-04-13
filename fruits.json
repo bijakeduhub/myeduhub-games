@@ -1,0 +1,507 @@
+{
+  "name": "Kenali Warna",
+  "icon": "🎨",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Warna arang?",
+      "a": "Hitam",
+      "opts": [
+        "Hitam",
+        "Kelabu",
+        "Coklat",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna emas?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Oren",
+        "Putih",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna darah?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Ungu",
+        "Oren",
+        "Pink"
+      ]
+    },
+    {
+      "q": "Warna susu?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Kelabu",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna langit waktu siang?",
+      "a": "Biru",
+      "opts": [
+        "Biru",
+        "Putih",
+        "Kelabu",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna rumput?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Coklat",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna matahari?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Oren",
+        "Putih",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna salji?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Biru",
+        "Kelabu",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna jerebu (asap tebal)?",
+      "a": "Kelabu",
+      "opts": [
+        "Kelabu",
+        "Hitam",
+        "Putih",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna langit waktu malam?",
+      "a": "Hitam",
+      "opts": [
+        "Hitam",
+        "Biru",
+        "Ungu",
+        "Kelabu"
+      ]
+    },
+    {
+      "q": "Warna perak (logam)?",
+      "a": "Kelabu",
+      "opts": [
+        "Kelabu",
+        "Putih",
+        "Biru",
+        "Hitam"
+      ]
+    },
+    {
+      "q": "Warna tanah biasa?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Hitam",
+        "Merah",
+        "Kelabu"
+      ]
+    },
+    {
+      "q": "Warna pasir pantai?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Putih",
+        "Coklat",
+        "Kelabu"
+      ]
+    },
+    {
+      "q": "Warna laut?",
+      "a": "Biru",
+      "opts": [
+        "Biru",
+        "Hijau",
+        "Kelabu",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna kayu (batang pokok)?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Kelabu",
+        "Hitam",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna cili merah?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Oren",
+        "Kuning",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna bayam?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Coklat",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna bata?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Oren",
+        "Coklat",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna teh O (minuman)?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Hitam",
+        "Kuning",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna awan gelap (hujan)?",
+      "a": "Kelabu",
+      "opts": [
+        "Kelabu",
+        "Hitam",
+        "Biru",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna bulan?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Kelabu",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna bintang (emas)?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Putih",
+        "Oren",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna pelangi — warna pertama?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Oren",
+        "Kuning",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna daun kering?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Kuning",
+        "Hijau",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna besi tua (berkarat)?",
+      "a": "Perang",
+      "opts": [
+        "Perang",
+        "Kelabu",
+        "Hitam",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna aiskrim vanila?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Krim",
+        "Kelabu"
+      ]
+    },
+    {
+      "q": "Warna coklat (makanan)?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Hitam",
+        "Merah",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna matahari pagi?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Oren",
+        "Putih",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna daun pokok?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Coklat",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna zebra crossing (garisan jalan)?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Kelabu",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna bintang di langit?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Oren",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna nanas?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Oren",
+        "Hijau",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna terung?",
+      "a": "Ungu",
+      "opts": [
+        "Ungu",
+        "Hijau",
+        "Merah",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna tomato?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Oren",
+        "Kuning",
+        "Pink"
+      ]
+    },
+    {
+      "q": "Warna strawberi?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Pink",
+        "Oren",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna langit waktu senja?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Biru",
+        "Ungu",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna limau kasturi?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Oren",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna nasi putih?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Kelabu",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna besi?",
+      "a": "Kelabu",
+      "opts": [
+        "Kelabu",
+        "Hitam",
+        "Putih",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna oren (buah)?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Kuning",
+        "Merah",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna anggur ungu?",
+      "a": "Ungu",
+      "opts": [
+        "Ungu",
+        "Biru",
+        "Hitam",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna batu?",
+      "a": "Kelabu",
+      "opts": [
+        "Kelabu",
+        "Hitam",
+        "Coklat",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna kapur tulis?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Kelabu",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna pokok pisang?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Coklat",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna awan putih?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kelabu",
+        "Biru",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna papan hitam (blackboard)?",
+      "a": "Hitam",
+      "opts": [
+        "Hitam",
+        "Hijau",
+        "Kelabu",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna timun?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna lobak merah?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Merah",
+        "Kuning",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna bendera Malaysia (warna utama)?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Biru",
+        "Kuning",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna garam?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kelabu",
+        "Kuning",
+        "Biru"
+      ]
+    }
+  ]
+}

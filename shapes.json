@@ -1,0 +1,507 @@
+{
+  "name": "Teka Warna Buah",
+  "icon": "🍎",
+  "type": "mcq",
+  "questions": [
+    {
+      "q": "Warna pisang masak?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Hijau",
+        "Oren",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna tembikai (dalam)?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Hijau",
+        "Kuning",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna limau nipis?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Oren",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna epal merah?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Hijau",
+        "Kuning",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna strawberi?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Pink",
+        "Oren",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna oren (buah)?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Kuning",
+        "Merah",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna anggur ungu?",
+      "a": "Ungu",
+      "opts": [
+        "Ungu",
+        "Biru",
+        "Hitam",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna betik (dalam)?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Kuning",
+        "Merah",
+        "Hijau"
+      ]
+    },
+    {
+      "q": "Warna kelapa muda?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Putih",
+        "Kuning",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna ceri?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Ungu",
+        "Pink",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna nanas?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Oren",
+        "Hijau",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna kiwi (dalam)?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna delima (dalam)?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Ungu",
+        "Pink",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna anggur hijau?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna blueberry?",
+      "a": "Biru",
+      "opts": [
+        "Biru",
+        "Ungu",
+        "Hitam",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna tembikai (luar)?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Merah",
+        "Kuning",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna mangga masak?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Hijau",
+        "Oren",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna buah naga (dalam)?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Pink",
+        "Putih",
+        "Ungu"
+      ]
+    },
+    {
+      "q": "Warna jambu air?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Pink",
+        "Hijau",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna pisang (belum masak)?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna kurma?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Hitam",
+        "Merah",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna epal hijau?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Merah",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna lemon?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Hijau",
+        "Oren",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna terung?",
+      "a": "Ungu",
+      "opts": [
+        "Ungu",
+        "Hijau",
+        "Merah",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna tomato?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Oren",
+        "Kuning",
+        "Pink"
+      ]
+    },
+    {
+      "q": "Warna labu?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Kuning",
+        "Hijau",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna brokoli?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna lobak merah?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Merah",
+        "Kuning",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna jagung?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Putih",
+        "Oren",
+        "Hijau"
+      ]
+    },
+    {
+      "q": "Warna timun?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna bayam?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Coklat",
+        "Biru"
+      ]
+    },
+    {
+      "q": "Warna kacang panjang?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Putih",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna betik (luar)?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Oren",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna cili hijau?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Merah",
+        "Kuning",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna markisa?",
+      "a": "Ungu",
+      "opts": [
+        "Ungu",
+        "Kuning",
+        "Hijau",
+        "Merah"
+      ]
+    },
+    {
+      "q": "Warna kelapa tua?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Hijau",
+        "Putih",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna buah tin?",
+      "a": "Ungu",
+      "opts": [
+        "Ungu",
+        "Merah",
+        "Coklat",
+        "Hijau"
+      ]
+    },
+    {
+      "q": "Warna cempedak?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Oren",
+        "Coklat",
+        "Hijau"
+      ]
+    },
+    {
+      "q": "Warna salak?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Merah",
+        "Hitam",
+        "Kuning"
+      ]
+    },
+    {
+      "q": "Warna delima?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Ungu",
+        "Pink",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna betik dalam?",
+      "a": "Oren",
+      "opts": [
+        "Oren",
+        "Kuning",
+        "Merah",
+        "Hijau"
+      ]
+    },
+    {
+      "q": "Warna jambu batu?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Merah",
+        "Kuning",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna durian (dalam)?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Putih",
+        "Hijau",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna mangga muda?",
+      "a": "Hijau",
+      "opts": [
+        "Hijau",
+        "Kuning",
+        "Oren",
+        "Putih"
+      ]
+    },
+    {
+      "q": "Warna duku?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Hijau",
+        "Coklat",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna rambutan?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Kuning",
+        "Hijau",
+        "Oren"
+      ]
+    },
+    {
+      "q": "Warna langsat?",
+      "a": "Kuning",
+      "opts": [
+        "Kuning",
+        "Putih",
+        "Hijau",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna longan?",
+      "a": "Coklat",
+      "opts": [
+        "Coklat",
+        "Kuning",
+        "Merah",
+        "Hijau"
+      ]
+    },
+    {
+      "q": "Warna laici?",
+      "a": "Merah",
+      "opts": [
+        "Merah",
+        "Pink",
+        "Putih",
+        "Coklat"
+      ]
+    },
+    {
+      "q": "Warna mata kucing (buah)?",
+      "a": "Putih",
+      "opts": [
+        "Putih",
+        "Kuning",
+        "Hijau",
+        "Merah"
+      ]
+    }
+  ]
+}

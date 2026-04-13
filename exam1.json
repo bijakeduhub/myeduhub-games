@@ -1,0 +1,14 @@
+{
+  "name": "Sifir",
+  "icon": "✖️",
+  "type": "math_dynamic",
+  "operation": "multiply",
+  "rangeA": [
+    1,
+    9
+  ],
+  "rangeB": [
+    1,
+    12
+  ]
+}
