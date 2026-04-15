@@ -1,1085 +1,633 @@
 <!DOCTYPE html>
-<html lang="ms">
+<html lang="ms" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY Edu Hub – Games</title>
-<link rel="icon" type="image/png" href="logo.png">
-<link rel="apple-touch-icon" href="logo.png">
-<link rel="manifest" href="/manifest.json">
-<meta name="theme-color" content="#1B2B6B">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="MY Edu Hub">
-<link rel="apple-touch-icon" href="/logo.png">
-<meta name="mobile-web-app-capable" content="yes">
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+<title>MY Edu Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
-:root {
-  --navy: #1B2B6B;
-  --navy2: #243580;
-  --gold: #C9963A;
-  --gold2: #E8B84B;
-  --green: #2ECC71;
-  --red: #E74C3C;
-  --bg: #F0F2FF;
-  --white: #FFFFFF;
-  --muted: #8892B0;
-  --shadow: 0 8px 32px rgba(27,43,107,0.15);
-  --radius: 20px;
-}
-
-* { margin:0; padding:0; box-sizing:border-box; }
-
-body {
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg);
-  min-height: 100vh;
-  color: var(--navy);
-}
-
-body::before {
-  content:'';
-  position:fixed; inset:0;
-  background:
-    radial-gradient(ellipse at 0% 0%, rgba(27,43,107,0.10) 0%, transparent 50%),
-    radial-gradient(ellipse at 100% 100%, rgba(201,150,58,0.10) 0%, transparent 50%);
-  pointer-events:none; z-index:0;
-}
-
-/* ========== RESPONSIVE WRAPPER ========== */
-.page-wrap {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-@media (min-width: 768px) {
-  .topbar { padding: 14px 10%; }
-
-  .home-wrap {
-    display: grid;
-    grid-template-columns: 3fr 1fr;
-    gap: 24px;
-    padding: 16px 10%;
-    width: 100%;
-    align-items: start;
-  }
-
-  .home-left {
-    display: flex; flex-direction: column; gap: 16px;
-    min-width: 0;
-  }
-
-  .home-right {
-    display: flex; flex-direction: column; gap: 14px;
-    position: sticky; top: 80px;
-  }
-
-  .screen-game .topbar,
-  .screen-result .topbar { padding: 14px 10%; }
-
-  .game-header,
-  .timer-wrap, .prog-wrap,
-  .game-area, .finish-wrap {
-    max-width: 680px;
-    padding-left: 0; padding-right: 0;
-  }
-
-  .result-wrap { padding: 24px 10% 32px; }
-  .name-wrap { padding: 24px 10%; }
-}
-
-/* Mobile - single column */
-@media (max-width: 767px) {
-  .home-wrap { display: contents; }
-  .home-left, .home-right { display: contents; }
-}
-
-/* ========== SCREENS ========== */
-.screen { display:none; position:relative; z-index:1; min-height:100vh; flex-direction:column; align-items:center; animation:fadeUp 0.35s ease; }
-.screen.active { display:flex; }
-@keyframes fadeUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:translateY(0)} }
-
-/* ========== TOP BAR ========== */
-.topbar {
-  width:100%; background:var(--navy);
-  padding:14px 20px;
-  display:flex; align-items:center; justify-content:space-between;
-  box-shadow:0 4px 16px rgba(27,43,107,0.3);
-  position:sticky; top:0; z-index:100;
-}
-
-.topbar-logo {
-  display:flex; align-items:center; gap:10px;
-  text-decoration:none;
-}
-
-.topbar-logo img {
-  height:36px; width:36px; object-fit:contain;
-  border-radius:8px;
-}
-
-.topbar-logo-fallback {
-  height:36px; width:36px; border-radius:8px;
-  background:var(--gold);
-  display:flex; align-items:center; justify-content:center;
-  font-size:20px;
-}
-
-.topbar-name {
-  font-size:16px; font-weight:800;
-  color:var(--white);
-}
-
-.topbar-name span { color:var(--gold2); }
-
-.topbar-right {
-  display:flex; align-items:center; gap:10px;
-}
-
-.topbar-score {
-  font-size:14px; font-weight:700;
-  color:var(--gold2);
-  display:none;
-}
-
-/* ========== NAME SCREEN ========== */
-.name-wrap {
-  flex:1; display:flex; flex-direction:column;
-  align-items:center; justify-content:center;
-  padding:32px 24px; width:100%;
-}
-
-.name-hero { font-size:72px; margin-bottom:16px; animation:float 3s ease-in-out infinite; }
-@keyframes float { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-10px)} }
-
-.name-title { font-size:26px; font-weight:800; color:var(--navy); text-align:center; margin-bottom:6px; }
-.name-title span { color:var(--gold); }
-.name-sub { font-size:13px; color:var(--muted); font-weight:600; text-align:center; margin-bottom:32px; }
-
-.name-box {
-  background:var(--white); border-radius:var(--radius);
-  padding:28px 24px; width:100%; max-width:380px;
-  box-shadow:var(--shadow);
-}
-
-.name-box label { font-size:12px; font-weight:700; color:var(--muted); letter-spacing:1px; text-transform:uppercase; display:block; margin-bottom:8px; }
-
-.name-input {
-  width:100%; background:var(--bg); border:2px solid #DDE2F0;
-  border-radius:14px; padding:14px 18px;
-  font-family:'Poppins',sans-serif; font-size:16px;
-  font-weight:600; color:var(--navy); outline:none;
-  transition:border-color 0.2s; margin-bottom:20px;
-}
-.name-input:focus { border-color:var(--navy); background:var(--white); }
-.name-input::placeholder { color:#BCC4D8; }
-
-.btn-start {
-  width:100%; background:var(--navy);
-  color:var(--white); border:none; border-radius:14px;
-  padding:16px; font-family:'Poppins',sans-serif;
-  font-size:17px; font-weight:700; cursor:pointer;
-  transition:all 0.2s; border:2px solid transparent;
-}
-.btn-start:hover { background:var(--navy2); border-color:var(--gold); transform:translateY(-2px); }
-.btn-start:active { transform:scale(0.98); }
-
-/* ========== HOME SCREEN ========== */
-.home-hero {
-  background:var(--navy);
-  width:100%; padding:24px 20px 28px;
-  text-align:center; position:relative; overflow:hidden;
-}
-
-.home-hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background:radial-gradient(ellipse at 50% 0%, rgba(201,150,58,0.20), transparent 70%);
-}
-
-.home-greeting {
-  font-size:13px; font-weight:600;
-  color:rgba(255,255,255,0.6); margin-bottom:4px;
-  position:relative;
-}
-
-.home-name {
-  font-size:24px; font-weight:800;
-  color:var(--white); position:relative;
-}
-
-.home-name span { color:var(--gold2); }
-
-.home-sub {
-  font-size:12px; color:rgba(255,255,255,0.5);
-  font-weight:600; margin-top:4px; position:relative;
-}
-
-.stars-row {
-  display:flex; align-items:center; justify-content:center;
-  gap:6px; margin-top:12px; position:relative;
-}
-
-.stars-pill {
-  background:rgba(255,255,255,0.12);
-  border:1px solid rgba(201,150,58,0.4);
-  border-radius:50px; padding:6px 16px;
-  font-size:14px; font-weight:700; color:var(--gold2);
-}
-
-/* ZONE TABS */
-.zone-tabs {
-  display:flex; padding:16px 16px 0;
-  gap:8px; width:100%; max-width:480px;
-}
-
-.zone-tab {
-  flex:1; background:var(--white); border:2px solid #DDE2F0;
-  border-radius:12px; padding:10px 8px; text-align:center;
-  cursor:pointer; transition:all 0.2s;
-  font-size:12px; font-weight:700; color:var(--muted);
-}
-.zone-tab.active {
-  background:var(--navy); color:var(--white);
-  border-color:var(--navy);
-}
-.zone-tab-label { font-size:11px; display:block; }
-.zone-tab-age { font-size:10px; opacity:0.7; }
-
-/* GAME GRID */
-.game-grid {
-  display:grid; grid-template-columns:repeat(2,1fr);
-  gap:12px; width:100%; max-width:480px;
-  padding:16px;
-}
-
-.game-card {
-  background:var(--white); border-radius:var(--radius);
-  padding:20px 14px; text-align:center;
-  box-shadow:0 4px 16px rgba(27,43,107,0.08);
-  cursor:pointer; transition:all 0.22s;
-  border:2px solid transparent; position:relative; overflow:hidden;
-}
-
-.game-card::before {
-  content:''; position:absolute;
-  top:0; left:0; right:0; height:4px;
-  border-radius:var(--radius) var(--radius) 0 0;
-  background:linear-gradient(90deg,var(--navy),var(--gold));
-}
-
-.game-card:hover { transform:translateY(-4px) scale(1.02); box-shadow:0 12px 32px rgba(27,43,107,0.15); border-color:var(--gold); }
-.game-card:active { transform:scale(0.97); }
-
-.game-icon { font-size:40px; margin:8px 0 10px; display:block; }
-.game-title { font-size:13px; font-weight:700; color:var(--navy); margin-bottom:4px; }
-.game-stars { font-size:12px; margin-top:8px; }
-
-/* ========== GAME SCREEN ========== */
-.game-header {
-  background:var(--navy); width:100%;
-  padding:12px 16px;
-  display:flex; align-items:center; gap:12px;
-}
-
-.back-btn {
-  background:rgba(255,255,255,0.1); border:none;
-  width:36px; height:36px; border-radius:10px;
-  font-size:18px; cursor:pointer; color:white;
-  transition:background 0.2s; flex-shrink:0;
-}
-.back-btn:hover { background:rgba(255,255,255,0.2); }
-
-.game-header-info { flex:1; }
-.game-header-name { font-size:14px; font-weight:700; color:var(--white); }
-.game-header-progress { font-size:11px; color:rgba(255,255,255,0.6); font-weight:600; }
-.game-header-score { font-size:14px; font-weight:700; color:var(--gold2); }
-
-/* TIMER */
-.timer-wrap { width:100%; max-width:480px; padding:12px 16px 0; }
-.timer-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:6px; }
-.timer-label { font-size:11px; font-weight:700; color:var(--muted); }
-.timer-count { font-size:13px; font-weight:800; color:var(--navy); }
-.timer-count.warning { color:var(--red); animation:pulse 1s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-.timer-track { background:#DDE2F0; border-radius:50px; height:6px; overflow:hidden; }
-.timer-fill { height:100%; background:linear-gradient(90deg,var(--navy),var(--gold)); border-radius:50px; transition:width 1s linear; }
-
-/* PROG BAR */
-.prog-wrap { width:100%; max-width:480px; padding:8px 16px 0; }
-.prog-track { background:#DDE2F0; border-radius:50px; height:5px; overflow:hidden; }
-.prog-fill { height:100%; background:var(--gold); border-radius:50px; transition:width 0.4s ease; }
-
-/* GAME AREA */
-.game-area {
-  width:100%; max-width:480px; padding:16px;
-  flex:1;
-}
-
-.q-card {
-  background:var(--white); border-radius:var(--radius);
-  padding:24px 20px; box-shadow:var(--shadow);
-  display:flex; flex-direction:column; align-items:center; gap:16px;
-}
-
-.q-label { font-size:10px; font-weight:700; color:var(--muted); letter-spacing:1.5px; text-transform:uppercase; }
-.q-text { font-size:18px; font-weight:700; color:var(--navy); text-align:center; line-height:1.4; }
-.q-big { font-size:72px; text-align:center; line-height:1; }
-.q-letter {
-  font-size:88px; font-weight:800; color:var(--navy);
-  background:linear-gradient(135deg,var(--navy),var(--navy2));
-  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
-  line-height:1;
-}
-
-.count-items {
-  display:flex; flex-wrap:wrap; justify-content:center;
-  gap:6px; padding:16px; background:var(--bg);
-  border-radius:16px; width:100%; min-height:90px; align-items:center;
-}
-.count-item { font-size:30px; animation:popIn 0.25s ease backwards; }
-@keyframes popIn { from{transform:scale(0) rotate(-15deg);opacity:0} to{transform:scale(1) rotate(0);opacity:1} }
-
-.opts-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; width:100%; }
-
-.opt-btn {
-  background:var(--bg); border:2px solid #DDE2F0;
-  border-radius:14px; padding:16px 10px;
-  font-family:'Poppins',sans-serif; font-size:15px; font-weight:700;
-  cursor:pointer; transition:all 0.18s; text-align:center;
-  color:var(--navy); display:flex; flex-direction:column;
-  align-items:center; gap:4px; min-height:70px; justify-content:center;
-}
-.opt-btn:hover { background:#EEF0FF; border-color:var(--navy); }
-.opt-btn.correct { background:#EAFAF1; border-color:var(--green); color:var(--green); animation:popAnim 0.3s ease; }
-.opt-btn.wrong { background:#FDEDEC; border-color:var(--red); color:var(--red); animation:shakeAnim 0.35s ease; }
-.opt-btn:disabled { cursor:not-allowed; }
-.opt-emoji { font-size:24px; }
-
-@keyframes popAnim { 0%,100%{transform:scale(1)} 50%{transform:scale(1.06)} }
-@keyframes shakeAnim { 0%,100%{transform:translateX(0)} 25%{transform:translateX(-5px)} 75%{transform:translateX(5px)} }
-
-/* FINISH BTN */
-.finish-wrap { width:100%; max-width:480px; padding:0 16px 16px; }
-.btn-finish {
-  width:100%; background:var(--gold);
-  color:var(--white); border:none; border-radius:14px;
-  padding:15px; font-family:'Poppins',sans-serif;
-  font-size:16px; font-weight:700; cursor:pointer;
-  transition:all 0.2s;
-}
-.btn-finish:hover { background:var(--gold2); transform:translateY(-2px); }
-
-/* ========== RESULT SCREEN ========== */
-.result-wrap {
-  flex:1; display:flex; flex-direction:column;
-  align-items:center; padding:24px 16px 32px; width:100%;
-}
-
-.result-card {
-  background:var(--white); border-radius:var(--radius);
-  padding:32px 24px; width:100%; max-width:380px;
-  box-shadow:var(--shadow); text-align:center;
-}
-
-.result-emoji { font-size:72px; display:block; margin-bottom:12px; animation:float 2s ease-in-out infinite; }
-.result-name { font-size:22px; font-weight:800; color:var(--navy); margin-bottom:4px; }
-.result-name span { color:var(--gold); }
-.result-stars { font-size:36px; margin:12px 0; }
-.result-score { font-size:48px; font-weight:800; color:var(--navy); }
-.result-score span { color:var(--gold); }
-.result-label { font-size:13px; color:var(--muted); font-weight:600; margin-bottom:24px; }
-
-.result-stats {
-  display:flex; gap:12px; margin-bottom:24px;
-}
-.result-stat {
-  flex:1; background:var(--bg); border-radius:14px;
-  padding:14px 10px; text-align:center;
-}
-.result-stat-num { font-size:24px; font-weight:800; display:block; }
-.result-stat-num.correct { color:var(--green); }
-.result-stat-num.wrong { color:var(--red); }
-.result-stat-label { font-size:10px; font-weight:700; color:var(--muted); text-transform:uppercase; }
-
-.btn-retry {
-  width:100%; background:var(--navy);
-  color:var(--white); border:none; border-radius:14px;
-  padding:15px; font-family:'Poppins',sans-serif;
-  font-size:16px; font-weight:700; cursor:pointer;
-  margin-bottom:10px; transition:all 0.2s;
-  border:2px solid transparent;
-}
-.btn-retry:hover { background:var(--navy2); border-color:var(--gold); }
-
-.btn-home {
-  width:100%; background:var(--bg);
-  color:var(--navy); border:2px solid #DDE2F0;
-  border-radius:14px; padding:14px;
-  font-family:'Poppins',sans-serif;
-  font-size:15px; font-weight:700; cursor:pointer;
-  transition:all 0.2s;
-}
-.btn-home:hover { border-color:var(--navy); }
-
-/* ========== TOAST ========== */
-.toast {
-  position:fixed; top:70px; left:50%;
-  transform:translateX(-50%) translateY(-80px);
-  background:var(--white); border-radius:50px;
-  padding:10px 24px; font-size:15px; font-weight:700;
-  box-shadow:0 8px 24px rgba(27,43,107,0.15);
-  z-index:999; transition:transform 0.3s ease; white-space:nowrap;
-}
-.toast.show { transform:translateX(-50%) translateY(0); }
-.toast.ok { border:2.5px solid var(--green); color:var(--green); }
-.toast.no { border:2.5px solid var(--red); color:var(--red); }
-
-
-/* ========== TUKAR PEMAIN ========== */
-.tukar-btn {
-  background:none; border:none; cursor:pointer;
-  font-size:12px; font-weight:700; color:rgba(255,255,255,0.5);
-  display:flex; align-items:center; gap:4px;
-  margin-top:6px; padding:4px 10px; border-radius:50px;
-  transition:all 0.2s; position:relative;
-}
-.tukar-btn:hover { color:var(--gold2); background:rgba(255,255,255,0.08); }
-
-/* ========== MODAL ========== */
-.modal-overlay {
-  position:fixed; inset:0; background:rgba(0,0,0,0.5);
-  z-index:200; display:none; align-items:center;
-  justify-content:center; padding:20px;
-  backdrop-filter:blur(4px);
-}
-.modal-overlay.open { display:flex; }
-.modal-box {
-  background:var(--white); border-radius:var(--radius);
-  padding:28px 24px; width:100%; max-width:360px;
-  box-shadow:0 20px 60px rgba(27,43,107,0.25);
-  animation:fadeUp 0.3s ease;
-}
-.modal-title {
-  font-size:18px; font-weight:800; color:var(--navy);
-  margin-bottom:16px; text-align:center;
-}
-.modal-input {
-  width:100%; background:var(--bg); border:2px solid #DDE2F0;
-  border-radius:14px; padding:14px 18px;
-  font-family:'Poppins',sans-serif; font-size:16px;
-  font-weight:600; color:var(--navy); outline:none;
-  transition:border-color 0.2s; margin-bottom:14px;
-}
-.modal-input:focus { border-color:var(--navy); background:var(--white); }
-.modal-confirm {
-  width:100%; background:var(--navy); color:var(--white);
-  border:none; border-radius:14px; padding:14px;
-  font-family:'Poppins',sans-serif; font-size:16px;
-  font-weight:700; cursor:pointer; margin-bottom:10px;
-  transition:all 0.2s;
-}
-.modal-confirm:hover { background:var(--navy2); }
-.modal-cancel {
-  width:100%; background:var(--bg); color:var(--muted);
-  border:2px solid #DDE2F0; border-radius:14px; padding:12px;
-  font-family:'Poppins',sans-serif; font-size:14px;
-  font-weight:700; cursor:pointer; transition:all 0.2s;
-}
-.modal-cancel:hover { border-color:var(--navy); color:var(--navy); }
-
-/* ========== FOOTER ========== */
-.home-footer {
-  width:100%; max-width:480px;
-  padding:20px 16px 32px;
-  text-align:center; margin-top:8px;
-}
-.footer-copy {
-  font-size:11px; color:var(--muted); font-weight:600;
-  margin-bottom:12px;
-}
-.footer-social {
-  display:flex; gap:10px; justify-content:center;
-}
-.footer-social-btn {
-  display:flex; align-items:center; gap:6px;
-  padding:10px 16px; border-radius:50px;
-  font-size:13px; font-weight:700; color:var(--white);
-  text-decoration:none; transition:all 0.2s;
-}
-.footer-social-btn:hover { transform:translateY(-2px); opacity:0.9; }
-.footer-threads { background:#000; }
-.footer-fb { background:#1877F2; }
-
-
-/* ========== LEADERBOARD ========== */
-.lb-section {
-  width:100%; max-width:480px;
-  padding:0 16px; margin-top:4px;
-}
-
-.lb-header {
-  display:flex; align-items:center;
-  justify-content:space-between;
-  margin-bottom:12px;
-}
-
-.lb-title {
-  font-size:16px; font-weight:800; color:var(--navy);
-  display:flex; align-items:center; gap:8px;
-}
-
-.lb-refresh {
-  background:none; border:none; cursor:pointer;
-  font-size:18px; color:var(--muted);
-  transition:transform 0.3s;
-}
-.lb-refresh:hover { transform:rotate(180deg); color:var(--navy); }
-
-.lb-card {
-  background:var(--white); border-radius:var(--radius);
-  overflow:hidden; box-shadow:0 4px 16px rgba(27,43,107,0.08);
-  margin-bottom:16px;
-}
-
-.lb-row {
-  display:flex; align-items:center;
-  padding:12px 16px; gap:12px;
-  border-bottom:1px solid #F0F2FF;
-  transition:background 0.2s;
-}
-.lb-row:last-child { border-bottom:none; }
-.lb-row.me {
-  background:linear-gradient(135deg,rgba(201,150,58,0.12),rgba(27,43,107,0.06));
-  border-left:3px solid var(--gold);
-}
-
-.lb-rank {
-  font-size:18px; font-weight:900;
-  color:var(--muted); width:28px; text-align:center;
-  flex-shrink:0;
-}
-.lb-rank.gold { color:#FFD700; }
-.lb-rank.silver { color:#C0C0C0; }
-.lb-rank.bronze { color:#CD7F32; }
-
-.lb-info { flex:1; }
-.lb-name {
-  font-size:14px; font-weight:700; color:var(--navy);
-  display:flex; align-items:center; gap:6px;
-}
-.lb-you {
-  font-size:10px; font-weight:800; background:var(--gold);
-  color:white; padding:2px 6px; border-radius:50px;
-}
-.lb-date { font-size:11px; color:var(--muted); font-weight:600; }
-
-.lb-stars {
-  font-size:14px; font-weight:800; color:var(--gold);
-  text-align:right;
-}
-
-.lb-empty {
-  padding:24px; text-align:center;
-  color:var(--muted); font-size:13px; font-weight:600;
-}
-
-.lb-loading {
-  padding:24px; text-align:center; font-size:20px;
-  animation:spin 1s linear infinite; display:inline-block;
-}
-@keyframes spin { to { transform:rotate(360deg); } }
-
-
-/* ========== LB ZONE TABS ========== */
-.lb-zone-tabs {
-  display:flex; gap:8px; margin-bottom:12px;
-}
-.lb-zone-tab {
-  flex:1; background:var(--bg); border:2px solid #DDE2F0;
-  border-radius:10px; padding:8px; text-align:center;
-  font-size:12px; font-weight:700; color:var(--muted);
-  cursor:pointer; transition:all 0.2s;
-}
-.lb-zone-tab.active {
-  background:var(--navy); color:white; border-color:var(--navy);
-}
-
-/* ========== ZONE 3 UNDER CONSTRUCTION ========== */
-.zone-construction {
-  width:100%; max-width:480px; padding:0 16px;
-  text-align:center;
-}
-.construction-card {
-  background:white; border-radius:var(--radius);
-  padding:40px 24px; box-shadow:var(--shadow);
-}
-.construction-emoji { font-size:64px; display:block; margin-bottom:16px; animation:float 3s ease-in-out infinite; }
-.construction-title { font-size:22px; font-weight:800; color:var(--navy); margin-bottom:8px; }
-.construction-sub { font-size:14px; color:var(--muted); font-weight:600; line-height:1.6; }
-.construction-badge {
-  display:inline-block; background:var(--gold); color:white;
-  font-size:12px; font-weight:800; padding:6px 16px;
-  border-radius:50px; margin-top:16px; letter-spacing:0.5px;
-}
-
-/* ========== STREAK COUNTER ========== */
-.streak-wrap {
-  position:fixed; top:80px; right:16px; z-index:99;
-  background:var(--gold); color:white;
-  border-radius:50px; padding:8px 14px;
-  font-size:14px; font-weight:800;
-  box-shadow:0 4px 16px rgba(201,150,58,0.4);
-  display:none; align-items:center; gap:6px;
-  animation:bounceIn 0.3s ease;
-}
-@keyframes bounceIn {
-  0% { transform:scale(0); }
-  70% { transform:scale(1.1); }
-  100% { transform:scale(1); }
-}
-
-/* ========== SHARE BUTTONS ========== */
-.share-section {
-  margin-top:20px; padding-top:16px;
-  border-top:1px solid #F0F2FF;
-}
-.share-label {
-  font-size:12px; font-weight:700; color:var(--muted);
-  margin-bottom:12px; text-align:center;
-  text-transform:uppercase; letter-spacing:1px;
-}
-.share-row {
-  display:flex; gap:10px; justify-content:center;
-}
-.share-btn {
-  width:48px; height:48px; border-radius:50%;
-  border:none; cursor:pointer;
-  display:flex; align-items:center; justify-content:center;
-  transition:all 0.2s; box-shadow:0 4px 12px rgba(0,0,0,0.2);
-}
-.share-btn:hover { transform:translateY(-3px) scale(1.1); }
-.share-btn:active { transform:scale(0.95); }
-.share-wa { background:#25D366; }
-.share-fb { background:#1877F2; }
-.share-tg { background:#229ED9; }
-.share-ig { background:linear-gradient(135deg,#833AB4,#FD1D1D,#F77737); }
-.share-copy { background:var(--navy); }
-
-
-/* ========== RIGHT COLUMN CARDS ========== */
-.side-card {
-  background: var(--white); border-radius: var(--radius);
-  padding: 18px 16px;
-  box-shadow: 0 4px 16px rgba(27,43,107,0.08);
-}
-
-.side-card-title {
-  font-size: 12px; font-weight: 800;
-  color: var(--muted); letter-spacing: 1px;
-  text-transform: uppercase; margin-bottom: 12px;
-}
-
-.side-social-btn {
-  display: flex; align-items: center; gap: 10px;
-  padding: 11px 14px; border-radius: 12px;
-  text-decoration: none; color: white;
-  font-size: 13px; font-weight: 700;
-  margin-bottom: 8px; transition: all 0.2s;
-}
-.side-social-btn:last-child { margin-bottom: 0; }
-.side-social-btn:hover { opacity: 0.85; transform: translateX(3px); }
-.side-threads { background: #000; }
-.side-fb { background: #1877F2; }
-
-.side-announcement {
-  display: flex; gap: 10px; align-items: flex-start;
-  margin-bottom: 10px; padding-bottom: 10px;
-  border-bottom: 1px solid #F0F2FF;
-}
-.side-announcement:last-child { margin-bottom: 0; padding-bottom: 0; border-bottom: none; }
-
-.side-ann-badge {
-  background: var(--gold); color: white;
-  font-size: 9px; font-weight: 900;
-  padding: 3px 7px; border-radius: 50px;
-  flex-shrink: 0; letter-spacing: 0.5px;
-}
-
-.side-ann-text {
-  font-size: 12px; font-weight: 600;
-  color: var(--navy); line-height: 1.5;
-}
-
-.side-ad-placeholder {
-  background: var(--bg); border-radius: 12px;
-  padding: 28px 16px; text-align: center;
-  font-size: 13px; font-weight: 700;
-  color: var(--muted); border: 2px dashed #DDE2F0;
-  line-height: 1.8;
-}
-
-/* Hide desktop footer on mobile */
-@media (min-width: 768px) {
-  .home-footer-mobile { display: none; }
-}
-
-/* Hide right column on mobile - shows after left */
-@media (max-width: 767px) {
-  .home-right { padding: 0 16px 16px; }
-  .side-card { margin-bottom: 12px; }
-}
-
-/* ========== PWA INSTALL ========== */
-.pwa-install-btn {
-  background:rgba(255,255,255,0.15); border:none; cursor:pointer;
-  color:white; font-size:11px; font-weight:700; padding:6px 12px;
-  border-radius:50px; display:none; align-items:center; gap:5px;
-  transition:all 0.2s; font-family:'Poppins',sans-serif;
-}
-.pwa-install-btn:hover { background:rgba(255,255,255,0.25); }
-.pwa-install-btn.show { display:flex; }
-
-/* ========== CONFETTI ========== */
-.confetti { position:fixed; inset:0; pointer-events:none; z-index:998; overflow:hidden; }
-.cp { position:absolute; animation:fall linear forwards; }
-@keyframes fall { 0%{transform:translateY(-20px) rotate(0deg);opacity:1} 100%{transform:translateY(110vh) rotate(720deg);opacity:0} }
+/* ── LOADING ── */
+#app-loading{position:fixed;inset:0;background:linear-gradient(150deg,#0D1B4B,#1B2B6B,#243580);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;transition:opacity .5s;}
+#app-loading.hide{opacity:0;pointer-events:none;}
+.load-logo{font-size:60px;margin-bottom:16px;animation:pulse 1.5s infinite;}
+.load-title{color:white;font-size:22px;font-weight:900;font-family:'Poppins',sans-serif;}
+.load-title span{color:#E8B84B;}
+.load-motto{color:rgba(255,255,255,.5);font-size:11px;font-style:italic;margin-top:4px;}
+.load-bar{width:200px;height:4px;background:rgba(255,255,255,.2);border-radius:50px;margin-top:24px;overflow:hidden;}
+.load-fill{height:100%;background:#C9963A;border-radius:50px;animation:loadbar 1.5s ease-in-out forwards;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+@keyframes loadbar{from{width:0}to{width:100%}}
+
+/* ── VARIABLES ── */
+:root{--navy:#1B2B6B;--navy2:#243580;--navy-dark:#0D1B4B;--gold:#C9963A;--gold2:#E8B84B;--silver:#9B9DA3;--bg:#F0F4FF;--bg2:#E4E8FF;--card:#FFFFFF;--border:rgba(27,43,107,0.1);--text:#1B2B6B;--text-dim:#7A86B0;--topbar:#1B2B6B;--green:#2ECC71;--red:#E74C3C;--radius:16px;--shadow:0 4px 16px rgba(27,43,107,0.10);--shadow-md:0 8px 28px rgba(27,43,107,0.15);}
+[data-theme="dark"]{--bg:#0A0F2E;--bg2:#0D1440;--card:rgba(255,255,255,0.09);--border:rgba(201,150,58,0.25);--text:#FFFFFF;--text-dim:rgba(255,255,255,0.45);--topbar:#070C24;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s;}
+.screen{display:none;min-height:100vh;flex-direction:column;animation:fadeUp .3s ease;}
+.screen.active{display:flex;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── TOPBAR ── */
+.topbar{background:var(--topbar);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.tb-left{display:flex;align-items:center;gap:8px;}
+.tb-icon{width:30px;height:30px;border-radius:8px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;}
+.tb-brand{color:white;font-size:14px;font-weight:900;font-family:'Poppins',sans-serif;}
+.tb-brand span{color:var(--gold2);}
+.tb-right{display:flex;align-items:center;gap:5px;}
+.tb-soc{display:flex;gap:4px;}
+.tb-soc-btn{width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;cursor:pointer;text-decoration:none;}
+.soc-t{background:#000;}.soc-f{background:#1877F2;}
+.tb-lang{background:rgba(255,255,255,.12);border:none;color:white;font-size:11px;font-weight:900;padding:4px 9px;border-radius:50px;cursor:pointer;font-family:'Nunito',sans-serif;}
+.tb-player{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:50px;padding:4px 10px;display:flex;align-items:center;gap:4px;cursor:pointer;}
+.tb-pname{color:white;font-size:11px;font-weight:800;}
+.tb-btn{background:rgba(255,255,255,.12);border:none;color:white;cursor:pointer;width:27px;height:27px;border-radius:7px;display:flex;align-items:center;justify-content:center;font-size:13px;}
+.back-btn{background:rgba(255,255,255,.12);border:none;color:white;cursor:pointer;display:flex;align-items:center;gap:4px;font-size:11px;font-weight:800;padding:4px 10px;border-radius:50px;font-family:'Nunito',sans-serif;}
+
+/* ── NAME SCREEN ── */
+#screen-name{background:linear-gradient(150deg,var(--navy-dark),var(--navy),var(--navy2));align-items:center;justify-content:center;padding:32px 20px;}
+.name-card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:24px;padding:28px 22px;width:100%;max-width:320px;text-align:center;backdrop-filter:blur(12px);}
+.name-logo{font-size:48px;margin-bottom:10px;}
+.name-title{color:white;font-size:22px;font-weight:900;font-family:'Poppins',sans-serif;margin-bottom:2px;}
+.name-title span{color:var(--gold2);}
+.name-motto{color:var(--gold2);font-size:11px;font-weight:700;margin-bottom:3px;font-style:italic;}
+.name-tagline{color:rgba(255,255,255,.4);font-size:10px;font-weight:700;margin-bottom:20px;}
+.name-input{width:100%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:11px;padding:12px 14px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:white;outline:none;margin-bottom:10px;transition:all .2s;}
+.name-input::placeholder{color:rgba(255,255,255,.3);}
+.name-input:focus{border-color:var(--gold2);}
+.name-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;}
+.name-sel-label{font-size:10px;font-weight:900;color:rgba(255,255,255,.5);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;text-align:left;}
+.name-sel{width:100%;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);border-radius:11px;padding:11px 10px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:800;color:white;outline:none;appearance:none;cursor:pointer;}
+.name-sel option{background:#1B2B6B;}
+.name-btn{width:100%;background:var(--gold);color:white;border:none;border-radius:12px;padding:13px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;cursor:pointer;box-shadow:0 6px 20px rgba(201,150,58,.4);}
+
+/* ── HOME ── */
+#screen-home{background:var(--bg);}
+.home-layout{display:flex;flex:1;}
+.home-left{flex:1;padding:12px;display:flex;flex-direction:column;gap:10px;min-width:0;}
+.home-right{display:none;width:210px;flex-shrink:0;padding:12px 12px 20px 0;flex-direction:column;gap:10px;}
+@media(min-width:720px){.home-right{display:flex;}}
+.welcome-bar{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;}
+.welcome-hi{color:rgba(255,255,255,.6);font-size:10px;font-weight:700;}
+.welcome-name{color:white;font-size:16px;font-weight:900;font-family:'Poppins',sans-serif;}
+.welcome-meta{color:rgba(255,255,255,.55);font-size:10px;font-weight:700;margin-top:1px;}
+.welcome-stars{background:rgba(255,255,255,.15);border-radius:50px;padding:6px 12px;color:white;font-size:11px;font-weight:900;text-align:center;}
+.filter-wrap{display:flex;gap:6px;overflow-x:auto;padding-bottom:2px;}
+.filter-wrap::-webkit-scrollbar{display:none;}
+.chip{background:var(--card);border:1.5px solid var(--border);color:var(--text-dim);border-radius:50px;padding:5px 12px;font-size:11px;font-weight:800;white-space:nowrap;cursor:pointer;transition:all .2s;flex-shrink:0;}
+.chip.active{background:var(--navy);border-color:var(--navy);color:white;}
+.sec-label{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;}
+.topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
+.topic-card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:11px 7px;text-align:center;cursor:pointer;box-shadow:var(--shadow);transition:all .2s;position:relative;overflow:hidden;}
+.topic-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gold);}
+.topic-card.locked{opacity:.4;cursor:default;}
+.topic-card.locked:hover{transform:none;box-shadow:var(--shadow);border-color:var(--border);}
+[data-theme="dark"] .topic-card:hover{border-color:var(--gold);background:rgba(255,255,255,.12);}
+.tc-icon{font-size:22px;display:block;margin-bottom:4px;}
+.tc-name{font-size:10px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;line-height:1.2;}
+.tc-subj{font-size:9px;font-weight:800;color:var(--text-dim);margin-top:2px;}
+.tc-stars{font-size:9px;color:var(--gold);margin-top:3px;}
+.tc-badge{position:absolute;top:5px;right:5px;font-size:7px;font-weight:900;padding:2px 5px;border-radius:50px;color:white;}
+.b-quiz{background:var(--navy);}.b-test{background:var(--silver);color:#333;}.b-exam{background:var(--gold);}.b-soon{background:#B0B8D0;}
+.side-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);}
+.side-title{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;}
+.lb-list{display:flex;flex-direction:column;gap:4px;}
+.lb-row{display:flex;align-items:center;gap:7px;padding:6px 9px;border-radius:9px;background:var(--bg);}
+.lb-row.me{background:rgba(201,150,58,.1);border:1px solid rgba(201,150,58,.3);}
+.lb-rank{font-size:13px;width:20px;text-align:center;flex-shrink:0;}
+.lb-name{flex:1;font-size:11px;font-weight:800;color:var(--text);}
+.lb-you{font-size:7px;font-weight:900;background:var(--gold);color:white;padding:1px 5px;border-radius:50px;margin-left:3px;}
+.lb-stars{font-size:10px;font-weight:800;color:var(--gold);}
+.lb-empty{text-align:center;color:var(--text-dim);font-size:11px;padding:10px 0;}
+.ann-item{display:flex;gap:7px;align-items:flex-start;padding:5px 0;border-bottom:1px solid var(--border);}
+.ann-item:last-child{border-bottom:none;padding-bottom:0;}
+.ann-badge{font-size:7px;font-weight:900;padding:2px 6px;border-radius:50px;color:white;flex-shrink:0;margin-top:2px;}
+.ann-new{background:var(--gold);}.ann-soon{background:var(--navy);}
+.ann-text{font-size:11px;font-weight:700;color:var(--text);line-height:1.4;}
+.home-bottom{padding:0 12px 0;display:flex;flex-direction:column;gap:10px;}
+@media(min-width:720px){.home-bottom{display:none;}}
+.home-footer{padding:20px 12px 32px;display:flex;flex-direction:column;gap:12px;}
+.footer-title{font-size:15px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;text-align:center;}
+.footer-sub{font-size:11px;color:var(--text-dim);text-align:center;margin-top:2px;margin-bottom:4px;}
+.testi-list{display:flex;flex-direction:column;gap:10px;}
+.testi-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px 16px;box-shadow:var(--shadow);}
+.testi-stars{font-size:13px;margin-bottom:5px;}
+.testi-comment{font-size:12px;font-weight:700;color:var(--text);line-height:1.5;margin-bottom:7px;font-style:italic;}
+.testi-author{font-size:10px;font-weight:800;color:var(--text-dim);}
+.testi-author span{color:var(--gold);}
+.footer-copy{text-align:center;font-size:10px;color:var(--text-dim);font-weight:700;padding-top:8px;}
+
+/* ── LEVEL ── */
+#screen-level{background:var(--bg);}
+.level-body{padding:12px;display:flex;flex-direction:column;gap:11px;flex:1;}
+.game-hero{background:linear-gradient(135deg,var(--navy),var(--navy2));border-radius:var(--radius);padding:14px 16px;display:flex;align-items:center;gap:12px;color:white;}
+.hero-icon{font-size:34px;}.hero-title{font-size:18px;font-weight:900;font-family:'Poppins',sans-serif;}.hero-sub{font-size:11px;opacity:.6;margin-top:1px;}
+.age-locked{background:var(--card);border:1px solid var(--border);border-radius:11px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:var(--shadow);}
+.age-locked-label{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;}
+.age-locked-val{font-size:13px;font-weight:900;color:var(--text);display:flex;align-items:center;gap:6px;}
+.level-btns{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.level-btn{background:var(--card);border:2px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;box-shadow:var(--shadow);}
+.level-btn-name{font-size:13px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;}
+.level-btn-desc{font-size:10px;color:var(--text-dim);font-weight:700;margin-top:2px;}
+.level-btn-mult{font-size:12px;font-weight:900;color:var(--gold);margin-top:4px;}
+.level-btn.easy.sel{background:var(--navy);border-color:var(--navy);}
+.level-btn.med.sel{background:var(--silver);border-color:var(--silver);}
+.level-btn.hard.sel{background:var(--gold);border-color:var(--gold);}
+.level-btn.sel .level-btn-name,.level-btn.sel .level-btn-desc,.level-btn.sel .level-btn-mult{color:white;}
+.level-btn.med.sel .level-btn-name{color:#222;}.level-btn.med.sel .level-btn-desc,.level-btn.med.sel .level-btn-mult{color:rgba(0,0,0,.5);}
+.exam-info-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow);display:flex;flex-direction:column;gap:14px;}
+.exam-info-row{display:flex;align-items:center;gap:14px;}
+.exam-info-icon{font-size:28px;flex-shrink:0;}
+.exam-info-label{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:2px;}
+.exam-info-val{font-size:20px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;}
+.start-btn{background:var(--gold);color:white;border:none;border-radius:var(--radius);padding:13px;font-family:'Poppins',sans-serif;font-size:15px;font-weight:800;cursor:pointer;box-shadow:0 6px 18px rgba(201,150,58,.3);}
+
+/* ── QUIZ ── */
+#screen-quiz{background:var(--bg);}
+.quiz-body{padding:12px;display:flex;flex-direction:column;gap:10px;flex:1;}
+.quiz-hdr{background:var(--card);border-radius:var(--radius);padding:10px 13px;box-shadow:var(--shadow);display:flex;align-items:center;justify-content:space-between;}
+.quiz-prog{font-size:11px;font-weight:800;color:var(--text-dim);}
+.quiz-score{font-size:13px;font-weight:900;color:var(--gold);}
+.quiz-timer{font-size:12px;font-weight:900;color:var(--navy);}
+.quiz-section-badge{font-size:9px;font-weight:900;padding:3px 10px;border-radius:50px;color:white;background:var(--navy);}
+.quiz-section-badge.subj{background:var(--gold);}
+.prog-bar{height:6px;background:var(--bg2);border-radius:50px;overflow:hidden;}
+.prog-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--navy),var(--gold));border-radius:50px;transition:width .4s ease;}
+.q-card{background:var(--card);border-radius:var(--radius);padding:16px 14px;box-shadow:var(--shadow);flex:1;}
+.q-context{font-size:10px;font-weight:900;color:var(--gold);letter-spacing:.5px;margin-bottom:5px;}
+.q-section{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:5px;}
+.q-num{font-size:11px;font-weight:900;color:var(--text);margin-bottom:10px;}
+.q-text{font-size:15px;font-weight:800;color:var(--text);line-height:1.55;margin-bottom:14px;}
+.opts{display:flex;flex-direction:column;gap:8px;}
+.opt{background:var(--bg);border:2px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:var(--text);}
+.opt:hover{border-color:var(--navy);}
+.opt.correct{background:rgba(46,204,113,.1);border-color:var(--green);color:var(--green);}
+.opt.wrong{background:rgba(231,76,60,.1);border-color:var(--red);color:var(--red);}
+.opt-letter{width:24px;height:24px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:900;flex-shrink:0;color:var(--text-dim);}
+.opt.correct .opt-letter{background:var(--green);color:white;}
+.opt.wrong .opt-letter{background:var(--red);color:white;}
+.tf-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.tf-btn{padding:16px;border-radius:14px;border:2px solid var(--border);background:var(--bg);font-size:16px;font-weight:900;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;color:var(--text);}
+.tf-btn:hover{border-color:var(--navy);}
+.tf-btn.correct{background:rgba(46,204,113,.1);border-color:var(--green);color:var(--green);}
+.tf-btn.wrong{background:rgba(231,76,60,.1);border-color:var(--red);color:var(--red);}
+.drag-sentence{font-size:17px;font-weight:800;color:var(--text);margin-bottom:16px;line-height:2;text-align:center;}
+.drag-blank{display:inline-block;min-width:70px;height:32px;border-bottom:3px solid var(--navy);margin:0 6px;text-align:center;vertical-align:middle;font-weight:900;color:var(--gold);font-size:17px;transition:all .2s;}
+.drag-blank.filled{border-color:var(--gold);}
+.drag-blank.correct{border-color:var(--green);color:var(--green);}
+.drag-blank.wrong{border-color:var(--red);color:var(--red);}
+.drag-opts{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
+.drag-opt{background:var(--card);border:2px solid var(--border);border-radius:10px;padding:9px 18px;cursor:pointer;font-size:14px;font-weight:900;color:var(--text);transition:all .2s;}
+.drag-opt:hover{border-color:var(--navy);background:var(--bg2);}
+.drag-opt.used{opacity:.3;cursor:default;pointer-events:none;}
+.drag-opt.correct{border-color:var(--green);background:rgba(46,204,113,.1);color:var(--green);}
+.drag-opt.wrong{border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
+.match-container{position:relative;width:100%;}
+.match-svg-overlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
+.match-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;position:relative;}
+.match-col{display:flex;flex-direction:column;gap:8px;}
+.match-col-label{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;text-align:center;margin-bottom:4px;}
+.match-item{background:var(--bg);border:2px solid var(--border);border-radius:11px;padding:11px 8px;text-align:center;cursor:pointer;font-size:12px;font-weight:800;color:var(--text);transition:all .2s;min-height:44px;display:flex;align-items:center;justify-content:center;}
+.match-item:hover{border-color:var(--navy);}
+.match-item.selected{border-color:var(--gold);background:rgba(201,150,58,.15);color:var(--gold);}
+.match-item.paired{border-color:var(--silver);background:rgba(155,157,163,.1);cursor:default;}
+.match-item.correct{border-color:var(--green);background:rgba(46,204,113,.1);color:var(--green);}
+.match-item.wrong{border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
+.sort-item{background:var(--bg);border:2px solid var(--border);border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:10px;cursor:grab;font-size:13px;font-weight:800;color:var(--text);transition:border-color .2s,background .2s;user-select:none;touch-action:none;}
+.sort-item:hover{border-color:var(--navy);}
+.sort-item.dragging{opacity:.5;border-color:var(--gold);background:rgba(201,150,58,.1);}
+.sort-item.drag-over{border-color:var(--navy);border-style:dashed;}
+.sort-item.correct{border-color:var(--green);background:rgba(46,204,113,.1);color:var(--green);}
+.sort-item.wrong{border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
+.sort-handle{font-size:16px;flex-shrink:0;color:var(--text-dim);}
+.sort-check-btn{background:var(--navy);color:white;border:none;border-radius:11px;padding:12px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;cursor:pointer;width:100%;margin-top:4px;}
+.sort-area{display:flex;flex-direction:column;gap:6px;}
+.explanation{background:rgba(27,43,107,.06);border-left:3px solid var(--navy);border-radius:0 8px 8px 0;padding:9px 12px;margin-top:10px;font-size:12px;font-weight:700;color:var(--text);display:none;line-height:1.5;}
+.explanation.show{display:block;}
+[data-theme="dark"] .explanation{background:rgba(255,255,255,.06);border-left-color:var(--gold);}
+
+/* ── RESULT ── */
+#screen-result{background:var(--bg);}
+.result-body{padding:18px 16px;display:flex;flex-direction:column;align-items:center;gap:12px;flex:1;}
+.result-card{background:var(--card);border-radius:22px;padding:22px 18px;width:100%;max-width:340px;text-align:center;box-shadow:var(--shadow-md);}
+.result-emoji{font-size:52px;display:block;margin-bottom:9px;}
+.result-name{font-size:17px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;margin-bottom:4px;}
+.result-name span{color:var(--gold);}
+.result-stars{font-size:20px;letter-spacing:3px;margin-bottom:8px;}
+.result-score{font-size:44px;font-weight:900;color:var(--gold);font-family:'Poppins',sans-serif;line-height:1;}
+.result-denom{font-size:20px;color:var(--text-dim);}
+.result-label{font-size:13px;color:var(--text-dim);font-weight:700;margin-top:4px;}
+.result-mult{display:inline-block;margin-top:8px;background:var(--navy);color:white;font-size:11px;font-weight:900;padding:4px 14px;border-radius:50px;}
+.result-section-scores{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px;}
+.rss{background:var(--bg);border-radius:10px;padding:10px;text-align:center;}
+.rss-label{font-size:9px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.rss-score{font-size:18px;font-weight:900;font-family:'Poppins',sans-serif;color:var(--navy);}
+.result-topic-prog{background:rgba(46,204,113,.1);border:1px solid rgba(46,204,113,.3);border-radius:12px;padding:10px 14px;margin-top:10px;}
+.result-topic-text{font-size:12px;font-weight:800;color:var(--green);text-align:center;}
+.result-topic-bar{height:6px;background:var(--bg2);border-radius:50px;overflow:hidden;margin-top:6px;}
+.result-topic-fill{height:100%;background:var(--green);border-radius:50px;transition:width .5s ease;}
+.result-topic-label{font-size:10px;color:var(--text-dim);font-weight:700;margin-top:4px;text-align:center;}
+.result-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:10px;}
+.r-stat{background:var(--bg);border-radius:9px;padding:9px 5px;text-align:center;}
+.r-num{font-size:18px;font-weight:900;font-family:'Poppins',sans-serif;}
+.r-num.c{color:var(--green);}.r-num.w{color:var(--red);}.r-num.s{color:var(--gold);}
+.r-lbl{font-size:9px;font-weight:800;color:var(--text-dim);margin-top:1px;}
+.result-btns{display:flex;flex-direction:column;gap:8px;width:100%;max-width:340px;}
+.btn-retry{background:var(--navy);color:white;border:none;border-radius:var(--radius);padding:12px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
+.btn-home{background:var(--bg2);color:var(--navy);border:none;border-radius:var(--radius);padding:12px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;cursor:pointer;}
+
+/* ── MODALS ── */
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:200;display:none;align-items:center;justify-content:center;padding:20px;backdrop-filter:blur(4px);}
+.modal-overlay.open{display:flex;}
+.modal-box{background:var(--card);border-radius:20px;padding:22px 18px;width:100%;max-width:320px;box-shadow:0 20px 60px rgba(0,0,0,.3);max-height:88vh;overflow-y:auto;}
+.modal-title{font-size:16px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;margin-bottom:12px;text-align:center;}
+.modal-label{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.modal-input{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 13px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:var(--text);outline:none;margin-bottom:10px;}
+.modal-sel{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:10px 12px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:800;color:var(--text);outline:none;appearance:none;margin-bottom:10px;}
+.modal-textarea{width:100%;background:var(--bg);border:1.5px solid var(--border);border-radius:10px;padding:11px 13px;font-family:'Nunito',sans-serif;font-size:13px;font-weight:700;color:var(--text);outline:none;resize:none;margin-bottom:10px;min-height:80px;}
+.modal-confirm{width:100%;background:var(--navy);color:white;border:none;border-radius:10px;padding:12px;font-family:'Poppins',sans-serif;font-size:13px;font-weight:800;cursor:pointer;margin-bottom:7px;}
+.modal-confirm.gold{background:var(--gold);}
+.modal-cancel{width:100%;background:var(--bg2);color:var(--text);border:none;border-radius:10px;padding:10px;font-family:'Poppins',sans-serif;font-size:12px;font-weight:800;cursor:pointer;}
+.star-rating{display:flex;justify-content:center;gap:8px;margin-bottom:12px;}
+.star-btn{font-size:26px;cursor:pointer;background:none;border:none;line-height:1;transition:transform .15s;}
+.star-btn:hover{transform:scale(1.2);}
+.cat-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px;}
+.cat-chip{background:var(--bg);border:1.5px solid var(--border);color:var(--text-dim);border-radius:50px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;transition:all .2s;}
+.cat-chip.active{background:var(--navy);border-color:var(--navy);color:white;}
+.toast{position:fixed;top:62px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:8px 18px;border-radius:50px;font-size:12px;font-weight:800;z-index:300;opacity:0;transition:opacity .3s;white-space:nowrap;pointer-events:none;}
+.toast.ok{background:var(--green);}.toast.no{background:var(--red);}.toast.show{opacity:1;}
 </style>
 </head>
 <body>
 
+<!-- LOADING -->
+<div id="app-loading">
+  <div class="load-logo">🎓</div>
+  <div class="load-title">MY <span>Edu</span> Hub</div>
+  <div class="load-motto">Where Learning Meets Success</div>
+  <div class="load-bar"><div class="load-fill"></div></div>
+</div>
+
 <div class="toast" id="toast"></div>
-<div class="streak-wrap" id="streak-wrap">🔥 <span id="streak-count">3</span> Berturut!</div>
-<div class="confetti" id="confetti"></div>
 
-<!-- =================== NAME SCREEN =================== -->
-<div class="screen" id="screen-name">
-  <div class="topbar">
-    <a class="topbar-logo" href="https://bijakeduhub.com">
-      <img src="logo.png" alt="logo" onerror="this.style.display='none';document.getElementById('logo-fb').style.display='flex';">
-      <div class="topbar-logo-fallback" id="logo-fb" style="display:none;">🎓</div>
-      <span class="topbar-name">MY <span>Edu</span> Hub</span>
-    </a>
-  </div>
-
-  <div class="name-wrap">
-    <div class="name-hero">🎓</div>
-    <div class="name-title">Selamat Datang ke <span>MY Edu Hub!</span></div>
-    <div class="name-sub">Belajar sambil bermain — percuma 100%</div>
-
-    <div class="name-box">
-      <label>Nama Kamu</label>
-      <input class="name-input" id="name-input" type="text" placeholder="Contoh: Ahmad, Siti..." maxlength="20">
-      <button class="btn-start" onclick="startApp()">Mula Sekarang 🚀</button>
-    </div>
+<!-- MODAL: PROFILE -->
+<div class="modal-overlay" id="modal-profile">
+  <div class="modal-box">
+    <div class="modal-title" id="mp-title">Kemaskini Profil</div>
+    <div class="modal-label" id="mp-name-label">Nama Anak</div>
+    <input class="modal-input" id="mp-name" type="text" maxlength="20">
+    <div class="modal-label" id="mp-age-label">Kumpulan Umur</div>
+    <select class="modal-sel" id="mp-age">
+      <option value="2-4">2-4 Tahun</option><option value="5-6">5-6 Tahun</option>
+      <option value="7-9">7-9 Tahun</option><option value="10-12">10-12 Tahun</option>
+      <option value="13-15">13-15 Tahun</option><option value="16-17">16-17 Tahun</option>
+    </select>
+    <button class="modal-confirm" id="mp-save" onclick="confirmProfile()">✅ Simpan</button>
+    <button class="modal-cancel" id="mp-cancel" onclick="closeModal('modal-profile')">Batal</button>
   </div>
 </div>
 
-<!-- =================== HOME SCREEN =================== -->
+<!-- MODAL: FEEDBACK -->
+<div class="modal-overlay" id="modal-feedback">
+  <div class="modal-box">
+    <div class="modal-title" id="fb-title">Maklum Balas</div>
+    <div class="modal-label" id="fb-child-label">Nama Anak</div>
+    <input class="modal-input" id="fb-child" type="text" readonly style="opacity:.6">
+    <div class="modal-label" id="fb-parent-label">Nama Ibu/Bapa</div>
+    <input class="modal-input" id="fb-parent" type="text">
+    <div class="modal-label" id="fb-contact-label">No. Tel / Email (Pilihan)</div>
+    <input class="modal-input" id="fb-contact" type="text">
+    <div class="modal-label" id="fb-rating-label">Penilaian</div>
+    <div class="star-rating" id="star-rating">
+      <button class="star-btn" onclick="setRating(1)">☆</button>
+      <button class="star-btn" onclick="setRating(2)">☆</button>
+      <button class="star-btn" onclick="setRating(3)">☆</button>
+      <button class="star-btn" onclick="setRating(4)">☆</button>
+      <button class="star-btn" onclick="setRating(5)">☆</button>
+    </div>
+    <div class="modal-label" id="fb-cat-label">Kategori</div>
+    <div class="cat-chips" id="fb-cats"></div>
+    <div class="modal-label" id="fb-comment-label">Komen</div>
+    <textarea class="modal-textarea" id="fb-comment"></textarea>
+    <button class="modal-confirm gold" id="fb-submit" onclick="submitFeedback()">📨 Hantar</button>
+    <button class="modal-cancel" onclick="closeModal('modal-feedback')">Batal</button>
+  </div>
+</div>
+
+<!-- SCREEN 1: NAME -->
+<div class="screen active" id="screen-name">
+  <div class="name-card">
+    <div class="name-logo">🎓</div>
+    <div class="name-title">MY <span>Edu</span> Hub</div>
+    <div class="name-motto" id="t-motto">Where Learning Meets Success</div>
+    <div class="name-tagline" id="t-tagline">Untuk pengalaman pembelajaran terbaik</div>
+    <input class="name-input" id="name-input" type="text" placeholder="Nama anak..." maxlength="20">
+    <div class="name-row">
+      <div>
+        <div class="name-sel-label">Umur</div>
+        <select class="name-sel" id="init-age">
+          <option value="2-4">2-4 Tahun</option><option value="5-6">5-6 Tahun</option>
+          <option value="7-9" selected>7-9 Tahun</option><option value="10-12">10-12 Tahun</option>
+          <option value="13-15">13-15 Tahun</option><option value="16-17">16-17 Tahun</option>
+        </select>
+      </div>
+      <div>
+        <div class="name-sel-label">Bahasa</div>
+        <select class="name-sel" id="init-lang">
+          <option value="bm" selected>BM</option>
+          <option value="en">English</option>
+        </select>
+      </div>
+    </div>
+    <button class="name-btn" id="name-btn" onclick="startApp()">Teruskan →</button>
+  </div>
+</div>
+
+<!-- SCREEN 2: HOME -->
 <div class="screen" id="screen-home">
   <div class="topbar">
-    <a class="topbar-logo" href="https://bijakeduhub.com">
-      <img src="logo.png" alt="logo" onerror="this.style.display='none';">
-      <div class="topbar-logo-fallback" style="display:none;">🎓</div>
-      <span class="topbar-name">MY <span>Edu</span> Hub</span>
-    </a>
-    <div class="topbar-score" id="topbar-score">⭐ 0</div>
-  </div>
-
-  <div class="home-hero">
-    <div class="home-greeting">Hai, selamat datang!</div>
-    <div class="home-name">👋 <span id="home-player-name">—</span></div>
-    <div class="home-sub">Pilih permainan dan mula belajar!</div>
-    <div class="stars-row">
-      <div class="stars-pill">⭐ <span id="total-stars">0</span> Bintang Terkumpul</div>
+    <div class="tb-left">
+      <div class="tb-icon">🎓</div>
+      <div class="tb-brand">MY <span>Edu</span> Hub</div>
     </div>
-    <button class="tukar-btn" onclick="openTukarPemain()">✏️ Tukar Pemain</button>
+    <div class="tb-right">
+      <div class="tb-soc">
+        <a class="tb-soc-btn soc-t" href="https://www.threads.com/@__myeduhub" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 192 192" fill="white"><path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C56.954 24.425 74.206 17.11 97.015 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 9.991 15.976 12.763 26.66l16.218-4.12c-3.333-12.917-8.891-24.045-16.647-33.187C147.661 10.974 125.957 1.316 97.08 1.085h-.229C68.064 1.317 46.587 10.99 32.366 28.553 19.916 44.119 13.536 66.026 13.305 96v.027c.231 29.974 6.611 51.88 19.061 67.446 14.221 17.563 35.698 27.236 64.888 27.468h.229c25.96-.188 44.142-6.977 59.208-22.024 19.73-19.709 19.131-44.242 12.625-59.363-4.577-10.671-13.286-19.392-27.779-24.566zM96.678 143.02c-10.433.576-21.286-4.097-27.357-11.243-4.165-4.886-6.243-11.238-6.048-17.864.443-15.016 13.515-21.708 33.943-22.879 3.997-.23 7.913-.34 11.742-.34 5.97 0 11.812.489 17.448 1.448-2.124 26.332-15.203 50.146-29.728 50.878z"/></svg>
+        </a>
+        <a class="tb-soc-btn soc-f" href="https://www.facebook.com/share/1JJvrBdGMh/" target="_blank">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>
+      </div>
+      <button class="tb-lang" id="tb-lang-btn" onclick="toggleLang()">BM</button>
+      <div class="tb-player" onclick="openModal('modal-profile')">
+        <span style="font-size:11px">👤</span>
+        <span class="tb-pname" id="tb-pname">-</span>
+      </div>
+      <button class="tb-btn" onclick="openFeedback()">💬</button>
+      <button class="tb-btn" onclick="toggleTheme()" id="theme-btn">🌙</button>
+    </div>
   </div>
-
-  <!-- 2 COL WRAP -->
-  <div class="home-wrap">
-
-    <!-- LEFT: GAMES -->
+  <div class="home-layout">
     <div class="home-left">
-      <div class="zone-tabs" id="zone-tabs">
-        <div class="zone-tab active" onclick="switchZone('zone1',this)">
-          <span class="zone-tab-label">🌱 Zon 1</span>
-          <span class="zone-tab-age">Umur 3–7 Tahun</span>
+      <div class="welcome-bar">
+        <div>
+          <div class="welcome-hi" id="t-welcome-hi">Selamat datang,</div>
+          <div class="welcome-name" id="welcome-name">-</div>
+          <div class="welcome-meta" id="welcome-meta">-</div>
         </div>
-        <div class="zone-tab" onclick="switchZone('zone2',this)">
-          <span class="zone-tab-label">🎯 Zon 2</span>
-          <span class="zone-tab-age">Umur 7–10 Tahun</span>
-        </div>
-        <div class="zone-tab" onclick="switchZone('zone3',this)">
-          <span class="zone-tab-label">🚧 Zon 3</span>
-          <span class="zone-tab-age">Umur 10–12 Tahun</span>
-        </div>
-        <div class="zone-tab" onclick="switchZone('zone4',this)">
-          <span class="zone-tab-label">📝 Zon 4</span>
-          <span class="zone-tab-age">Peperiksaan</span>
-        </div>
+        <div class="welcome-stars" id="welcome-stars">⭐<br>0</div>
       </div>
-
-      <div class="game-grid" id="game-grid"></div>
-
-
-    </div><!-- end home-left -->
-
-    <!-- RIGHT: MARKETING -->
+      <div class="filter-wrap" id="filter-chips">
+        <div class="chip active" id="chip-all" onclick="filterAll(this)">Semua</div>
+        <div class="chip" data-subj="matematik" onclick="toggleChip(this)">Matematik</div>
+        <div class="chip" data-subj="sains" onclick="toggleChip(this)">Sains</div>
+        <div class="chip" data-subj="bm" onclick="toggleChip(this)">B. Melayu</div>
+        <div class="chip" data-subj="english" onclick="toggleChip(this)">English</div>
+        <div class="chip" data-subj="pelbagai" onclick="toggleChip(this)">Pelbagai</div>
+      </div>
+      <div class="sec-label" id="t-pick-topic">Pilih Topik</div>
+      <div class="topic-grid" id="topic-grid"></div>
+    </div>
     <div class="home-right">
-
-      <!-- 1st: LEADERBOARD moved here from left on desktop -->
-      <div class="side-card" id="side-lb-wrap">
-        <div class="lb-header" style="margin-bottom:12px;">
-          <div class="lb-title" style="font-size:14px;">🏆 Leaderboard</div>
-          <button class="lb-refresh" onclick="loadLeaderboard()" title="Refresh">🔄</button>
-        </div>
-        <div class="lb-zone-tabs">
-          <div class="lb-zone-tab active" onclick="switchLbZone('zone1',this)">🌱 Zon 1</div>
-          <div class="lb-zone-tab" onclick="switchLbZone('zone2',this)">🎯 Zon 2</div>
-        </div>
-        <div class="lb-card" id="lb-list" style="box-shadow:none;border-radius:12px;">
-          <div class="lb-empty"><span class="lb-loading">⏳</span></div>
-        </div>
-      </div>
-
-      <!-- 2nd: SOCIAL MEDIA -->
       <div class="side-card">
-        <div class="side-card-title">🤝 Ikuti Kami</div>
-        <a class="side-social-btn side-threads" href="https://www.threads.com/@__myeduhub" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 192 192" fill="white"><path d="M141.537 88.988a66.667 66.667 0 0 0-2.518-1.143c-1.482-27.307-16.403-42.94-41.457-43.1h-.34c-14.986 0-27.449 6.396-35.12 18.036l13.779 9.452c5.73-8.695 14.724-10.548 21.348-10.548h.229c8.249.053 14.474 2.452 18.503 7.129 2.932 3.405 4.893 8.111 5.864 14.05-7.314-1.243-15.224-1.626-23.68-1.14-23.82 1.371-39.134 15.264-38.105 34.568.522 9.792 5.4 18.216 13.735 23.719 7.047 4.652 16.124 6.927 25.557 6.412 12.458-.683 22.231-5.436 29.049-14.127 5.178-6.6 8.453-15.153 9.899-25.93 5.937 3.583 10.337 8.298 12.767 13.966 4.132 9.635 4.373 25.468-8.546 38.376-11.319 11.308-24.925 16.2-45.488 16.351-22.809-.169-40.06-7.484-51.275-21.742C35.236 139.966 29.808 120.682 29.605 96c.203-24.682 5.63-43.966 16.133-57.317C56.954 24.425 74.206 17.11 97.015 16.94c22.975.17 40.526 7.52 52.171 21.847 5.71 7.026 9.991 15.976 12.763 26.66l16.218-4.12c-3.333-12.917-8.891-24.045-16.647-33.187C147.661 10.974 125.957 1.316 97.08 1.085h-.229C68.064 1.317 46.587 10.99 32.366 28.553 19.916 44.119 13.536 66.026 13.305 96v.027c.231 29.974 6.611 51.88 19.061 67.446 14.221 17.563 35.698 27.236 64.888 27.468h.229c25.96-.188 44.142-6.977 59.208-22.024 19.73-19.709 19.131-44.242 12.625-59.363-4.577-10.671-13.286-19.392-27.779-24.566zM96.678 143.02c-10.433.576-21.286-4.097-27.357-11.243-4.165-4.886-6.243-11.238-6.048-17.864.443-15.016 13.515-21.708 33.943-22.879 3.997-.23 7.913-.34 11.742-.34 5.97 0 11.812.489 17.448 1.448-2.124 26.332-15.203 50.146-29.728 50.878z"/></svg>
-          @__myeduhub
-        </a>
-        <a class="side-social-btn side-fb" href="https://www.facebook.com/share/1JJvrBdGMh/" target="_blank">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          Facebook
-        </a>
+        <div class="side-title">🏆 Leaderboard <span id="lb-zone-badge" style="font-size:9px;background:var(--gold);color:white;padding:2px 7px;border-radius:50px;margin-left:4px;font-weight:900;"></span></div>
+        <div class="lb-list" id="lb-list"><div class="lb-empty">⏳</div></div>
       </div>
-
-      <!-- 3rd: TERKINI -->
       <div class="side-card">
-        <div class="side-card-title">📢 Terkini</div>
-        <div class="side-announcement">
-          <div class="side-ann-badge">NEW</div>
-          <div class="side-ann-text">Zon 2 kini tersedia! Cuba Matematik, BM & English sekarang.</div>
-        </div>
-        <div class="side-announcement">
-          <div class="side-ann-badge" style="background:var(--navy);">SOON</div>
-          <div class="side-ann-text">Zon 3 UPSR sedang dalam pembangunan. Nantikan!</div>
-        </div>
+        <div class="side-title">📢 Terkini</div>
+        <div id="ann-list"></div>
       </div>
-
-      <!-- Copyright -->
-      <div style="text-align:center;font-size:11px;color:var(--muted);font-weight:600;padding:8px 0;">
-        © 2026 MY Edu Hub
-      </div>
-
-    </div><!-- end home-right -->
-
-  </div><!-- end home-wrap -->
-
-  <!-- MOBILE FOOTER -->
-  <div class="home-footer home-footer-mobile">
-    <div class="footer-copy">© 2026 MY Edu Hub • Belajar Seronok, Masa Depan Cemerlang</div>
-    <div class="footer-social">
-      <a class="footer-social-btn footer-threads" href="https://www.threads.com/@__myeduhub" target="_blank">🧵 Threads</a>
-      <a class="footer-social-btn footer-fb" href="https://www.facebook.com/share/1JJvrBdGMh/" target="_blank">📘 Facebook</a>
     </div>
+  </div>
+  <div class="home-bottom">
+    <div class="side-card">
+      <div class="side-title">🏆 Leaderboard <span id="lb-zone-badge-m" style="font-size:9px;background:var(--gold);color:white;padding:2px 7px;border-radius:50px;margin-left:4px;font-weight:900;"></span></div>
+      <div class="lb-list" id="lb-list-m"><div class="lb-empty">⏳</div></div>
+    </div>
+    <div class="side-card">
+      <div class="side-title">📢 Terkini</div>
+      <div id="ann-list-m"></div>
+    </div>
+  </div>
+  <div class="home-footer">
+    <div class="footer-title" id="t-footer-title">💬 Apa Kata Mereka?</div>
+    <div class="footer-sub" id="t-footer-sub">Pengalaman ibu bapa & pelajar kami</div>
+    <div class="testi-list" id="testi-list"></div>
+    <div class="footer-copy" id="t-footer-copy">© 2026 MY Edu Hub • Where Learning Meets Success</div>
   </div>
 </div>
 
-<!-- =================== GAME SCREEN =================== -->
-<div class="screen" id="screen-game">
+<!-- SCREEN 3: LEVEL -->
+<div class="screen" id="screen-level">
   <div class="topbar">
-    <a class="topbar-logo" href="https://bijakeduhub.com">
-      <img src="logo.png" alt="logo" onerror="this.style.display='none';">
-      <div class="topbar-logo-fallback" style="display:none;">🎓</div>
-      <span class="topbar-name">MY <span>Edu</span> Hub</span>
-    </a>
+    <button class="back-btn" onclick="showScreen('screen-home')">← <span id="t-back">Balik</span></button>
+    <div class="tb-brand" style="color:white" id="t-pick-level">Pilih Tahap</div>
+    <div style="width:70px"></div>
   </div>
-
-  <div class="game-header">
-    <button class="back-btn" onclick="goHome()">🏠</button>
-    <div class="game-header-info">
-      <div class="game-header-name" id="game-header-name">—</div>
-      <div class="game-header-progress" id="game-header-progress">Soalan 1/7</div>
+  <div class="level-body">
+    <div class="game-hero">
+      <span class="hero-icon" id="hero-icon">✖️</span>
+      <div><div class="hero-title" id="hero-title">-</div><div class="hero-sub" id="hero-sub">-</div></div>
     </div>
-    <div class="game-header-score" id="game-header-score">⭐ 0</div>
-  </div>
-
-  <div class="timer-wrap">
-    <div class="timer-row">
-      <span class="timer-label">⏱ Masa</span>
-      <span class="timer-count" id="timer-display">5:00</span>
+    <div class="age-locked">
+      <div class="age-locked-label" id="t-age-label">Kumpulan Umur</div>
+      <div class="age-locked-val">🔒 <span id="locked-age">-</span></div>
     </div>
-    <div class="timer-track">
-      <div class="timer-fill" id="timer-fill" style="width:100%"></div>
+    <!-- Quiz levels -->
+    <div id="level-easy-section">
+      <div class="sec-label" id="t-choose-level" style="margin-bottom:8px">Pilih Tahap</div>
+      <div class="level-btns">
+        <div class="level-btn easy sel" onclick="selectLvl('easy',this)">
+          <div class="level-btn-name" id="t-easy">Mudah</div>
+          <div class="level-btn-desc" id="t-easy-desc">-</div>
+          <div class="level-btn-mult">⭐ ×1</div>
+        </div>
+        <div class="level-btn med" onclick="selectLvl('med',this)">
+          <div class="level-btn-name" id="t-med">Sederhana</div>
+          <div class="level-btn-desc" id="t-med-desc">-</div>
+          <div class="level-btn-mult">⭐ ×2</div>
+        </div>
+        <div class="level-btn hard" onclick="selectLvl('hard',this)">
+          <div class="level-btn-name" id="t-hard">Sukar</div>
+          <div class="level-btn-desc" id="t-hard-desc">-</div>
+          <div class="level-btn-mult">⭐ ×3</div>
+        </div>
+      </div>
     </div>
-  </div>
-
-  <div class="prog-wrap">
-    <div class="prog-track">
-      <div class="prog-fill" id="prog-fill" style="width:0%"></div>
+    <!-- Exam info -->
+    <div id="exam-info-section" style="display:none">
+      <div class="exam-info-card">
+        <div class="exam-info-row"><span class="exam-info-icon">📋</span><div><div class="exam-info-label" id="t-exam-q-label">Soalan</div><div class="exam-info-val" id="exam-q-count">40</div></div></div>
+        <div class="exam-info-row"><span class="exam-info-icon">⏱</span><div><div class="exam-info-label" id="t-exam-dur-label">Tempoh</div><div class="exam-info-val" id="exam-duration">60 min</div></div></div>
+        <div class="exam-info-row"><span class="exam-info-icon">⭐</span><div><div class="exam-info-label">Pekali Bintang</div><div class="exam-info-val">×5</div></div></div>
+      </div>
     </div>
-  </div>
-
-  <div class="game-area">
-    <div class="q-card" id="q-card"></div>
-  </div>
-
-  <div class="finish-wrap">
-    <button class="btn-finish" id="btn-finish" style="display:none;" onclick="submitGame()">✅ Hantar Jawapan</button>
+    <button class="start-btn" id="t-start-btn" onclick="startQuiz()">🚀 Mula Quiz!</button>
   </div>
 </div>
 
-<!-- =================== RESULT SCREEN =================== -->
+<!-- SCREEN 4: QUIZ -->
+<div class="screen" id="screen-quiz">
+  <div class="topbar">
+    <button class="back-btn" onclick="confirmQuit()">← <span id="t-exit">Keluar</span></button>
+    <div class="tb-brand" style="color:white;font-size:12px" id="quiz-title">-</div>
+    <div class="quiz-section-badge" id="section-badge">Objektif</div>
+  </div>
+  <div class="quiz-body">
+    <div class="quiz-hdr">
+      <div class="quiz-prog" id="quiz-prog">1/10</div>
+      <div class="quiz-score" id="quiz-score">⭐ 0</div>
+      <div class="quiz-timer" id="quiz-timer">⏱ 5:00</div>
+    </div>
+    <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+    <div class="q-card">
+      <div class="q-context" id="q-context">-</div>
+      <div class="q-section" id="q-section">-</div>
+      <div class="q-num" id="q-num">Soalan 1</div>
+      <div class="q-text" id="q-text"></div>
+      <div id="q-answer-area"></div>
+      <div class="explanation" id="explanation"></div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN 5: RESULT -->
 <div class="screen" id="screen-result">
   <div class="topbar">
-    <a class="topbar-logo" href="https://bijakeduhub.com">
-      <img src="logo.png" alt="logo" onerror="this.style.display='none';">
-      <div class="topbar-logo-fallback" style="display:none;">🎓</div>
-      <span class="topbar-name">MY <span>Edu</span> Hub</span>
-    </a>
+    <div class="tb-left"><div class="tb-icon">🎓</div><div class="tb-brand">MY <span>Edu</span> Hub</div></div>
   </div>
-
-  <div class="result-wrap">
+  <div class="result-body">
     <div class="result-card">
-      <span class="result-emoji" id="result-emoji">🏆</span>
-      <div class="result-name" id="result-name">Tahniah <span>Ahmad</span>!</div>
-      <div class="result-stars" id="result-stars">⭐⭐⭐</div>
-      <div class="result-score"><span id="result-correct">5</span>/<span id="result-total">7</span></div>
-      <div class="result-label" id="result-label">Soalan betul</div>
-
+      <span class="result-emoji" id="r-emoji">🏆</span>
+      <div class="result-name"><span id="t-tahniah">Tahniah,</span> <span id="r-name">-</span>!</div>
+      <div class="result-stars" id="r-stars">⭐⭐⭐⭐⭐</div>
+      <div class="result-score"><span id="r-correct">-</span><span class="result-denom">/</span><span id="r-total">-</span></div>
+      <div class="result-label" id="r-label">-</div>
+      <div class="result-mult" id="r-mult">-</div>
+      <div class="result-section-scores">
+        <div class="rss"><div class="rss-label" id="t-obj-label">Objektif</div><div class="rss-score" id="r-obj-score">-</div></div>
+        <div class="rss"><div class="rss-label" id="t-subj-label">Subjektif</div><div class="rss-score" id="r-subj-score">-</div></div>
+      </div>
+      <div class="result-topic-prog">
+        <div class="result-topic-text" id="result-topic-text">-</div>
+        <div class="result-topic-bar"><div class="result-topic-fill" id="result-topic-fill" style="width:33%"></div></div>
+        <div class="result-topic-label" id="result-topic-label">-</div>
+      </div>
       <div class="result-stats">
-        <div class="result-stat">
-          <span class="result-stat-num correct" id="stat-correct">5</span>
-          <span class="result-stat-label">Betul ✅</span>
-        </div>
-        <div class="result-stat">
-          <span class="result-stat-num wrong" id="stat-wrong">2</span>
-          <span class="result-stat-label">Salah ❌</span>
-        </div>
-        <div class="result-stat">
-          <span class="result-stat-num" style="color:var(--gold);" id="stat-stars">⭐ 3</span>
-          <span class="result-stat-label">Bintang</span>
-        </div>
+        <div class="r-stat"><div class="r-num c" id="r-betul">-</div><div class="r-lbl">BETUL ✅</div></div>
+        <div class="r-stat"><div class="r-num w" id="r-salah">-</div><div class="r-lbl">SALAH ❌</div></div>
+        <div class="r-stat"><div class="r-num s" id="r-bintang">-</div><div class="r-lbl">BINTANG</div></div>
       </div>
-
-      <button class="btn-retry" onclick="retryGame()">🔄 Cuba Lagi</button>
-      <button class="btn-home" onclick="goHome()">🏠 Balik Menu</button>
-
-      <div class="share-section">
-        <div class="share-label">Kongsi Result 🎉</div>
-        <div class="share-row">
-          <button class="share-btn share-wa" onclick="shareResult('wa')" title="WhatsApp">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          </button>
-          <button class="share-btn share-fb" onclick="shareResult('fb')" title="Facebook">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-          </button>
-          <button class="share-btn share-tg" onclick="shareResult('tg')" title="Telegram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0a12 12 0 0 0-.056 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
-          </button>
-          <button class="share-btn share-ig" onclick="shareResult('ig')" title="Instagram">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
-          </button>
-<button class="share-btn share-copy" onclick="shareResult('copy')" title="Copy Link" id="copy-btn">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
-          </button>
-        </div>
-      </div>
+    </div>
+    <div class="result-btns">
+      <button class="btn-retry" id="t-retry" onclick="retryQuiz()">🔄 Cuba Lagi</button>
+      <button class="btn-home" id="t-home-btn" onclick="goHome()">🏠 Balik Menu</button>
     </div>
   </div>
 </div>
 
+<script>
+// ══════════════════════════════════════
+// STATE
+// ══════════════════════════════════════
+let playerName='', defaultAge='7-9', defaultLang='bm';
+let currentTopic=null, currentLevel='easy';
+let sessionObj=[], sessionSubj=[], currentQ=0, currentSection='obj';
+let objScore=0, subjScore=0, score=0;
+let timerInterval=null, timerLeft=300, answered=false;
+let activeSubjects=new Set();
+let fbRating=0, fbCategory='';
+let touchDragEl=null, touchDragIdx=null, touchClone=null;
+let matchSelected=null, matchUserPairs=[], matchLeftItems=[], matchRightItems=[];
+let sortOrder=[];
 
-<!-- =================== TUKAR PEMAIN MODAL =================== -->
-<div class="modal-overlay" id="modal-tukar">
-  <div class="modal-box">
-    <div class="modal-title">👤 Tukar Pemain</div>
-    <input class="modal-input" id="modal-name-input" type="text"
-           placeholder="Nama pemain baru..." maxlength="20">
-    <button class="modal-confirm" onclick="confirmTukarPemain()">✅ Tukar</button>
-    <button class="modal-cancel" onclick="closeTukarPemain()">Batal</button>
-  </div>
-</div>
-
-<script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-app.js";
-import { getFirestore, doc, setDoc, getDocs, collection, query, orderBy, limit } from "https://www.gstatic.com/firebasejs/12.12.0/firebase-firestore.js";
-
-const firebaseConfig = {
-  apiKey: "AIzaSyDWUq268u7nS1FBPN-Ga6Not07_b1BIr2s",
-  authDomain: "myeduhub-games.firebaseapp.com",
-  projectId: "myeduhub-games",
-  storageBucket: "myeduhub-games.firebasestorage.app",
-  messagingSenderId: "889099024670",
-  appId: "1:889099024670:web:b09cc9c6b495448c14b10f"
+// ══════════════════════════════════════
+// JSON DATA STORES (loaded async)
+// ══════════════════════════════════════
+let LANG_DATA = {};
+let TOPICS = [];
+let AGE_CFG = {};
+let LEVEL_CFG = {};
+let TESTIMONIALS = [];
+let ANNOUNCEMENTS = [];
+let QUESTIONS_CACHE = {};
+let DEMO_LB = {
+  zone1:[{name:'Adik',s:12},{name:'Mia',s:9}],
+  zone2:[{name:'Ahmad',s:24},{name:'Sarah',s:21},{name:'Ali',s:18}],
+  zone3:[{name:'Hafiz',s:30}], zone4:[], zone5:[]
 };
 
-const fbApp = initializeApp(firebaseConfig);
-const db = getFirestore(fbApp);
-
-// Expose Firebase functions to global scope
-window._fbSetDoc = (ref, data) => setDoc(ref, data);
-window._fbGetDocs = (q) => getDocs(q);
-window._fbDoc = (path, id) => doc(db, path, id);
-window._fbQuery = (...args) => query(...args);
-window._fbCollection = (path) => collection(db, path);
-window._fbOrderBy = orderBy;
-window._fbLimit = limit;
-
-window._fbReady = true;
-console.log('Firebase ready!');
-</script>
-
-<script>
-
-// =================== FIREBASE ===================
-
-
-
-// =================== PWA SERVICE WORKER ===================
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js')
-      .then(reg => console.log('SW registered!', reg.scope))
-      .catch(err => console.log('SW error:', err));
-  });
+// ══════════════════════════════════════
+// JSON LOADER
+// ══════════════════════════════════════
+async function loadJSON(path) {
+  const r = await fetch(path);
+  return r.json();
 }
 
-// =================== STATE ===================
-let playerName = '';
-let allData = null;
-let currentZone = 'zone1';
-let currentGameKey = '';
-let sessionQuestions = [];
-let currentQ = 0;
-let score = 0;
-let answered = false;
-let timerInterval = null;
-let timerLeft = 300;
-let gameScores = JSON.parse(localStorage.getItem('meh-v2') || '{}');
-let lbCurrentZone = 'zone1';
-let streak = 0;
-
-// Generate device ID
-function getDeviceId() {
-  let did = localStorage.getItem('meh-did');
-  if (!did) {
-    did = (crypto.randomUUID ? crypto.randomUUID() : ([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,c=>(c^crypto.getRandomValues(new Uint8Array(1))[0]&15>>c/4).toString(16))).replace(/-/g,'').slice(0,16);
-    localStorage.setItem('meh-did', did);
+async function initApp() {
+  try {
+    const [bmLang, enLang, topics, ageCfg, levelCfg, testi, ann] = await Promise.all([
+      loadJSON('lang/bm.json'),
+      loadJSON('lang/en.json'),
+      loadJSON('config/topics.json'),
+      loadJSON('config/age_config.json'),
+      loadJSON('config/level_config.json'),
+      loadJSON('testimonials.json'),
+      loadJSON('announcements.json'),
+    ]);
+    LANG_DATA = { bm: bmLang, en: enLang };
+    TOPICS = topics;
+    AGE_CFG = ageCfg;
+    LEVEL_CFG = levelCfg;
+    TESTIMONIALS = testi;
+    ANNOUNCEMENTS = ann;
+  } catch(e) {
+    console.error('JSON load error:', e);
   }
-  return did;
-}
-const deviceId = getDeviceId();
 
-// =================== UTILS ===================
-const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
+  // Hide loading screen
+  setTimeout(() => {
+    const load = document.getElementById('app-loading');
+    load.classList.add('hide');
+    setTimeout(() => load.style.display='none', 500);
+  }, 1200);
+
+  // Init theme
+  const savedTheme = localStorage.getItem('beh-theme') || 'light';
+  document.documentElement.setAttribute('data-theme', savedTheme);
+  $('theme-btn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+  // Auto-login
+  const savedPlayer = localStorage.getItem('beh-player');
+  if (savedPlayer) {
+    defaultAge = localStorage.getItem('beh-age') || '7-9';
+    defaultLang = localStorage.getItem('beh-lang') || 'bm';
+    await setPlayer(savedPlayer);
+  } else {
+    showScreen('screen-name');
+  }
+}
+
+async function loadQuestions(ageGroup, subject) {
+  const key = ageGroup + '_' + subject;
+  if (QUESTIONS_CACHE[key]) return QUESTIONS_CACHE[key];
+  try {
+    const data = await loadJSON('questions/' + ageGroup + '/' + subject + '.json');
+    QUESTIONS_CACHE[key] = data;
+    return data;
+  } catch(e) {
+    console.warn('Questions not found:', key);
+    return null;
+  }
+}
+
+// ══════════════════════════════════════
+// UTILS
+// ══════════════════════════════════════
 const $ = id => document.getElementById(id);
+const shuffle = arr => [...arr].sort(() => Math.random() - .5);
+const L = () => LANG_DATA[defaultLang] || LANG_DATA.bm || {};
 
 function showScreen(id) {
   document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -1087,742 +635,880 @@ function showScreen(id) {
   window.scrollTo(0, 0);
 }
 
-function showToast(msg, type) {
+function showToast(msg, type='ok') {
   const t = $('toast');
   t.textContent = msg;
-  t.className = `toast ${type} show`;
-  setTimeout(() => t.classList.remove('show'), 1600);
+  t.className = 'toast ' + type + ' show';
+  setTimeout(() => t.classList.remove('show'), 2000);
 }
 
-function playSound(type) {
-  try {
-    const ctx = new (window.AudioContext || window.webkitAudioContext)();
-    const o = ctx.createOscillator(), g = ctx.createGain();
-    o.connect(g); g.connect(ctx.destination);
-    if (type === 'ok') {
-      o.frequency.setValueAtTime(523, ctx.currentTime);
-      o.frequency.setValueAtTime(659, ctx.currentTime + 0.1);
-      o.frequency.setValueAtTime(784, ctx.currentTime + 0.15);
-    } else {
-      o.frequency.setValueAtTime(300, ctx.currentTime);
-      o.frequency.setValueAtTime(180, ctx.currentTime + 0.12);
+function toggleTheme() {
+  const h = document.documentElement;
+  const isDark = h.getAttribute('data-theme') === 'dark';
+  h.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  $('theme-btn').textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('beh-theme', isDark ? 'light' : 'dark');
+}
+
+// ══════════════════════════════════════
+// LANGUAGE
+// ══════════════════════════════════════
+function applyLang() {
+  const l = L();
+  if (!l || !l.home) return;
+
+  // Name screen
+  if (l.app) { $('t-motto').textContent = l.app.motto || ''; $('t-tagline').textContent = l.app.tagline || ''; }
+
+  // Nav
+  if (l.nav) { $('t-back').textContent = l.nav.back || 'Back'; $('t-exit').textContent = l.nav.exit || 'Exit'; }
+  if (l.home) { $('t-welcome-hi').textContent = l.home.welcome_hi || ''; $('t-pick-topic').textContent = l.home.pick_topic || ''; }
+
+  // Level
+  if (l.level) {
+    $('t-age-label').textContent = l.level.age_label || '';
+    $('t-choose-level').textContent = l.level.choose_level || '';
+    $('t-easy').textContent = l.level.easy || 'Easy';
+    $('t-med').textContent = l.level.medium || 'Medium';
+    $('t-hard').textContent = l.level.hard || 'Hard';
+    $('t-exam-q-label').textContent = l.level.exam_questions || 'Questions';
+    $('t-exam-dur-label').textContent = l.level.exam_duration || 'Duration';
+    const isExam = currentTopic && currentTopic.type === 'Exam';
+    $('t-start-btn').textContent = isExam ? (l.level.start_exam || '🚀 Start Exam!') : (l.level.start || '🚀 Start Quiz!');
+  }
+
+  // Result
+  if (l.result) {
+    $('t-tahniah').textContent = l.result.tahniah || 'Congratulations,';
+    $('t-retry').textContent = l.result.retry || '🔄 Try Again';
+    $('t-home-btn').textContent = l.result.home || '🏠 Back to Menu';
+  }
+
+  // Footer
+  if (l.footer) {
+    $('t-footer-title').textContent = l.footer.title || '';
+    $('t-footer-sub').textContent = l.footer.sub || '';
+    $('t-footer-copy').textContent = l.footer.copy || '';
+  }
+
+  // Feedback modal labels
+  if (l.feedback) {
+    $('fb-title').textContent = l.feedback.title || '';
+    $('fb-child-label').textContent = l.feedback.child || '';
+    $('fb-parent-label').textContent = l.feedback.parent || '';
+    $('fb-contact-label').textContent = l.feedback.contact || '';
+    $('fb-rating-label').textContent = l.feedback.rating || '';
+    $('fb-cat-label').textContent = l.feedback.category || '';
+    $('fb-comment-label').textContent = l.feedback.comment || '';
+    $('fb-submit').textContent = l.feedback.submit || '📨 Hantar';
+    if (l.feedback.cats) {
+      $('fb-cats').innerHTML = l.feedback.cats.map(c =>
+        '<div class="cat-chip" onclick="setCat(this,\'' + c + '\')">' + c + '</div>'
+      ).join('');
     }
-    g.gain.setValueAtTime(0.2, ctx.currentTime);
-    g.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
-    o.start(); o.stop(ctx.currentTime + 0.45);
-  } catch(e) {}
-}
-
-function confetti() {
-  const colors = ['#1B2B6B','#C9963A','#E8B84B','#2ECC71','#E74C3C','#F39C12'];
-  const c = $('confetti'); c.innerHTML = '';
-  for (let i = 0; i < 60; i++) {
-    const p = document.createElement('div');
-    p.className = 'cp';
-    p.style.cssText = `left:${Math.random()*100}%;background:${colors[~~(Math.random()*colors.length)]};
-      width:${8+Math.random()*10}px;height:${8+Math.random()*10}px;
-      border-radius:${Math.random()>.5?'50%':'3px'};
-      animation-duration:${1.5+Math.random()*2}s;
-      animation-delay:${Math.random()*.5}s;`;
-    c.appendChild(p);
   }
-  setTimeout(() => c.innerHTML = '', 3500);
-}
 
-function starsForScore(correct, total) {
-  const p = correct / total;
-  if (p === 1) return 5;
-  if (p >= 0.8) return 4;
-  if (p >= 0.6) return 3;
-  if (p >= 0.4) return 2;
-  if (p >= 0.2) return 1;
-  return 0;
-}
+  // Profile modal
+  if (l.profile) {
+    $('mp-title').textContent = l.profile.title || '';
+    $('mp-name-label').textContent = l.profile.name || '';
+    $('mp-age-label').textContent = l.profile.age || '';
+    $('mp-save').textContent = l.profile.save || '✅ Save';
+    $('mp-cancel').textContent = l.profile.cancel || 'Cancel';
+  }
 
-function renderStars(n) { return '⭐'.repeat(n) + '☆'.repeat(5 - n); }
+  // Chips
+  $('tb-lang-btn').textContent = defaultLang.toUpperCase();
+  if (l.subjects) {
+    $('chip-all').textContent = l.subjects.all || 'All';
+    document.querySelectorAll('#filter-chips .chip[data-subj]').forEach(c => {
+      const s = c.getAttribute('data-subj');
+      c.textContent = l.subjects[s] || s;
+    });
+  }
 
-function saveScore(zoneKey, gameKey, stars) {
-  const k = `${zoneKey}-${gameKey}`;
-  if (!gameScores[k] || gameScores[k] < stars) {
-    gameScores[k] = stars;
-    localStorage.setItem('meh-scores-' + playerName, JSON.stringify(gameScores));
+  // Meta
+  $('welcome-meta').textContent = (defaultLang === 'bm' ? 'Umur ' : 'Age ') + defaultAge + ' • ' + defaultLang.toUpperCase();
+
+  // Re-render topic grid & testimonials with new lang
+  if (playerName) {
+    renderTopics(activeSubjects.size === 0 ? 'all' : 'multi');
+    renderTesti();
+    renderAnn();
   }
 }
 
-function getTotalStars() {
-  return Object.values(gameScores).reduce((a, b) => a + b, 0);
+async function toggleLang() {
+  defaultLang = defaultLang === 'bm' ? 'en' : 'bm';
+  localStorage.setItem('beh-lang', defaultLang);
+  applyLang();
 }
 
-function updateHomeStars() {
-  $('total-stars').textContent = getTotalStars();
-  $('topbar-score').textContent = `⭐ ${getTotalStars()}`;
-}
-
-// =================== LOAD DATA ===================
-async function loadData() {
-  try {
-    const res = await fetch('questions/index.json');
-    const idx = await res.json();
-    allData = {};
-    for (const [zoneKey, zoneVal] of Object.entries(idx)) {
-      allData[zoneKey] = { ...zoneVal, games: {} };
-      for (const gameKey of zoneVal.games) {
-        try {
-          const gr = await fetch(`questions/${zoneKey}/${gameKey}.json`);
-          allData[zoneKey].games[gameKey] = await gr.json();
-        } catch(e) { console.warn(`Failed: ${zoneKey}/${gameKey}`, e); }
-      }
-    }
-  } catch(e) {
-    console.error('Failed to load questions', e);
-  }
-}
-
-// =================== NAME SCREEN ===================
-function startApp() {
+// ══════════════════════════════════════
+// INIT / NAME / PLAYER
+// ══════════════════════════════════════
+async function startApp() {
   const n = $('name-input').value.trim();
   if (!n) { $('name-input').focus(); return; }
-  setPlayer(n);
+  defaultAge = $('init-age').value;
+  defaultLang = $('init-lang').value;
+  await setPlayer(n);
 }
 
-function setPlayer(name) {
+async function setPlayer(name) {
   playerName = name;
-  localStorage.setItem('meh-player', name);
-  gameScores = JSON.parse(localStorage.getItem('meh-scores-' + playerName) || '{}');
-  $('home-player-name').textContent = playerName;
-  $('topbar-score').style.display = 'flex';
-  updateHomeStars();
-  renderGameGrid();
+  localStorage.setItem('beh-player', name);
+  localStorage.setItem('beh-age', defaultAge);
+  localStorage.setItem('beh-lang', defaultLang);
+  $('welcome-name').textContent = name + '! 👋';
+  $('tb-pname').textContent = name;
+  $('r-name').textContent = name;
+  $('locked-age').textContent = defaultAge + (defaultLang === 'bm' ? ' Tahun' : ' Years');
+  applyLang();
+  updateStars();
+  renderTopics('all');
+  renderLB();
+  renderTesti();
+  renderAnn();
   showScreen('screen-home');
-  loadLeaderboard();
 }
 
 $('name-input').addEventListener('keydown', e => { if (e.key === 'Enter') startApp(); });
 
-// =================== TUKAR PEMAIN ===================
-function openTukarPemain() {
-  $('modal-name-input').value = '';
-  $('modal-tukar').classList.add('open');
-  setTimeout(() => $('modal-name-input').focus(), 100);
+// ══════════════════════════════════════
+// MODALS
+// ══════════════════════════════════════
+function openModal(id) {
+  if (id === 'modal-profile') { $('mp-name').value = playerName; $('mp-age').value = defaultAge; }
+  $(id).classList.add('open');
+}
+function closeModal(id) { $(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if (e.target === m) m.classList.remove('open'); }));
+
+async function confirmProfile() {
+  const n = $('mp-name').value.trim();
+  if (!n) { $('mp-name').focus(); return; }
+  defaultAge = $('mp-age').value;
+  $('locked-age').textContent = defaultAge + (defaultLang === 'bm' ? ' Tahun' : ' Years');
+  closeModal('modal-profile');
+  const l = L();
+  await setPlayer(n);
+  showToast((l.profile && l.profile.updated) || '✅ Profile updated!');
 }
 
-function closeTukarPemain() {
-  $('modal-tukar').classList.remove('open');
+function openFeedback() {
+  $('fb-child').value = playerName;
+  $('fb-parent').value = '';
+  $('fb-contact').value = '';
+  $('fb-comment').value = '';
+  fbRating = 0; fbCategory = '';
+  updateStarDisp();
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  openModal('modal-feedback');
+}
+function setRating(n) { fbRating = n; updateStarDisp(); }
+function updateStarDisp() { document.querySelectorAll('#star-rating .star-btn').forEach((b,i) => { b.textContent = i < fbRating ? '⭐' : '☆'; }); }
+function setCat(el, cat) { document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active')); el.classList.add('active'); fbCategory = cat; }
+
+function submitFeedback() {
+  const l = L();
+  const fb_l = l.feedback || {};
+  const parent = $('fb-parent').value.trim();
+  const comment = $('fb-comment').value.trim();
+  if (!parent) { showToast(fb_l.err_parent || 'Fill parent name', 'no'); return; }
+  if (!fbRating) { showToast(fb_l.err_rating || 'Give a rating', 'no'); return; }
+  if (!comment) { showToast(fb_l.err_comment || 'Write a comment', 'no'); return; }
+  const fb = { childName: playerName, ageGroup: defaultAge, parentName: parent, contact: $('fb-contact').value, rating: fbRating, category: fbCategory, comment, ts: new Date().toISOString() };
+  const arr = JSON.parse(localStorage.getItem('beh-fb') || '[]');
+  arr.push(fb);
+  localStorage.setItem('beh-fb', JSON.stringify(arr));
+  closeModal('modal-feedback');
+  showToast(fb_l.success || '✅ Thank you!');
 }
 
-function confirmTukarPemain() {
-  const n = $('modal-name-input').value.trim();
-  if (!n) { $('modal-name-input').focus(); return; }
-  closeTukarPemain();
-  setPlayer(n);
-}
-
-$('modal-name-input') && $('modal-name-input').addEventListener('keydown', e => {
-  if (e.key === 'Enter') confirmTukarPemain();
-});
-
-// Close modal on overlay click
-$('modal-tukar').addEventListener('click', function(e) {
-  if (e.target === this) closeTukarPemain();
-});
-
-// =================== HOME ===================
-function switchZone(zone, el) {
-  currentZone = zone;
-  document.querySelectorAll('.zone-tab').forEach(t => t.classList.remove('active'));
+// ══════════════════════════════════════
+// HOME — FILTER & RENDER
+// ══════════════════════════════════════
+function filterAll(el) {
+  activeSubjects.clear();
+  document.querySelectorAll('#filter-chips .chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
-  if (zone === 'zone3') {
-    $('game-grid').innerHTML = '';
-    // Show under construction
-    let uc = $('zone-construction');
-    if (!uc) {
-      uc = document.createElement('div');
-      uc.id = 'zone-construction';
-      uc.className = 'zone-construction';
-      uc.innerHTML = `
-        <div class="construction-card">
-          <span class="construction-emoji">🚧</span>
-          <div class="construction-title">Zon 3 — Akan Datang!</div>
-          <div class="construction-sub">
-            Kami sedang menyediakan soalan berkualiti dari sukatan KSSR<br>
-            Tahun 4–6 untuk pelajar umur 10–12 tahun.<br><br>
-            Nantikan! 🎓
-          </div>
-          <div class="construction-badge">🔜 Coming Soon</div>
-        </div>`;
-      $('game-grid').after(uc);
-    }
-    uc.style.display = 'block';
-    $('lb-section') && ($('lb-section').style.display = 'none');
-  } else if (zone === 'zone4') {
-    const uc = $('zone-construction');
-    if (uc) uc.style.display = 'none';
-    const lbs = document.querySelector('.lb-section');
-    if (lbs) lbs.style.display = 'block';
-    renderGameGrid();
-    loadLeaderboard();
+  renderTopics('all');
+}
+
+function toggleChip(el) {
+  const subj = el.getAttribute('data-subj');
+  $('chip-all').classList.remove('active');
+  if (el.classList.contains('active')) {
+    el.classList.remove('active');
+    activeSubjects.delete(subj);
+    if (activeSubjects.size === 0) $('chip-all').classList.add('active');
   } else {
-    const uc = $('zone-construction');
-    if (uc) uc.style.display = 'none';
-    const lbs = document.querySelector('.lb-section');
-    if (lbs) lbs.style.display = 'block';
-    renderGameGrid();
-    loadLeaderboard();
+    el.classList.add('active');
+    activeSubjects.add(subj);
+  }
+  renderTopics(activeSubjects.size === 0 ? 'all' : 'multi');
+}
+
+function renderTopics(filter) {
+  if (!playerName || !TOPICS.length) return;
+  const l = L();
+  const subjects = (l.subjects) || {};
+  const topicNames = (l.topic_names) || {};
+  const scores = JSON.parse(localStorage.getItem('beh-scores-' + playerName) || '{}');
+  const list = filter === 'all' ? TOPICS : filter === 'multi' ? TOPICS.filter(t => activeSubjects.has(t.filter)) : TOPICS.filter(t => t.filter === filter);
+
+  $('topic-grid').innerHTML = list.map(t => {
+    const s = scores[t.key] || 0;
+    const sh = t.active ? ('⭐'.repeat(Math.min(s, 5)) + '☆'.repeat(Math.max(0, 5 - s))) : '🔒';
+    const bc = t.active ? 'b-' + t.type.toLowerCase() : 'b-soon';
+    const bt = t.active ? t.type : 'SOON';
+    const tName = topicNames[t.key] || t.key;
+    const sName = subjects[t.filter] || t.filter;
+    const onclick = t.active ? 'openLevel(\'' + t.key + '\',\'' + t.icon + '\',\'' + t.type + '\')' : '';
+    return '<div class="topic-card ' + (t.active ? '' : 'locked') + '" onclick="' + onclick + '">'
+      + '<div class="tc-badge ' + bc + '">' + bt + '</div>'
+      + '<span class="tc-icon">' + t.icon + '</span>'
+      + '<div class="tc-name">' + tName + '</div>'
+      + '<div class="tc-subj">' + sName + '</div>'
+      + '<div class="tc-stars">' + sh + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+function updateStars() {
+  const scores = JSON.parse(localStorage.getItem('beh-scores-' + playerName) || '{}');
+  const total = Object.values(scores).reduce((a, b) => a + b, 0);
+  $('welcome-stars').innerHTML = '⭐<br>' + total;
+}
+
+function renderLB() {
+  const zone = (AGE_CFG[defaultAge] && AGE_CFG[defaultAge].zone) || 'zone2';
+  const zoneNum = zone.replace('zone', '');
+  const badge = 'Zon ' + zoneNum;
+  const badgeEl = $('lb-zone-badge'); if (badgeEl) badgeEl.textContent = badge;
+  const badgeElM = $('lb-zone-badge-m'); if (badgeElM) badgeElM.textContent = badge;
+  const data = DEMO_LB[zone] || [];
+  const html = data.length ? data.map((r, i) => {
+    const medal = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : (i + 1) + '.';
+    const isMe = r.name === playerName;
+    return '<div class="lb-row ' + (isMe ? 'me' : '') + '">'
+      + '<span class="lb-rank">' + medal + '</span>'
+      + '<span class="lb-name">' + r.name + (isMe ? ' <span class="lb-you">ME</span>' : '') + '</span>'
+      + '<span class="lb-stars">⭐' + r.s + '</span></div>';
+  }).join('') : '<div class="lb-empty">Play first! 🎮</div>';
+  $('lb-list').innerHTML = html;
+  if ($('lb-list-m')) $('lb-list-m').innerHTML = html;
+}
+
+function renderTesti() {
+  if (!TESTIMONIALS.length) return;
+  $('testi-list').innerHTML = TESTIMONIALS.map(t =>
+    '<div class="testi-card">'
+    + '<div class="testi-stars">' + '⭐'.repeat(t.rating) + '</div>'
+    + '<div class="testi-comment">"' + t.comment + '"</div>'
+    + '<div class="testi-author"><span>' + t.parentName + '</span>, ' + t.childMasked + ' (' + t.ageGroup + ' tahun) • ' + t.date + '</div>'
+    + '</div>'
+  ).join('');
+}
+
+function renderAnn() {
+  if (!ANNOUNCEMENTS.length) return;
+  const l = L();
+  const html = ANNOUNCEMENTS.map(a => {
+    const txt = defaultLang === 'bm' ? a.text_bm : a.text_en;
+    return '<div class="ann-item"><div class="ann-badge ann-' + a.type + '">' + a.type.toUpperCase() + '</div><div class="ann-text">' + txt + '</div></div>';
+  }).join('');
+  $('ann-list').innerHTML = html;
+  if ($('ann-list-m')) $('ann-list-m').innerHTML = html;
+}
+
+// ══════════════════════════════════════
+// LEVEL
+// ══════════════════════════════════════
+function openLevel(key, icon, type) {
+  const l = L();
+  const topicNames = (l.topic_names) || {};
+  const subjects = (l.subjects) || {};
+  const topic = TOPICS.find(t => t.key === key);
+  const tName = topicNames[key] || key;
+  const sName = subjects[topic && topic.filter] || '';
+  const ageCfg = AGE_CFG[defaultAge] || { total: 10, base_time: 300 };
+  currentTopic = { key, name: tName, subj: sName, icon, type };
+  $('hero-icon').textContent = icon;
+  $('hero-title').textContent = tName;
+  $('hero-sub').textContent = sName;
+  $('quiz-title').textContent = tName;
+  $('locked-age').textContent = defaultAge + (defaultLang === 'bm' ? ' Tahun' : ' Years');
+
+  if (type === 'Exam') {
+    $('level-easy-section').style.display = 'none';
+    $('exam-info-section').style.display = 'block';
+    $('exam-q-count').textContent = topic && topic.examQ ? topic.examQ : 40;
+    const examMin = topic && topic.examMin ? topic.examMin : 60;
+    $('exam-duration').textContent = examMin >= 60 ? (examMin / 60) + (defaultLang === 'bm' ? ' jam' : ' hour(s)') : examMin + ' min';
+    $('t-start-btn').textContent = (l.level && l.level.start_exam) || '🚀 Start Exam!';
+    currentLevel = 'exam';
+  } else {
+    $('level-easy-section').style.display = 'block';
+    $('exam-info-section').style.display = 'none';
+    $('t-start-btn').textContent = (l.level && l.level.start) || '🚀 Start Quiz!';
+    const total = ageCfg.total;
+    const bt = ageCfg.base_time;
+    const levelCfg = LEVEL_CFG;
+    $('t-easy-desc').textContent = total + 'q • ' + Math.round(bt / 60) + ' min';
+    $('t-med-desc').textContent = total + 'q • ' + Math.round(bt * ((levelCfg.med && levelCfg.med.time_mult) || 1.6) / 60) + ' min';
+    $('t-hard-desc').textContent = total + 'q • ' + Math.round(bt * ((levelCfg.hard && levelCfg.hard.time_mult) || 2) / 60) + ' min';
+    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('sel'));
+    document.querySelector('.level-btn.easy').classList.add('sel');
+    currentLevel = 'easy';
+  }
+  showScreen('screen-level');
+}
+
+function selectLvl(lvl, el) {
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  currentLevel = lvl;
+}
+
+// ══════════════════════════════════════
+// QUIZ — BUILD SESSION
+// ══════════════════════════════════════
+async function startQuiz() {
+  const ageCfg = AGE_CFG[defaultAge] || { total: 10, base_time: 300 };
+  const lvlCfg = LEVEL_CFG[currentLevel] || { obj_pct: 1, subj_pct: 0, time_mult: 1, star_mult: 1 };
+  const total = ageCfg.total;
+  const objCount = Math.round(total * lvlCfg.obj_pct);
+  const subjCount = total - objCount;
+
+  // Determine subject file
+  const filterMap = { matematik: 'matematik', sains: 'sains', bm: 'bm', english: 'english', pelbagai: 'pelbagai', sejarah: 'sejarah' };
+  const topic = TOPICS.find(t => t.key === currentTopic.key);
+  const subjectFile = filterMap[topic && topic.filter] || 'matematik';
+
+  // Load questions JSON
+  const qData = await loadQuestions(defaultAge, subjectFile);
+  let qBank = { objective: [], subjective: [] };
+
+  if (qData && qData.topics) {
+    const topicData = qData.topics.find(t => t.id === currentTopic.key);
+    if (topicData && topicData.questions) {
+      qBank.objective = topicData.questions.objective || [];
+      qBank.subjective = topicData.questions.subjective || [];
+    }
+  }
+
+  // Fallback if no JSON loaded
+  if (!qBank.objective.length) {
+    qBank = getFallbackQ(currentTopic.key);
+  }
+
+  sessionObj = shuffle(qBank.objective).slice(0, Math.min(objCount, qBank.objective.length));
+  sessionSubj = shuffle(qBank.subjective).slice(0, Math.min(subjCount, qBank.subjective.length));
+
+  // Normalise: map JSON format → internal format
+  sessionObj = sessionObj.map(q => normaliseQ(q));
+  sessionSubj = sessionSubj.map(q => normaliseQ(q));
+
+  currentQ = 0; currentSection = 'obj';
+  objScore = 0; subjScore = 0; score = 0;
+  timerLeft = Math.round(ageCfg.base_time * lvlCfg.time_mult);
+
+  window._objPossiblePoints = sessionObj.reduce((a, q) => a + (q.type === 'match' ? q.pairs.length : 1), 0);
+  window._subjPossiblePoints = sessionSubj.reduce((a, q) => a + (q.type === 'match' ? q.pairs.length : 1), 0);
+  window._totalPossiblePoints = window._objPossiblePoints + window._subjPossiblePoints;
+
+  startTimer();
+  renderQ();
+  showScreen('screen-quiz');
+}
+
+// Normalise JSON question format to internal format
+function normaliseQ(q) {
+  const lang = defaultLang;
+  const getText = (field) => typeof field === 'object' ? (field[lang] || field.bm || '') : (field || '');
+
+  if (q.type === 'mcq') {
+    return {
+      id: q.id, type: 'mcq',
+      q: getText(q.question),
+      a: q.answer_id,
+      opts: q.options || [],
+      exp: getText(q.explanation)
+    };
+  } else if (q.type === 'truefalse') {
+    return {
+      id: q.id, type: 'truefalse',
+      q: getText(q.question),
+      a: q.answer,
+      exp: getText(q.explanation)
+    };
+  } else if (q.type === 'drag_blank') {
+    return {
+      id: q.id, type: 'drag_blank',
+      q: getText(q.question),
+      sentence: getText(q.sentence),
+      a: q.answer,
+      opts: q.options || [],
+      exp: getText(q.explanation)
+    };
+  } else if (q.type === 'match') {
+    return {
+      id: q.id, type: 'match',
+      q: getText(q.question),
+      pairs: (q.pairs || []).map(p => ({
+        l: typeof p.l === 'object' ? getText(p.l) : p.l,
+        r: typeof p.r === 'object' ? getText(p.r) : p.r
+      })),
+      exp: getText(q.explanation)
+    };
+  } else if (q.type === 'sort') {
+    return {
+      id: q.id, type: 'sort',
+      q: getText(q.question),
+      items: (q.items || []).map(item => ({
+        id: item.id,
+        label: typeof item.label === 'object' ? getText(item.label) : item.label
+      })),
+      answer: q.answer || [],
+      exp: getText(q.explanation)
+    };
+  }
+  return q;
+}
+
+// Fallback questions (same as before for demo)
+function getFallbackQ(key) {
+  const FALLBACK = {
+    sifir:{
+      objective:[
+        {id:'s1',type:'mcq',q:'4 × 7 = ?',a:'28',opts:['28','24','32','21'],exp:'4 × 7 = 28. Cuba ingat: 7+7+7+7 = 28.'},
+        {id:'s2',type:'mcq',q:'6 × 8 = ?',a:'48',opts:['48','42','54','40'],exp:'6 × 8 = 48. Sifir 6: …36,42,48.'},
+        {id:'s3',type:'mcq',q:'9 × 9 = ?',a:'81',opts:['81','72','90','63'],exp:'9 × 9 = 81. 80+1 = 81.'},
+        {id:'s4',type:'mcq',q:'7 × 8 = ?',a:'56',opts:['56','54','63','48'],exp:'Ingat: 5,6,7,8 → 56=7×8.'},
+        {id:'s5',type:'mcq',q:'5 × 6 = ?',a:'30',opts:['30','25','35','28'],exp:'Sifir 5 sentiasa berakhir 0 atau 5.'},
+        {id:'s6',type:'mcq',q:'8 × 4 = ?',a:'32',opts:['32','28','36','24'],exp:'8 × 4 = 32.'},
+        {id:'s7',type:'mcq',q:'3 × 9 = ?',a:'27',opts:['27','24','30','21'],exp:'3 × 9 = 27. Jumlah digit: 2+7=9 ✓'},
+        {id:'s8',type:'mcq',q:'6 × 6 = ?',a:'36',opts:['36','30','42','48'],exp:'6 × 6 = 36. Nombor kuasa dua 6.'},
+        {id:'s9',type:'mcq',q:'9 × 7 = ?',a:'63',opts:['63','56','72','54'],exp:'9 × 7 = 63. Semak: 6+3=9 ✓'},
+        {id:'s10',type:'mcq',q:'8 × 9 = ?',a:'72',opts:['72','63','81','64'],exp:'8 × 9 = 72. Semak: 7+2=9 ✓'},
+        {id:'s11',type:'mcq',q:'7 × 7 = ?',a:'49',opts:['49','42','56','48'],exp:'7 × 7 = 49. Nombor kuasa dua 7.'},
+        {id:'s12',type:'mcq',q:'6 × 4 = ?',a:'24',opts:['24','20','28','18'],exp:'6 × 4 = 24.'},
+        {id:'s13',type:'mcq',q:'8 × 7 = ?',a:'56',opts:['56','48','63','54'],exp:'8 × 7 = 56.'},
+        {id:'s14',type:'mcq',q:'9 × 6 = ?',a:'54',opts:['54','48','63','45'],exp:'9 × 6 = 54. Semak: 5+4=9 ✓'},
+        {id:'s15',type:'mcq',q:'5 × 5 = ?',a:'25',opts:['25','20','30','15'],exp:'5 × 5 = 25.'},
+        {id:'s16',type:'mcq',q:'4 × 4 = ?',a:'16',opts:['16','12','20','8'],exp:'4 × 4 = 16.'},
+        {id:'s17',type:'mcq',q:'3 × 7 = ?',a:'21',opts:['21','18','24','28'],exp:'3 × 7 = 21.'},
+        {id:'s18',type:'mcq',q:'6 × 9 = ?',a:'54',opts:['54','48','63','45'],exp:'6 × 9 = 54. Semak: 5+4=9 ✓'},
+        {id:'s19',type:'mcq',q:'7 × 3 = ?',a:'21',opts:['21','18','24','28'],exp:'7 × 3 = 21.'},
+        {id:'s20',type:'mcq',q:'8 × 3 = ?',a:'24',opts:['24','21','27','18'],exp:'8 × 3 = 24.'}
+      ],
+      subjective:[
+        {id:'ss1',type:'drag_blank',q:'Lengkapkan: 4 × ___ = 28',sentence:'4 × ___ = 28',a:'7',opts:['5','6','7','8'],exp:'4 × 7 = 28. Bahagi: 28 ÷ 4 = 7.'},
+        {id:'ss2',type:'drag_blank',q:'Lengkapkan: 6 × ___ = 48',sentence:'6 × ___ = 48',a:'8',opts:['6','7','8','9'],exp:'6 × 8 = 48. Bahagi: 48 ÷ 6 = 8.'},
+        {id:'ss3',type:'truefalse',q:'5 × 7 = 35. Betul atau Salah?',a:'Betul',exp:'5 × 7 = 35. Betul! Sifir 5: 5,10,15,20,25,30,35.'},
+        {id:'ss4',type:'truefalse',q:'8 × 6 = 42. Betul atau Salah?',a:'Salah',exp:'8 × 6 = 48, bukan 42. Salah!'},
+        {id:'ss5',type:'match',q:'Padankan hasil darab yang betul',pairs:[{l:'4 × 6',r:'24'},{l:'6 × 7',r:'42'},{l:'9 × 5',r:'45'},{l:'3 × 9',r:'27'}],exp:'4×6=24, 6×7=42, 9×5=45, 3×9=27'},
+        {id:'ss6',type:'sort',q:'Susun dari terkecil ke terbesar',items:[{id:'a',label:'9×9=81'},{id:'b',label:'7×8=56'},{id:'c',label:'6×6=36'},{id:'d',label:'5×5=25'}],answer:['d','c','b','a'],exp:'25 < 36 < 56 < 81'},
+        {id:'ss7',type:'drag_blank',q:'Lengkapkan: 7 × ___ = 49',sentence:'7 × ___ = 49',a:'7',opts:['5','6','7','8'],exp:'7 × 7 = 49. Nombor kuasa dua 7.'},
+        {id:'ss8',type:'truefalse',q:'9 × 6 = 54. Betul atau Salah?',a:'Betul',exp:'9 × 6 = 54. Betul! Semak: 5+4=9 ✓'},
+        {id:'ss9',type:'match',q:'Padankan hasil darab',pairs:[{l:'5 × 5',r:'25'},{l:'4 × 4',r:'16'},{l:'3 × 7',r:'21'},{l:'6 × 4',r:'24'}],exp:'5×5=25, 4×4=16, 3×7=21, 6×4=24'},
+        {id:'ss10',type:'drag_blank',q:'Lengkapkan: 8 × ___ = 56',sentence:'8 × ___ = 56',a:'7',opts:['6','7','8','9'],exp:'8 × 7 = 56. Bahagi: 56 ÷ 8 = 7.'}
+      ]
+    }
+  };
+  return FALLBACK[key] || FALLBACK.sifir;
+}
+
+// ══════════════════════════════════════
+// TIMER
+// ══════════════════════════════════════
+function startTimer() {
+  clearInterval(timerInterval);
+  updateTimerDisp();
+  timerInterval = setInterval(() => {
+    timerLeft--;
+    updateTimerDisp();
+    if (timerLeft <= 0) { clearInterval(timerInterval); submitQuiz(); }
+  }, 1000);
+}
+function updateTimerDisp() {
+  const m = Math.floor(timerLeft / 60), s = timerLeft % 60;
+  $('quiz-timer').textContent = '⏱ ' + m + ':' + s.toString().padStart(2, '0');
+  $('quiz-timer').style.color = timerLeft <= 30 ? 'var(--red)' : 'var(--navy)';
+}
+function confirmQuit() { clearInterval(timerInterval); showScreen('screen-level'); }
+
+// ══════════════════════════════════════
+// RENDER QUESTION
+// ══════════════════════════════════════
+function renderQ() {
+  const l = L();
+  const isObj = currentSection === 'obj';
+  const session = isObj ? sessionObj : sessionSubj;
+  const total = sessionObj.length + sessionSubj.length;
+  const globalIdx = isObj ? currentQ : sessionObj.length + currentQ;
+  const q = session[currentQ];
+
+  $('q-context').textContent = '📚 ' + currentTopic.name + ' • ' + currentTopic.subj;
+  $('q-section').textContent = isObj ? ((l.quiz && l.quiz.section_obj) || 'BAHAGIAN 1') : ((l.quiz && l.quiz.section_subj) || 'BAHAGIAN 2');
+  $('q-num').textContent = 'Soalan ' + (globalIdx + 1) + ' / ' + total;
+  $('q-text').textContent = q.q;
+  $('quiz-prog').textContent = (globalIdx + 1) + '/' + total;
+  $('quiz-score').textContent = '⭐ ' + score;
+  $('prog-fill').style.width = ((globalIdx / total) * 100) + '%';
+  $('section-badge').textContent = isObj ? 'Objektif' : 'Subjektif';
+  $('section-badge').className = 'quiz-section-badge' + (isObj ? '' : ' subj');
+  $('explanation').textContent = '';
+  $('explanation').classList.remove('show');
+  answered = false;
+
+  switch (q.type) {
+    case 'mcq':       renderMCQ(q);   break;
+    case 'truefalse': renderTF(q);    break;
+    case 'drag_blank':renderDrag(q);  break;
+    case 'match':     renderMatch(q); break;
+    case 'sort':      renderSort(q);  break;
+    default:          renderMCQ(q);
   }
 }
 
-function renderGameGrid() {
-  if (!allData) return;
-  const zone = allData[currentZone];
-  const grid = $('game-grid');
-  grid.innerHTML = '';
+// ── MCQ ──
+function renderMCQ(q) {
+  const opts = shuffle(q.opts).map((o, i) => {
+    const safeO = o.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const safeA = q.a.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    const safeExp = (q.exp || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ');
+    return '<div class="opt" onclick="answerMCQ(this,\'' + safeO + '\',\'' + safeA + '\',\'' + safeExp + '\')">'
+      + '<div class="opt-letter">' + String.fromCharCode(65 + i) + '</div>' + o + '</div>';
+  }).join('');
+  $('q-answer-area').innerHTML = '<div class="opts">' + opts + '</div>';
+}
+function answerMCQ(el, selected, ans, exp) {
+  if (answered) return; answered = true;
+  const ok = selected === ans;
+  document.querySelectorAll('.opt').forEach(o => {
+    const t = o.textContent.trim().slice(1).trim();
+    if (t === ans) o.classList.add('correct');
+    else if (o === el && !ok) o.classList.add('wrong');
+  });
+  markAnswer(ok, exp);
+}
 
-  Object.entries(zone.games).forEach(([key, game]) => {
-    const scoreKey = `${currentZone}-${key}`;
-    const stars = gameScores[scoreKey] || 0;
-    const card = document.createElement('div');
-    card.className = 'game-card';
-    card.innerHTML = `
-      <span class="game-icon">${game.icon}</span>
-      <div class="game-title">${game.name}</div>
-      <div class="game-stars">${renderStars(stars)}</div>
-    `;
-    card.onclick = () => startGame(key);
-    grid.appendChild(card);
+// ── TRUE/FALSE ──
+function renderTF(q) {
+  const safeExp = (q.exp || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ');
+  const safeA = q.a.replace(/'/g, "\\'");
+  $('q-answer-area').innerHTML = '<div class="tf-btns">'
+    + '<button class="tf-btn" onclick="answerTF(this,\'Betul\',\'' + safeA + '\',\'' + safeExp + '\')">✅ Betul</button>'
+    + '<button class="tf-btn" onclick="answerTF(this,\'Salah\',\'' + safeA + '\',\'' + safeExp + '\')">❌ Salah</button>'
+    + '</div>';
+}
+function answerTF(el, selected, ans, exp) {
+  if (answered) return; answered = true;
+  const ok = selected === ans;
+  el.classList.add(ok ? 'correct' : 'wrong');
+  if (!ok) document.querySelectorAll('.tf-btn').forEach(b => { if (b !== el) b.classList.add('correct'); });
+  markAnswer(ok, exp);
+}
+
+// ── DRAG BLANK ──
+function renderDrag(q) {
+  const sentenceHtml = q.sentence.replace('___', '<span class="drag-blank" id="drag-blank">___</span>');
+  const optsHtml = shuffle(q.opts).map(o => {
+    const safeExp = (q.exp || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'");
+    return '<div class="drag-opt" onclick="pickDrag(this,\'' + o + '\',\'' + q.a + '\',\'' + safeExp + '\')">' + o + '</div>';
+  }).join('');
+  $('q-answer-area').innerHTML = '<div class="drag-sentence">' + sentenceHtml + '</div><div class="drag-opts" id="drag-opts">' + optsHtml + '</div>';
+}
+function pickDrag(el, val, ans, exp) {
+  if (answered) return; answered = true;
+  document.querySelectorAll('.drag-opt').forEach(o => o.classList.add('used'));
+  $('drag-blank').textContent = val;
+  $('drag-blank').classList.add('filled');
+  const ok = val === ans;
+  $('drag-blank').classList.add(ok ? 'correct' : 'wrong');
+  el.classList.remove('used');
+  el.classList.add(ok ? 'correct' : 'wrong');
+  markAnswer(ok, exp);
+}
+
+// ── MATCH ──
+function renderMatch(q) {
+  matchSelected = null; matchUserPairs = [];
+  matchLeftItems = shuffle(q.pairs.map((p, i) => ({ val: p.l, idx: i })));
+  matchRightItems = shuffle(q.pairs.map((p, i) => ({ val: p.r, origIdx: i })));
+  window._matchPairs = q.pairs;
+  window._matchTotal = q.pairs.length;
+  window._matchQ = q;
+
+  $('q-answer-area').innerHTML = '<div class="match-container" id="match-container">'
+    + '<svg class="match-svg-overlay" id="match-svg"></svg>'
+    + '<div class="match-cols">'
+    + '<div class="match-col" id="match-left-col">'
+    + '<div class="match-col-label">' + ((L().quiz && L().quiz.match_left) || 'Left') + '</div>'
+    + matchLeftItems.map((item, i) => '<div class="match-item" id="ml-' + i + '" data-idx="' + i + '" data-side="left" onclick="selectMatch(this,\'left\',' + i + ')">' + item.val + '</div>').join('')
+    + '</div>'
+    + '<div class="match-col" id="match-right-col">'
+    + '<div class="match-col-label">' + ((L().quiz && L().quiz.match_right) || 'Right') + '</div>'
+    + matchRightItems.map((item, i) => '<div class="match-item" id="mr-' + i + '" data-idx="' + i + '" data-side="right" onclick="selectMatch(this,\'right\',' + i + ')">' + item.val + '</div>').join('')
+    + '</div></div></div>';
+  setTimeout(drawLines, 80);
+}
+
+function getMatchPt(el, side) {
+  const cont = $('match-container');
+  if (!cont || !el) return { x: 0, y: 0 };
+  const cr = cont.getBoundingClientRect();
+  const er = el.getBoundingClientRect();
+  const y = er.top - cr.top + er.height / 2;
+  const x = side === 'left' ? er.right - cr.left : er.left - cr.left;
+  return { x, y };
+}
+
+function drawLines(final = false) {
+  const svg = $('match-svg'); const cont = $('match-container');
+  if (!svg || !cont) return;
+  svg.setAttribute('width', cont.offsetWidth);
+  svg.setAttribute('height', cont.offsetHeight);
+  svg.innerHTML = '';
+  matchUserPairs.forEach(pair => {
+    const lEl = $('ml-' + pair.li); const rEl = $('mr-' + pair.ri);
+    if (!lEl || !rEl) return;
+    const lp = getMatchPt(lEl, 'left'); const rp = getMatchPt(rEl, 'right');
+    let stroke = '#9B9DA3';
+    if (final) {
+      const lVal = matchLeftItems[pair.li] && matchLeftItems[pair.li].val;
+      const rVal = matchRightItems[pair.ri] && matchRightItems[pair.ri].val;
+      stroke = window._matchPairs.find(p => p.l === lVal && p.r === rVal) ? '#2ECC71' : '#E74C3C';
+    }
+    const mx = (lp.x + rp.x) / 2;
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+    path.setAttribute('d', 'M' + lp.x + ',' + lp.y + ' C' + mx + ',' + lp.y + ' ' + mx + ',' + rp.y + ' ' + rp.x + ',' + rp.y);
+    path.setAttribute('stroke', stroke); path.setAttribute('stroke-width', '2.5');
+    path.setAttribute('fill', 'none'); path.setAttribute('stroke-linecap', 'round');
+    if (!final) path.setAttribute('stroke-dasharray', '5,4');
+    svg.appendChild(path);
   });
 }
 
-// =================== GAME ===================
-function startGame(gameKey) {
-  if (!allData) return;
-  currentGameKey = gameKey;
-  currentQ = 0;
-  score = 0;
-  streak = 0;
-  answered = false;
-  $('streak-wrap').style.display = 'none';
-
-  const zone = allData[currentZone];
-  const game = zone.games[gameKey];
-  const total = zone.questionsPerSession;
-
-  // Generate questions based on game type
-  if (game.type === 'math_dynamic') {
-    sessionQuestions = generateMathDynamic(game, total);
-  } else if (game.type === 'math_hybrid') {
-    sessionQuestions = generateMathHybrid(game, total);
-  } else if (game.type === 'mcq_exam') {
-    sessionQuestions = generateExam(game);
+function selectMatch(el, side, idx) {
+  if (el.classList.contains('paired') || el.classList.contains('correct') || el.classList.contains('wrong')) return;
+  if (!matchSelected) {
+    document.querySelectorAll('.match-item').forEach(e => e.classList.remove('selected'));
+    matchSelected = { el, side, idx }; el.classList.add('selected');
   } else {
-    sessionQuestions = shuffle(game.questions || []).slice(0, total);
-  }
-
-  $('game-header-name').textContent = `${game.icon} ${game.name}`;
-  $('game-header-score').textContent = '⭐ 0';
-
-  // Timer
-  // Timer — zone4 exam = 3600s, others = 300s
-  const gameTimer = (allData[currentZone]?.timer) || 300;
-  timerLeft = gameTimer;
-  startTimer(total);
-
-  showScreen('screen-game');
-  renderQuestion();
-}
-
-function startTimer(total) {
-  clearInterval(timerInterval);
-  updateTimerDisplay();
-
-  timerInterval = setInterval(() => {
-    timerLeft--;
-    updateTimerDisplay();
-
-    if (timerLeft <= 0) {
-      clearInterval(timerInterval);
-      submitGame();
+    if (matchSelected.side === side) {
+      document.querySelectorAll('.match-item').forEach(e => e.classList.remove('selected'));
+      matchSelected = { el, side, idx }; el.classList.add('selected'); return;
     }
-  }, 1000);
-}
-
-function updateTimerDisplay() {
-  const m = Math.floor(timerLeft / 60);
-  const s = timerLeft % 60;
-  const display = `${m}:${s.toString().padStart(2,'0')}`;
-  $('timer-display').textContent = display;
-  $('timer-display').className = timerLeft <= 30 ? 'timer-count warning' : 'timer-count';
-  $('timer-fill').style.width = `${(timerLeft / 300) * 100}%`;
-}
-
-function renderQuestion() {
-  const zone = allData[currentZone];
-  const game = zone.games[currentGameKey];
-  const total = sessionQuestions.length;
-  const q = sessionQuestions[currentQ];
-
-  $('game-header-progress').textContent = `Soalan ${currentQ + 1}/${total}`;
-  $('prog-fill').style.width = `${(currentQ / total) * 100}%`;
-
-  // Show finish button after all answered
-  $('btn-finish').style.display = 'none';
-
-  answered = false;
-  const card = $('q-card');
-
-  if (game.type === 'counting' || game.type === 'counting_dynamic') {
-    renderCounting(card, q);
-  } else if (game.type === 'letters') {
-    renderLetters(card, q);
-  } else {
-    renderMCQ(card, q);
-  }
-}
-
-function renderCounting(card, q) {
-  const opts = shuffle([q.count, q.count+1, Math.max(1,q.count-1), q.count+2]);
-  card.innerHTML = `
-    <div class="q-label">Kira & Jawab</div>
-    <div class="q-text">${q.label}</div>
-    <div class="count-items">
-      ${Array(q.count).fill(q.emoji).map((e,i) =>
-        `<span class="count-item" style="animation-delay:${i*0.06}s">${e}</span>`
-      ).join('')}
-    </div>
-    <div class="opts-grid">
-      ${opts.map(n => `
-        <button class="opt-btn" onclick="handleAnswer(this,'${n}','${q.count}')">
-          <span style="font-size:28px;font-weight:800;">${n}</span>
-        </button>`).join('')}
-    </div>`;
-}
-
-function renderLetters(card, q) {
-  const opts = shuffle([q.lower, ...q.wrong]).slice(0, 4);
-  const isWord = q.upper.length > 1;
-  card.innerHTML = `
-    <div class="q-label">Cari Huruf Kecil</div>
-    ${isWord
-      ? `<div class="q-text">${q.upper}</div>`
-      : `<div class="q-letter">${q.upper}</div>`}
-    <div class="opts-grid">
-      ${opts.map(l => `
-        <button class="opt-btn" onclick="handleAnswer(this,'${l}','${q.lower}')">
-          <span style="font-size:36px;font-weight:800;">${l}</span>
-        </button>`).join('')}
-    </div>`;
-}
-
-function renderMCQ(card, q) {
-  const opts = shuffle(q.opts);
-  card.innerHTML = `
-    <div class="q-label">Pilih Jawapan</div>
-    <div class="q-text">${q.q}</div>
-    <div class="opts-grid">
-      ${opts.map(o => `
-        <button class="opt-btn" onclick="handleAnswer(this,\`${o.replace(/`/g,"'")}\`,\`${q.a.replace(/`/g,"'")}\`)">
-          <span style="font-size:14px;">${o}</span>
-        </button>`).join('')}
-    </div>`;
-}
-
-function handleAnswer(btn, selected, correct) {
-  if (answered) return;
-  answered = true;
-
-  document.querySelectorAll('.opt-btn').forEach(b => b.disabled = true);
-
-  const ok = selected.trim() === correct.trim();
-
-  if (ok) {
-    btn.classList.add('correct');
-    score++;
-    streak++;
-    $('game-header-score').textContent = `⭐ ${score}`;
-    showToast('🎉 Betul! Pandai!', 'ok');
-    playSound('ok');
-    if (streak >= 3) {
-      const sw = $('streak-wrap');
-      $('streak-count').textContent = streak;
-      sw.style.display = 'flex';
-      clearTimeout(sw._t);
-      sw._t = setTimeout(() => sw.style.display = 'none', 2000);
+    const li = side === 'right' ? matchSelected.idx : idx;
+    const ri = side === 'right' ? idx : matchSelected.idx;
+    const leftEl = side === 'right' ? matchSelected.el : el;
+    const rightEl = side === 'right' ? el : matchSelected.el;
+    const oldPairs = matchUserPairs.filter(p => p.li === li || p.ri === ri);
+    oldPairs.forEach(p => { $('ml-' + p.li) && $('ml-' + p.li).classList.remove('paired'); $('mr-' + p.ri) && $('mr-' + p.ri).classList.remove('paired'); });
+    matchUserPairs = matchUserPairs.filter(p => p.li !== li && p.ri !== ri);
+    matchUserPairs.push({ li, ri });
+    leftEl.classList.remove('selected'); rightEl.classList.remove('selected');
+    leftEl.classList.add('paired'); rightEl.classList.add('paired');
+    matchSelected = null;
+    drawLines(false);
+    if (matchUserPairs.length === window._matchTotal) {
+      answered = true;
+      setTimeout(() => {
+        drawLines(true);
+        let correctCount = 0;
+        matchUserPairs.forEach(pair => {
+          const lVal = matchLeftItems[pair.li] && matchLeftItems[pair.li].val;
+          const rVal = matchRightItems[pair.ri] && matchRightItems[pair.ri].val;
+          const ok = !!window._matchPairs.find(p => p.l === lVal && p.r === rVal);
+          if (ok) correctCount++;
+          $('ml-' + pair.li) && ($('ml-' + pair.li).classList.remove('paired'), $('ml-' + pair.li).classList.add(ok ? 'correct' : 'wrong'));
+          $('mr-' + pair.ri) && ($('mr-' + pair.ri).classList.remove('paired'), $('mr-' + pair.ri).classList.add(ok ? 'correct' : 'wrong'));
+        });
+        const l = L();
+        const allOk = correctCount === window._matchTotal;
+        const q = window._matchQ;
+        if (q.exp) { $('explanation').textContent = '💡 ' + q.exp; $('explanation').classList.add('show'); }
+        showToast(allOk ? ((l.quiz && l.quiz.correct) || '🎉 Correct!') : ('✅ ' + correctCount + '/' + window._matchTotal + ' betul'), allOk ? 'ok' : 'no');
+        score += correctCount;
+        if (currentSection === 'obj') objScore += correctCount; else subjScore += correctCount;
+        $('quiz-score').textContent = '⭐ ' + score;
+        setTimeout(nextQ, 1600);
+      }, 300);
     }
-  } else {
-    streak = 0;
-    $('streak-wrap').style.display = 'none';
-    btn.classList.add('wrong');
-    showToast('❌ Cuba lagi!', 'no');
-    playSound('no');
-    // Highlight correct
-    document.querySelectorAll('.opt-btn').forEach(b => {
-      if (b.textContent.trim() === correct.trim()) b.classList.add('correct');
-    });
   }
+}
 
+// ── SORT ──
+function renderSort(q) {
+  sortOrder = shuffle(q.items.map(i => i.id));
+  const itemMap = Object.fromEntries(q.items.map(i => [i.id, i.label]));
+  window._sortAnswer = q.answer; window._sortItemMap = itemMap; window._sortExp = q.exp || '';
+  renderSortItems();
+}
+
+function renderSortItems() {
+  const itemMap = window._sortItemMap;
+  const l = L();
+  $('q-answer-area').innerHTML = '<div class="sort-area" id="sort-area">'
+    + sortOrder.map((id, i) =>
+      '<div class="sort-item" draggable="true" data-idx="' + i + '" data-id="' + id + '" '
+      + 'ondragstart="dragStart(event,' + i + ')" ondragover="dragOver(event)" ondrop="dropItem(event,' + i + ')" ondragend="dragEnd(event)" '
+      + 'ontouchstart="touchStart(event,' + i + ')" ontouchmove="touchMove(event)" ontouchend="touchEnd(event,' + i + ')">'
+      + '<span class="sort-handle">☰</span>' + itemMap[id] + '</div>'
+    ).join('')
+    + '</div>'
+    + '<button class="sort-check-btn" onclick="checkSort()">' + ((l.quiz && l.quiz.sort_check) || '✅ Check') + '</button>';
+}
+
+let dragSrcIdx = null;
+function dragStart(e, idx) { dragSrcIdx = idx; e.target.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
+function dragOver(e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over')); e.currentTarget.classList.add('drag-over'); }
+function dragEnd(e) { e.target.classList.remove('dragging'); document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over')); }
+function dropItem(e, targetIdx) {
+  e.preventDefault();
+  if (dragSrcIdx === null || dragSrcIdx === targetIdx) return;
+  const moved = sortOrder.splice(dragSrcIdx, 1)[0];
+  sortOrder.splice(targetIdx, 0, moved);
+  dragSrcIdx = null; renderSortItems();
+}
+function touchStart(e, idx) {
+  touchDragIdx = idx; touchDragEl = e.currentTarget; touchDragEl.classList.add('dragging');
+  const rect = touchDragEl.getBoundingClientRect();
+  touchClone = touchDragEl.cloneNode(true);
+  touchClone.style.cssText = 'position:fixed;left:' + rect.left + 'px;top:' + rect.top + 'px;width:' + rect.width + 'px;opacity:0.8;z-index:999;pointer-events:none;background:var(--card);border:2px solid var(--gold);border-radius:11px;';
+  document.body.appendChild(touchClone);
+}
+function touchMove(e) {
+  e.preventDefault();
+  if (!touchClone) return;
+  const touch = e.touches[0];
+  touchClone.style.left = (touch.clientX - touchClone.offsetWidth / 2) + 'px';
+  touchClone.style.top = (touch.clientY - touchClone.offsetHeight / 2) + 'px';
+  document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over'));
+  touchClone.style.display = 'none';
+  const elBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+  touchClone.style.display = '';
+  const sortItem = elBelow && elBelow.closest('.sort-item');
+  if (sortItem && sortItem !== touchDragEl) sortItem.classList.add('drag-over');
+}
+function touchEnd(e) {
+  if (!touchDragEl) return;
+  const touch = e.changedTouches[0];
+  if (touchClone) { touchClone.remove(); touchClone = null; }
+  touchDragEl.classList.remove('dragging');
+  document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over'));
+  touchDragEl.style.display = 'none';
+  const elBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+  touchDragEl.style.display = '';
+  const sortItem = elBelow && elBelow.closest('.sort-item');
+  if (sortItem && sortItem !== touchDragEl) {
+    const targetIdx = parseInt(sortItem.getAttribute('data-idx'));
+    if (!isNaN(targetIdx) && touchDragIdx !== targetIdx) {
+      const moved = sortOrder.splice(touchDragIdx, 1)[0];
+      sortOrder.splice(targetIdx, 0, moved);
+      renderSortItems();
+    }
+  }
+  touchDragEl = null; touchDragIdx = null;
+}
+function checkSort() {
+  if (answered) return; answered = true;
+  const ok = JSON.stringify(sortOrder) === JSON.stringify(window._sortAnswer);
+  document.querySelectorAll('.sort-item').forEach((el, i) => { el.classList.add(sortOrder[i] === window._sortAnswer[i] ? 'correct' : 'wrong'); });
+  markAnswer(ok, window._sortExp);
+}
+
+// ── MARK ANSWER ──
+function markAnswer(ok, exp) {
+  if (ok) { score++; if (currentSection === 'obj') objScore++; else subjScore++; }
+  $('quiz-score').textContent = '⭐ ' + score;
+  const l = L();
+  showToast(ok ? ((l.quiz && l.quiz.correct) || '🎉 Correct!') : ((l.quiz && l.quiz.wrong) || '❌ Try again!'), ok ? 'ok' : 'no');
+  if (exp) { $('explanation').textContent = '💡 ' + exp; $('explanation').classList.add('show'); }
+  setTimeout(nextQ, ok ? 1600 : 2000);
+}
+
+function nextQ() {
   currentQ++;
-
-  if (currentQ >= sessionQuestions.length) {
-    // All questions done — show finish button
-    setTimeout(() => {
-      $('btn-finish').style.display = 'block';
-      $('prog-fill').style.width = '100%';
-    }, 800);
-  } else {
-    setTimeout(renderQuestion, 1200);
-  }
+  const session = currentSection === 'obj' ? sessionObj : sessionSubj;
+  if (currentQ >= session.length) {
+    if (currentSection === 'obj' && sessionSubj.length > 0) { currentSection = 'subj'; currentQ = 0; renderQ(); }
+    else submitQuiz();
+  } else renderQ();
 }
 
-function submitGame() {
+// ══════════════════════════════════════
+// RESULT
+// ══════════════════════════════════════
+function getResultMsg(level, pct) {
+  const l = L();
+  const msgs = (l.result && l.result.messages && l.result.messages[level]) || {};
+  if (pct >= 1) return msgs.p100 || '🏆';
+  if (pct >= .8) return msgs.p80 || '🌟';
+  if (pct >= .6) return msgs.p60 || '💪';
+  if (pct >= .4) return msgs.p40 || '😅';
+  return msgs.p0 || '😢';
+}
+
+function submitQuiz() {
   clearInterval(timerInterval);
-  const total = sessionQuestions.length;
-  const stars = starsForScore(score, total);
-  saveScore(currentZone, currentGameKey, stars);
-  updateHomeStars();
-  saveToLeaderboard();
-  showResult(score, total, stars);
-}
+  const totalPoints = window._totalPossiblePoints || (sessionObj.length + sessionSubj.length);
+  const p = totalPoints > 0 ? score / totalPoints : 0;
+  const lvlCfg = LEVEL_CFG[currentLevel] || { star_mult: 1 };
 
-function showResult(correct, total, stars) {
-  let emoji, label;
-  if (stars === 5) { emoji = '🏆'; label = 'Sempurna! Luar biasa!'; confetti(); }
-  else if (stars === 4) { emoji = '🥳'; label = 'Bagus! Hampir sempurna!'; confetti(); }
-  else if (stars === 3) { emoji = '💪'; label = 'Teruskan usaha!'; }
-  else if (stars === 2) { emoji = '😤'; label = 'Jangan putus asa!'; }
-  else if (stars === 1) { emoji = '😅'; label = 'Cuba lagi ye!'; }
-  else { emoji = '😢'; label = 'Jangan give up, cuba lagi!'; }
+  let base;
+  if (currentLevel === 'hard') { base = p >= .9 ? 5 : p >= .75 ? 4 : p >= .6 ? 3 : p >= .4 ? 2 : p >= .1 ? 1 : 0; }
+  else if (currentLevel === 'med') { base = p >= .95 ? 5 : p >= .8 ? 4 : p >= .65 ? 3 : p >= .45 ? 2 : p >= .15 ? 1 : 0; }
+  else { base = p >= 1 ? 5 : p >= .85 ? 4 : p >= .7 ? 3 : p >= .5 ? 2 : p >= .2 ? 1 : 0; }
+  const earned = base * lvlCfg.star_mult;
 
-  // Hide toast if still showing
-  $('toast').classList.remove('show');
-  $('result-emoji').textContent = emoji;
-  $('result-name').innerHTML = `Tahniah <span>${playerName}</span>!`;
-  $('result-stars').textContent = renderStars(stars);
-  $('result-correct').textContent = correct;
-  $('result-total').textContent = total;
-  $('result-label').textContent = label;
-  $('stat-correct').textContent = correct;
-  $('stat-wrong').textContent = total - correct;
-  $('stat-stars').textContent = `${renderStars(stars)}`;
+  // Save scores
+  const scores = JSON.parse(localStorage.getItem('beh-scores-' + playerName) || '{}');
+  if (!scores[currentTopic.key] || scores[currentTopic.key] < earned) {
+    scores[currentTopic.key] = earned;
+    localStorage.setItem('beh-scores-' + playerName, JSON.stringify(scores));
+  }
+  const lvlIdx = { easy: 1, med: 2, hard: 3 };
+  const lvlNum = lvlIdx[currentLevel] || 1;
+  const pk = 'prog-' + currentTopic.key;
+  const pd = JSON.parse(localStorage.getItem('beh-prog-' + playerName) || '{}');
+  if (!pd[pk] || pd[pk] < lvlNum) { pd[pk] = lvlNum; localStorage.setItem('beh-prog-' + playerName, JSON.stringify(pd)); }
 
+  const emoji = p >= 1 ? '🏆' : p >= .8 ? '🥳' : p >= .6 ? '💪' : p >= .4 ? '😤' : p >= .2 ? '😅' : '😢';
+  const l = L();
+  $('r-emoji').textContent = emoji;
+  $('r-stars').textContent = '⭐'.repeat(Math.min(base, 5)) + '☆'.repeat(Math.max(0, 5 - base));
+  $('r-correct').textContent = score; $('r-total').textContent = totalPoints;
+  $('r-label').textContent = getResultMsg(currentLevel, p);
+  $('r-mult').textContent = '×' + lvlCfg.star_mult + ' ' + currentLevel.charAt(0).toUpperCase() + currentLevel.slice(1) + ' • ' + earned + ' ⭐ diperoleh';
+  $('r-betul').textContent = score; $('r-salah').textContent = Math.max(0, totalPoints - score); $('r-bintang').textContent = '⭐' + earned;
+  const objTotal = window._objPossiblePoints || sessionObj.length;
+  const subjTotal = window._subjPossiblePoints || sessionSubj.length;
+  $('r-obj-score').textContent = objScore + '/' + objTotal;
+  $('r-subj-score').textContent = subjScore + '/' + subjTotal;
+  const completed = pd[pk] || lvlNum;
+  $('result-topic-fill').style.width = Math.round((completed / 3) * 100) + '%';
+  const res_l = (l.result) || {};
+  $('result-topic-label').textContent = (res_l.stages || '{n}/3 tahap selesai').replace('{n}', completed);
+  $('result-topic-text').textContent = completed === 3 ? (res_l.topic_complete || '🎉 Topik lengkap!') : (res_l.level_complete || '✅ Tahap {n} selesai!').replace('{n}', completed);
+
+  // Update demo LB
+  const zone = (AGE_CFG[defaultAge] && AGE_CFG[defaultAge].zone) || 'zone2';
+  if (!DEMO_LB[zone].find(r => r.name === playerName)) DEMO_LB[zone].unshift({ name: playerName, s: earned });
   showScreen('screen-result');
 }
 
-function retryGame() { startGame(currentGameKey); }
+function retryQuiz() { startQuiz(); }
+function goHome() { updateStars(); renderTopics(activeSubjects.size === 0 ? 'all' : 'multi'); renderLB(); showScreen('screen-home'); }
 
-function goHome() {
-  clearInterval(timerInterval);
-  renderGameGrid();
-  updateHomeStars();
-  showScreen('screen-home');
-  loadLeaderboard();
-}
-
-
-// =================== LB ZONE SWITCH ===================
-function switchLbZone(zone, el) {
-  lbCurrentZone = zone;
-  document.querySelectorAll('.lb-zone-tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  loadLeaderboard();
-}
-
-
-// =================== MATH DYNAMIC GENERATORS ===================
-
-function randInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-function nearbyOpts(answer, variance, count = 4) {
-  const opts = new Set([answer]);
-  let tries = 0;
-  while (opts.size < count && tries < 50) {
-    const v = answer + randInt(-variance, variance);
-    if (v > 0 && v !== answer) opts.add(v);
-    tries++;
-  }
-  // fill if needed
-  let i = 1;
-  while (opts.size < count) { opts.add(answer + i++); }
-  return shuffle([...opts]).map(String);
-}
-
-function generateMathDynamic(game, total) {
-  const op = game.operation;
-  const questions = [];
-  const usedPairs = new Set();
-
-  for (let i = 0; i < total; i++) {
-    let q, a, opts;
-
-    if (op === 'multiply') {
-      const rangeA = game.rangeA || [2, 9];
-      const rangeB = game.rangeB || [2, 12];
-      // Avoid 1x — min start from 2
-      const minA = Math.max(2, rangeA[0]);
-      const minB = Math.max(2, rangeB[0]);
-      let a1, b1, key;
-      let attempt = 0;
-      do {
-        a1 = randInt(minA, rangeA[1]);
-        b1 = randInt(minB, rangeB[1]);
-        key = `${Math.min(a1,b1)}x${Math.max(a1,b1)}`;
-        attempt++;
-      } while (usedPairs.has(key) && attempt < 50);
-      usedPairs.add(key);
-      a = a1 * b1;
-      q = { q: `${a1} × ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 5) };
-
-    } else if (op === 'divide') {
-      const rangeA = game.rangeA || [1, 9];
-      const rangeB = game.rangeB || [1, 12];
-      const pairs = game.pairs || [];
-      if (pairs.length > 0) {
-        const pair = pairs[i % pairs.length];
-        a = pair[0] / pair[1];
-        q = { q: `${pair[0]} ÷ ${pair[1]} = ?`, a: String(a), opts: nearbyOpts(a, 2) };
-      } else {
-        const b1 = randInt(rangeA[0], rangeA[1]);
-        const b2 = randInt(rangeB[0], rangeB[1]);
-        const dividend = b1 * b2;
-        a = b1;
-        q = { q: `${dividend} ÷ ${b2} = ?`, a: String(a), opts: nearbyOpts(a, 2) };
-      }
-
-    } else if (op === 'add') {
-      const range = game.range || [1, 99];
-      const a1 = randInt(range[0], Math.min(range[1], 999));
-      const b1 = randInt(1, Math.min(99, range[1] - a1));
-      a = a1 + b1;
-      q = { q: `${a1} + ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 5) };
-
-    } else if (op === 'subtract') {
-      const range = game.range || [1, 99];
-      const a1 = randInt(range[0] + 1, Math.min(range[1], 999));
-      const b1 = randInt(1, a1 - 1);
-      a = a1 - b1;
-      q = { q: `${a1} - ${b1} = ?`, a: String(a), opts: nearbyOpts(a, 5) };
-    }
-
-    if (q) questions.push(q);
-  }
-  return questions;
-}
-
-function generateMathHybrid(game, total) {
-  const questions = [];
-  const dynamicCount = game.sessionCount || 5;
-  const staticCount = total - dynamicCount;
-
-  // Generate dynamic tambah/tolak
-  const templates = (game.templates || []).filter(t => t.type === 'operation');
-  for (let i = 0; i < dynamicCount; i++) {
-    if (templates.length === 0) break;
-    const tmpl = templates[i % templates.length];
-    const fakeGame = { operation: tmpl.operation, range: [tmpl.a_range?.[0]||10, tmpl.a_range?.[1]||99] };
-    const q = generateMathDynamic(fakeGame, 1);
-    if (q[0]) questions.push(q[0]);
-  }
-
-  // Pick static questions from fixed templates
-  const fixedTemplates = (game.templates || []).filter(t => t.type === 'fixed');
-  const staticPool = [];
-  fixedTemplates.forEach(t => staticPool.push(...(t.questions || [])));
-  const picked = shuffle(staticPool).slice(0, staticCount);
-  questions.push(...picked);
-
-  return shuffle(questions);
-}
-
-function generateExam(game) {
-  const dist = game.distribution || { easy: 15, medium: 15, hard: 10 };
-  const easy = shuffle(game.questions.filter(q => q.difficulty === 'easy')).slice(0, dist.easy);
-  const medium = shuffle(game.questions.filter(q => q.difficulty === 'medium')).slice(0, dist.medium);
-  const hard = shuffle(game.questions.filter(q => q.difficulty === 'hard')).slice(0, dist.hard);
-  return shuffle([...easy, ...medium, ...hard]);
-}
-
-// =================== LEADERBOARD ===================
-async function saveToLeaderboard() {
-  if (!window._fbReady) return;
-  try {
-    const docId = deviceId + '_' + playerName.replace(/[^a-zA-Z0-9]/g, '_') + '_' + currentZone;
-    const zoneStars = Object.entries(gameScores)
-      .filter(([k]) => k.startsWith(currentZone))
-      .reduce((a, [,v]) => a + v, 0);
-    const collName = 'leaderboard_' + currentZone;
-    await window._fbSetDoc(window._fbDoc(collName, docId), {
-      name: playerName,
-      deviceId: deviceId,
-      totalStars: zoneStars,
-      zone: currentZone,
-      lastPlayed: new Date().toISOString()
-    });
-    console.log('Leaderboard saved:', docId, zoneStars, 'stars');
-  } catch(e) {
-    console.log('Leaderboard save error:', e);
-  }
-}
-
-async function loadLeaderboard() {
-  const el = $('lb-list');
-  if (!el) return;
-
-  // Wait for Firebase to be ready (max 5 seconds)
-  if (!window._fbReady) {
-    el.innerHTML = '<div class="lb-empty"><span class="lb-loading">⏳</span></div>';
-    let tries = 0;
-    await new Promise(resolve => {
-      const check = setInterval(() => {
-        tries++;
-        if (window._fbReady || tries > 10) {
-          clearInterval(check);
-          resolve();
-        }
-      }, 500);
-    });
-  }
-
-  if (!window._fbReady) {
-    el.innerHTML = '<div class="lb-empty">Tiada sambungan. Cuba refresh! 🔄</div>';
-    return;
-  }
-  el.innerHTML = '<div class="lb-empty"><span class="lb-loading">⏳</span></div>';
-
-  try {
-    console.log('Loading leaderboard for zone:', lbCurrentZone);
-    const q = window._fbQuery(
-      window._fbCollection('leaderboard_' + lbCurrentZone),
-      window._fbOrderBy('totalStars', 'desc'),
-      window._fbLimit(50)
-    );
-    const snap = await window._fbGetDocs(q);
-    const allRows = [];
-    snap.forEach(d => allRows.push(d.data()));
-    
-    // Filter by current zone
-    const rows = allRows.filter(r => r.zone === lbCurrentZone);
-    console.log('Total rows:', allRows.length, 'Zone rows:', rows.length);
-
-    if (rows.length === 0) {
-      el.innerHTML = '<div class="lb-empty">Belum ada data lagi. Main dulu! 🎮</div>';
-      return;
-    }
-
-    const myDocId = deviceId + '_' + playerName.replace(/[^a-zA-Z0-9]/g, '_');
-
-    el.innerHTML = rows.map((r, i) => {
-      const isMe = r.deviceId === deviceId && r.name === playerName;
-      const rankEmoji = i === 0 ? '🥇' : i === 1 ? '🥈' : i === 2 ? '🥉' : `${i+1}.`;
-      const rankClass = i === 0 ? 'gold' : i === 1 ? 'silver' : i === 2 ? 'bronze' : '';
-      const date = r.lastPlayed ? new Date(r.lastPlayed).toLocaleDateString('ms-MY') : '';
-      return `
-        <div class="lb-row ${isMe ? 'me' : ''}">
-          <div class="lb-rank ${rankClass}">${rankEmoji}</div>
-          <div class="lb-info">
-            <div class="lb-name">
-              ${r.name}
-              ${isMe ? '<span class="lb-you">KAMU</span>' : ''}
-            </div>
-            <div class="lb-date">${date}</div>
-          </div>
-          <div class="lb-stars">⭐ ${r.totalStars}</div>
-        </div>`;
-    }).join('');
-
-  } catch(e) {
-    el.innerHTML = '<div class="lb-empty">Gagal load leaderboard. Cuba lagi! 🔄</div>';
-  }
-}
-
-
-
-// =================== SOCIAL SHARE ===================
-function shareResult(platform) {
-  const game = allData[currentZone]?.games[currentGameKey];
-  const gameName = game ? game.name : 'MY Edu Hub';
-  const zoneLabel = allData[currentZone]?.label || currentZone;
-  const total = sessionQuestions.length;
-  const starsCount = starsForScore(score, total);
-  const starsStr = '⭐'.repeat(starsCount);
-
-  // Timer
-  const timeTaken = 300 - timerLeft;
-  let timeStr;
-  if (timeTaken < 60) timeStr = `${timeTaken} saat je`;
-  else timeStr = `${Math.floor(timeTaken/60)} minit ${timeTaken%60} saat`;
-
-  const msg = `${starsStr} ${playerName} dapat ${score}/${total}!\n\n${gameName} • ${zoneLabel}\nSiap dalam ${timeStr}! 😄\nKorang boleh beat ${playerName} tak? 👇\ngames.bijakeduhub.com\n\n#SeronokBelajar`;
-  const url = 'https://games.bijakeduhub.com';
-
-  if (platform === 'copy') {
-    navigator.clipboard.writeText(msg + '\n' + url).then(() => {
-      showToast('✅ Teks disalin!', 'ok');
-    });
-    return;
-  }
-  if (platform === 'ig') {
-    navigator.clipboard.writeText(msg).then(() => {
-      showToast('✅ Teks disalin! Buka Instagram & paste.', 'ok');
-    });
-    return;
-  }
-  const links = {
-    wa: `https://wa.me/?text=${encodeURIComponent(msg)}`,
-    fb: `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&quote=${encodeURIComponent(msg)}`,
-    tg: `https://t.me/share/url?url=${encodeURIComponent(url)}&text=${encodeURIComponent(msg)}`
-  };
-  if (links[platform]) window.open(links[platform], '_blank');
-}
-
-// =================== EXPOSE TO GLOBAL SCOPE ===================
-// Required because type="module" scopes functions locally
-window.startApp = startApp;
-window.setPlayer = setPlayer;
-window.openTukarPemain = openTukarPemain;
-window.closeTukarPemain = closeTukarPemain;
-window.confirmTukarPemain = confirmTukarPemain;
-window.switchZone = switchZone;
-window.startGame = startGame;
-window.handleAnswer = handleAnswer;
-window.handleAnswer = handleAnswer;
-window.submitGame = submitGame;
-window.retryGame = retryGame;
-window.goHome = goHome;
-window.loadLeaderboard = loadLeaderboard;
-window.switchLbZone = switchLbZone;
-window.shareResult = shareResult;
-
-// =================== PWA INSTALL ===================
-let deferredPrompt = null;
-window.addEventListener('beforeinstallprompt', e => {
-  e.preventDefault();
-  deferredPrompt = e;
-  document.getElementById('pwa-install-btn')?.classList.add('show');
-});
-function installPWA() {
-  if (!deferredPrompt) return;
-  deferredPrompt.prompt();
-  deferredPrompt.userChoice.then(() => {
-    deferredPrompt = null;
-    document.getElementById('pwa-install-btn')?.classList.remove('show');
-  });
-}
-window.installPWA = installPWA;
-
-// =================== INIT ===================
-loadData().then(() => {
-  const savedPlayer = localStorage.getItem('meh-player');
-  if (savedPlayer) setPlayer(savedPlayer);
-});
-
-// Check if player already saved
-const savedPlayer = localStorage.getItem('meh-player');
-if (savedPlayer) {
-  setPlayer(savedPlayer);
-} else {
-  showScreen('screen-name');
-}
-
+// ══════════════════════════════════════
+// START
+// ══════════════════════════════════════
+initApp();
 </script>
 </body>
 </html>

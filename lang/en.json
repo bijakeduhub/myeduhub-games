@@ -1,0 +1,22 @@
+{
+  "app": { "name": "MY Edu Hub", "motto": "Where Learning Meets Success", "tagline": "For the best learning experience" },
+  "nav": { "back": "Back", "exit": "Exit" },
+  "home": { "welcome_hi": "Welcome,", "pick_topic": "Choose Topic" },
+  "level": { "age_label": "Age Group", "choose_level": "Choose Level", "easy": "Easy", "medium": "Medium", "hard": "Hard", "start": "🚀 Start Quiz!", "start_exam": "🚀 Start Exam!", "exam_questions": "Questions", "exam_duration": "Duration", "exam_multiplier": "Star Multiplier" },
+  "quiz": { "section_obj": "PART 1 — OBJECTIVE", "section_subj": "PART 2 — SUBJECTIVE", "correct": "🎉 Correct! Well done!", "wrong": "❌ Try again!", "match_left": "Left", "match_right": "Right", "sort_check": "✅ Check Order" },
+  "result": {
+    "tahniah": "Congratulations,", "retry": "🔄 Try Again", "home": "🏠 Back to Menu",
+    "topic_complete": "🎉 Topic complete! Well done!", "level_complete": "✅ Level {n} done — Keep going!", "stages": "{n}/3 levels done",
+    "messages": {
+      "easy":  { "p100":"Good! Keep it up! 🌟", "p80":"Well done! 😊", "p60":"Almost there! 💪", "p40":"Try again! 😅", "p0":"Keep going! 😢" },
+      "med":   { "p100":"Great! Impressive! 🏆", "p80":"Great effort! 🌟", "p60":"Good try! 😊", "p40":"Keep going! 💪", "p0":"Don't give up! 😢" },
+      "hard":  { "p100":"Exceptional! Outstanding! 🥇", "p80":"Excellent! 🏆", "p60":"Well done! 🌟", "p40":"Keep pushing! 💪", "p0":"Don't give up! 😢" },
+      "exam":  { "p100":"Perfect! 🏆", "p80":"Excellent! 🥇", "p60":"Well done! 🌟", "p40":"Try again! 💪", "p0":"Don't give up! 😢" }
+    }
+  },
+  "feedback": { "title": "Feedback", "child": "Child's Name", "parent": "Parent's Name", "contact": "Phone / Email (Optional)", "rating": "Rating", "category": "Category", "comment": "Comment", "submit": "📨 Submit", "cats": ["Praise ⭐","Suggestion 💡","Bug 🐛","Question ❓"], "err_parent": "Please fill parent name", "err_rating": "Please give a rating", "err_comment": "Please write a comment", "success": "✅ Thank you! Feedback received." },
+  "profile": { "title": "Update Profile", "name": "Child's Name", "age": "Age Group", "save": "✅ Save", "cancel": "Cancel", "updated": "✅ Profile updated!" },
+  "footer": { "title": "💬 What They Say", "sub": "Experience from our parents & students", "copy": "© 2026 MY Edu Hub • Where Learning Meets Success" },
+  "subjects": { "all": "All", "matematik": "Mathematics", "sains": "Science", "bm": "Malay", "english": "English", "sejarah": "History", "pelbagai": "General" },
+  "topic_names": { "sifir": "Times Tables", "tambah": "Addition & Subtraction", "pecahan": "Fractions", "masa_wang": "Time & Money", "rantai": "Food Chain", "haiwan": "Animals & Plants", "suria": "Solar System", "kosa_kata": "Vocabulary (BM)", "ayat": "Sentence & Grammar", "peribahasa": "Proverbs", "vocab": "Vocabulary", "grammar": "Grammar", "sentence": "Sentence Building", "am_exam": "Gen. Knowledge", "ujian": "Monthly Test" }
+}

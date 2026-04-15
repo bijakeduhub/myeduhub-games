@@ -1,0 +1,17 @@
+[
+  {"key":"sifir",     "icon":"✖️", "filter":"matematik", "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"tambah",    "icon":"➕", "filter":"matematik", "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"pecahan",   "icon":"½",  "filter":"matematik", "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"masa_wang", "icon":"🕐", "filter":"matematik", "type":"Quiz", "active":false, "examQ":0, "examMin":0},
+  {"key":"rantai",    "icon":"🌿", "filter":"sains",     "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"haiwan",    "icon":"🦁", "filter":"sains",     "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"suria",     "icon":"🌍", "filter":"sains",     "type":"Quiz", "active":false, "examQ":0, "examMin":0},
+  {"key":"kosa_kata", "icon":"📚", "filter":"bm",        "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"ayat",      "icon":"✍️", "filter":"bm",        "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"peribahasa","icon":"💬", "filter":"bm",        "type":"Test", "active":false, "examQ":0, "examMin":0},
+  {"key":"vocab",     "icon":"🔤", "filter":"english",   "type":"Quiz", "active":true,  "examQ":0, "examMin":0},
+  {"key":"grammar",   "icon":"📐", "filter":"english",   "type":"Test", "active":true,  "examQ":0, "examMin":0},
+  {"key":"sentence",  "icon":"💭", "filter":"english",   "type":"Test", "active":false, "examQ":0, "examMin":0},
+  {"key":"am_exam",   "icon":"🌍", "filter":"pelbagai",  "type":"Exam", "active":true,  "examQ":40, "examMin":60},
+  {"key":"ujian",     "icon":"📋", "filter":"pelbagai",  "type":"Test", "active":false, "examQ":0, "examMin":0}
+]

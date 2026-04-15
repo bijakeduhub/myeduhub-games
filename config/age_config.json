@@ -1,0 +1,8 @@
+{
+  "2-4":  {"total":5,  "zone":"zone1", "base_time":120},
+  "5-6":  {"total":8,  "zone":"zone1", "base_time":180},
+  "7-9":  {"total":10, "zone":"zone2", "base_time":300},
+  "10-12":{"total":12, "zone":"zone3", "base_time":360},
+  "13-15":{"total":15, "zone":"zone4", "base_time":480},
+  "16-17":{"total":20, "zone":"zone5", "base_time":600}
+}

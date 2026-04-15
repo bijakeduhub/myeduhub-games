@@ -1,0 +1,22 @@
+{
+  "app": { "name": "MY Edu Hub", "motto": "Where Learning Meets Success", "tagline": "Untuk pengalaman pembelajaran terbaik" },
+  "nav": { "back": "Balik", "exit": "Keluar" },
+  "home": { "welcome_hi": "Selamat datang,", "pick_topic": "Pilih Topik" },
+  "level": { "age_label": "Kumpulan Umur", "choose_level": "Pilih Tahap", "easy": "Mudah", "medium": "Sederhana", "hard": "Sukar", "start": "🚀 Mula Quiz!", "start_exam": "🚀 Mula Peperiksaan!", "exam_questions": "Soalan", "exam_duration": "Tempoh", "exam_multiplier": "Pekali Bintang" },
+  "quiz": { "section_obj": "BAHAGIAN 1 — OBJEKTIF", "section_subj": "BAHAGIAN 2 — SUBJEKTIF", "correct": "🎉 Betul! Pandai!", "wrong": "❌ Cuba lagi!", "match_left": "Kiri", "match_right": "Kanan", "sort_check": "✅ Semak Susunan" },
+  "result": {
+    "tahniah": "Tahniah,", "retry": "🔄 Cuba Lagi", "home": "🏠 Balik Menu",
+    "topic_complete": "🎉 Topik lengkap! Syabas!", "level_complete": "✅ Tahap {n} selesai — Teruskan!", "stages": "{n}/3 tahap selesai",
+    "messages": {
+      "easy":  { "p100":"Hebat! Teruskan! 🌟", "p80":"Bagus! 😊", "p60":"OK! Hampir! 💪", "p40":"Cuba lagi! 😅", "p0":"Semangat! 😢" },
+      "med":   { "p100":"Sangat Bagus! 🏆", "p80":"Hebat! 🌟", "p60":"Bagus! 😊", "p40":"Jangan putus asa! 💪", "p0":"Semangat! 😢" },
+      "hard":  { "p100":"Luar Biasa! 🥇", "p80":"Cemerlang! 🏆", "p60":"Bagus! 🌟", "p40":"Keep pushing! 💪", "p0":"Jangan give up! 😢" },
+      "exam":  { "p100":"Sempurna! 🏆", "p80":"Cemerlang! 🥇", "p60":"Bagus! 🌟", "p40":"Cuba lagi! 💪", "p0":"Semangat! 😢" }
+    }
+  },
+  "feedback": { "title": "Maklum Balas", "child": "Nama Anak", "parent": "Nama Ibu/Bapa", "contact": "No. Tel / Email (Pilihan)", "rating": "Penilaian", "category": "Kategori", "comment": "Komen", "submit": "📨 Hantar", "cats": ["Pujian ⭐","Cadangan 💡","Bug 🐛","Soalan ❓"], "err_parent": "Sila isi nama ibu/bapa", "err_rating": "Sila beri penilaian", "err_comment": "Sila tulis komen", "success": "✅ Terima kasih! Maklum balas diterima." },
+  "profile": { "title": "Kemaskini Profil", "name": "Nama Anak", "age": "Kumpulan Umur", "save": "✅ Simpan", "cancel": "Batal", "updated": "✅ Profil dikemaskini!" },
+  "footer": { "title": "💬 Apa Kata Mereka?", "sub": "Pengalaman ibu bapa & pelajar kami", "copy": "© 2026 MY Edu Hub • Where Learning Meets Success" },
+  "subjects": { "all": "Semua", "matematik": "Matematik", "sains": "Sains", "bm": "B. Melayu", "english": "B. Inggeris", "sejarah": "Sejarah", "pelbagai": "Pelbagai" },
+  "topic_names": { "sifir": "Sifir", "tambah": "Tambah & Tolak", "pecahan": "Pecahan", "masa_wang": "Masa & Wang", "rantai": "Rantai Makanan", "haiwan": "Haiwan & Tumbuhan", "suria": "Sistem Suria", "kosa_kata": "Kosa Kata", "ayat": "Ayat & Tatabahasa", "peribahasa": "Peribahasa", "vocab": "Perbendaharaan Kata", "grammar": "Tatabahasa", "sentence": "Pembinaan Ayat", "am_exam": "Pen. Am", "ujian": "Ujian Bulanan" }
+}

@@ -1,0 +1,50 @@
+{
+  "age_group": "7-9",
+  "subject": "matematik",
+  "topics": [
+    {
+      "id": "sifir",
+      "name": {"bm":"Sifir","en":"Times Tables"},
+      "session": {
+        "objective": {"count":10,"types":["mcq"]},
+        "subjective": {"count":10,"types":["match","drag_blank","sort","truefalse"]}
+      },
+      "questions": {
+        "objective": [
+          {"id":"s1","type":"mcq","question":{"bm":"4 × 7 = ?","en":"4 × 7 = ?"},"options":["28","24","32","21"],"answer_id":"28","explanation":{"bm":"4 × 7 = 28. Cuba ingat: 7+7+7+7 = 28.","en":"4 × 7 = 28. Think: 7+7+7+7 = 28."},"meta":{"difficulty":"easy"}},
+          {"id":"s2","type":"mcq","question":{"bm":"6 × 8 = ?","en":"6 × 8 = ?"},"options":["48","42","54","40"],"answer_id":"48","explanation":{"bm":"6 × 8 = 48. Sifir 6: …36,42,48.","en":"6 × 8 = 48. 6 times table: …36,42,48."},"meta":{"difficulty":"easy"}},
+          {"id":"s3","type":"mcq","question":{"bm":"9 × 9 = ?","en":"9 × 9 = ?"},"options":["81","72","90","63"],"answer_id":"81","explanation":{"bm":"9 × 9 = 81. 80+1 = 81.","en":"9 × 9 = 81. 80+1 = 81."},"meta":{"difficulty":"medium"}},
+          {"id":"s4","type":"mcq","question":{"bm":"7 × 8 = ?","en":"7 × 8 = ?"},"options":["56","54","63","48"],"answer_id":"56","explanation":{"bm":"Ingat: 5,6,7,8 → 56=7×8.","en":"Remember: 5,6,7,8 → 56=7×8."},"meta":{"difficulty":"medium"}},
+          {"id":"s5","type":"mcq","question":{"bm":"5 × 6 = ?","en":"5 × 6 = ?"},"options":["30","25","35","28"],"answer_id":"30","explanation":{"bm":"Sifir 5 sentiasa berakhir 0 atau 5.","en":"5 times table always ends in 0 or 5."},"meta":{"difficulty":"easy"}},
+          {"id":"s6","type":"mcq","question":{"bm":"8 × 4 = ?","en":"8 × 4 = ?"},"options":["32","28","36","24"],"answer_id":"32","explanation":{"bm":"8 × 4 = 32.","en":"8 × 4 = 32."},"meta":{"difficulty":"easy"}},
+          {"id":"s7","type":"mcq","question":{"bm":"3 × 9 = ?","en":"3 × 9 = ?"},"options":["27","24","30","21"],"answer_id":"27","explanation":{"bm":"3 × 9 = 27. Jumlah digit: 2+7=9 ✓","en":"3 × 9 = 27. Digit sum: 2+7=9 ✓"},"meta":{"difficulty":"easy"}},
+          {"id":"s8","type":"mcq","question":{"bm":"6 × 6 = ?","en":"6 × 6 = ?"},"options":["36","30","42","48"],"answer_id":"36","explanation":{"bm":"6 × 6 = 36. Nombor kuasa dua 6.","en":"6 × 6 = 36. Square of 6."},"meta":{"difficulty":"easy"}},
+          {"id":"s9","type":"mcq","question":{"bm":"9 × 7 = ?","en":"9 × 7 = ?"},"options":["63","56","72","54"],"answer_id":"63","explanation":{"bm":"9 × 7 = 63. Semak: 6+3=9 ✓","en":"9 × 7 = 63. Check: 6+3=9 ✓"},"meta":{"difficulty":"medium"}},
+          {"id":"s10","type":"mcq","question":{"bm":"8 × 9 = ?","en":"8 × 9 = ?"},"options":["72","63","81","64"],"answer_id":"72","explanation":{"bm":"8 × 9 = 72. Semak: 7+2=9 ✓","en":"8 × 9 = 72. Check: 7+2=9 ✓"},"meta":{"difficulty":"medium"}},
+          {"id":"s11","type":"mcq","question":{"bm":"7 × 7 = ?","en":"7 × 7 = ?"},"options":["49","42","56","48"],"answer_id":"49","explanation":{"bm":"7 × 7 = 49. Nombor kuasa dua 7.","en":"7 × 7 = 49. Square of 7."},"meta":{"difficulty":"medium"}},
+          {"id":"s12","type":"mcq","question":{"bm":"6 × 4 = ?","en":"6 × 4 = ?"},"options":["24","20","28","18"],"answer_id":"24","explanation":{"bm":"6 × 4 = 24.","en":"6 × 4 = 24."},"meta":{"difficulty":"easy"}},
+          {"id":"s13","type":"mcq","question":{"bm":"8 × 7 = ?","en":"8 × 7 = ?"},"options":["56","48","63","54"],"answer_id":"56","explanation":{"bm":"8 × 7 = 56. Sama seperti 7 × 8.","en":"8 × 7 = 56. Same as 7 × 8."},"meta":{"difficulty":"medium"}},
+          {"id":"s14","type":"mcq","question":{"bm":"9 × 6 = ?","en":"9 × 6 = ?"},"options":["54","48","63","45"],"answer_id":"54","explanation":{"bm":"9 × 6 = 54. Semak: 5+4=9 ✓","en":"9 × 6 = 54. Check: 5+4=9 ✓"},"meta":{"difficulty":"medium"}},
+          {"id":"s15","type":"mcq","question":{"bm":"5 × 5 = ?","en":"5 × 5 = ?"},"options":["25","20","30","15"],"answer_id":"25","explanation":{"bm":"5 × 5 = 25. Nombor kuasa dua 5.","en":"5 × 5 = 25. Square of 5."},"meta":{"difficulty":"easy"}},
+          {"id":"s16","type":"mcq","question":{"bm":"4 × 4 = ?","en":"4 × 4 = ?"},"options":["16","12","20","8"],"answer_id":"16","explanation":{"bm":"4 × 4 = 16. Nombor kuasa dua 4.","en":"4 × 4 = 16. Square of 4."},"meta":{"difficulty":"easy"}},
+          {"id":"s17","type":"mcq","question":{"bm":"3 × 7 = ?","en":"3 × 7 = ?"},"options":["21","18","24","28"],"answer_id":"21","explanation":{"bm":"3 × 7 = 21.","en":"3 × 7 = 21."},"meta":{"difficulty":"easy"}},
+          {"id":"s18","type":"mcq","question":{"bm":"6 × 9 = ?","en":"6 × 9 = ?"},"options":["54","48","63","45"],"answer_id":"54","explanation":{"bm":"6 × 9 = 54. Semak: 5+4=9 ✓","en":"6 × 9 = 54. Check: 5+4=9 ✓"},"meta":{"difficulty":"hard"}},
+          {"id":"s19","type":"mcq","question":{"bm":"7 × 3 = ?","en":"7 × 3 = ?"},"options":["21","18","24","28"],"answer_id":"21","explanation":{"bm":"7 × 3 = 21. Sama seperti 3 × 7.","en":"7 × 3 = 21. Same as 3 × 7."},"meta":{"difficulty":"easy"}},
+          {"id":"s20","type":"mcq","question":{"bm":"8 × 3 = ?","en":"8 × 3 = ?"},"options":["24","21","27","18"],"answer_id":"24","explanation":{"bm":"8 × 3 = 24.","en":"8 × 3 = 24."},"meta":{"difficulty":"easy"}}
+        ],
+        "subjective": [
+          {"id":"ss1","type":"drag_blank","question":{"bm":"Lengkapkan: 4 × ___ = 28","en":"Complete: 4 × ___ = 28"},"sentence":{"bm":"4 × ___ = 28","en":"4 × ___ = 28"},"options":["5","6","7","8"],"answer":"7","explanation":{"bm":"4 × 7 = 28. Bahagi: 28 ÷ 4 = 7.","en":"4 × 7 = 28. Divide: 28 ÷ 4 = 7."},"meta":{"difficulty":"easy"}},
+          {"id":"ss2","type":"drag_blank","question":{"bm":"Lengkapkan: 6 × ___ = 48","en":"Complete: 6 × ___ = 48"},"sentence":{"bm":"6 × ___ = 48","en":"6 × ___ = 48"},"options":["6","7","8","9"],"answer":"8","explanation":{"bm":"6 × 8 = 48. Bahagi: 48 ÷ 6 = 8.","en":"6 × 8 = 48. Divide: 48 ÷ 6 = 8."},"meta":{"difficulty":"medium"}},
+          {"id":"ss3","type":"truefalse","question":{"bm":"5 × 7 = 35. Betul atau Salah?","en":"5 × 7 = 35. True or False?"},"answer":"Betul","explanation":{"bm":"5 × 7 = 35. Betul! Sifir 5: 5,10,15,20,25,30,35.","en":"5 × 7 = 35. True! 5 times table: 5,10,15,20,25,30,35."},"meta":{"difficulty":"easy"}},
+          {"id":"ss4","type":"truefalse","question":{"bm":"8 × 6 = 42. Betul atau Salah?","en":"8 × 6 = 42. True or False?"},"answer":"Salah","explanation":{"bm":"8 × 6 = 48, bukan 42. Salah!","en":"8 × 6 = 48, not 42. False!"},"meta":{"difficulty":"medium"}},
+          {"id":"ss5","type":"match","question":{"bm":"Padankan hasil darab yang betul","en":"Match the correct products"},"pairs":[{"l":"4 × 6","r":"24"},{"l":"6 × 7","r":"42"},{"l":"9 × 5","r":"45"},{"l":"3 × 9","r":"27"}],"explanation":{"bm":"4×6=24, 6×7=42, 9×5=45, 3×9=27","en":"4×6=24, 6×7=42, 9×5=45, 3×9=27"},"meta":{"difficulty":"medium"}},
+          {"id":"ss6","type":"sort","question":{"bm":"Susun dari terkecil ke terbesar","en":"Sort from smallest to largest"},"items":[{"id":"a","label":"9×9=81"},{"id":"b","label":"7×8=56"},{"id":"c","label":"6×6=36"},{"id":"d","label":"5×5=25"}],"answer":["d","c","b","a"],"explanation":{"bm":"25 < 36 < 56 < 81","en":"25 < 36 < 56 < 81"},"meta":{"difficulty":"hard"}},
+          {"id":"ss7","type":"drag_blank","question":{"bm":"Lengkapkan: 7 × ___ = 49","en":"Complete: 7 × ___ = 49"},"sentence":{"bm":"7 × ___ = 49","en":"7 × ___ = 49"},"options":["5","6","7","8"],"answer":"7","explanation":{"bm":"7 × 7 = 49. Nombor kuasa dua 7.","en":"7 × 7 = 49. Square of 7."},"meta":{"difficulty":"medium"}},
+          {"id":"ss8","type":"truefalse","question":{"bm":"9 × 6 = 54. Betul atau Salah?","en":"9 × 6 = 54. True or False?"},"answer":"Betul","explanation":{"bm":"9 × 6 = 54. Betul! Semak: 5+4=9 ✓","en":"9 × 6 = 54. True! Check: 5+4=9 ✓"},"meta":{"difficulty":"medium"}},
+          {"id":"ss9","type":"match","question":{"bm":"Padankan hasil darab","en":"Match the products"},"pairs":[{"l":"5 × 5","r":"25"},{"l":"4 × 4","r":"16"},{"l":"3 × 7","r":"21"},{"l":"6 × 4","r":"24"}],"explanation":{"bm":"5×5=25, 4×4=16, 3×7=21, 6×4=24","en":"5×5=25, 4×4=16, 3×7=21, 6×4=24"},"meta":{"difficulty":"hard"}},
+          {"id":"ss10","type":"drag_blank","question":{"bm":"Lengkapkan: 8 × ___ = 56","en":"Complete: 8 × ___ = 56"},"sentence":{"bm":"8 × ___ = 56","en":"8 × ___ = 56"},"options":["6","7","8","9"],"answer":"7","explanation":{"bm":"8 × 7 = 56. Bahagi: 56 ÷ 8 = 7.","en":"8 × 7 = 56. Divide: 56 ÷ 8 = 7."},"meta":{"difficulty":"medium"}}
+        ]
+      }
+    }
+  ]
+}

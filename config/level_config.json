@@ -1,0 +1,6 @@
+{
+  "easy": {"obj_pct":1.0, "subj_pct":0.0, "time_mult":1.0, "star_mult":1},
+  "med":  {"obj_pct":0.5, "subj_pct":0.5, "time_mult":1.6, "star_mult":2},
+  "hard": {"obj_pct":0.3, "subj_pct":0.7, "time_mult":2.0, "star_mult":3},
+  "exam": {"obj_pct":0.3, "subj_pct":0.7, "time_mult":12,  "star_mult":5}
+}
