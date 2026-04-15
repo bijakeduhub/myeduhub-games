@@ -553,7 +553,6 @@ let QUESTIONS_CACHE = {};
 // Default data (so app works offline)
 const DEFAULT_TOPICS = [
   {key:'sifir',icon:'✖️',filter:'matematik',type:'Quiz',active:true,age_groups:['7-9','10-12'],examQ:0,examMin:0},
-  {key:'multiplication',icon:'✖️',filter:'matematik',type:'Quiz',active:true,age_groups:['7-9'],examQ:0,examMin:0},
   {key:'addition',icon:'➕',filter:'matematik',type:'Quiz',active:true,age_groups:['5-6','7-9'],examQ:0,examMin:0},
   {key:'subtraction',icon:'➖',filter:'matematik',type:'Quiz',active:true,age_groups:['5-6','7-9'],examQ:0,examMin:0},
   {key:'kata_nama',icon:'📚',filter:'bm',type:'Quiz',active:true,age_groups:['7-9'],examQ:0,examMin:0},
@@ -612,6 +611,26 @@ function toggleTheme() {
   h.setAttribute('data-theme', isDark ? 'light' : 'dark');
   $('theme-btn').textContent = isDark ? '🌙' : '☀️';
   localStorage.setItem('beh-theme', isDark ? 'light' : 'dark');
+}
+
+// ═══════════════════════════════════════════════════════════════════════════
+//  JSON LOADER (with fallback)
+// ═══════════════════════════════════════════════════════════════════════════
+async function loadJSON(path, fallback = null) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    // If this is topics.json, ensure it's an array
+    if (path.includes('topics.json') && !Array.isArray(data)) {
+      console.warn(`${path} is not an array, using fallback`);
+      return fallback;
+    }
+    return data;
+  } catch (err) {
+    console.warn(`Failed to load ${path}:`, err);
+    return fallback;
+  }
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
@@ -698,117 +717,55 @@ async function toggleLang() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-//  JSON LOADER (non‑blocking, with fallbacks)
-// ═══════════════════════════════════════════════════════════════════════════
-async function loadJSON(path, fallback) {
-  try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-    return await res.json();
-  } catch {
-    console.warn(`Failed to load ${path}, using fallback.`);
-    return fallback;
-  }
-}
-
-async function loadQuestions(ageGroup, subject) {
-  const key = `${ageGroup}_${subject}`;
-  if (QUESTIONS_CACHE[key]) return QUESTIONS_CACHE[key];
-  try {
-    const data = await loadJSON(`questions/${ageGroup}/${subject}.json`, null);
-    if (data) QUESTIONS_CACHE[key] = data;
-    return data;
-  } catch {
-    return null;
-  }
-}
-
-// Fallback question set for 'sifir' topic
-function getFallbackQ(topicKey) {
-  const FALLBACK_SIFIR = {
-    objective: [
-      {id:'s1',type:'mcq',q:'4 × 7 = ?',a:'28',opts:['28','24','32','21'],exp:'4 × 7 = 28. Cuba ingat: 7+7+7+7 = 28.'},
-      {id:'s2',type:'mcq',q:'6 × 8 = ?',a:'48',opts:['48','42','54','40'],exp:'6 × 8 = 48. Sifir 6: …36,42,48.'},
-      {id:'s3',type:'mcq',q:'9 × 9 = ?',a:'81',opts:['81','72','90','63'],exp:'9 × 9 = 81. 80+1 = 81.'},
-      {id:'s4',type:'mcq',q:'7 × 8 = ?',a:'56',opts:['56','54','63','48'],exp:'Ingat: 5,6,7,8 → 56=7×8.'},
-      {id:'s5',type:'mcq',q:'5 × 6 = ?',a:'30',opts:['30','25','35','28'],exp:'Sifir 5 sentiasa berakhir 0 atau 5.'}
-    ],
-    subjective: [
-      {id:'ss1',type:'drag_blank',q:'Lengkapkan: 4 × ___ = 28',sentence:'4 × ___ = 28',a:'7',opts:['5','6','7','8'],exp:'4 × 7 = 28. Bahagi: 28 ÷ 4 = 7.'},
-      {id:'ss2',type:'drag_blank',q:'Lengkapkan: 6 × ___ = 48',sentence:'6 × ___ = 48',a:'8',opts:['6','7','8','9'],exp:'6 × 8 = 48. Bahagi: 48 ÷ 6 = 8.'},
-      {id:'ss3',type:'truefalse',q:'5 × 7 = 35. Betul atau Salah?',a:'Betul',exp:'5 × 7 = 35. Betul! Sifir 5: 5,10,15,20,25,30,35.'},
-      {id:'ss4',type:'truefalse',q:'8 × 6 = 42. Betul atau Salah?',a:'Salah',exp:'8 × 6 = 48, bukan 42. Salah!'},
-      {id:'ss5',type:'match',q:'Padankan hasil darab yang betul',pairs:[{l:'4 × 6',r:'24'},{l:'6 × 7',r:'42'},{l:'9 × 5',r:'45'},{l:'3 × 9',r:'27'}],exp:'4×6=24, 6×7=42, 9×5=45, 3×9=27'}
-    ]
-  };
-  return FALLBACK_SIFIR;
-}
-
-function normaliseQ(q) {
-  const lang = defaultLang;
-  const getText = (field) => typeof field === 'object' ? (field[lang] || field.bm || '') : (field || '');
-  if (q.type === 'mcq') {
-    return { id: q.id, type: 'mcq', q: getText(q.question), a: q.answer_id, opts: q.options || [], exp: getText(q.explanation) };
-  } else if (q.type === 'truefalse') {
-    return { id: q.id, type: 'truefalse', q: getText(q.question), a: q.answer, exp: getText(q.explanation) };
-  } else if (q.type === 'drag_blank') {
-    return { id: q.id, type: 'drag_blank', q: getText(q.question), sentence: getText(q.sentence), a: q.answer, opts: q.options || [], exp: getText(q.explanation) };
-  } else if (q.type === 'match') {
-    return {
-      id: q.id, type: 'match', q: getText(q.question),
-      pairs: (q.pairs || []).map(p => ({ l: getText(p.l), r: getText(p.r) })),
-      exp: getText(q.explanation)
-    };
-  } else if (q.type === 'sort') {
-    return {
-      id: q.id, type: 'sort', q: getText(q.question),
-      items: (q.items || []).map(item => ({ id: item.id, label: getText(item.label) })),
-      answer: q.answer || [], exp: getText(q.explanation)
-    };
-  }
-  return q;
-}
-
-// ═══════════════════════════════════════════════════════════════════════════
 //  PLAYER & INIT
 // ═══════════════════════════════════════════════════════════════════════════
 async function initApp() {
-  // Load all JSON with fallbacks
-  const [bmLang, enLang, topics, ageCfg, levelCfg, testi, ann] = await Promise.all([
-    loadJSON('lang/bm.json', null),
-    loadJSON('lang/en.json', null),
-    loadJSON('config/topics.json', DEFAULT_TOPICS),
-    loadJSON('config/age_config.json', DEFAULT_AGE_CFG),
-    loadJSON('config/level_config.json', DEFAULT_LEVEL_CFG),
-    loadJSON('testimonials.json', DEFAULT_TESTIMONIALS),
-    loadJSON('announcements.json', DEFAULT_ANNOUNCEMENTS)
-  ]);
-  LANG_DATA = { bm: bmLang || (await loadJSON('lang/bm.json', null)) || { app: { motto: "Where Learning Meets Success" } }, en: enLang || {} };
-  TOPICS = topics || DEFAULT_TOPICS;
-  AGE_CFG = ageCfg || DEFAULT_AGE_CFG;
-  LEVEL_CFG = levelCfg || DEFAULT_LEVEL_CFG;
-  TESTIMONIALS = testi || DEFAULT_TESTIMONIALS;
-  ANNOUNCEMENTS = ann || DEFAULT_ANNOUNCEMENTS;
+  try {
+    const [bmLang, enLang, topics, ageCfg, levelCfg, testi, ann] = await Promise.all([
+      loadJSON('lang/bm.json', null),
+      loadJSON('lang/en.json', null),
+      loadJSON('config/topics.json', DEFAULT_TOPICS),
+      loadJSON('config/age_config.json', DEFAULT_AGE_CFG),
+      loadJSON('config/level_config.json', DEFAULT_LEVEL_CFG),
+      loadJSON('testimonials.json', DEFAULT_TESTIMONIALS),
+      loadJSON('announcements.json', DEFAULT_ANNOUNCEMENTS)
+    ]);
 
-  // Hide loading screen after minimum display time
-  setTimeout(() => {
-    const loadDiv = $('app-loading');
-    if (loadDiv) { loadDiv.classList.add('hide'); setTimeout(() => loadDiv.style.display = 'none', 500); }
-  }, 1000);
+    LANG_DATA = { bm: bmLang || { app: { motto: "Where Learning Meets Success" } }, en: enLang || {} };
+    TOPICS = (Array.isArray(topics) && topics.length) ? topics : DEFAULT_TOPICS;
+    AGE_CFG = ageCfg || DEFAULT_AGE_CFG;
+    LEVEL_CFG = levelCfg || DEFAULT_LEVEL_CFG;
+    TESTIMONIALS = testi || DEFAULT_TESTIMONIALS;
+    ANNOUNCEMENTS = ann || DEFAULT_ANNOUNCEMENTS;
 
-  // Theme
-  const savedTheme = localStorage.getItem('beh-theme') || 'light';
-  document.documentElement.setAttribute('data-theme', savedTheme);
-  $('theme-btn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+    console.log('✅ Loaded topics:', TOPICS); // Debug
 
-  // Auto-login
-  const savedPlayer = localStorage.getItem('beh-player');
-  if (savedPlayer) {
-    defaultAge = localStorage.getItem('beh-age') || '7-9';
-    defaultLang = localStorage.getItem('beh-lang') || 'bm';
-    await setPlayer(savedPlayer);
-  } else {
-    showScreen('screen-name');
+    // Hide loading screen
+    setTimeout(() => {
+      const loadDiv = document.getElementById('app-loading');
+      if (loadDiv) {
+        loadDiv.classList.add('hide');
+        setTimeout(() => loadDiv.style.display = 'none', 500);
+      }
+    }, 1000);
+
+    // Theme
+    const savedTheme = localStorage.getItem('beh-theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+    const themeBtn = document.getElementById('theme-btn');
+    if (themeBtn) themeBtn.textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+
+    // Auto-login
+    const savedPlayer = localStorage.getItem('beh-player');
+    if (savedPlayer) {
+      defaultAge = localStorage.getItem('beh-age') || '7-9';
+      defaultLang = localStorage.getItem('beh-lang') || 'bm';
+      await setPlayer(savedPlayer);
+    } else {
+      showScreen('screen-name');
+    }
+  } catch (err) {
+    console.error('Init error:', err);
   }
 }
 
@@ -1087,6 +1044,50 @@ async function startQuiz() {
   showScreen('screen-quiz');
 }
 
+async function loadQuestions(ageGroup, subject) {
+  const key = `${ageGroup}_${subject}`;
+  if (QUESTIONS_CACHE[key]) return QUESTIONS_CACHE[key];
+  try {
+    const data = await loadJSON(`questions/${ageGroup}/${subject}.json`, null);
+    if (data) QUESTIONS_CACHE[key] = data;
+    return data;
+  } catch {
+    return null;
+  }
+}
+
+function getFallbackQ(topicKey) {
+  const FALLBACK_SIFIR = {
+    objective: [
+      {id:'s1',type:'mcq',q:'4 × 7 = ?',a:'28',opts:['28','24','32','21'],exp:'4 × 7 = 28. Cuba ingat: 7+7+7+7 = 28.'},
+      {id:'s2',type:'mcq',q:'6 × 8 = ?',a:'48',opts:['48','42','54','40'],exp:'6 × 8 = 48. Sifir 6: …36,42,48.'},
+      {id:'s3',type:'mcq',q:'9 × 9 = ?',a:'81',opts:['81','72','90','63'],exp:'9 × 9 = 81. 80+1 = 81.'}
+    ],
+    subjective: [
+      {id:'ss1',type:'drag_blank',q:'Lengkapkan: 4 × ___ = 28',sentence:'4 × ___ = 28',a:'7',opts:['5','6','7','8'],exp:'4 × 7 = 28. Bahagi: 28 ÷ 4 = 7.'},
+      {id:'ss2',type:'truefalse',q:'5 × 7 = 35. Betul atau Salah?',a:'Betul',exp:'5 × 7 = 35. Betul!'}
+    ]
+  };
+  return FALLBACK_SIFIR;
+}
+
+function normaliseQ(q) {
+  const lang = defaultLang;
+  const getText = (field) => typeof field === 'object' ? (field[lang] || field.bm || '') : (field || '');
+  if (q.type === 'mcq') {
+    return { id: q.id, type: 'mcq', q: getText(q.question), a: q.answer_id, opts: q.options || [], exp: getText(q.explanation) };
+  } else if (q.type === 'truefalse') {
+    return { id: q.id, type: 'truefalse', q: getText(q.question), a: q.answer, exp: getText(q.explanation) };
+  } else if (q.type === 'drag_blank') {
+    return { id: q.id, type: 'drag_blank', q: getText(q.question), sentence: getText(q.sentence), a: q.answer, opts: q.options || [], exp: getText(q.explanation) };
+  } else if (q.type === 'match') {
+    return { id: q.id, type: 'match', q: getText(q.question), pairs: (q.pairs || []).map(p => ({ l: getText(p.l), r: getText(p.r) })), exp: getText(q.explanation) };
+  } else if (q.type === 'sort') {
+    return { id: q.id, type: 'sort', q: getText(q.question), items: (q.items || []).map(item => ({ id: item.id, label: getText(item.label) })), answer: q.answer || [], exp: getText(q.explanation) };
+  }
+  return q;
+}
+
 function startTimer() {
   clearInterval(timerInterval);
   updateTimerDisp();
@@ -1109,7 +1110,7 @@ function confirmQuit() {
 }
 
 // ═══════════════════════════════════════════════════════════════════════════
-//  QUESTION RENDERING & ANSWER HANDLING
+//  QUESTION RENDERING & ANSWER HANDLING (simplified for brevity – same as before)
 // ═══════════════════════════════════════════════════════════════════════════
 function renderQ() {
   const l = L();
@@ -1118,7 +1119,7 @@ function renderQ() {
   const total = sessionObj.length + sessionSubj.length;
   const globalIdx = isObj ? currentQ : sessionObj.length + currentQ;
   const q = session[currentQ];
-  if (!q) { console.warn("No question at index", currentQ); nextQ(); return; }
+  if (!q) { nextQ(); return; }
 
   $('q-context').textContent = `📚 ${currentTopic.name} • ${currentTopic.subj}`;
   $('q-section').textContent = isObj ? (l.quiz?.section_obj || 'BAHAGIAN 1') : (l.quiz?.section_subj || 'BAHAGIAN 2');
@@ -1143,7 +1144,6 @@ function renderQ() {
   }
 }
 
-// MCQ
 function renderMCQ(q) {
   const opts = shuffle(q.opts).map((o, i) => {
     const safeO = o.replace(/\\/g, '\\\\').replace(/'/g, "\\'");
@@ -1165,7 +1165,6 @@ function answerMCQ(el, selected, ans, exp) {
   markAnswer(ok, exp);
 }
 
-// True/False
 function renderTF(q) {
   const safeExp = (q.exp || '').replace(/\\/g, '\\\\').replace(/'/g, "\\'").replace(/\n/g, ' ');
   const safeA = q.a.replace(/'/g, "\\'");
@@ -1182,7 +1181,6 @@ function answerTF(el, selected, ans, exp) {
   markAnswer(ok, exp);
 }
 
-// Drag blank
 function renderDrag(q) {
   const sentenceHtml = q.sentence.replace('___', '<span class="drag-blank" id="drag-blank">___</span>');
   const optsHtml = shuffle(q.opts).map(o => {
@@ -1203,7 +1201,6 @@ function pickDrag(el, val, ans, exp) {
   markAnswer(ok, exp);
 }
 
-// Match
 function renderMatch(q) {
   matchSelected = null; matchUserPairs = [];
   matchLeftItems = shuffle(q.pairs.map((p, i) => ({ val: p.l, idx: i })));
@@ -1313,7 +1310,6 @@ function selectMatch(el, side, idx) {
   }
 }
 
-// Sort
 function renderSort(q) {
   sortOrder = shuffle(q.items.map(i => i.id));
   const itemMap = Object.fromEntries(q.items.map(i => [i.id, i.label]));
@@ -1389,7 +1385,6 @@ function checkSort() {
   markAnswer(ok, window._sortExp);
 }
 
-// Mark answer & next
 function markAnswer(ok, exp) {
   if (ok) { score++; if (currentSection === 'obj') objScore++; else subjScore++; }
   $('quiz-score').textContent = `⭐ ${score}`;
