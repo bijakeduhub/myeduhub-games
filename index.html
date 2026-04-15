@@ -621,7 +621,6 @@ async function loadJSON(path, fallback = null) {
     const res = await fetch(path);
     if (!res.ok) throw new Error(`HTTP ${res.status}`);
     const data = await res.json();
-    // If this is topics.json, ensure it's an array
     if (path.includes('topics.json') && !Array.isArray(data)) {
       console.warn(`${path} is not an array, using fallback`);
       return fallback;
