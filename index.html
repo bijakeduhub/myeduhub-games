@@ -271,13 +271,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 setTimeout(function(){
   var l=document.getElementById('app-loading');
   if(l){l.style.display='none';}
-  // If name screen not active, show it
   var screens=document.querySelectorAll('.screen.active');
   if(!screens.length){
     var ns=document.getElementById('screen-name');
-    if(ns)ns.style.display='flex';
+    if(ns){ns.classList.add('active');}
   }
-},4000);
+},3000);
 // Catch any JS errors
 window.onerror=function(msg,src,line){
   console.error('JS Error:',msg,'line:',line);
@@ -1867,7 +1866,10 @@ let DEMO_LB = {
 // ══════════════════════════════════════
 async function loadJSON(path) {
   try {
-    const r = await fetch(path);
+    const controller = new AbortController();
+    const timeout = setTimeout(()=>controller.abort(), 3000);
+    const r = await fetch(path, {signal: controller.signal});
+    clearTimeout(timeout);
     if(!r.ok) throw new Error('HTTP '+r.status);
     return await r.json();
   } catch(e) {
@@ -1897,7 +1899,7 @@ async function initApp() {
 
   // Always hide loading — never get stuck
   const load = document.getElementById('app-loading');
-  if(load){load.classList.add('hide');setTimeout(()=>load.style.display='none',500);}
+  if(load){load.style.opacity='0';load.style.transition='opacity 0.3s';setTimeout(()=>{load.style.display='none';},350);}
 
   // Init theme
   const savedTheme = localStorage.getItem('beh-theme') || 'light';
