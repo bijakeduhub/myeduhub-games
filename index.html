@@ -561,37 +561,38 @@ let DEMO_LB = {
 // JSON LOADER
 // ══════════════════════════════════════
 async function loadJSON(path) {
-  const r = await fetch(path);
-  return r.json();
+  try {
+    const r = await fetch(path);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return await r.json();
+  } catch(e) {
+    console.warn('loadJSON failed:', path, e.message);
+    return null;
+  }
 }
 
 async function initApp() {
   try {
-    const [bmLang, enLang, topics, ageCfg, levelCfg, testi, ann] = await Promise.all([
-      loadJSON('lang/bm.json'),
-      loadJSON('lang/en.json'),
-      loadJSON('config/topics.json'),
-      loadJSON('config/age_config.json'),
+    const [bmLang,enLang,topics,ageCfg,levelCfg,testi,ann] = await Promise.all([
+      loadJSON('lang/bm.json'),loadJSON('lang/en.json'),
+      loadJSON('config/topics.json'),loadJSON('config/age_config.json'),
       loadJSON('config/level_config.json'),
-      loadJSON('testimonials.json'),
-      loadJSON('announcements.json'),
+      loadJSON('testimonials.json'),loadJSON('announcements.json'),
     ]);
-    LANG_DATA = { bm: bmLang, en: enLang };
-    TOPICS = topics;
-    AGE_CFG = ageCfg;
-    LEVEL_CFG = levelCfg;
-    TESTIMONIALS = testi;
-    ANNOUNCEMENTS = ann;
+    if(bmLang)LANG_DATA.bm=bmLang;
+    if(enLang)LANG_DATA.en=enLang;
+    if(topics)TOPICS=topics;
+    if(ageCfg)AGE_CFG=ageCfg;
+    if(levelCfg)LEVEL_CFG=levelCfg;
+    if(testi)TESTIMONIALS=testi;
+    if(ann)ANNOUNCEMENTS=ann;
   } catch(e) {
     console.error('JSON load error:', e);
   }
 
-  // Hide loading screen
-  setTimeout(() => {
-    const load = document.getElementById('app-loading');
-    load.classList.add('hide');
-    setTimeout(() => load.style.display='none', 500);
-  }, 1200);
+  // Always hide loading — never get stuck
+  const load = document.getElementById('app-loading');
+  if(load){load.classList.add('hide');setTimeout(()=>load.style.display='none',500);}
 
   // Init theme
   const savedTheme = localStorage.getItem('beh-theme') || 'light';
@@ -2619,37 +2620,38 @@ let DEMO_LB = {
 // JSON LOADER
 // ══════════════════════════════════════
 async function loadJSON(path) {
-  const r = await fetch(path);
-  return r.json();
+  try {
+    const r = await fetch(path);
+    if(!r.ok) throw new Error('HTTP '+r.status);
+    return await r.json();
+  } catch(e) {
+    console.warn('loadJSON failed:', path, e.message);
+    return null;
+  }
 }
 
 async function initApp() {
   try {
-    const [bmLang, enLang, topics, ageCfg, levelCfg, testi, ann] = await Promise.all([
-      loadJSON('lang/bm.json'),
-      loadJSON('lang/en.json'),
-      loadJSON('config/topics.json'),
-      loadJSON('config/age_config.json'),
+    const [bmLang,enLang,topics,ageCfg,levelCfg,testi,ann] = await Promise.all([
+      loadJSON('lang/bm.json'),loadJSON('lang/en.json'),
+      loadJSON('config/topics.json'),loadJSON('config/age_config.json'),
       loadJSON('config/level_config.json'),
-      loadJSON('testimonials.json'),
-      loadJSON('announcements.json'),
+      loadJSON('testimonials.json'),loadJSON('announcements.json'),
     ]);
-    LANG_DATA = { bm: bmLang, en: enLang };
-    TOPICS = topics;
-    AGE_CFG = ageCfg;
-    LEVEL_CFG = levelCfg;
-    TESTIMONIALS = testi;
-    ANNOUNCEMENTS = ann;
+    if(bmLang)LANG_DATA.bm=bmLang;
+    if(enLang)LANG_DATA.en=enLang;
+    if(topics)TOPICS=topics;
+    if(ageCfg)AGE_CFG=ageCfg;
+    if(levelCfg)LEVEL_CFG=levelCfg;
+    if(testi)TESTIMONIALS=testi;
+    if(ann)ANNOUNCEMENTS=ann;
   } catch(e) {
     console.error('JSON load error:', e);
   }
 
-  // Hide loading screen
-  setTimeout(() => {
-    const load = document.getElementById('app-loading');
-    load.classList.add('hide');
-    setTimeout(() => load.style.display='none', 500);
-  }, 1200);
+  // Always hide loading — never get stuck
+  const load = document.getElementById('app-loading');
+  if(load){load.classList.add('hide');setTimeout(()=>load.style.display='none',500);}
 
   // Init theme
   const savedTheme = localStorage.getItem('beh-theme') || 'light';
