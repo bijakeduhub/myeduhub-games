@@ -266,6 +266,26 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="load-motto">Where Learning Meets Success</div>
   <div class="load-bar"><div class="load-fill"></div></div>
 </div>
+<script>
+// Failsafe: force hide loading after 4s no matter what
+setTimeout(function(){
+  var l=document.getElementById('app-loading');
+  if(l){l.style.display='none';}
+  // If name screen not active, show it
+  var screens=document.querySelectorAll('.screen.active');
+  if(!screens.length){
+    var ns=document.getElementById('screen-name');
+    if(ns)ns.style.display='flex';
+  }
+},4000);
+// Catch any JS errors
+window.onerror=function(msg,src,line){
+  console.error('JS Error:',msg,'line:',line);
+  var l=document.getElementById('app-loading');
+  if(l)l.style.display='none';
+  return false;
+};
+</script>
 
 <div class="toast" id="toast"></div>
 
@@ -2420,6 +2440,26 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
   <div class="load-motto">Where Learning Meets Success</div>
   <div class="load-bar"><div class="load-fill"></div></div>
 </div>
+<script>
+// Failsafe: force hide loading after 4s no matter what
+setTimeout(function(){
+  var l=document.getElementById('app-loading');
+  if(l){l.style.display='none';}
+  // If name screen not active, show it
+  var screens=document.querySelectorAll('.screen.active');
+  if(!screens.length){
+    var ns=document.getElementById('screen-name');
+    if(ns)ns.style.display='flex';
+  }
+},4000);
+// Catch any JS errors
+window.onerror=function(msg,src,line){
+  console.error('JS Error:',msg,'line:',line);
+  var l=document.getElementById('app-loading');
+  if(l)l.style.display='none';
+  return false;
+};
+</script>
 
 <div class="toast" id="toast"></div>
 
