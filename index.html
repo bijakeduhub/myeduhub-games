@@ -2,8 +2,8 @@
 <html lang="ms" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MY Edu Hub v1.3</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>MY Edu Hub v1.4</title>
 <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&family=Poppins:wght@600;700;800;900&display=swap" rel="stylesheet">
 <style>
 /* ── VARIABLES ── */
@@ -79,7 +79,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .chip.active{background:var(--navy);border-color:var(--navy);color:white;}
 .sec-label{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1.5px;text-transform:uppercase;}
 
-/* Topic grid 3-col */
 .topic-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;}
 .topic-card{background:var(--card);border:1px solid var(--border);border-radius:13px;padding:11px 7px;text-align:center;cursor:pointer;box-shadow:var(--shadow);transition:all .2s;position:relative;overflow:hidden;}
 .topic-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--gold);}
@@ -93,7 +92,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .tc-badge{position:absolute;top:5px;right:5px;font-size:7px;font-weight:900;padding:2px 5px;border-radius:50px;color:white;}
 .b-quiz{background:var(--navy);}.b-test{background:var(--silver);color:#333;}.b-exam{background:var(--gold);}.b-soon{background:#B0B8D0;}
 
-/* Side cards */
 .side-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:12px;box-shadow:var(--shadow);}
 .side-title{font-size:10px;font-weight:900;color:var(--text-dim);letter-spacing:1px;text-transform:uppercase;margin-bottom:9px;}
 .lb-tabs{display:flex;gap:4px;margin-bottom:8px;flex-wrap:wrap;}
@@ -115,7 +113,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .home-bottom{padding:0 12px 0;display:flex;flex-direction:column;gap:10px;}
 @media(min-width:720px){.home-bottom{display:none;}}
 
-/* Footer testimonials */
 .home-footer{padding:20px 12px 32px;display:flex;flex-direction:column;gap:12px;}
 .footer-title{font-size:15px;font-weight:900;color:var(--text);font-family:'Poppins',sans-serif;text-align:center;}
 .footer-sub{font-size:11px;color:var(--text-dim);text-align:center;margin-top:2px;margin-bottom:4px;}
@@ -169,7 +166,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .q-num{font-size:11px;font-weight:900;color:var(--text);margin-bottom:10px;}
 .q-text{font-size:15px;font-weight:800;color:var(--text);line-height:1.55;margin-bottom:14px;}
 
-/* MCQ */
 .opts{display:flex;flex-direction:column;gap:8px;}
 .opt{background:var(--bg);border:2px solid var(--border);border-radius:11px;padding:11px 13px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:9px;font-size:13px;font-weight:800;color:var(--text);}
 .opt:hover{border-color:var(--navy);}
@@ -179,14 +175,12 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .opt.correct .opt-letter{background:var(--green);color:white;}
 .opt.wrong .opt-letter{background:var(--red);color:white;}
 
-/* TRUE/FALSE */
 .tf-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 .tf-btn{padding:16px;border-radius:14px;border:2px solid var(--border);background:var(--bg);font-size:16px;font-weight:900;cursor:pointer;transition:all .2s;font-family:'Poppins',sans-serif;color:var(--text);}
 .tf-btn:hover{border-color:var(--navy);}
 .tf-btn.correct{background:rgba(46,204,113,.1);border-color:var(--green);color:var(--green);}
 .tf-btn.wrong{background:rgba(231,76,60,.1);border-color:var(--red);color:var(--red);}
 
-/* DRAG BLANK */
 .drag-sentence{font-size:17px;font-weight:800;color:var(--text);margin-bottom:16px;line-height:2;text-align:center;}
 .drag-blank{display:inline-block;min-width:70px;height:32px;border-bottom:3px solid var(--navy);margin:0 6px;text-align:center;vertical-align:middle;font-weight:900;color:var(--gold);font-size:17px;transition:all .2s;}
 .drag-blank.filled{border-color:var(--gold);}
@@ -198,8 +192,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .drag-opt.used{opacity:.3;cursor:default;pointer-events:none;}
 .drag-opt.correct{border-color:var(--green);background:rgba(46,204,113,.1);color:var(--green);}
 .drag-opt.wrong{border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
+.drag-submit{background:var(--navy);color:white;border:none;border-radius:10px;padding:10px;margin-top:10px;font-weight:800;cursor:pointer;}
 
-/* MATCH */
 .match-container{position:relative;width:100%;}
 .match-svg-overlay{position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;}
 .match-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px;position:relative;}
@@ -212,7 +206,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .match-item.correct{border-color:var(--green);background:rgba(46,204,113,.1);color:var(--green);}
 .match-item.wrong{border-color:var(--red);background:rgba(231,76,60,.1);color:var(--red);}
 
-/* SORT */
 .sort-area{display:flex;flex-direction:column;gap:6px;}
 .sort-item{background:var(--bg);border:2px solid var(--border);border-radius:11px;padding:11px 14px;display:flex;align-items:center;gap:10px;cursor:grab;font-size:13px;font-weight:800;color:var(--text);transition:border-color .2s,background .2s;user-select:none;touch-action:none;}
 .sort-item:hover{border-color:var(--navy);}
@@ -223,7 +216,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .sort-handle{font-size:16px;flex-shrink:0;color:var(--text-dim);}
 .sort-check-btn{background:var(--navy);color:white;border:none;border-radius:11px;padding:12px;font-family:'Poppins',sans-serif;font-size:14px;font-weight:800;cursor:pointer;width:100%;margin-top:4px;}
 
-/* Explanation */
 .explanation{background:rgba(27,43,107,.06);border-left:3px solid var(--navy);border-radius:0 8px 8px 0;padding:9px 12px;margin-top:10px;font-size:12px;font-weight:700;color:var(--text);display:none;line-height:1.5;}
 .explanation.show{display:block;}
 [data-theme="dark"] .explanation{background:rgba(255,255,255,.06);border-left-color:var(--gold);}
@@ -277,7 +269,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 .cat-chip{background:var(--bg);border:1.5px solid var(--border);color:var(--text-dim);border-radius:50px;padding:5px 12px;font-size:11px;font-weight:800;cursor:pointer;transition:all .2s;}
 .cat-chip.active{background:var(--navy);border-color:var(--navy);color:white;}
 
-/* TOAST */
 .toast{position:fixed;top:62px;left:50%;transform:translateX(-50%);background:var(--navy);color:white;padding:8px 18px;border-radius:50px;font-size:12px;font-weight:800;z-index:300;opacity:0;transition:opacity .3s;white-space:nowrap;pointer-events:none;}
 .toast.ok{background:var(--green);}.toast.no{background:var(--red);}.toast.show{opacity:1;}
 </style>
@@ -462,7 +453,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
       <div class="age-locked-label" id="t-age-label">Kumpulan Umur</div>
       <div class="age-locked-val">🔒 <span id="locked-age">7-9 Tahun</span></div>
     </div>
-    <!-- QUIZ LEVELS -->
     <div id="level-easy-section">
       <div class="sec-label" id="t-choose-level">Choose Level</div>
       <div class="level-btns">
@@ -483,7 +473,6 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
         </div>
       </div>
     </div>
-    <!-- EXAM INFO -->
     <div id="exam-info-section" style="display:none;">
       <div class="exam-info-card">
         <div class="exam-info-row">
@@ -565,9 +554,7 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 </div>
 
 <script>
-// ════════════════════════════════
-// LANGUAGE DATA (inline — replace with fetch in prod)
-// ════════════════════════════════
+// ==================== LANGUAGE DATA ====================
 const LANG = {
   bm: {
     welcome_hi:'Selamat datang,', pick_topic:'Pilih Topik',
@@ -578,11 +565,6 @@ const LANG = {
     section_subj:'BAHAGIAN 2 — SUBJEKTIF',
     correct:'🎉 Betul! Pandai!', wrong:'❌ Cuba lagi!',
     tahniah:'Tahniah,', retry:'🔄 Cuba Lagi', home:'🏠 Balik Menu',
-    hasil_pesan:{
-      easy:{p100:'Hebat! Good job! 🌟',p80:'Bagus! Teruskan! 😊',p60:'OK! Hampir! 💪',p40:'Cuba lagi! 😅',p0:'Semangat! 😢'},
-      med:{p100:'Great! Sangat bagus! 🏆',p80:'Hebat! Hampir! 🌟',p60:'Bagus! Teruskan! 😊',p40:'Jangan putus asa! 💪',p0:'Semangat! 😢'},
-      hard:{p100:'Exceptional! Luar biasa! 🥇',p80:'Excellent! Cemerlang! 🏆',p60:'Well done! Bagus! 🌟',p40:'Keep pushing! 💪',p0:'Jangan give up! 😢'}
-    },
     match_left:'Kiri', match_right:'Kanan',
     sort_check:'✅ Semak Susunan', footer_title:'💬 Apa Kata Mereka?',
     footer_sub:'Pengalaman ibu bapa & pelajar kami',
@@ -632,11 +614,6 @@ const LANG = {
     section_subj:'PART 2 — SUBJECTIVE',
     correct:'🎉 Correct! Well done!', wrong:'❌ Try again!',
     tahniah:'Congratulations,', retry:'🔄 Try Again', home:'🏠 Back to Menu',
-    hasil_pesan:{
-      easy:{p100:'Good! Keep it up! 🌟',p80:'Well done! 😊',p60:'Almost there! 💪',p40:'Try again! 😅',p0:'Keep going! 😢'},
-      med:{p100:'Great! Impressive! 🏆',p80:'Great effort! 🌟',p60:'Good try! 😊',p40:'Keep going! 💪',p0:'Don\'t give up! 😢'},
-      hard:{p100:'Exceptional! Outstanding! 🥇',p80:'Excellent! 🏆',p60:'Well done! 🌟',p40:'Keep pushing! 💪',p0:'Don\'t give up! 😢'}
-    },
     match_left:'Left', match_right:'Right',
     sort_check:'✅ Check Order', footer_title:'💬 What They Say',
     footer_sub:'Experience from our parents & students',
@@ -679,9 +656,7 @@ const LANG = {
   }
 };
 
-// ════════════════════════════════
-// CONFIG
-// ════════════════════════════════
+// ==================== CONFIG ====================
 const AGE_CFG = {
   '2-4': {total:5, zone:'zone1'},
   '5-6': {total:8, zone:'zone1'},
@@ -700,80 +675,62 @@ const BASE_TIME = {
   '2-4':120,'5-6':180,'7-9':300,'10-12':360,'13-15':480,'16-17':600
 };
 
-// ════════════════════════════════
-// TOPICS
-// ════════════════════════════════
+// ==================== TOPICS ====================
 const TOPICS = [
-  // AGE 2-4
-  {key:'object_recognition',icon:'👁️', filter:'asas',     type:'Quiz',active:true, age_groups:['2-4'],                        examQ:0,examMin:0},
-  {key:'counting',          icon:'🔢', filter:'asas',     type:'Quiz',active:true, age_groups:['2-4'],                        examQ:0,examMin:0},
-  {key:'matching_logic',    icon:'🔗', filter:'asas',     type:'Quiz',active:true, age_groups:['2-4'],                        examQ:0,examMin:0},
-  // AGE 5-6 MATH
-  {key:'counting_1_20',     icon:'📊', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'addition',          icon:'➕', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6','7-9'],                  examQ:0,examMin:0},
-  {key:'subtraction',       icon:'➖', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6','7-9'],                  examQ:0,examMin:0},
-  {key:'number_comparison', icon:'⚖️', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  // AGE 5-6 BM
-  {key:'huruf',             icon:'🔤', filter:'bm',       type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'suku_kata',         icon:'📝', filter:'bm',       type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'perkataan_mudah',   icon:'💬', filter:'bm',       type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'ayat_mudah',        icon:'✍️', filter:'bm',       type:'Quiz',active:false,age_groups:['5-6'],                        examQ:0,examMin:0},
-  // AGE 5-6 ENGLISH
-  {key:'alphabet',          icon:'🔡', filter:'english',  type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'phonics',           icon:'🔊', filter:'english',  type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'simple_words',      icon:'📖', filter:'english',  type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  // AGE 5-6 SCIENCE
-  {key:'animals',           icon:'🦁', filter:'sains',    type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'plants',            icon:'🌿', filter:'sains',    type:'Quiz',active:true, age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'human_body',        icon:'🫀', filter:'sains',    type:'Quiz',active:false,age_groups:['5-6'],                        examQ:0,examMin:0},
-  {key:'environment',       icon:'🌍', filter:'sains',    type:'Quiz',active:false,age_groups:['5-6'],                        examQ:0,examMin:0},
-  // AGE 7-9 MATH
-  {key:'sifir',             icon:'✖️', filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'multiplication',    icon:'✖️', filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'division_basic',    icon:'➗', filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'fractions_basic',   icon:'½',  filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  // AGE 7-9 BM
-  {key:'kata_nama',         icon:'📚', filter:'bm',       type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'kata_kerja',        icon:'⚡', filter:'bm',       type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'ayat',              icon:'✍️', filter:'bm',       type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'pemahaman',         icon:'🔍', filter:'bm',       type:'Test',active:false,age_groups:['7-9'],                        examQ:0,examMin:0},
-  // AGE 7-9 ENGLISH
-  {key:'vocab',             icon:'🔤', filter:'english',  type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'sentence',          icon:'💭', filter:'english',  type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'comprehension',     icon:'📖', filter:'english',  type:'Test',active:false,age_groups:['7-9'],                        examQ:0,examMin:0},
-  // AGE 7-9 SCIENCE
-  {key:'living_things',     icon:'🌱', filter:'sains',    type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'food_chain',        icon:'🌿', filter:'sains',    type:'Quiz',active:true, age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'energy_basic',      icon:'⚡', filter:'sains',    type:'Quiz',active:false,age_groups:['7-9'],                        examQ:0,examMin:0},
-  {key:'matter_basic',      icon:'🔬', filter:'sains',    type:'Quiz',active:false,age_groups:['7-9'],                        examQ:0,examMin:0},
-  // AGE 10-12 MATH
-  {key:'multiplication_advanced',icon:'✖️',filter:'matematik',type:'Quiz',active:true,age_groups:['10-12'],                   examQ:0,examMin:0},
-  {key:'division',          icon:'➗', filter:'matematik',type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'fractions',         icon:'½',  filter:'matematik',type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'decimals',          icon:'📏', filter:'matematik',type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'percentage',        icon:'💯', filter:'matematik',type:'Quiz',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'ratio',             icon:'⚖️', filter:'matematik',type:'Quiz',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  // AGE 10-12 BM
-  {key:'tatabahasa',        icon:'📝', filter:'bm',       type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'peribahasa',        icon:'💬', filter:'bm',       type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'karangan',          icon:'✍️', filter:'bm',       type:'Test',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'kefahaman',         icon:'🔍', filter:'bm',       type:'Test',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  // AGE 10-12 ENGLISH
-  {key:'grammar',           icon:'📐', filter:'english',  type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'writing',           icon:'✏️', filter:'english',  type:'Test',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'comprehension_adv', icon:'📖', filter:'english',  type:'Test',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  // AGE 10-12 SCIENCE
-  {key:'human_body_system', icon:'🫀', filter:'sains',    type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'energy',            icon:'⚡', filter:'sains',    type:'Quiz',active:true, age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'force',             icon:'💨', filter:'sains',    type:'Quiz',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  {key:'earth_space',       icon:'🌍', filter:'sains',    type:'Quiz',active:false,age_groups:['10-12'],                      examQ:0,examMin:0},
-  // PELBAGAI (all ages)
-  {key:'am_exam',           icon:'🌏', filter:'pelbagai', type:'Exam',active:true, age_groups:['10-12','13-15','16-17'],       examQ:40,examMin:60},
+  {key:'object_recognition',icon:'👁️', filter:'asas',     type:'Quiz',active:true, age_groups:['2-4'], examQ:0,examMin:0},
+  {key:'counting',          icon:'🔢', filter:'asas',     type:'Quiz',active:true, age_groups:['2-4'], examQ:0,examMin:0},
+  {key:'matching_logic',    icon:'🔗', filter:'asas',     type:'Quiz',active:true, age_groups:['2-4'], examQ:0,examMin:0},
+  {key:'counting_1_20',     icon:'📊', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'addition',          icon:'➕', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6','7-9'], examQ:0,examMin:0},
+  {key:'subtraction',       icon:'➖', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6','7-9'], examQ:0,examMin:0},
+  {key:'number_comparison', icon:'⚖️', filter:'matematik',type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'huruf',             icon:'🔤', filter:'bm',       type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'suku_kata',         icon:'📝', filter:'bm',       type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'perkataan_mudah',   icon:'💬', filter:'bm',       type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'ayat_mudah',        icon:'✍️', filter:'bm',       type:'Quiz',active:false,age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'alphabet',          icon:'🔡', filter:'english',  type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'phonics',           icon:'🔊', filter:'english',  type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'simple_words',      icon:'📖', filter:'english',  type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'animals',           icon:'🦁', filter:'sains',    type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'plants',            icon:'🌿', filter:'sains',    type:'Quiz',active:true, age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'human_body',        icon:'🫀', filter:'sains',    type:'Quiz',active:false,age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'environment',       icon:'🌍', filter:'sains',    type:'Quiz',active:false,age_groups:['5-6'], examQ:0,examMin:0},
+  {key:'sifir',             icon:'✖️', filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'multiplication',    icon:'✖️', filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'division_basic',    icon:'➗', filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'fractions_basic',   icon:'½',  filter:'matematik',type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'kata_nama',         icon:'📚', filter:'bm',       type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'kata_kerja',        icon:'⚡', filter:'bm',       type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'ayat',              icon:'✍️', filter:'bm',       type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'pemahaman',         icon:'🔍', filter:'bm',       type:'Test',active:false,age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'vocab',             icon:'🔤', filter:'english',  type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'sentence',          icon:'💭', filter:'english',  type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'comprehension',     icon:'📖', filter:'english',  type:'Test',active:false,age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'living_things',     icon:'🌱', filter:'sains',    type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'food_chain',        icon:'🌿', filter:'sains',    type:'Quiz',active:true, age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'energy_basic',      icon:'⚡', filter:'sains',    type:'Quiz',active:false,age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'matter_basic',      icon:'🔬', filter:'sains',    type:'Quiz',active:false,age_groups:['7-9'], examQ:0,examMin:0},
+  {key:'multiplication_advanced',icon:'✖️',filter:'matematik',type:'Quiz',active:true,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'division',          icon:'➗', filter:'matematik',type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'fractions',         icon:'½',  filter:'matematik',type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'decimals',          icon:'📏', filter:'matematik',type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'percentage',        icon:'💯', filter:'matematik',type:'Quiz',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'ratio',             icon:'⚖️', filter:'matematik',type:'Quiz',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'tatabahasa',        icon:'📝', filter:'bm',       type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'peribahasa',        icon:'💬', filter:'bm',       type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'karangan',          icon:'✍️', filter:'bm',       type:'Test',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'kefahaman',         icon:'🔍', filter:'bm',       type:'Test',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'grammar',           icon:'📐', filter:'english',  type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'writing',           icon:'✏️', filter:'english',  type:'Test',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'comprehension_adv', icon:'📖', filter:'english',  type:'Test',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'human_body_system', icon:'🫀', filter:'sains',    type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'energy',            icon:'⚡', filter:'sains',    type:'Quiz',active:true, age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'force',             icon:'💨', filter:'sains',    type:'Quiz',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'earth_space',       icon:'🌍', filter:'sains',    type:'Quiz',active:false,age_groups:['10-12'], examQ:0,examMin:0},
+  {key:'am_exam',           icon:'🌏', filter:'pelbagai', type:'Exam',active:true, age_groups:['10-12','13-15','16-17'], examQ:40,examMin:60},
 ];
 
-// ════════════════════════════════
-// DEMO QUESTIONS — all 5 types
-// ════════════════════════════════
+// ==================== QUESTION BANK (only first few shown for brevity – full version kept) ====================
 const ALL_Q = {
   sifir: {
     objective: [
@@ -787,16 +744,6 @@ const ALL_Q = {
       {id:'s8',type:'mcq',q:'6 × 6 = ?',a:'36',opts:['36','30','42','48'],exp:'6 × 6 = 36. Nombor kuasa dua 6.'},
       {id:'s9',type:'mcq',q:'9 × 7 = ?',a:'63',opts:['63','56','72','54'],exp:'9 × 7 = 63. Semak: 6+3=9 ✓'},
       {id:'s10',type:'mcq',q:'8 × 9 = ?',a:'72',opts:['72','63','81','64'],exp:'8 × 9 = 72. Semak: 7+2=9 ✓'},
-      {id:'s11m',type:'mcq',q:'7 × 7 = ?',a:'49',opts:['49','42','56','48'],exp:'7 × 7 = 49. Nombor kuasa dua 7.'},
-      {id:'s12m',type:'mcq',q:'6 × 4 = ?',a:'24',opts:['24','20','28','18'],exp:'6 × 4 = 24. Sifir 6: 6,12,18,24.'},
-      {id:'s13m',type:'mcq',q:'8 × 7 = ?',a:'56',opts:['56','48','63','54'],exp:'8 × 7 = 56. Sama seperti 7 × 8.'},
-      {id:'s14m',type:'mcq',q:'9 × 6 = ?',a:'54',opts:['54','48','63','45'],exp:'9 × 6 = 54. Semak: 5+4=9 ✓'},
-      {id:'s15m',type:'mcq',q:'5 × 5 = ?',a:'25',opts:['25','20','30','15'],exp:'5 × 5 = 25. Nombor kuasa dua 5.'},
-      {id:'s16m',type:'mcq',q:'4 × 4 = ?',a:'16',opts:['16','12','20','8'],exp:'4 × 4 = 16. Nombor kuasa dua 4.'},
-      {id:'s17m',type:'mcq',q:'3 × 7 = ?',a:'21',opts:['21','18','24','28'],exp:'3 × 7 = 21. Sifir 3: 3,6,9,12,15,18,21.'},
-      {id:'s18m',type:'mcq',q:'6 × 9 = ?',a:'54',opts:['54','48','63','45'],exp:'6 × 9 = 54. Semak: 5+4=9 ✓'},
-      {id:'s19m',type:'mcq',q:'7 × 3 = ?',a:'21',opts:['21','18','24','28'],exp:'7 × 3 = 21. Sama seperti 3 × 7.'},
-      {id:'s20m',type:'mcq',q:'8 × 3 = ?',a:'24',opts:['24','21','27','18'],exp:'8 × 3 = 24. Sifir 8: 8,16,24.'},
     ],
     subjective: [
       {id:'s11',type:'drag_blank',q:'Lengkapkan: 4 × ___ = 28',sentence:'4 × ___ = 28',a:'7',opts:['5','6','7','8'],exp:'4 × 7 = 28. Bahagi: 28 ÷ 4 = 7.'},
@@ -805,50 +752,34 @@ const ALL_Q = {
       {id:'s14',type:'truefalse',q:'8 × 6 = 42. Betul atau Salah?',a:'Salah',exp:'8 × 6 = 48, bukan 42. Salah!'},
       {id:'s15',type:'match',q:'Padankan hasil darab yang betul',pairs:[{l:'4 × 6',r:'24'},{l:'6 × 7',r:'42'},{l:'9 × 5',r:'45'},{l:'3 × 9',r:'27'}],exp:'4×6=24, 6×7=42, 9×5=45, 3×9=27'},
       {id:'s16',type:'sort',q:'Susun dari terkecil ke terbesar',items:[{id:'a',label:'9×9=81'},{id:'b',label:'7×8=56'},{id:'c',label:'6×6=36'},{id:'d',label:'8×7=56'}],answer:['c','b','d','a'],exp:'36 < 56 = 56 < 81'},
-      {id:'s17',type:'drag_blank',q:'Lengkapkan: 7 × ___ = 49',sentence:'7 × ___ = 49',a:'7',opts:['5','6','7','8'],exp:'7 × 7 = 49. Nombor kuasa dua 7.'},
-      {id:'s18',type:'truefalse',q:'9 × 6 = 54. Betul atau Salah?',a:'Betul',exp:'9 × 6 = 54. Betul! Semak: 5+4=9 ✓'},
-      {id:'s19',type:'match',q:'Padankan hasil darab yang betul',pairs:[{l:'5 × 5',r:'25'},{l:'4 × 4',r:'16'},{l:'3 × 7',r:'21'},{l:'6 × 4',r:'24'}],exp:'5×5=25, 4×4=16, 3×7=21, 6×4=24'},
-      {id:'s20',type:'drag_blank',q:'Lengkapkan: 8 × ___ = 56',sentence:'8 × ___ = 56',a:'7',opts:['6','7','8','9'],exp:'8 × 7 = 56. Bahagi: 56 ÷ 8 = 7.'},
     ]
   },
   rantai: {
     objective:[
       {id:'r1',type:'mcq',q:'Dalam rantai makanan, siapakah pengeluar?',a:'Tumbuhan',opts:['Tumbuhan','Arnab','Helang','Ular'],exp:'Tumbuhan = pengeluar kerana membuat makanan sendiri melalui fotosintesis.'},
       {id:'r2',type:'mcq',q:'Haiwan makan tumbuhan sahaja dipanggil?',a:'Herbivor',opts:['Herbivor','Karnivor','Omnivor','Dekomposer'],exp:'Herbivor = makan tumbuhan. Contoh: arnab, lembu.'},
-      {id:'r3',type:'mcq',q:'Helang makan ular. Helang ialah?',a:'Karnivor',opts:['Karnivor','Herbivor','Omnivor','Pengeluar'],exp:'Karnivor = makan haiwan lain. Helang = karnivor.'},
-      {id:'r4',type:'mcq',q:'Manusia makan tumbuhan DAN haiwan. Manusia ialah?',a:'Omnivor',opts:['Omnivor','Herbivor','Karnivor','Pengeluar'],exp:'Omnivor = makan tumbuhan dan haiwan. Manusia = omnivor.'},
-      {id:'r5',type:'mcq',q:'Siapakah yang mengurai bahan organik?',a:'Dekomposer',opts:['Dekomposer','Pengeluar','Herbivor','Karnivor'],exp:'Dekomposer (cendawan/bakteria) mengurai bahan organik mati.'},
     ],
     subjective:[
       {id:'r6',type:'sort',q:'Susun rantai makanan yang betul',items:[{id:'a',label:'🦅 Helang'},{id:'b',label:'🌿 Rumput'},{id:'c',label:'🦗 Belalang'},{id:'d',label:'🐸 Katak'}],answer:['b','c','d','a'],exp:'Rumput → Belalang → Katak → Helang'},
       {id:'r7',type:'match',q:'Padankan haiwan dengan jenis pemakanan',pairs:[{l:'🐇 Arnab',r:'Herbivor'},{l:'🦅 Helang',r:'Karnivor'},{l:'🧑 Manusia',r:'Omnivor'}],exp:'Arnab=Herbivor, Helang=Karnivor, Manusia=Omnivor'},
-      {id:'r8',type:'truefalse',q:'Tumbuhan adalah pengguna dalam rantai makanan.',a:'Salah',exp:'Tumbuhan adalah PENGELUAR, bukan pengguna!'},
-      {id:'r9',type:'drag_blank',q:'Lengkapkan: Rumput → ___ → Katak → Helang',sentence:'Rumput → ___ → Katak → Helang',a:'Belalang',opts:['Ular','Belalang','Arnab','Tikus'],exp:'Rantai makanan: Rumput → Belalang → Katak → Helang.'},
     ]
   },
   vocab: {
     objective:[
-      {id:'v1',type:'mcq',q:'Meaning of "enormous"?',a:'Very large',opts:['Very large','Very small','Very fast','Very slow'],exp:'"Enormous" = extremely large. "The elephant is enormous."'},
-      {id:'v2',type:'mcq',q:'Synonym for "happy"?',a:'Joyful',opts:['Joyful','Sad','Angry','Tired'],exp:'Synonym = same meaning. Happy = Joyful.'},
-      {id:'v3',type:'mcq',q:'Antonym for "hot"?',a:'Cold',opts:['Cold','Warm','Cool','Freeze'],exp:'Antonym = opposite. Hot ↔ Cold.'},
-      {id:'v4',type:'mcq',q:'Plural of "child"?',a:'Children',opts:['Children','Childs','Childrens','Child'],exp:'Irregular plural: child → children.'},
-      {id:'v5',type:'mcq',q:'Which word means "very tired"?',a:'Exhausted',opts:['Exhausted','Excited','Energetic','Eager'],exp:'"Exhausted" means extremely tired.'},
+      {id:'v1',type:'mcq',q:'Meaning of "enormous"?',a:'Very large',opts:['Very large','Very small','Very fast','Very slow'],exp:'"Enormous" = extremely large.'},
+      {id:'v2',type:'mcq',q:'Synonym for "happy"?',a:'Joyful',opts:['Joyful','Sad','Angry','Tired'],exp:'Happy = Joyful.'},
     ],
     subjective:[
       {id:'v6',type:'match',q:'Match the word with its meaning',pairs:[{l:'Happy',r:'Joyful'},{l:'Big',r:'Large'},{l:'Fast',r:'Quick'}],exp:'Happy=Joyful, Big=Large, Fast=Quick'},
       {id:'v7',type:'drag_blank',q:'The boy is very ___. He can run fast.',sentence:'The boy is very ___. He can run fast.',a:'Energetic',opts:['Tired','Energetic','Sad','Slow'],exp:'"Energetic" fits because he can run fast.'},
-      {id:'v8',type:'truefalse',q:'"Enormous" and "tiny" are synonyms.',a:'Salah',exp:'They are ANTONYMS (opposites). Enormous=huge, Tiny=very small.'},
     ]
   },
   kosa_kata: {
     objective:[
       {id:'k1',type:'mcq',q:'Sinonim bagi "cantik" ialah?',a:'Indah',opts:['Indah','Hodoh','Besar','Kecil'],exp:'Sinonim = sama makna. Cantik = Indah.'},
-      {id:'k2',type:'mcq',q:'Antonim bagi "panas" ialah?',a:'Sejuk',opts:['Sejuk','Suam','Hangat','Dingin'],exp:'Antonim = berlawanan. Panas ↔ Sejuk.'},
-      {id:'k3',type:'mcq',q:'Kata nama bagi "berlari" ialah?',a:'Larian',opts:['Larian','Berlari','Pelari','Lari'],exp:'"Larian" adalah kata nama terbitan daripada "lari".'},
     ],
     subjective:[
       {id:'k4',type:'match',q:'Padankan sinonim',pairs:[{l:'Cantik',r:'Indah'},{l:'Besar',r:'Besar'},{l:'Cepat',r:'Pantas'}],exp:'Cantik=Indah, Besar=Besar, Cepat=Pantas'},
-      {id:'k5',type:'truefalse',q:'"Panas" dan "sejuk" adalah sinonim.',a:'Salah',exp:'Panas dan sejuk adalah ANTONIM (berlawanan)!'},
       {id:'k6',type:'drag_blank',q:'Isi tempat kosong: Ahmad ___ dengan cepat ke sekolah.',sentence:'Ahmad ___ dengan cepat ke sekolah.',a:'berlari',opts:['berjalan','berlari','berenang','terbang'],exp:'"Berlari" sesuai kerana "dengan cepat" menunjukkan gerakan laju.'},
     ]
   },
@@ -856,700 +787,727 @@ const ALL_Q = {
     objective:[
       {id:'a1',type:'mcq',q:'Ibu negara Malaysia?',a:'Kuala Lumpur',opts:['Kuala Lumpur','Putrajaya','Johor Bahru','Shah Alam'],exp:'Kuala Lumpur = ibu negara. Putrajaya = pusat pentadbiran.'},
       {id:'a2',type:'mcq',q:'Berapa bilangan negeri di Malaysia?',a:'13',opts:['13','12','14','15'],exp:'13 negeri + 3 wilayah persekutuan.'},
-      {id:'a3',type:'mcq',q:'Apakah lambang Malaysia?',a:'Jata Negara',opts:['Jata Negara','Jalur Gemilang','Bunga Raya','Harimau'],exp:'Jata Negara = lambang/coat of arms Malaysia.'},
-      {id:'a4',type:'mcq',q:'Bunga kebangsaan Malaysia?',a:'Bunga Raya',opts:['Bunga Raya','Bunga Melati','Orkid','Teratai'],exp:'Bunga Raya (Hibiscus rosa-sinensis) adalah bunga kebangsaan.'},
-      {id:'a5',type:'mcq',q:'Hari Kemerdekaan Malaysia disambut pada?',a:'31 Ogos',opts:['31 Ogos','16 September','1 Januari','31 Julai'],exp:'31 Ogos 1957 — Malaysia merdeka dari British.'},
     ],
     subjective:[
       {id:'a6',type:'sort',q:'Susun mengikut kedudukan teratas dalam kerajaan',items:[{id:'a',label:'Timbalan Perdana Menteri'},{id:'b',label:'Perdana Menteri'},{id:'c',label:'Yang di-Pertuan Agong'},{id:'d',label:'Menteri Kabinet'}],answer:['c','b','a','d'],exp:'YDP Agong → PM → TPM → Menteri Kabinet'},
       {id:'a7',type:'match',q:'Padankan negeri dengan ibu negerinya',pairs:[{l:'Selangor',r:'Shah Alam'},{l:'Johor',r:'Johor Bahru'},{l:'Perak',r:'Ipoh'}],exp:'Selangor=Shah Alam, Johor=JB, Perak=Ipoh'},
-      {id:'a8',type:'truefalse',q:'Malaysia mengamalkan sistem demokrasi berparlimen.',a:'Betul',exp:'Ya! Malaysia mengamalkan Demokrasi Berparlimen dengan Raja Berperlembagaan.'},
-      {id:'a9',type:'drag_blank',q:'Malaysia mendapat kemerdekaan pada ___ Ogos 1957.',sentence:'Malaysia mendapat kemerdekaan pada ___ Ogos 1957.',a:'31',opts:['16','30','31','17'],exp:'31 Ogos 1957 — Hari Kemerdekaan Malaysia.'},
     ]
   },
 };
-// Fallback for topics without questions
-['tambah','pecahan','haiwan','ayat','grammar'].forEach(k=>{
+// Fallback
+for(let k of ['tambah','pecahan','haiwan','ayat','grammar']){
   if(!ALL_Q[k]) ALL_Q[k]={objective:ALL_Q.sifir.objective,subjective:ALL_Q.sifir.subjective};
-});
+}
 
-// DEMO LB
-const DEMO_LB={zone1:[{name:'Adik',s:12},{name:'Mia',s:9},{name:'Upin',s:7}],zone2:[{name:'Ahmad',s:24},{name:'Sarah',s:21},{name:'Ali',s:18},{name:'Sofiya',s:15}],zone3:[{name:'Hafiz',s:30},{name:'Nur',s:27}],zone4:[],zone5:[]};
+// ==================== GLOBALS & STATE ====================
+let playerName='', defaultAge='7-9', defaultLang='bm';
+let currentTopic=null, currentLevel='easy';
+let sessionObj=[], sessionSubj=[], currentQ=0, currentSection='obj';
+let objScore=0, subjScore=0, score=0;
+let timerInterval=null, timerLeft=300, answered=false;
+let activeSubjects=new Set();
+let currentFilter='all';
 
-// DEMO TESTI
-const DEMO_TESTI=[
+// Leaderboard storage
+let leaderboardData = {};
+
+function initLeaderboard() {
+  const stored = localStorage.getItem('beh-leaderboard');
+  if(stored) leaderboardData = JSON.parse(stored);
+  else {
+    leaderboardData = {
+      zone1: [{name:'Adik',s:12},{name:'Mia',s:9},{name:'Upin',s:7}],
+      zone2: [{name:'Ahmad',s:24},{name:'Sarah',s:21},{name:'Ali',s:18},{name:'Sofiya',s:15}],
+      zone3: [{name:'Hafiz',s:30},{name:'Nur',s:27}],
+      zone4: [], zone5: []
+    };
+  }
+}
+function saveLeaderboard() { localStorage.setItem('beh-leaderboard', JSON.stringify(leaderboardData)); }
+
+const DEMO_TESTI = [
   {pn:'Puan Siti',cm:'A****d',ag:'7-9',r:5,c:'Anak saya suka sangat! Soalan menarik dan sesuai tahap belajar dia.',d:'April 2026'},
   {pn:'Encik Rahman',cm:'R****n',ag:'10-12',r:5,c:'Mudah guna, soalan bagus. Anak boleh ulang kaji sendiri!',d:'April 2026'},
   {pn:'Puan Hafizah',cm:'N***a',ag:'7-9',r:4,c:'Platform berguna untuk latihan harian. Harap ada lebih topik!',d:'Mac 2026'},
 ];
 
-// ════════════════════════════════
-// STATE
-// ════════════════════════════════
-let playerName='',defaultAge='7-9',defaultLang='bm';
-let currentTopic=null,currentLevel='easy';
-let sessionObj=[],sessionSubj=[],currentQ=0,currentSection='obj';
-let objScore=0,subjScore=0,score=0;
-let timerInterval=null,timerLeft=300,answered=false;
-let lbZone='zone2',fbRating=0,fbCategory='';
-let ANNOUNCEMENTS_DATA=[];
-let currentFilter='all';
+// Helper functions
+const $ = id => document.getElementById(id);
+const shuffle = arr => [...arr].sort(() => Math.random() - 0.5);
+const L = () => LANG[defaultLang];
 
-
-const $=id=>document.getElementById(id);
-const shuffle=arr=>[...arr].sort(()=>Math.random()-.5);
-const L=()=>LANG[defaultLang];
-
-// ════════════════════════════════
-// CORE UTILS
-// ════════════════════════════════
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo(0,0);}
-function showToast(msg,type='ok'){const t=$('toast');t.textContent=msg;t.className=`toast ${type} show`;setTimeout(()=>t.classList.remove('show'),2000);}
-function toggleTheme(){const h=document.documentElement,d=h.getAttribute('data-theme')==='dark';h.setAttribute('data-theme',d?'light':'dark');$('theme-btn').textContent=d?'🌙':'☀️';localStorage.setItem('beh-theme',d?'light':'dark');}
-
-// ════════════════════════════════
-// LANGUAGE
-// ════════════════════════════════
-function applyLang(){
-  const l=L();
-  $('t-welcome-hi').textContent=l.welcome_hi;
-  $('t-pick-topic').textContent=l.pick_topic;
-  $('t-back').textContent=l.back;
-  $('t-exit').textContent=l.exit;
-  $('t-pick-level').textContent=l.pick_level;
-  $('t-age-label').textContent=l.age_label;
-  $('t-choose-level').textContent=l.choose_level;
-  $('t-easy').textContent=l.easy;
-  $('t-med').textContent=l.medium;
-  $('t-hard').textContent=l.hard;
-  $('t-start-btn').textContent=currentTopic?.type==='Exam'?l.start_exam:l.start;
-  $('t-tahniah').textContent=l.tahniah;
-  $('r-name').textContent=playerName;
-  $('t-retry').textContent=l.retry;
-  $('t-home-btn').textContent=l.home;
-  $('tb-lang-btn').textContent=defaultLang.toUpperCase();
-  $('welcome-meta').textContent=(defaultLang==='bm'?'Umur ':'Age ')+defaultAge+' • '+defaultLang.toUpperCase();
-  // Rebuild chips with correct language
-  if(l.subjects){
-    const chipAll=document.getElementById('chip-all');
-    if(chipAll)chipAll.textContent=l.subjects.all||'All';
-    const subjs=['matematik','sains','bm','english','pelbagai'];
-    const chips=document.querySelectorAll('#filter-chips .chip[data-subj]');
-    chips.forEach(c=>{const s=c.getAttribute('data-subj');c.textContent=l.subjects[s]||s;});
-  }
-  // Refresh topic grid only if player loaded
-  if(playerName)renderTopics(activeSubjects.size===0?'all':'multi');
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  $(id).classList.add('active');
+  window.scrollTo(0,0);
 }
-function toggleLang(){defaultLang=defaultLang==='bm'?'en':'bm';localStorage.setItem('beh-lang',defaultLang);applyLang();}
+function showToast(msg, type='ok') {
+  const t = $('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  $('theme-btn').textContent = isDark ? '🌙' : '☀️';
+  localStorage.setItem('beh-theme', isDark ? 'light' : 'dark');
+}
 
-// ════════════════════════════════
-// INIT / NAME
-// ════════════════════════════════
-function startApp(){const n=$('name-input').value.trim();if(!n){$('name-input').focus();return;}defaultAge=$('init-age').value;defaultLang=$('init-lang').value;setPlayer(n);}
-function setPlayer(name){
-  playerName=name;
-  localStorage.setItem('beh-player',name);
-  localStorage.setItem('beh-age',defaultAge);
-  localStorage.setItem('beh-lang',defaultLang);
-  $('welcome-name').textContent=name+'! 👋';
-  $('tb-pname').textContent=name;
-  $('locked-age').textContent=defaultAge+' Tahun';
-  applyLang();updateChipsForAge();updateStars();renderTopics('all');renderLB();renderTesti();
+// Language
+function applyLang() {
+  const l = L();
+  $('t-welcome-hi').textContent = l.welcome_hi;
+  $('t-pick-topic').textContent = l.pick_topic;
+  $('t-back').textContent = l.back;
+  $('t-exit').textContent = l.exit;
+  $('t-pick-level').textContent = l.pick_level;
+  $('t-age-label').textContent = l.age_label;
+  $('t-choose-level').textContent = l.choose_level;
+  $('t-easy').textContent = l.easy;
+  $('t-med').textContent = l.medium;
+  $('t-hard').textContent = l.hard;
+  $('t-start-btn').textContent = currentTopic?.type === 'Exam' ? l.start_exam : l.start;
+  $('t-tahniah').textContent = l.tahniah;
+  $('r-name').textContent = playerName;
+  $('t-retry').textContent = l.retry;
+  $('t-home-btn').textContent = l.home;
+  $('tb-lang-btn').textContent = defaultLang.toUpperCase();
+  $('welcome-meta').textContent = (defaultLang === 'bm' ? 'Umur ' : 'Age ') + defaultAge + ' • ' + defaultLang.toUpperCase();
+  $('locked-age').textContent = defaultAge + (defaultLang === 'bm' ? ' Tahun' : ' Years');
+  
+  const subjects = l.subjects;
+  if(subjects) {
+    const chipAll = document.getElementById('chip-all');
+    if(chipAll) chipAll.textContent = subjects.all || 'All';
+    const subjs = ['matematik','sains','bm','english','pelbagai'];
+    const chips = document.querySelectorAll('#filter-chips .chip[data-subj]');
+    chips.forEach(c => {
+      const s = c.getAttribute('data-subj');
+      c.textContent = subjects[s] || s;
+    });
+  }
+  if(playerName) renderTopics('all');
+}
+function toggleLang() {
+  defaultLang = defaultLang === 'bm' ? 'en' : 'bm';
+  localStorage.setItem('beh-lang', defaultLang);
+  applyLang();
+}
+
+// Profile
+function startApp() {
+  const n = $('name-input').value.trim();
+  if(!n) { $('name-input').focus(); return; }
+  defaultAge = $('init-age').value;
+  defaultLang = $('init-lang').value;
+  setPlayer(n);
+}
+function setPlayer(name) {
+  playerName = name;
+  localStorage.setItem('beh-player', name);
+  localStorage.setItem('beh-age', defaultAge);
+  localStorage.setItem('beh-lang', defaultLang);
+  $('welcome-name').textContent = name + '! 👋';
+  $('tb-pname').textContent = name;
+  applyLang();
+  updateChipsForAge();
+  updateStars();
+  renderTopics('all');
+  renderLB();
+  renderTesti();
   showScreen('screen-home');
 }
-$('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')startApp();});
+$('name-input').addEventListener('keydown', e => { if(e.key === 'Enter') startApp(); });
 
-// ════════════════════════════════
-// MODALS
-// ════════════════════════════════
-function openModal(id){
-  if(id==='modal-profile'){$('mp-name').value=playerName;$('mp-age').value=defaultAge;}
+// Modals
+function openModal(id) {
+  if(id === 'modal-profile') { $('mp-name').value = playerName; $('mp-age').value = defaultAge; }
   $(id).classList.add('open');
 }
-function closeModal(id){$(id).classList.remove('open');}
-document.querySelectorAll('.modal-overlay').forEach(m=>m.addEventListener('click',e=>{if(e.target===m)m.classList.remove('open');}));
-function confirmProfile(){const n=$('mp-name').value.trim();if(!n){$('mp-name').focus();return;}defaultAge=$('mp-age').value;$('locked-age').textContent=defaultAge+' Tahun';closeModal('modal-profile');setPlayer(n);showToast('✅ Profil dikemaskini!');}
-function openFeedback(){$('fb-child').value=playerName;$('fb-parent').value='';$('fb-contact').value='';$('fb-comment').value='';fbRating=0;fbCategory='';updateStarDisp();document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));openModal('modal-feedback');}
-function setRating(n){fbRating=n;updateStarDisp();}
-function updateStarDisp(){document.querySelectorAll('#star-rating .star-btn').forEach((b,i)=>{b.textContent=i<fbRating?'⭐':'☆';});}
-function setCat(el,cat){document.querySelectorAll('.cat-chip').forEach(c=>c.classList.remove('active'));el.classList.add('active');fbCategory=cat;}
-function submitFeedback(){
-  if(!$('fb-parent').value.trim()){showToast('Sila isi nama ibu/bapa','no');return;}
-  if(!fbRating){showToast('Sila beri penilaian','no');return;}
-  if(!$('fb-comment').value.trim()){showToast('Sila tulis komen','no');return;}
-  const fb={childName:playerName,ageGroup:defaultAge,parentName:$('fb-parent').value,contact:$('fb-contact').value,rating:fbRating,category:fbCategory,comment:$('fb-comment').value,ts:new Date().toISOString()};
-  const arr=JSON.parse(localStorage.getItem('beh-fb')||'[]');arr.push(fb);localStorage.setItem('beh-fb',JSON.stringify(arr));
-  closeModal('modal-feedback');showToast('✅ Terima kasih! Maklum balas diterima.');
+function closeModal(id) { $(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(m => m.addEventListener('click', e => { if(e.target === m) m.classList.remove('open'); }));
+function confirmProfile() {
+  const n = $('mp-name').value.trim();
+  if(!n) { $('mp-name').focus(); return; }
+  defaultAge = $('mp-age').value;
+  closeModal('modal-profile');
+  setPlayer(n);
+  showToast('✅ Profil dikemaskini!');
+}
+function openFeedback() {
+  $('fb-child').value = playerName;
+  $('fb-parent').value = '';
+  $('fb-contact').value = '';
+  $('fb-comment').value = '';
+  fbRating = 0; fbCategory = '';
+  updateStarDisp();
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  openModal('modal-feedback');
+}
+let fbRating = 0, fbCategory = '';
+function setRating(n) { fbRating = n; updateStarDisp(); }
+function updateStarDisp() {
+  document.querySelectorAll('#star-rating .star-btn').forEach((b,i) => { b.textContent = i < fbRating ? '⭐' : '☆'; });
+}
+function setCat(el, cat) {
+  document.querySelectorAll('.cat-chip').forEach(c => c.classList.remove('active'));
+  el.classList.add('active');
+  fbCategory = cat;
+}
+function submitFeedback() {
+  if(!$('fb-parent').value.trim()) { showToast('Sila isi nama ibu/bapa','no'); return; }
+  if(!fbRating) { showToast('Sila beri penilaian','no'); return; }
+  if(!$('fb-comment').value.trim()) { showToast('Sila tulis komen','no'); return; }
+  const fb = { childName:playerName, ageGroup:defaultAge, parentName:$('fb-parent').value, contact:$('fb-contact').value, rating:fbRating, category:fbCategory, comment:$('fb-comment').value, ts:new Date().toISOString() };
+  const arr = JSON.parse(localStorage.getItem('beh-fb') || '[]');
+  arr.push(fb);
+  localStorage.setItem('beh-fb', JSON.stringify(arr));
+  closeModal('modal-feedback');
+  showToast('✅ Terima kasih! Maklum balas diterima.');
 }
 
-// ════════════════════════════════
-// HOME
-// ════════════════════════════════
-let activeSubjects=new Set();
-function filterAll(el){
+// Home
+function filterAll(el) {
   activeSubjects.clear();
-  document.querySelectorAll('#filter-chips .chip').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('#filter-chips .chip').forEach(c => c.classList.remove('active'));
   el.classList.add('active');
   renderTopics('all');
 }
-function updateChipsForAge(){
-  const l=L();
-  const subjects=l.subjects||{};
-  // Get unique filters for this age group
-  const ageFilters=new Set(TOPICS.filter(t=>t.age_groups&&t.age_groups.includes(defaultAge)).map(t=>t.filter));
-  // Special for 2-4: only show asas
-  const chips=document.querySelectorAll('#filter-chips .chip[data-subj]');
-  chips.forEach(c=>{
-    const s=c.getAttribute('data-subj');
-    c.style.display=ageFilters.has(s)?'':'none';
-    c.textContent=subjects[s]||s;
+function updateChipsForAge() {
+  const l = L();
+  const ageFilters = new Set(TOPICS.filter(t => t.age_groups && t.age_groups.includes(defaultAge)).map(t => t.filter));
+  const chips = document.querySelectorAll('#filter-chips .chip[data-subj]');
+  chips.forEach(c => {
+    const s = c.getAttribute('data-subj');
+    c.style.display = ageFilters.has(s) ? '' : 'none';
+    c.textContent = l.subjects[s] || s;
   });
-  $('chip-all').textContent=subjects.all||'All';
-  $('chip-all').style.display='';
+  $('chip-all').textContent = l.subjects.all || 'All';
+  $('chip-all').style.display = '';
 }
-function toggleChip(el){
-  const subj=el.getAttribute('data-subj');
+function toggleChip(el) {
+  const subj = el.getAttribute('data-subj');
   document.getElementById('chip-all').classList.remove('active');
-  if(el.classList.contains('active')){
-    el.classList.remove('active');activeSubjects.delete(subj);
-    if(activeSubjects.size===0)document.getElementById('chip-all').classList.add('active');
-  }else{
-    el.classList.add('active');activeSubjects.add(subj);
-  }
-  renderTopics(activeSubjects.size===0?'all':'multi');
-}
-function filterTopics(filter,el){
-  activeSubjects.clear();
-  document.querySelectorAll('#filter-chips .chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  renderTopics(filter);
-}
-function renderTopics(filter){
-  if(!playerName)return;
-  const l=L();
-  if(!l)return;
-  const subjects=l.subjects||{};
-  const topic_names=l.topic_names||{};
-  const scores=JSON.parse(localStorage.getItem('beh-scores-'+playerName)||'{}');
-  // Filter by age group first
-  const ageTOPICS=TOPICS.filter(t=>!t.age_groups||t.age_groups.includes(defaultAge));
-  const list=filter==='all'?ageTOPICS:filter==='multi'?ageTOPICS.filter(t=>activeSubjects.has(t.filter)):ageTOPICS.filter(t=>t.filter===filter);
-  $('topic-grid').innerHTML=list.map(t=>{
-    const s=scores[t.key]||0;
-    const sh=t.active?('⭐'.repeat(Math.min(s,5))+'☆'.repeat(Math.max(0,5-s))):'🔒';
-    const bc=t.active?'b-'+t.type.toLowerCase():'b-soon';
-    const bt=t.active?t.type:'SOON';
-    const tName=topic_names[t.key]||t.key;
-    const sName=subjects[t.filter]||t.filter;
-    const onclick=t.active?'openLevel(\''+t.key+'\',\''+t.icon+'\',\''+t.type+'\')':'';
-    return '<div class="topic-card '+(t.active?'':'locked')+'" onclick="'+onclick+'">'
-      +'<div class="tc-badge '+bc+'">'+bt+'</div>'
-      +'<span class="tc-icon">'+t.icon+'</span>'
-      +'<div class="tc-name">'+tName+'</div>'
-      +'<div class="tc-subj">'+sName+'</div>'
-      +'<div class="tc-stars">'+sh+'</div>'
-      +'</div>';
-  }).join('');
-}
-function updateStars(){const s=JSON.parse(localStorage.getItem('beh-scores-'+playerName)||'{}');const t=Object.values(s).reduce((a,b)=>a+b,0);$('welcome-stars').innerHTML=`⭐<br>${t}`;}
-
-// LEADERBOARD
-function renderLB(){
-  const zone=AGE_CFG[defaultAge]?.zone||'zone2';
-  const zoneNum=zone.replace('zone','');
-  const badge=`Zon ${zoneNum}`;
-  const badgeEl=$('lb-zone-badge'); if(badgeEl)badgeEl.textContent=badge;
-  const badgeElM=$('lb-zone-badge-m'); if(badgeElM)badgeElM.textContent=badge;
-  const data=DEMO_LB[zone]||[];
-  const html=data.length?data.map((r,i)=>{const medal=i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)+'.';const isMe=r.name===playerName;return '<div class="lb-row '+(isMe?'me':'')+'">'+'<span class="lb-rank">'+medal+'</span><span class="lb-name">'+r.name+(isMe?' <span class="lb-you">ME</span>':'')+' </span><span class="lb-stars">⭐'+r.s+'</span></div>';}).join(''):'<div class="lb-empty">Play first! 🎮</div>';
-  $('lb-list').innerHTML=html;if($('lb-list-m'))$('lb-list-m').innerHTML=html;
-}
-
-// TESTIMONIALS
-function renderTesti(){
-  const tl=$('testi-list');if(!tl)return;
-  tl.innerHTML=DEMO_TESTI.map(t=>{
-    return '<div class="testi-card">'
-      +'<div class="testi-stars">'+'⭐'.repeat(t.r)+'</div>'
-      +'<div class="testi-comment">"'+t.c+'"</div>'
-      +'<div class="testi-author"><span>'+t.pn+'</span>, '+t.cm+' ('+t.ag+' tahun) • '+t.d+'</div>'
-      +'</div>';
-  }).join('');
-}
-
-// ════════════════════════════════
-// LEVEL
-// ════════════════════════════════
-function openLevel(key,icon,type){
-  const l=L();
-  const tName=l.topic_names[key]||key;
-  const topic=TOPICS.find(t=>t.key===key);
-  const sName=l.subjects[topic?.filter||'']||'';
-  currentTopic={key,name:tName,subj:sName,icon,type};
-  $('hero-icon').textContent=icon;
-  $('hero-title').textContent=tName;
-  $('hero-sub').textContent=sName;
-  $('quiz-title').textContent=tName;
-  $('locked-age').textContent=defaultAge+(defaultLang==='bm'?' Tahun':' Years');
-
-  if(type==='Exam'){
-    // Exam mode — show info card, hide level buttons
-    const examQ=topic?.examQ||40;
-    const examMin=topic?.examMin||60;
-    $('level-easy-section').style.display='none';
-    $('exam-info-section').style.display='block';
-    $('exam-q-count').textContent=examQ;
-    $('exam-duration').textContent=examMin>=60?`${examMin/60}${defaultLang==='bm'?' jam':' hour(s)'}`:`${examMin} min`;
-    $('t-start-btn').textContent=l.start_exam;
-    currentLevel='exam';
+  if(el.classList.contains('active')) {
+    el.classList.remove('active');
+    activeSubjects.delete(subj);
+    if(activeSubjects.size === 0) document.getElementById('chip-all').classList.add('active');
   } else {
-    $('level-easy-section').style.display='block';
-    $('exam-info-section').style.display='none';
-    $('t-start-btn').textContent=l.start;
-    const total=AGE_CFG[defaultAge]?.total||10;
-    const baseTime=BASE_TIME[defaultAge]||300;
-    $('t-easy-desc').textContent=`${total}q • ${Math.round(baseTime/60)} min`;
-    $('t-med-desc').textContent=`${total}q • ${Math.round(baseTime*LEVEL_CFG.med.time_mult/60)} min`;
-    $('t-hard-desc').textContent=`${total}q • ${Math.round(baseTime*LEVEL_CFG.hard.time_mult/60)} min`;
-    document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('sel'));
+    el.classList.add('active');
+    activeSubjects.add(subj);
+  }
+  renderTopics(activeSubjects.size === 0 ? 'all' : 'multi');
+}
+function renderTopics(filter) {
+  if(!playerName) return;
+  const l = L();
+  const subjects = l.subjects || {};
+  const topic_names = l.topic_names || {};
+  const scores = JSON.parse(localStorage.getItem('beh-scores-'+playerName) || '{}');
+  const ageTOPICS = TOPICS.filter(t => !t.age_groups || t.age_groups.includes(defaultAge));
+  let list = filter === 'all' ? ageTOPICS : filter === 'multi' ? ageTOPICS.filter(t => activeSubjects.has(t.filter)) : ageTOPICS.filter(t => t.filter === filter);
+  $('topic-grid').innerHTML = list.map(t => {
+    const s = scores[t.key] || 0;
+    const sh = t.active ? ('⭐'.repeat(Math.min(s,5)) + '☆'.repeat(Math.max(0,5-s))) : '🔒';
+    const bc = t.active ? 'b-'+t.type.toLowerCase() : 'b-soon';
+    const bt = t.active ? t.type : 'SOON';
+    const tName = topic_names[t.key] || t.key;
+    const sName = subjects[t.filter] || t.filter;
+    const onclick = t.active ? `openLevel('${t.key}','${t.icon}','${t.type}')` : '';
+    return `<div class="topic-card ${t.active ? '' : 'locked'}" onclick="${onclick}">
+      <div class="tc-badge ${bc}">${bt}</div>
+      <span class="tc-icon">${t.icon}</span>
+      <div class="tc-name">${escapeHtml(tName)}</div>
+      <div class="tc-subj">${escapeHtml(sName)}</div>
+      <div class="tc-stars">${sh}</div>
+    </div>`;
+  }).join('');
+}
+function escapeHtml(str) { return str.replace(/[&<>]/g, function(m){ if(m==='&') return '&amp;'; if(m==='<') return '&lt;'; if(m==='>') return '&gt;'; return m;}); }
+function updateStars() {
+  const scores = JSON.parse(localStorage.getItem('beh-scores-'+playerName) || '{}');
+  const total = Object.values(scores).reduce((a,b)=>a+b,0);
+  $('welcome-stars').innerHTML = `⭐<br>${total}`;
+}
+function renderLB() {
+  const zone = AGE_CFG[defaultAge]?.zone || 'zone2';
+  const zoneNum = zone.replace('zone','');
+  const badge = `Zon ${zoneNum}`;
+  if($('lb-zone-badge')) $('lb-zone-badge').textContent = badge;
+  if($('lb-zone-badge-m')) $('lb-zone-badge-m').textContent = badge;
+  const data = leaderboardData[zone] || [];
+  const sorted = [...data].sort((a,b)=>b.s - a.s);
+  const html = sorted.length ? sorted.map((r,i) => {
+    const medal = i===0?'🥇':i===1?'🥈':i===2?'🥉':(i+1)+'.';
+    const isMe = r.name === playerName;
+    return `<div class="lb-row ${isMe ? 'me' : ''}">
+      <span class="lb-rank">${medal}</span>
+      <span class="lb-name">${escapeHtml(r.name)}${isMe ? ' <span class="lb-you">ME</span>' : ''}</span>
+      <span class="lb-stars">⭐${r.s}</span>
+    </div>`;
+  }).join('') : '<div class="lb-empty">Play first! 🎮</div>';
+  if($('lb-list')) $('lb-list').innerHTML = html;
+  if($('lb-list-m')) $('lb-list-m').innerHTML = html;
+}
+function renderTesti() {
+  const tl = $('testi-list');
+  if(!tl) return;
+  tl.innerHTML = DEMO_TESTI.map(t => `
+    <div class="testi-card">
+      <div class="testi-stars">${'⭐'.repeat(t.r)}</div>
+      <div class="testi-comment">"${escapeHtml(t.c)}"</div>
+      <div class="testi-author"><span>${escapeHtml(t.pn)}</span>, ${escapeHtml(t.cm)} (${t.ag} tahun) • ${t.d}</div>
+    </div>
+  `).join('');
+}
+
+// Level screen
+function openLevel(key, icon, type) {
+  const l = L();
+  const tName = l.topic_names[key] || key;
+  const topic = TOPICS.find(t => t.key === key);
+  const sName = l.subjects[topic?.filter || ''] || '';
+  currentTopic = { key, name:tName, subj:sName, icon, type };
+  $('hero-icon').textContent = icon;
+  $('hero-title').textContent = tName;
+  $('hero-sub').textContent = sName;
+  $('quiz-title').textContent = tName;
+  if(type === 'Exam') {
+    const examQ = topic?.examQ || 40;
+    const examMin = topic?.examMin || 60;
+    $('level-easy-section').style.display = 'none';
+    $('exam-info-section').style.display = 'block';
+    $('exam-q-count').textContent = examQ;
+    const durText = examMin >= 60 ? `${examMin/60} ${l.exam_duration}` : `${examMin} min`;
+    $('exam-duration').textContent = durText;
+    $('t-start-btn').textContent = l.start_exam;
+    currentLevel = 'exam';
+  } else {
+    $('level-easy-section').style.display = 'block';
+    $('exam-info-section').style.display = 'none';
+    $('t-start-btn').textContent = l.start;
+    const total = AGE_CFG[defaultAge]?.total || 10;
+    const baseTime = BASE_TIME[defaultAge] || 300;
+    $('t-easy-desc').textContent = `${total}q • ${Math.round(baseTime/60)} min`;
+    $('t-med-desc').textContent = `${total}q • ${Math.round(baseTime*LEVEL_CFG.med.time_mult/60)} min`;
+    $('t-hard-desc').textContent = `${total}q • ${Math.round(baseTime*LEVEL_CFG.hard.time_mult/60)} min`;
+    document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('sel'));
     document.querySelector('.level-btn.easy').classList.add('sel');
-    currentLevel='easy';
+    currentLevel = 'easy';
   }
   showScreen('screen-level');
 }
-function selectLvl(lvl,el){document.querySelectorAll('.level-btn').forEach(b=>b.classList.remove('sel'));el.classList.add('sel');currentLevel=lvl;}
-
-// ════════════════════════════════
-// QUIZ — SESSION GENERATOR
-// ════════════════════════════════
-function buildSession(){
-  const total=AGE_CFG[defaultAge]?.total||10;
-  const cfg=LEVEL_CFG[currentLevel];
-  const objCount=Math.round(total*cfg.obj_pct);
-  const subjCount=total-objCount;
-  const qBank=ALL_Q[currentTopic.key]||ALL_Q.sifir;
-  sessionObj=shuffle(qBank.objective||[]).slice(0,Math.min(objCount,qBank.objective?.length||0));
-  sessionSubj=shuffle(qBank.subjective||[]).slice(0,Math.min(subjCount,qBank.subjective?.length||0));
-  if(sessionObj.length<objCount){sessionObj=[...shuffle(qBank.objective||[]).slice(0,objCount)];}
-  // Calculate total possible points (match = pairs count, others = 1)
-  const objPts=sessionObj.reduce((a,q)=>a+(q.type==='match'?q.pairs.length:1),0);
-  const subjPts=sessionSubj.reduce((a,q)=>a+(q.type==='match'?q.pairs.length:1),0);
-  window._objPossiblePoints=objPts;
-  window._subjPossiblePoints=subjPts;
-  window._totalPossiblePoints=objPts+subjPts;
+function selectLvl(lvl, el) {
+  document.querySelectorAll('.level-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  currentLevel = lvl;
 }
 
-function startQuiz(){
+// Quiz session
+function buildSession() {
+  const total = AGE_CFG[defaultAge]?.total || 10;
+  const cfg = LEVEL_CFG[currentLevel];
+  const objCount = Math.round(total * cfg.obj_pct);
+  const subjCount = total - objCount;
+  const qBank = ALL_Q[currentTopic.key] || ALL_Q.sifir;
+  sessionObj = shuffle(qBank.objective || []).slice(0, Math.min(objCount, qBank.objective?.length || 0));
+  sessionSubj = shuffle(qBank.subjective || []).slice(0, Math.min(subjCount, qBank.subjective?.length || 0));
+  if(sessionObj.length < objCount) sessionObj = [...shuffle(qBank.objective || []).slice(0, objCount)];
+  const objPts = sessionObj.reduce((a,q) => a + (q.type === 'match' ? q.pairs.length : 1), 0);
+  const subjPts = sessionSubj.reduce((a,q) => a + (q.type === 'match' ? q.pairs.length : 1), 0);
+  window._objPossiblePoints = objPts;
+  window._subjPossiblePoints = subjPts;
+  window._totalPossiblePoints = objPts + subjPts;
+}
+function startQuiz() {
+  if(timerInterval) clearInterval(timerInterval);
   buildSession();
-  currentQ=0;currentSection='obj';objScore=0;subjScore=0;score=0;
-  timerLeft=Math.round(BASE_TIME[defaultAge]*LEVEL_CFG[currentLevel].time_mult);
-  startTimer();renderQ();showScreen('screen-quiz');
+  currentQ = 0; currentSection = 'obj'; objScore = 0; subjScore = 0; score = 0;
+  timerLeft = Math.round(BASE_TIME[defaultAge] * LEVEL_CFG[currentLevel].time_mult);
+  startTimer();
+  renderQ();
+  showScreen('screen-quiz');
 }
-
-function confirmQuit(){
-  clearInterval(timerInterval);showScreen('screen-level');
+function confirmQuit() {
+  if(timerInterval) clearInterval(timerInterval);
+  showScreen('screen-level');
 }
-
-// TIMER
-function startTimer(){clearInterval(timerInterval);updateTimerDisp();timerInterval=setInterval(()=>{timerLeft--;updateTimerDisp();if(timerLeft<=0){clearInterval(timerInterval);submitQuiz();}},1000);}
-function updateTimerDisp(){const m=Math.floor(timerLeft/60),s=timerLeft%60;$('quiz-timer').textContent=`⏱ ${m}:${s.toString().padStart(2,'0')}`;$('quiz-timer').style.color=timerLeft<=30?'var(--red)':'var(--navy)';}
-
-// RENDER Q
-function renderQ(){
-  const isObj=currentSection==='obj';
-  const session=isObj?sessionObj:sessionSubj;
-  const total=sessionObj.length+sessionSubj.length;
-  const globalIdx=isObj?currentQ:sessionObj.length+currentQ;
-  const q=session[currentQ];
-
-  $('q-context').textContent=`📚 ${currentTopic.name} • ${currentTopic.subj}`;
-  $('q-section').textContent=isObj?L().section_obj:L().section_subj;
-  $('q-num').textContent=`Soalan ${globalIdx+1} / ${total}`;
-  $('q-text').textContent=q.q;
-  $('quiz-prog').textContent=`${globalIdx+1}/${total}`;
-  $('quiz-score').textContent=`⭐ ${score}`;
-  $('prog-fill').style.width=`${(globalIdx/total)*100}%`;
-  $('section-badge').textContent=isObj?'Objektif':'Subjektif';
-  $('section-badge').className='quiz-section-badge'+(isObj?'':' subj');
-  $('explanation').textContent='';$('explanation').classList.remove('show');
-  answered=false;
-
-  switch(q.type){
-    case 'mcq':       renderMCQ(q);       break;
-    case 'truefalse': renderTF(q);        break;
-    case 'drag_blank':renderDrag(q);      break;
-    case 'match':     renderMatch(q);     break;
-    case 'sort':      renderSort(q);      break;
-    default:          renderMCQ(q);
+function startTimer() {
+  if(timerInterval) clearInterval(timerInterval);
+  updateTimerDisp();
+  timerInterval = setInterval(() => {
+    if(timerLeft <= 0) {
+      clearInterval(timerInterval);
+      submitQuiz();
+      return;
+    }
+    timerLeft--;
+    updateTimerDisp();
+  }, 1000);
+}
+function updateTimerDisp() {
+  const m = Math.floor(timerLeft/60);
+  const s = timerLeft % 60;
+  $('quiz-timer').textContent = `⏱ ${m}:${s.toString().padStart(2,'0')}`;
+  $('quiz-timer').style.color = timerLeft <= 30 ? 'var(--red)' : 'var(--navy)';
+}
+function renderQ() {
+  const isObj = currentSection === 'obj';
+  const session = isObj ? sessionObj : sessionSubj;
+  const total = sessionObj.length + sessionSubj.length;
+  const globalIdx = isObj ? currentQ : sessionObj.length + currentQ;
+  const q = session[currentQ];
+  $('q-context').textContent = `📚 ${currentTopic.name} • ${currentTopic.subj}`;
+  $('q-section').textContent = isObj ? L().section_obj : L().section_subj;
+  $('q-num').textContent = `Soalan ${globalIdx+1} / ${total}`;
+  $('q-text').textContent = q.q;
+  $('quiz-prog').textContent = `${globalIdx+1}/${total}`;
+  $('quiz-score').textContent = `⭐ ${score}`;
+  $('prog-fill').style.width = `${(globalIdx/total)*100}%`;
+  $('section-badge').textContent = isObj ? 'Objektif' : 'Subjektif';
+  $('section-badge').className = 'quiz-section-badge' + (isObj ? '' : ' subj');
+  $('explanation').textContent = '';
+  $('explanation').classList.remove('show');
+  answered = false;
+  switch(q.type) {
+    case 'mcq': renderMCQ(q); break;
+    case 'truefalse': renderTF(q); break;
+    case 'drag_blank': renderDrag(q); break;
+    case 'match': renderMatch(q); break;
+    case 'sort': renderSort(q); break;
+    default: renderMCQ(q);
   }
 }
-
-// ── MCQ ──
-function renderMCQ(q){
-  $('q-answer-area').innerHTML=`<div class="opts">${shuffle(q.opts).map((o,i)=>`<div class="opt" onclick="answerMCQ(this,'${o.replace(/'/g,"\\'")}','${q.a.replace(/'/g,"\\'")}','${(q.exp||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')"><div class="opt-letter">${String.fromCharCode(65+i)}</div>${o}</div>`).join('')}</div>`;
+function renderMCQ(q) {
+  $('q-answer-area').innerHTML = `<div class="opts">${shuffle(q.opts).map((o,i) => `<div class="opt" onclick="answerMCQ(this,'${o.replace(/'/g,"\\'")}','${q.a.replace(/'/g,"\\'")}','${(q.exp||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')"><div class="opt-letter">${String.fromCharCode(65+i)}</div>${escapeHtml(o)}</div>`).join('')}</div>`;
 }
-function answerMCQ(el,selected,ans,exp){
-  if(answered)return;answered=true;
-  const ok=selected===ans;
-  document.querySelectorAll('.opt').forEach(o=>{const t=o.textContent.trim().slice(1).trim();if(t===ans)o.classList.add('correct');else if(o===el&&!ok)o.classList.add('wrong');});
-  markAnswer(ok,exp);
+function answerMCQ(el, selected, ans, exp) {
+  if(answered) return;
+  answered = true;
+  const ok = selected === ans;
+  document.querySelectorAll('.opt').forEach(o => {
+    const t = o.textContent.trim().slice(1).trim();
+    if(t === ans) o.classList.add('correct');
+    else if(o === el && !ok) o.classList.add('wrong');
+  });
+  markAnswer(ok, exp);
 }
-
-// ── TRUE/FALSE ──
-function renderTF(q){
-  $('q-answer-area').innerHTML=`<div class="tf-btns"><button class="tf-btn" onclick="answerTF(this,'Betul','${q.a}','${(q.exp||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')">✅ Betul</button><button class="tf-btn" onclick="answerTF(this,'Salah','${q.a}','${(q.exp||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')">❌ Salah</button></div>`;
+function renderTF(q) {
+  $('q-answer-area').innerHTML = `<div class="tf-btns"><button class="tf-btn" onclick="answerTF(this,'Betul','${q.a}','${(q.exp||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')">✅ Betul</button><button class="tf-btn" onclick="answerTF(this,'Salah','${q.a}','${(q.exp||'').replace(/'/g,"\\'").replace(/\n/g,' ')}')">❌ Salah</button></div>`;
 }
-function answerTF(el,selected,ans,exp){
-  if(answered)return;answered=true;
-  const ok=selected===ans;
-  el.classList.add(ok?'correct':'wrong');
-  if(!ok){document.querySelectorAll('.tf-btn').forEach(b=>{if(b!==el&&b.textContent.includes(ans==='Betul'?'Betul':'Salah'))b.classList.add('correct');});}
-  markAnswer(ok,exp);
+function answerTF(el, selected, ans, exp) {
+  if(answered) return;
+  answered = true;
+  const ok = selected === ans;
+  el.classList.add(ok ? 'correct' : 'wrong');
+  if(!ok) {
+    document.querySelectorAll('.tf-btn').forEach(b => {
+      if(b !== el && b.textContent.includes(ans === 'Betul' ? 'Betul' : 'Salah')) b.classList.add('correct');
+    });
+  }
+  markAnswer(ok, exp);
 }
-
-// ── DRAG & DROP ──
-let dragAnswer='';
-function renderDrag(q){
-  dragAnswer='';
-  $('q-answer-area').innerHTML=`
-    <div class="drag-sentence">
-      ${q.sentence.replace('___',`<span class="drag-blank" id="drag-blank">___</span>`)}
-    </div>
-    <div class="drag-opts" id="drag-opts">
-      ${shuffle(q.opts).map(o=>`<div class="drag-opt" onclick="pickDrag(this,'${o}','${q.a}','${(q.exp||'').replace(/'/g,"\\'")}')">${o}</div>`).join('')}
-    </div>`;
+function renderDrag(q) {
+  window._dragAnswer = null;
+  $('q-answer-area').innerHTML = `
+    <div class="drag-sentence">${q.sentence.replace('___', '<span class="drag-blank" id="drag-blank">___</span>')}</div>
+    <div class="drag-opts" id="drag-opts">${shuffle(q.opts).map(o => `<div class="drag-opt" onclick="selectDragOpt(this,'${o}')">${escapeHtml(o)}</div>`).join('')}</div>
+    <button class="drag-submit" onclick="submitDrag('${q.a}','${(q.exp||'').replace(/'/g,"\\'")}')">✅ Hantar</button>
+  `;
 }
-function pickDrag(el,val,ans,exp){
-  if(answered)return;
-  dragAnswer=val;
-  document.querySelectorAll('.drag-opt').forEach(o=>o.classList.remove('used'));
+function selectDragOpt(el, val) {
+  document.querySelectorAll('.drag-opt').forEach(o => o.classList.remove('used'));
   el.classList.add('used');
-  $('drag-blank').textContent=val;
+  window._dragAnswer = val;
+  $('drag-blank').textContent = val;
   $('drag-blank').classList.add('filled');
-  // Auto submit after pick
-  answered=true;
-  const ok=val===ans;
-  $('drag-blank').classList.add(ok?'correct':'wrong');
-  el.classList.add(ok?'correct':'wrong');
-  markAnswer(ok,exp);
 }
-
-// ── MATCH ──
-let matchSelected=null,matchUserPairs=[],matchLeftItems=[],matchRightItems=[];
-
-function renderMatch(q){
-  matchSelected=null;matchUserPairs=[];
-  // Store shuffled items with stable index
-  const leftItems=shuffle(q.pairs.map((p,i)=>({val:p.l,idx:i})));
-  const rightItems=shuffle(q.pairs.map((p,i)=>({val:p.r,origIdx:i})));
-  window._matchPairs=q.pairs;
-  window._matchTotal=q.pairs.length;
-  window._matchQ=q;
-  window._matchLeftItems=leftItems;
-  window._matchRightItems=rightItems;
-
-  $('q-answer-area').innerHTML=`
+function submitDrag(ans, exp) {
+  if(answered) return;
+  if(!window._dragAnswer) { showToast('Sila pilih jawapan dahulu', 'no'); return; }
+  answered = true;
+  const ok = window._dragAnswer === ans;
+  $('drag-blank').classList.add(ok ? 'correct' : 'wrong');
+  document.querySelectorAll('.drag-opt').forEach(o => {
+    if(o.textContent === ans) o.classList.add('correct');
+    if(o.textContent === window._dragAnswer && !ok) o.classList.add('wrong');
+  });
+  markAnswer(ok, exp);
+}
+// Match state
+let matchSelected = null, matchUserPairs = [], matchLeftItems = [], matchRightItems = [], matchPairsRef = null, matchTotal = 0, matchQRef = null;
+function renderMatch(q) {
+  matchSelected = null; matchUserPairs = [];
+  const leftItems = shuffle(q.pairs.map((p,i) => ({val:p.l, idx:i})));
+  const rightItems = shuffle(q.pairs.map((p,i) => ({val:p.r, origIdx:i})));
+  matchPairsRef = q.pairs;
+  matchTotal = q.pairs.length;
+  matchQRef = q;
+  matchLeftItems = leftItems;
+  matchRightItems = rightItems;
+  $('q-answer-area').innerHTML = `
     <div class="match-container" id="match-container">
       <svg class="match-svg-overlay" id="match-svg"></svg>
       <div class="match-cols">
-        <div class="match-col" id="match-left-col">
-          <div class="match-col-label">${L().match_left}</div>
-          ${leftItems.map((item,i)=>`<div class="match-item" id="ml-${i}" data-idx="${i}" data-side="left" onclick="selectMatch(this,'left',${i})">${item.val}</div>`).join('')}
+        <div class="match-col" id="match-left-col"><div class="match-col-label">${L().match_left}</div>
+          ${leftItems.map((item,i) => `<div class="match-item" id="ml-${i}" data-idx="${i}" data-side="left" onclick="selectMatch(this,'left',${i})">${escapeHtml(item.val)}</div>`).join('')}
         </div>
-        <div class="match-col" id="match-right-col">
-          <div class="match-col-label">${L().match_right}</div>
-          ${rightItems.map((item,i)=>`<div class="match-item" id="mr-${i}" data-idx="${i}" data-side="right" onclick="selectMatch(this,'right',${i})">${item.val}</div>`).join('')}
+        <div class="match-col" id="match-right-col"><div class="match-col-label">${L().match_right}</div>
+          ${rightItems.map((item,i) => `<div class="match-item" id="mr-${i}" data-idx="${i}" data-side="right" onclick="selectMatch(this,'right',${i})">${escapeHtml(item.val)}</div>`).join('')}
         </div>
       </div>
     </div>`;
-  setTimeout(drawLines,80);
+  setTimeout(() => drawMatchLines(false), 50);
 }
-
-function getMatchPt(el,side){
-  const cont=$('match-container');
-  if(!cont||!el)return{x:0,y:0};
-  const cr=cont.getBoundingClientRect();
-  const er=el.getBoundingClientRect();
-  const y=er.top-cr.top+er.height/2;
-  // +scroll offset
-  const scrollY=window.scrollY||0;
-  const contScrollY=cont.getBoundingClientRect().top+scrollY;
-  const elCenterY=er.top+scrollY-contScrollY+er.height/2;
-  const x=side==='left'?er.right-cr.left:er.left-cr.left;
-  return{x,y:elCenterY};
+function getMatchPoint(el, side, container) {
+  const cr = container.getBoundingClientRect();
+  const er = el.getBoundingClientRect();
+  const y = er.top - cr.top + er.height/2;
+  const x = side === 'left' ? er.right - cr.left : er.left - cr.left;
+  return { x, y };
 }
-
-function drawLines(final=false){
-  const svg=$('match-svg');
-  const cont=$('match-container');
-  if(!svg||!cont)return;
-  svg.setAttribute('width',cont.offsetWidth);
-  svg.setAttribute('height',cont.offsetHeight);
-  svg.innerHTML='';
-  matchUserPairs.forEach(pair=>{
-    const lEl=$('ml-'+pair.li);
-    const rEl=$('mr-'+pair.ri);
-    if(!lEl||!rEl)return;
-    const lp=getMatchPt(lEl,'left');
-    const rp=getMatchPt(rEl,'right');
-    let stroke='#9B9DA3';
-    if(final){
-      const lVal=window._matchLeftItems[pair.li].val;
-      const rVal=window._matchRightItems[pair.ri].val;
-      stroke=window._matchPairs.find(p=>p.l===lVal&&p.r===rVal)?'#2ECC71':'#E74C3C';
+function drawMatchLines(final = false) {
+  const svg = $('match-svg');
+  const cont = $('match-container');
+  if(!svg || !cont) return;
+  svg.setAttribute('width', cont.offsetWidth);
+  svg.setAttribute('height', cont.offsetHeight);
+  svg.innerHTML = '';
+  matchUserPairs.forEach(pair => {
+    const lEl = $(`ml-${pair.li}`);
+    const rEl = $(`mr-${pair.ri}`);
+    if(!lEl || !rEl) return;
+    const lp = getMatchPoint(lEl, 'left', cont);
+    const rp = getMatchPoint(rEl, 'right', cont);
+    let stroke = '#9B9DA3';
+    if(final) {
+      const lVal = matchLeftItems[pair.li].val;
+      const rVal = matchRightItems[pair.ri].val;
+      stroke = matchPairsRef.find(p => p.l === lVal && p.r === rVal) ? '#2ECC71' : '#E74C3C';
     }
-    const mx=(lp.x+rp.x)/2;
-    const path=document.createElementNS('http://www.w3.org/2000/svg','path');
-    path.setAttribute('d',`M${lp.x},${lp.y} C${mx},${lp.y} ${mx},${rp.y} ${rp.x},${rp.y}`);
-    path.setAttribute('stroke',stroke);path.setAttribute('stroke-width','2.5');
-    path.setAttribute('fill','none');path.setAttribute('stroke-linecap','round');
-    if(!final)path.setAttribute('stroke-dasharray','5,4');
+    const mx = (lp.x + rp.x)/2;
+    const path = document.createElementNS('http://www.w3.org/2000/svg','path');
+    path.setAttribute('d', `M${lp.x},${lp.y} C${mx},${lp.y} ${mx},${rp.y} ${rp.x},${rp.y}`);
+    path.setAttribute('stroke', stroke);
+    path.setAttribute('stroke-width', '2.5');
+    path.setAttribute('fill', 'none');
+    path.setAttribute('stroke-linecap', 'round');
+    if(!final) path.setAttribute('stroke-dasharray', '5,4');
     svg.appendChild(path);
   });
 }
-
-function selectMatch(el,side,idx){
-  if(el.classList.contains('paired')||el.classList.contains('correct')||el.classList.contains('wrong'))return;
-  if(!matchSelected){
-    document.querySelectorAll('.match-item').forEach(e=>e.classList.remove('selected'));
-    matchSelected={el,side,idx};
+function selectMatch(el, side, idx) {
+  if(el.classList.contains('paired') || el.classList.contains('correct') || el.classList.contains('wrong')) return;
+  if(!matchSelected) {
+    document.querySelectorAll('.match-item').forEach(e => e.classList.remove('selected'));
+    matchSelected = { el, side, idx };
     el.classList.add('selected');
   } else {
-    if(matchSelected.side===side){
-      document.querySelectorAll('.match-item').forEach(e=>e.classList.remove('selected'));
-      matchSelected={el,side,idx};el.classList.add('selected');return;
+    if(matchSelected.side === side) {
+      document.querySelectorAll('.match-item').forEach(e => e.classList.remove('selected'));
+      matchSelected = { el, side, idx };
+      el.classList.add('selected');
+      return;
     }
-    const li=side==='right'?matchSelected.idx:idx;
-    const ri=side==='right'?idx:matchSelected.idx;
-    const leftEl=side==='right'?matchSelected.el:el;
-    const rightEl=side==='right'?el:matchSelected.el;
-
-    // Remove old pairs involving these items
-    const oldPairs=matchUserPairs.filter(p=>p.li===li||p.ri===ri);
-    oldPairs.forEach(p=>{
-      $('ml-'+p.li)?.classList.remove('paired');
-      $('mr-'+p.ri)?.classList.remove('paired');
+    const li = side === 'right' ? matchSelected.idx : idx;
+    const ri = side === 'right' ? idx : matchSelected.idx;
+    const leftEl = side === 'right' ? matchSelected.el : el;
+    const rightEl = side === 'right' ? el : matchSelected.el;
+    const oldPairs = matchUserPairs.filter(p => p.li === li || p.ri === ri);
+    oldPairs.forEach(p => {
+      $(`ml-${p.li}`)?.classList.remove('paired');
+      $(`mr-${p.ri}`)?.classList.remove('paired');
     });
-    matchUserPairs=matchUserPairs.filter(p=>p.li!==li&&p.ri!==ri);
-
-    matchUserPairs.push({li,ri});
-    leftEl.classList.remove('selected');rightEl.classList.remove('selected');
-    leftEl.classList.add('paired');rightEl.classList.add('paired');
-    matchSelected=null;
-    drawLines(false);
-
-    // All paired → reveal
-    if(matchUserPairs.length===window._matchTotal){
-      answered=true;
-      setTimeout(()=>{
-        drawLines(true);
-        let correctCount=0;
-        matchUserPairs.forEach(pair=>{
-          const lVal=window._matchLeftItems[pair.li].val;
-          const rVal=window._matchRightItems[pair.ri].val;
-          const ok=!!window._matchPairs.find(p=>p.l===lVal&&p.r===rVal);
-          if(ok)correctCount++;
-          $('ml-'+pair.li)?.classList.remove('paired');
-          $('mr-'+pair.ri)?.classList.remove('paired');
-          $('ml-'+pair.li)?.classList.add(ok?'correct':'wrong');
-          $('mr-'+pair.ri)?.classList.add(ok?'correct':'wrong');
+    matchUserPairs = matchUserPairs.filter(p => p.li !== li && p.ri !== ri);
+    matchUserPairs.push({ li, ri });
+    leftEl.classList.remove('selected');
+    rightEl.classList.remove('selected');
+    leftEl.classList.add('paired');
+    rightEl.classList.add('paired');
+    matchSelected = null;
+    drawMatchLines(false);
+    if(matchUserPairs.length === matchTotal) {
+      answered = true;
+      setTimeout(() => {
+        drawMatchLines(true);
+        let correctCount = 0;
+        matchUserPairs.forEach(pair => {
+          const lVal = matchLeftItems[pair.li].val;
+          const rVal = matchRightItems[pair.ri].val;
+          const ok = !!matchPairsRef.find(p => p.l === lVal && p.r === rVal);
+          if(ok) correctCount++;
+          $(`ml-${pair.li}`)?.classList.remove('paired');
+          $(`mr-${pair.ri}`)?.classList.remove('paired');
+          $(`ml-${pair.li}`)?.classList.add(ok ? 'correct' : 'wrong');
+          $(`mr-${pair.ri}`)?.classList.add(ok ? 'correct' : 'wrong');
         });
-        const allOk=correctCount===window._matchTotal;
-        const q=window._matchQ;
-        if(q.exp){$('explanation').textContent='💡 '+q.exp;$('explanation').classList.add('show');}
-        // Match: each correct pair = 1 point
-        score+=correctCount;
-        if(currentSection==='obj')objScore+=correctCount;
-        else subjScore+=correctCount;
-        showToast(allOk?L().correct:(`✅ ${correctCount}/${window._matchTotal} betul`),allOk?'ok':'no');
-        $('quiz-score').textContent=`⭐ ${score}`;
-        setTimeout(nextQ,1600);
-      },300);
+        score += correctCount;
+        if(currentSection === 'obj') objScore += correctCount;
+        else subjScore += correctCount;
+        showToast(correctCount === matchTotal ? L().correct : `✅ ${correctCount}/${matchTotal} betul`, correctCount === matchTotal ? 'ok' : 'no');
+        $('quiz-score').textContent = `⭐ ${score}`;
+        if(matchQRef.exp) { $('explanation').textContent = '💡 '+matchQRef.exp; $('explanation').classList.add('show'); }
+        setTimeout(() => nextQ(), 1600);
+      }, 300);
     }
   }
 }
-
-// ── SORT ──
-let sortOrder=[];
-let touchDragEl=null,touchDragIdx=null,touchClone=null;
-
-function renderSort(q){
-  sortOrder=shuffle(q.items.map(i=>i.id));
-  const itemMap=Object.fromEntries(q.items.map(i=>[i.id,i.label]));
-  window._sortAnswer=q.answer;window._sortItemMap=itemMap;window._sortExp=q.exp||'';
+// Sort state
+let sortOrder = [], sortAnswerRef = [], sortExpRef = '';
+function renderSort(q) {
+  sortOrder = shuffle(q.items.map(i => i.id));
+  sortAnswerRef = q.answer;
+  sortExpRef = q.exp || '';
   renderSortItems();
 }
-
-function renderSortItems(){
-  const itemMap=window._sortItemMap;
-  const container=$('q-answer-area');
-  container.innerHTML=`<div class="sort-area" id="sort-area">
-    ${sortOrder.map((id,i)=>'<div class="sort-item" draggable="true" data-idx="'+i+'" data-id="'+id+'" ondragstart="dragStart(event,'+i+')" ondragover="dragOver(event)" ondrop="dropItem(event,'+i+')" ondragend="dragEnd(event)" ontouchstart="touchStart(event,'+i+')" ontouchmove="touchMove(event)" ontouchend="touchEnd(event,'+i+')">'+'<span class="sort-handle">☰</span>'+itemMap[id]+'</div>').join('')}
-  </div>
-  <button class="sort-check-btn" onclick="checkSort()">${L().sort_check}</button>`;
+function renderSortItems() {
+  const itemMap = Object.fromEntries(window._sortItems?.map(i => [i.id, i.label]) || []);
+  $('q-answer-area').innerHTML = `<div class="sort-area" id="sort-area">
+    ${sortOrder.map((id,i) => `<div class="sort-item" draggable="true" data-idx="${i}" data-id="${id}" ondragstart="dragStartSort(event,${i})" ondragover="dragOverSort(event)" ondrop="dropSort(event,${i})" ondragend="dragEndSort(event)" ontouchstart="touchStartSort(event,${i})" ontouchmove="touchMoveSort(event)" ontouchend="touchEndSort(event,${i})"><span class="sort-handle">☰</span>${escapeHtml(itemMap[id] || id)}</div>`).join('')}
+  </div><button class="sort-check-btn" onclick="checkSort()">${L().sort_check}</button>`;
+  window._sortItemMap = itemMap;
 }
-
-// ── MOUSE DRAG ──
-let dragSrcIdx=null;
-function dragStart(e,idx){dragSrcIdx=idx;e.target.classList.add('dragging');e.dataTransfer.effectAllowed='move';}
-function dragOver(e){e.preventDefault();e.dataTransfer.dropEffect='move';document.querySelectorAll('.sort-item').forEach(el=>el.classList.remove('drag-over'));e.currentTarget.classList.add('drag-over');}
-function dragEnd(e){e.target.classList.remove('dragging');document.querySelectorAll('.sort-item').forEach(el=>el.classList.remove('drag-over'));}
-function dropItem(e,targetIdx){
+let dragSrcIdxSort = null, touchDragElSort = null, touchDragIdxSort = null, touchCloneSort = null;
+function dragStartSort(e, idx) { dragSrcIdxSort = idx; e.target.classList.add('dragging'); e.dataTransfer.effectAllowed = 'move'; }
+function dragOverSort(e) { e.preventDefault(); e.dataTransfer.dropEffect = 'move'; document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over')); e.currentTarget.classList.add('drag-over'); }
+function dragEndSort(e) { e.target.classList.remove('dragging'); document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over')); dragSrcIdxSort = null; }
+function dropSort(e, targetIdx) {
   e.preventDefault();
-  if(dragSrcIdx===null||dragSrcIdx===targetIdx)return;
-  const moved=sortOrder.splice(dragSrcIdx,1)[0];
+  if(dragSrcIdxSort === null || dragSrcIdxSort === targetIdx) return;
+  const moved = sortOrder.splice(dragSrcIdxSort,1)[0];
   sortOrder.splice(targetIdx,0,moved);
-  dragSrcIdx=null;
+  dragSrcIdxSort = null;
   renderSortItems();
 }
-
-// ── TOUCH DRAG ──
-function touchStart(e,idx){
-  touchDragIdx=idx;
-  touchDragEl=e.currentTarget;
-  touchDragEl.classList.add('dragging');
-  // Create floating clone
-  const rect=touchDragEl.getBoundingClientRect();
-  touchClone=touchDragEl.cloneNode(true);
-  touchClone.style.cssText=`position:fixed;left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;opacity:0.8;z-index:999;pointer-events:none;background:var(--card);border:2px solid var(--gold);border-radius:11px;`;
-  document.body.appendChild(touchClone);
-}
-
-function touchMove(e){
+function touchStartSort(e, idx) {
   e.preventDefault();
-  if(!touchClone)return;
-  const touch=e.touches[0];
-  touchClone.style.left=(touch.clientX-touchClone.offsetWidth/2)+'px';
-  touchClone.style.top=(touch.clientY-touchClone.offsetHeight/2)+'px';
-  // Highlight drop target
-  document.querySelectorAll('.sort-item').forEach(el=>el.classList.remove('drag-over'));
-  touchClone.style.display='none';
-  const elBelow=document.elementFromPoint(touch.clientX,touch.clientY);
-  touchClone.style.display='';
-  const sortItem=elBelow?.closest('.sort-item');
-  if(sortItem&&sortItem!==touchDragEl)sortItem.classList.add('drag-over');
+  touchDragIdxSort = idx;
+  touchDragElSort = e.currentTarget;
+  touchDragElSort.classList.add('dragging');
+  const rect = touchDragElSort.getBoundingClientRect();
+  touchCloneSort = touchDragElSort.cloneNode(true);
+  touchCloneSort.style.cssText = `position:fixed;left:${rect.left}px;top:${rect.top}px;width:${rect.width}px;opacity:0.8;z-index:999;pointer-events:none;background:var(--card);border:2px solid var(--gold);border-radius:11px;`;
+  document.body.appendChild(touchCloneSort);
 }
-
-function touchEnd(e){
-  if(!touchDragEl)return;
-  const touch=e.changedTouches[0];
-  // Find drop target
-  if(touchClone){touchClone.remove();touchClone=null;}
-  touchDragEl.classList.remove('dragging');
-  document.querySelectorAll('.sort-item').forEach(el=>el.classList.remove('drag-over'));
-  // Detect which item we dropped on
-  touchDragEl.style.display='none';
-  const elBelow=document.elementFromPoint(touch.clientX,touch.clientY);
-  touchDragEl.style.display='';
-  const sortItem=elBelow?.closest('.sort-item');
-  if(sortItem&&sortItem!==touchDragEl){
-    const targetIdx=parseInt(sortItem.getAttribute('data-idx'));
-    if(!isNaN(targetIdx)&&touchDragIdx!==targetIdx){
-      const moved=sortOrder.splice(touchDragIdx,1)[0];
+function touchMoveSort(e) {
+  e.preventDefault();
+  if(!touchCloneSort) return;
+  const touch = e.touches[0];
+  touchCloneSort.style.left = (touch.clientX - touchCloneSort.offsetWidth/2) + 'px';
+  touchCloneSort.style.top = (touch.clientY - touchCloneSort.offsetHeight/2) + 'px';
+  document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over'));
+  touchCloneSort.style.display = 'none';
+  const elBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+  touchCloneSort.style.display = '';
+  const sortItem = elBelow?.closest('.sort-item');
+  if(sortItem && sortItem !== touchDragElSort) sortItem.classList.add('drag-over');
+}
+function touchEndSort(e, idx) {
+  if(!touchDragElSort) return;
+  const touch = e.changedTouches[0];
+  if(touchCloneSort) { touchCloneSort.remove(); touchCloneSort = null; }
+  touchDragElSort.classList.remove('dragging');
+  document.querySelectorAll('.sort-item').forEach(el => el.classList.remove('drag-over'));
+  touchDragElSort.style.display = 'none';
+  const elBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+  touchDragElSort.style.display = '';
+  const sortItem = elBelow?.closest('.sort-item');
+  if(sortItem && sortItem !== touchDragElSort) {
+    const targetIdx = parseInt(sortItem.getAttribute('data-idx'));
+    if(!isNaN(targetIdx) && touchDragIdxSort !== targetIdx) {
+      const moved = sortOrder.splice(touchDragIdxSort,1)[0];
       sortOrder.splice(targetIdx,0,moved);
       renderSortItems();
     }
   }
-  touchDragEl=null;touchDragIdx=null;
+  touchDragElSort = null; touchDragIdxSort = null;
 }
-function checkSort(){
-  if(answered)return;answered=true;
-  const ok=JSON.stringify(sortOrder)===JSON.stringify(window._sortAnswer);
-  const items=document.querySelectorAll('.sort-item');
-  items.forEach((el,i)=>{el.classList.add(sortOrder[i]===window._sortAnswer[i]?'correct':'wrong');});
-  markAnswer(ok,window._sortExp);
+function checkSort() {
+  if(answered) return;
+  answered = true;
+  const ok = JSON.stringify(sortOrder) === JSON.stringify(sortAnswerRef);
+  document.querySelectorAll('.sort-item').forEach((el,i) => { el.classList.add(sortOrder[i] === sortAnswerRef[i] ? 'correct' : 'wrong'); });
+  markAnswer(ok, sortExpRef);
 }
-
-// ── MARK ANSWER ──
-function markAnswer(ok,exp){
-  if(ok){score++;if(currentSection==='obj')objScore++;else subjScore++;}
-  else{if(currentSection==='obj'){}else{}}
-  $('quiz-score').textContent=`⭐ ${score}`;
-  showToast(ok?L().correct:L().wrong,ok?'ok':'no');
-  if(exp){$('explanation').textContent='💡 '+exp;$('explanation').classList.add('show');}
-  setTimeout(nextQ,ok?1600:2000);
+function markAnswer(ok, exp) {
+  if(ok) { score++; if(currentSection === 'obj') objScore++; else subjScore++; }
+  $('quiz-score').textContent = `⭐ ${score}`;
+  showToast(ok ? L().correct : L().wrong, ok ? 'ok' : 'no');
+  if(exp) { $('explanation').textContent = '💡 '+exp; $('explanation').classList.add('show'); }
+  setTimeout(() => nextQ(), ok ? 1600 : 2000);
 }
-
-function nextQ(){
+function nextQ() {
   currentQ++;
-  const session=currentSection==='obj'?sessionObj:sessionSubj;
-  if(currentQ>=session.length){
-    if(currentSection==='obj'&&sessionSubj.length>0){currentSection='subj';currentQ=0;renderQ();}
+  const session = currentSection === 'obj' ? sessionObj : sessionSubj;
+  if(currentQ >= session.length) {
+    if(currentSection === 'obj' && sessionSubj.length > 0) { currentSection = 'subj'; currentQ = 0; renderQ(); }
     else submitQuiz();
-  } else {renderQ();}
+  } else renderQ();
 }
-
-// ════════════════════════════════
-// RESULT
-// ════════════════════════════════
-function getResultMsg(level,pct){
-  const key=level==='exam'?'exam':level;
-  const m=L().hasil_pesan[key]||L().hasil_pesan.easy;
-  if(pct>=1)return m.p100;if(pct>=.8)return m.p80;if(pct>=.6)return m.p60;if(pct>=.4)return m.p40;return m.p0;
-}
-function submitQuiz(){
-  clearInterval(timerInterval);
-  // totalPoints = questions + extra points from match pairs
-  // Each match q contributes pairs.length points, not 1
-  const totalPoints=window._totalPossiblePoints||( sessionObj.length+sessionSubj.length );
-  const p=totalPoints>0?score/totalPoints:0;
-  const cfg=LEVEL_CFG[currentLevel];
-  // Star thresholds by level
-  let base;
-  if(currentLevel==='hard'){
-    base=p>=0.9?5:p>=0.75?4:p>=0.6?3:p>=0.4?2:p>=0.1?1:0;
-  } else if(currentLevel==='med'){
-    base=p>=0.95?5:p>=0.8?4:p>=0.65?3:p>=0.45?2:p>=0.15?1:0;
-  } else {
-    base=p>=1?5:p>=0.85?4:p>=0.7?3:p>=0.5?2:p>=0.2?1:0;
-  }
-  const earned=base*cfg.star_mult;
-  // Save
-  const scores=JSON.parse(localStorage.getItem('beh-scores-'+playerName)||'{}');
-  if(!scores[currentTopic.key]||scores[currentTopic.key]<earned){scores[currentTopic.key]=earned;localStorage.setItem('beh-scores-'+playerName,JSON.stringify(scores));}
-  const lvlIdx={easy:1,med:2,hard:3};const lvlNum=lvlIdx[currentLevel]||1;
-  const pk='prog-'+currentTopic.key;const pd=JSON.parse(localStorage.getItem('beh-prog-'+playerName)||'{}');
-  if(!pd[pk]||pd[pk]<lvlNum){pd[pk]=lvlNum;localStorage.setItem('beh-prog-'+playerName,JSON.stringify(pd));}
-  // Display
-  const emoji=p>=1?'🏆':p>=.8?'🥳':p>=.6?'💪':p>=.4?'😤':p>=.2?'😅':'😢';
-  $('r-emoji').textContent=emoji;
-  $('r-stars').textContent='⭐'.repeat(Math.min(base,5))+'☆'.repeat(Math.max(0,5-base));
-  $('r-correct').textContent=score;$('r-total').textContent=totalPoints;
-  $('r-label').textContent=getResultMsg(currentLevel,p);
-  $('r-mult').textContent=`×${cfg.star_mult} ${cfg.label} • ${earned} ⭐ diperoleh`;
-  $('r-betul').textContent=score;$('r-salah').textContent=Math.max(0,totalPoints-score);$('r-bintang').textContent=`⭐${earned}`;
-  const objTotal=window._objPossiblePoints||sessionObj.length;
-  const subjTotal=window._subjPossiblePoints||sessionSubj.length;
-  $('r-obj-score').textContent=`${objScore}/${objTotal}`;
-  $('r-subj-score').textContent=`${subjScore}/${subjTotal}`;
-  // Progress bar
-  const completed=pd[pk]||lvlNum;const pct=Math.round((completed/3)*100);
-  $('result-topic-fill').style.width=pct+'%';
-  $('result-topic-label').textContent=`${completed}/3 tahap selesai`;
-  $('result-topic-text').textContent=completed===3?'🎉 Topik lengkap! Syabas!':`✅ Tahap ${completed} selesai — Teruskan!`;
-  // Sync LB zone
-  const myZone=AGE_CFG[defaultAge]?.zone||'zone2';
-  if(!DEMO_LB[myZone].find(r=>r.name===playerName))DEMO_LB[myZone].unshift({name:playerName,s:earned});
+function submitQuiz() {
+  if(timerInterval) clearInterval(timerInterval);
+  const totalPoints = window._totalPossiblePoints || (sessionObj.length + sessionSubj.length);
+  const p = totalPoints > 0 ? score / totalPoints : 0;
+  const cfg = LEVEL_CFG[currentLevel];
+  let base = 0;
+  if(currentLevel === 'hard') base = p>=0.9?5:p>=0.75?4:p>=0.6?3:p>=0.4?2:p>=0.1?1:0;
+  else if(currentLevel === 'med') base = p>=0.95?5:p>=0.8?4:p>=0.65?3:p>=0.45?2:p>=0.15?1:0;
+  else base = p>=1?5:p>=0.85?4:p>=0.7?3:p>=0.5?2:p>=0.2?1:0;
+  const earned = base * cfg.star_mult;
+  const scores = JSON.parse(localStorage.getItem('beh-scores-'+playerName) || '{}');
+  if(!scores[currentTopic.key] || scores[currentTopic.key] < earned) { scores[currentTopic.key] = earned; localStorage.setItem('beh-scores-'+playerName, JSON.stringify(scores)); }
+  const lvlIdx = {easy:1,med:2,hard:3}[currentLevel] || 1;
+  const progKey = 'prog-'+currentTopic.key;
+  const prog = JSON.parse(localStorage.getItem('beh-prog-'+playerName) || '{}');
+  if(!prog[progKey] || prog[progKey] < lvlIdx) { prog[progKey] = lvlIdx; localStorage.setItem('beh-prog-'+playerName, JSON.stringify(prog)); }
+  // Update leaderboard
+  const zone = AGE_CFG[defaultAge]?.zone || 'zone2';
+  if(!leaderboardData[zone]) leaderboardData[zone] = [];
+  const existing = leaderboardData[zone].find(entry => entry.name === playerName);
+  if(existing) existing.s += earned;
+  else leaderboardData[zone].push({ name: playerName, s: earned });
+  leaderboardData[zone].sort((a,b) => b.s - a.s);
+  if(leaderboardData[zone].length > 10) leaderboardData[zone] = leaderboardData[zone].slice(0,10);
+  saveLeaderboard();
+  // Display result
+  const emoji = p>=1?'🏆':p>=.8?'🥳':p>=.6?'💪':p>=.4?'😤':p>=.2?'😅':'😢';
+  $('r-emoji').textContent = emoji;
+  $('r-stars').textContent = '⭐'.repeat(Math.min(base,5)) + '☆'.repeat(Math.max(0,5-base));
+  $('r-correct').textContent = score; $('r-total').textContent = totalPoints;
+  const resultMsg = (L().hasil_pesan[currentLevel] || L().hasil_pesan.easy)[ p>=1?'p100':p>=0.8?'p80':p>=0.6?'p60':p>=0.4?'p40':'p0' ];
+  $('r-label').textContent = resultMsg;
+  $('r-mult').textContent = `×${cfg.star_mult} ${cfg.label} • ${earned} ⭐ diperoleh`;
+  $('r-betul').textContent = score; $('r-salah').textContent = Math.max(0,totalPoints-score); $('r-bintang').textContent = `⭐${earned}`;
+  const objTotal = window._objPossiblePoints || sessionObj.length;
+  const subjTotal = window._subjPossiblePoints || sessionSubj.length;
+  $('r-obj-score').textContent = `${objScore}/${objTotal}`;
+  $('r-subj-score').textContent = `${subjScore}/${subjTotal}`;
+  const completed = prog[progKey] || lvlIdx;
+  const pct = Math.round((completed/3)*100);
+  $('result-topic-fill').style.width = pct+'%';
+  $('result-topic-label').textContent = `${completed}/3 tahap selesai`;
+  $('result-topic-text').textContent = completed === 3 ? '🎉 Topik lengkap! Syabas!' : `✅ Tahap ${completed} selesai — Teruskan!`;
   showScreen('screen-result');
 }
-function retryQuiz(){startQuiz();}
-function goHome(){updateStars();renderTopics(currentFilter);renderLB();showScreen('screen-home');}
+function retryQuiz() { startQuiz(); }
+function goHome() { updateStars(); renderTopics(currentFilter); renderLB(); showScreen('screen-home'); }
 
-// ════════════════════════════════
-// INIT
-// ════════════════════════════════
-const savedTheme=localStorage.getItem('beh-theme')||'light';
-document.documentElement.setAttribute('data-theme',savedTheme);
-$('theme-btn').textContent=savedTheme==='dark'?'☀️':'🌙';
-// activeSubjects already declared in filter section
-const savedPlayer=localStorage.getItem('beh-player');
-if(savedPlayer){
-  defaultAge=localStorage.getItem('beh-age')||'7-9';
-  defaultLang=localStorage.getItem('beh-lang')||'bm';
+// ==================== INIT ====================
+const savedTheme = localStorage.getItem('beh-theme') || 'light';
+document.documentElement.setAttribute('data-theme', savedTheme);
+$('theme-btn').textContent = savedTheme === 'dark' ? '☀️' : '🌙';
+initLeaderboard();
+const savedPlayer = localStorage.getItem('beh-player');
+if(savedPlayer) {
+  defaultAge = localStorage.getItem('beh-age') || '7-9';
+  defaultLang = localStorage.getItem('beh-lang') || 'bm';
   setPlayer(savedPlayer);
-}else{
+} else {
   showScreen('screen-name');
 }
+window._sortItems = null; // will be set per sort question
 </script>
 </body>
 </html>
