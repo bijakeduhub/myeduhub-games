@@ -628,6 +628,7 @@ async function loadJSON(path, fallback = null) {
     return data;
   } catch (err) {
     console.warn(`Failed to load ${path}:`, err);
+    alert(`Error loading ${path}: ${err.message}`);
     return fallback;
   }
 }
