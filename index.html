@@ -954,7 +954,7 @@ function setPlayer(name){
   $('welcome-name').textContent=name+'! 👋';
   $('tb-pname').textContent=name;
   $('locked-age').textContent=defaultAge+' Tahun';
-  applyLang();updateStars();renderTopics('all');renderLB();renderTesti();
+  applyLang();updateChipsForAge();updateStars();renderTopics('all');renderLB();renderTesti();
   showScreen('screen-home');
 }
 $('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')startApp();});
@@ -1067,7 +1067,8 @@ function renderLB(){
 
 // TESTIMONIALS
 function renderTesti(){
-  $('testi-list').innerHTML=DEMO_TESTI.map(t=>{
+  const tl=$('testi-list');if(!tl)return;
+  tl.innerHTML=DEMO_TESTI.map(t=>{
     return '<div class="testi-card">'
       +'<div class="testi-stars">'+'⭐'.repeat(t.r)+'</div>'
       +'<div class="testi-comment">"'+t.c+'"</div>'
