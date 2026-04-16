@@ -249,7 +249,7 @@
             <div id="quizScreen" class="screen">
                 <h1>🧠 Quiz Challenge</h1>
                 <div class="level-selector" id="quizLevelSelector"></div>
-                <div style="text-align: center;"><div class="current-level" id="quizCurrentLevelDisplay">Level 1: Counting</div></div>
+                <div style="text-align: center;"><div class="current-level" id="quizCurrentLevelDisplay">Level 1: Counting (Fruits)</div></div>
                 <div class="quiz-stats">
                     <span>🧠 Score: <span id="quizScore">0</span> / 5</span>
                     <span>⭐ Stars: <span id="quizStars">0</span></span>
@@ -375,7 +375,7 @@
             const query = db.collection(balloonGetCollection(level)).orderBy('score', 'desc').limit(10);
             balloonUnsubLeaderboard = query.onSnapshot(snap => {
                 if (snap.empty) { container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>'; return; }
-                let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+                let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
                 let rank = 1;
                 snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${rank++}</td><td>${escapeHtml(d.name||'?')}</td><td>${d.score}</td><td>${'⭐'.repeat(d.stars||0)}${'☆'.repeat(5-(d.stars||0))}</td><td>${formatDate(d.timestamp)}</td></tr>`; });
                 container.innerHTML = html + '</table>';
@@ -448,7 +448,7 @@
         document.getElementById('showLevel5Lb').onclick=()=>renderBalloonLeaderboard(5);
         loadBalloonProgress(); renderBalloonLeaderboard(1); loadBalloonLevel(1);
 
-        // ========== QUIZ (5 Levels) ==========
+        // ========== QUIZ (5 Levels, separate collections) ==========
         const quizLevels = {
             1: { name: "Counting (Fruits)", generate: generateCountingQuestions },
             2: { name: "Addition (small)", generate: generateAdditionQuestions },
@@ -639,7 +639,13 @@
                 quizStarsSpan.innerHTML = '⭐'.repeat(quizStars) + '☆'.repeat(5-quizStars);
                 showQuizResultPopup(correct, 5);
                 if (currentPlayerName) {
-                    db.collection('quiz_level_scores').add({ name: currentPlayerName, deviceId, level: quizCurrentLevel, score: correct, stars: quizStars, timestamp: firebase.firestore.FieldValue.serverTimestamp() }).catch(console.warn);
+                    db.collection(`quiz_level_scores${quizCurrentLevel}`).add({
+                        name: currentPlayerName,
+                        deviceId: deviceId,
+                        score: correct,
+                        stars: quizStars,
+                        timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                    }).catch(console.warn);
                     renderQuizLeaderboard(quizCurrentLevel);
                 }
                 // Unlock next level if score >= 3
@@ -693,22 +699,29 @@
             if (quizUnsubLeaderboard) quizUnsubLeaderboard();
             const container = document.getElementById('quizLeaderboardContent');
             container.innerHTML = 'Loading...';
-            const query = db.collection('quiz_level_scores').where('level', '==', level).orderBy('score', 'desc').orderBy('stars', 'desc').limit(10);
+            const collectionName = `quiz_level_scores${level}`;
+            const query = db.collection(collectionName).orderBy('score', 'desc').limit(10);
             quizUnsubLeaderboard = query.onSnapshot(snap => {
-                if (snap.empty) { container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>'; return; }
+                if (snap.empty) {
+                    container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>';
+                    return;
+                }
                 let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
                 let rank = 1;
                 snap.forEach(doc => {
                     const d = doc.data();
                     html += `<tr>
                         <td>${rank++}</td>
-                        <td>${escapeHtml(d.name||'?')}</td>
+                        <td>${escapeHtml(d.name || '?')}</td>
                         <td>${d.score}/5</span></td>
-                        <td>${'⭐'.repeat(d.stars)}${'☆'.repeat(5-d.stars)}</span></td>
+                        <td>${'⭐'.repeat(d.stars)}${'☆'.repeat(5 - d.stars)}</span></td>
                         <td>${formatDate(d.timestamp)}</span></td>
                     </tr>`;
                 });
                 container.innerHTML = html + '</table>';
+            }, err => {
+                console.error(err);
+                container.innerHTML = '<p>Error loading leaderboard.</p>';
             });
         }
 
