@@ -1,498 +1,770 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ms" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>🎈 Balloon Pop – My Edu Hub</title>
-    <!-- Firebase SDKs -->
+    <title>🎈 My Edu Hub – Game & Quiz</title>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
     <style>
-        /* ========== THEME (same as quiz) ========== */
-        * { user-select: none; -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: linear-gradient(150deg, #0D1B4B, #1B2B6B, #243580); margin: 0; min-height: 100vh; padding: 15px; }
-        .game-wrapper, .name-container { max-width: 1000px; margin: 0 auto; background: rgba(255,255,240,0.95); border-radius: 50px; padding: 20px; box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
-        .dev-message { background: #f1c40f; color: #2c3e50; text-align: center; padding: 12px; border-radius: 60px; font-weight: bold; font-size: 1rem; margin-bottom: 20px; border: 2px solid white; }
-        h1, .name-title { text-align: center; color: #ff6b6b; text-shadow: 2px 2px 0 #fff; margin: 0 0 10px 0; font-size: 2rem; }
-        .name-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 24px; padding: 28px 22px; width: 100%; max-width: 400px; margin: 0 auto; text-align: center; backdrop-filter: blur(12px); }
+        /* ========== ORIGINAL NAME SCREEN STYLES ========== */
+        #screen-name {
+            background: linear-gradient(150deg, #0D1B4B, #1B2B6B, #243580);
+            align-items: center;
+            justify-content: center;
+            padding: 32px 20px;
+            min-height: 100vh;
+            display: flex;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1000;
+        }
+        .name-card {
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 24px;
+            padding: 28px 22px;
+            width: 100%;
+            max-width: 320px;
+            text-align: center;
+            backdrop-filter: blur(12px);
+        }
         .name-logo { font-size: 48px; margin-bottom: 10px; }
-        .name-title { color: white; font-size: 22px; font-weight: 900; margin-bottom: 2px; }
+        .name-title { color: white; font-size: 22px; font-weight: 900; font-family: 'Poppins', sans-serif; margin-bottom: 2px; }
         .name-title span { color: #E8B84B; }
         .name-motto { color: #E8B84B; font-size: 11px; font-weight: 700; margin-bottom: 3px; font-style: italic; }
         .name-tagline { color: rgba(255,255,255,0.4); font-size: 10px; font-weight: 700; margin-bottom: 20px; }
-        .name-input { width: 100%; background: rgba(255,255,255,0.1); border: 1.5px solid rgba(255,255,255,0.2); border-radius: 11px; padding: 12px 14px; font-size: 14px; font-weight: 800; color: white; outline: none; margin-bottom: 10px; }
-        .name-btn { width: 100%; background: #C9963A; color: white; border: none; border-radius: 12px; padding: 13px; font-weight: 800; cursor: pointer; box-shadow: 0 6px 20px rgba(201,150,58,0.4); }
-        .level-selector { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-bottom: 15px; }
-        .level-btn { background: #1B2B6B; border: 2px solid #C9963A; border-radius: 50px; padding: 8px 18px; font-size: 0.9rem; font-weight: bold; color: white; cursor: pointer; transition: 0.2s; }
+        .name-input {
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 11px;
+            padding: 12px 14px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            color: white;
+            outline: none;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+        .name-input::placeholder { color: rgba(255,255,255,0.3); }
+        .name-input:focus { border-color: #E8B84B; }
+        .name-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-bottom: 12px;
+        }
+        .name-sel-label {
+            font-size: 10px;
+            font-weight: 900;
+            color: rgba(255,255,255,0.5);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            text-align: left;
+        }
+        .name-sel {
+            width: 100%;
+            background: rgba(255,255,255,0.1);
+            border: 1.5px solid rgba(255,255,255,0.2);
+            border-radius: 11px;
+            padding: 11px 10px;
+            font-family: 'Nunito', sans-serif;
+            font-size: 12px;
+            font-weight: 800;
+            color: white;
+            outline: none;
+            cursor: pointer;
+        }
+        .name-sel option { background: #1B2B6B; }
+        .name-btn {
+            width: 100%;
+            background: #C9963A;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 13px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(201,150,58,0.4);
+        }
+
+        /* ========== MAIN APP STYLES ========== */
+        #mainApp {
+            display: none;
+        }
+        .topbar {
+            background: #1B2B6B;
+            padding: 11px 14px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-radius: 60px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        .tb-left { display: flex; align-items: center; gap: 8px; cursor: pointer; }
+        .tb-icon { width: 30px; height: 30px; border-radius: 8px; background: #C9963A; display: flex; align-items: center; justify-content: center; font-size: 16px; }
+        .tb-brand { color: white; font-size: 14px; font-weight: 900; font-family: 'Poppins', sans-serif; }
+        .tb-brand span { color: #E8B84B; }
+        .tb-right { display: flex; align-items: center; gap: 8px; }
+        .tb-soc { display: flex; gap: 6px; }
+        .tb-soc-btn { width: 27px; height: 27px; border-radius: 7px; display: flex; align-items: center; justify-content: center; background: rgba(255,255,255,0.12); text-decoration: none; }
+        .tb-soc-btn svg { width: 14px; height: 14px; fill: white; }
+        .tb-player { background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2); border-radius: 50px; padding: 4px 10px; display: flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 800; color: white; }
+        * { user-select: none; -webkit-tap-highlight-color: transparent; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background: linear-gradient(150deg, #0D1B4B, #1B2B6B, #243580); margin: 0; min-height: 100vh; padding: 15px; }
+        .main-container { max-width: 1000px; margin: 0 auto; background: rgba(255,255,240,0.95); border-radius: 50px; padding: 20px; box-shadow: 0 15px 25px rgba(0,0,0,0.2); }
+        .coming-soon { background: #1B2B6B; color: #E8B84B; text-align: center; padding: 10px; border-radius: 60px; font-weight: bold; font-size: 1rem; margin-bottom: 20px; border: 2px solid #C9963A; }
+        .mode-selector { display: flex; gap: 15px; justify-content: center; margin-bottom: 20px; }
+        .mode-btn { background: #1B2B6B; border: 2px solid #C9963A; border-radius: 50px; padding: 8px 20px; font-size: 1.1rem; font-weight: bold; color: white; cursor: pointer; transition: 0.2s; }
+        .mode-btn.active { background: #C9963A; color: #1B2B6B; border-color: #E8B84B; }
+        .mode-btn.disabled { opacity: 0.5; pointer-events: none; }
+        .screen { display: none; }
+        .screen.active { display: block; }
+        h1 { text-align: center; color: #ff6b6b; text-shadow: 2px 2px 0 #fff; margin: 0 0 10px 0; font-size: 2rem; }
+        .level-selector { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; margin-bottom: 15px; }
+        .level-btn { background: #1B2B6B; border: 2px solid #C9963A; border-radius: 40px; padding: 4px 12px; font-size: 0.8rem; font-weight: bold; color: white; cursor: pointer; }
         .level-btn.active { background: #C9963A; color: #1B2B6B; border-color: #E8B84B; }
-        .level-btn.locked { opacity: 0.5; pointer-events: none; filter: grayscale(0.2); }
-        .current-level { text-align: center; font-size: 1.1rem; font-weight: bold; background: #C9963A; color: #1B2B6B; display: inline-block; padding: 5px 20px; border-radius: 40px; margin-bottom: 15px; }
-        .stats { display: flex; justify-content: space-between; background: #1B2B6B; color: #E8B84B; padding: 10px 18px; border-radius: 50px; margin-bottom: 15px; font-weight: bold; font-size: 0.9rem; flex-wrap: wrap; gap: 8px; }
+        .level-btn.locked { opacity: 0.5; pointer-events: none; }
+        .current-level { text-align: center; font-size: 1rem; font-weight: bold; background: #C9963A; color: #1B2B6B; display: inline-block; padding: 4px 16px; border-radius: 40px; margin-bottom: 12px; }
+        .stats { display: flex; justify-content: space-between; background: #1B2B6B; color: #E8B84B; padding: 8px 15px; border-radius: 50px; margin-bottom: 15px; font-weight: bold; font-size: 0.85rem; flex-wrap: wrap; gap: 6px; }
         .button-group { display: flex; gap: 10px; margin-bottom: 15px; }
-        .start-btn, .restart-btn { flex: 1; padding: 12px; border: none; border-radius: 50px; font-weight: bold; font-size: 1rem; cursor: pointer; background: #C9963A; color: white; box-shadow: 0 3px 0 #8B5E2A; transition: 0.1s; }
-        .start-btn:active, .restart-btn:active { transform: translateY(2px); box-shadow: none; }
+        .start-btn, .restart-btn, .replay-btn { flex: 1; padding: 10px; border: none; border-radius: 50px; font-weight: bold; font-size: 0.9rem; cursor: pointer; background: #C9963A; color: white; box-shadow: 0 2px 0 #8B5E2A; }
         .game-area { background: rgba(255,255,255,0.4); border-radius: 30px; height: 480px; position: relative; overflow: hidden; border: 4px solid #C9963A; }
-        .balloon { position: absolute; width: 55px; height: 65px; border-radius: 50%; cursor: pointer; animation: floatUp linear forwards; box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
-        .balloon::after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 2px; height: 15px; background: brown; }
+        .balloon { position: absolute; width: 55px; height: 65px; border-radius: 50%; cursor: pointer; animation: floatUp linear forwards; }
+        .balloon::after { content: ''; position: absolute; bottom: -12px; left: 50%; width: 2px; height: 15px; background: brown; }
         .balloon.bad { background: #95a5a6; box-shadow: inset 0 0 0 2px #2c3e50; }
-        .balloon.bad::before { content: '❌'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: bold; }
+        .balloon.bad::before { content: '❌'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; }
         .balloon.good { background: gold; box-shadow: 0 0 8px gold; }
         .balloon.good::before { content: '⭐'; position: absolute; top: 5px; right: 8px; font-size: 18px; }
         @keyframes floatUp { 0% { bottom: -80px; } 100% { bottom: 100%; } }
-        .score-pop { position: fixed; font-size: 26px; font-weight: bold; pointer-events: none; animation: popEffect 0.5s ease-out forwards; z-index: 200; }
+        .score-pop { position: fixed; font-size: 26px; font-weight: bold; pointer-events: none; animation: popEffect 0.5s forwards; z-index: 200; }
         @keyframes popEffect { 0% { transform: scale(0.5); opacity: 1; } 100% { transform: scale(1.3); opacity: 0; } }
         .leaderboard { background: white; border-radius: 30px; padding: 15px; margin-top: 20px; }
-        .leaderboard h3 { margin: 0 0 10px 0; text-align: center; color: #1B2B6B; }
-        .leaderboard table { width: 100%; border-collapse: collapse; text-align: center; font-size: 0.8rem; }
-        .leaderboard th { background: #1B2B6B; color: white; padding: 8px; }
-        .leaderboard td { padding: 8px; border-bottom: 1px solid #ddd; }
+        .leaderboard table { width: 100%; border-collapse: collapse; text-align: center; font-size: 0.75rem; }
+        .leaderboard th { background: #1B2B6B; color: white; padding: 6px; }
+        .leaderboard td { padding: 6px; border-bottom: 1px solid #ddd; }
         .popup-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; z-index: 1000; }
-        .popup-card { background: white; border-radius: 40px; padding: 25px; text-align: center; max-width: 280px; width: 80%; }
-        .popup-card button { background: #C9963A; border: none; border-radius: 50px; padding: 10px 20px; margin: 10px; font-weight: bold; cursor: pointer; color: white; }
-        .popup-card .cancel { background: #1B2B6B; color: white; }
-        .screen { display: none; }
-        .screen.active { display: block; }
-        @media (max-width: 600px) { .balloon { width: 48px; height: 58px; } .stats { font-size: 0.8rem; } .game-area { height: 420px; } }
+        .popup-card { background: white; border-radius: 40px; padding: 20px; text-align: center; max-width: 280px; width: 80%; }
+        .popup-card button { background: #C9963A; border: none; border-radius: 50px; padding: 8px 16px; margin: 8px; font-weight: bold; cursor: pointer; color: white; }
+        .share-buttons { display: flex; gap: 10px; justify-content: center; margin-top: 10px; flex-wrap: wrap; }
+        .share-buttons button { background: #25D366; font-size: 0.8rem; }
+        .share-buttons button.fb { background: #1877F2; }
+        .quiz-container { background: rgba(255,255,255,0.2); border-radius: 30px; padding: 15px; margin-top: 15px; }
+        .match-wrapper { position: relative; min-height: 350px; }
+        .match-svg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
+        .match-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; position: relative; z-index: 5; }
+        .match-col { display: flex; flex-direction: column; gap: 12px; }
+        .match-col-title { text-align: center; color: #E8B84B; font-size: 1rem; font-weight: bold; margin-bottom: 8px; }
+        .match-item { background: white; border-radius: 16px; padding: 12px; text-align: center; cursor: pointer; font-size: 1.1rem; font-weight: bold; color: #1B2B6B; transition: 0.1s; border: 2px solid #C9963A; }
+        .match-item.selected { background: #E8B84B; color: white; border-color: #fff; }
+        .match-item.paired { background: #9B9DA3; cursor: default; pointer-events: none; opacity: 0.6; }
+        .match-item.correct { background: #2ECC71; color: white; border-color: #27AE60; }
+        .match-item.wrong { background: #E74C3C; color: white; border-color: #C0392B; }
+        .quiz-stats { display: flex; justify-content: space-between; background: #1B2B6B; color: #E8B84B; padding: 8px 15px; border-radius: 50px; margin-bottom: 15px; font-weight: bold; }
+        @media (max-width: 600px) { .balloon { width: 48px; height: 58px; } .game-area { height: 420px; } .match-grid { gap: 20px; } .match-item { font-size: 0.9rem; padding: 8px; } }
     </style>
 </head>
 <body>
-<!-- NAME SCREEN -->
-<div id="nameScreen" class="screen active">
-    <div class="name-card">
-        <div class="name-logo">🎓</div>
-        <div class="name-title">MY <span>Edu</span> Hub</div>
-        <div class="name-motto">Where Learning Meets Success</div>
-        <div class="name-tagline">Let's play Balloon Pop!</div>
-        <input class="name-input" id="playerNameInput" type="text" placeholder="Your name..." maxlength="20">
-        <button class="name-btn" id="enterGameBtn">Start Game →</button>
-    </div>
-</div>
-
-<!-- GAME SCREEN -->
-<div id="gameScreen" class="screen">
-    <div class="game-wrapper">
-        <div class="dev-message">🚧 More games & quizzes coming soon! Stay tuned. 🚧</div>
-        <h1>🎈 Balloon Pop 🎈</h1>
-        <div class="level-selector" id="levelSelector"></div>
-        <div style="text-align: center;"><div class="current-level" id="currentLevelDisplay">Level 1: Sunny Meadow</div></div>
-        <div class="stats">
-            <span>🎈 Score: <span id="gameScore">0</span></span>
-            <span>⏱️ Time: <span id="gameTimer">0</span>s</span>
-            <span>🎯 Target: <span id="targetScore">0</span></span>
-            <span>⭐ Stars: <span id="starsEarned">0</span></span>
-        </div>
-        <div class="button-group">
-            <button id="startBtn" class="start-btn">🚀 Start Game</button>
-            <button id="restartBtn" class="restart-btn">🔄 Restart Level</button>
-        </div>
-        <div class="game-area" id="gameArea"></div>
-        <div class="leaderboard">
-            <h3>🏆 Global Leaderboard (Top 10)</h3>
-            <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
-                <button id="showLevel1Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 1</button>
-                <button id="showLevel2Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 2</button>
-                <button id="showLevel3Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 3</button>
-                <button id="showLevel4Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 4</button>
-                <button id="showLevel5Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 5</button>
+    <!-- OLD STYLE NAME SCREEN -->
+    <div id="screen-name">
+        <div class="name-card">
+            <div class="name-logo">🎓</div>
+            <div class="name-title">MY <span>Edu</span> Hub</div>
+            <div class="name-motto">Where Learning Meets Success</div>
+            <div class="name-tagline">Game & Quiz Platform</div>
+            <input class="name-input" id="name-input" type="text" placeholder="Nama anak..." maxlength="20">
+            <div class="name-row">
+                <div>
+                    <div class="name-sel-label">Umur</div>
+                    <select class="name-sel" id="init-age">
+                        <option value="2-4">2-4 Tahun</option><option value="5-6">5-6 Tahun</option>
+                        <option value="7-9" selected>7-9 Tahun</option><option value="10-12">10-12 Tahun</option>
+                        <option value="13-15">13-15 Tahun</option><option value="16-17">16-17 Tahun</option>
+                    </select>
+                </div>
+                <div>
+                    <div class="name-sel-label">Bahasa</div>
+                    <select class="name-sel" id="init-lang">
+                        <option value="bm" selected>BM</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
             </div>
-            <div id="leaderboardContent">Loading leaderboard...</div>
+            <button class="name-btn" id="start-app-btn">Teruskan →</button>
         </div>
     </div>
-</div>
 
-<script>
-    // ========== FIREBASE CONFIG (REPLACE WITH YOUR OWN) ==========
-	const firebaseConfig = {
-		  apiKey: "AIzaSyDWUq268u7nS1FBPN-Ga6Not07_b1BIr2s",
-		  authDomain: "myeduhub-games.firebaseapp.com",
-		  projectId: "myeduhub-games",
-		  storageBucket: "myeduhub-games.firebasestorage.app",
-		  messagingSenderId: "889099024670",
-		  appId: "1:889099024670:web:b09cc9c6b495448c14b10f"
-		};
+    <!-- MAIN APP (hidden initially) -->
+    <div id="mainApp">
+        <div class="topbar">
+            <div class="tb-left" onclick="window.location.reload();">
+                <div class="tb-icon">🎓</div>
+                <div class="tb-brand">MY <span>Edu</span> Hub</div>
+            </div>
+            <div class="tb-right">
+                <div class="tb-soc">
+                    <a class="tb-soc-btn" href="https://www.threads.com/@__myeduhub" target="_blank">
+                        <svg viewBox="0 0 192 192" fill="white"><path d="M141.537 88.988..."/></svg>
+                    </a>
+                    <a class="tb-soc-btn" href="https://www.facebook.com/share/1JJvrBdGMh/" target="_blank">
+                        <svg viewBox="0 0 24 24" fill="white"><path d="M24 12.073..."/></svg>
+                    </a>
+                </div>
+                <div class="tb-player" id="tb-player">
+                    <span>👤</span>
+                    <span id="tb-pname">-</span>
+                </div>
+            </div>
+        </div>
 
+        <div class="main-container">
+            <div class="coming-soon">🚀 More games & quizzes coming soon! Stay tuned. 🚀</div>
 
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+            <div class="mode-selector">
+                <button id="gameModeBtn" class="mode-btn active">🎈 Balloon Game</button>
+                <button id="quizModeBtn" class="mode-btn">🧠 Quiz</button>
+            </div>
 
-    // Helper: deviceId (same as quiz)
-    let deviceId = localStorage.getItem('deviceId');
-    if (!deviceId) {
-        deviceId = 'dev_' + Math.random().toString(36).substr(2, 16);
-        localStorage.setItem('deviceId', deviceId);
-    }
+            <!-- GAME MODE SCREEN (Balloon Pop) -->
+            <div id="gameScreen" class="screen active">
+                <h1>🎈 Balloon Pop</h1>
+                <div class="level-selector" id="levelSelector"></div>
+                <div style="text-align: center;"><div class="current-level" id="currentLevelDisplay">Level 1: Sunny Meadow</div></div>
+                <div class="stats"><span>🎈 Score: <span id="gameScore">0</span></span><span>⏱️ Time: <span id="gameTimer">0</span>s</span><span>🎯 Target: <span id="targetScore">0</span></span><span>⭐ Stars: <span id="starsEarned">0</span></span></div>
+                <div class="button-group"><button id="startBtn" class="start-btn">🚀 Start Game</button><button id="restartBtn" class="restart-btn">🔄 Restart Level</button></div>
+                <div class="game-area" id="gameArea"></div>
+                <div class="leaderboard"><h3>🏆 Global Leaderboard (Top 10)</h3><div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;"><button id="showLevel1Lb" class="level-btn">L1</button><button id="showLevel2Lb" class="level-btn">L2</button><button id="showLevel3Lb" class="level-btn">L3</button><button id="showLevel4Lb" class="level-btn">L4</button><button id="showLevel5Lb" class="level-btn">L5</button></div><div id="leaderboardContent">Loading...</div></div>
+            </div>
 
-    let currentPlayerName = localStorage.getItem('balloonPlayerName') || '';
-    let currentDeviceId = deviceId;
+            <!-- QUIZ MODE SCREEN (5 Levels) -->
+            <div id="quizScreen" class="screen">
+                <h1>🧠 Quiz Challenge</h1>
+                <div class="level-selector" id="quizLevelSelector"></div>
+                <div style="text-align: center;"><div class="current-level" id="quizCurrentLevelDisplay">Level 1: Counting</div></div>
+                <div class="quiz-stats">
+                    <span>🧠 Score: <span id="quizScore">0</span> / 5</span>
+                    <span>⭐ Stars: <span id="quizStars">0</span></span>
+                </div>
+                <div id="quizMatchArea"></div>
+                <div id="quizFeedback" style="text-align:center; margin-top:10px; font-weight:bold;"></div>
+                <div class="button-group">
+                    <button id="replayQuizBtn" class="replay-btn">🔄 Replay Level</button>
+                </div>
+                <div class="leaderboard" style="margin-top:20px;">
+                    <h3>🏆 Quiz Leaderboard (Top 10)</h3>
+                    <div style="display: flex; gap: 8px; justify-content: center; flex-wrap: wrap;">
+                        <button id="showQuizLevel1Lb" class="level-btn">L1</button>
+                        <button id="showQuizLevel2Lb" class="level-btn">L2</button>
+                        <button id="showQuizLevel3Lb" class="level-btn">L3</button>
+                        <button id="showQuizLevel4Lb" class="level-btn">L4</button>
+                        <button id="showQuizLevel5Lb" class="level-btn">L5</button>
+                    </div>
+                    <div id="quizLeaderboardContent">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
-    // DOM screens
-    const nameScreen = document.getElementById('nameScreen');
-    const gameScreen = document.getElementById('gameScreen');
-    const playerNameInput = document.getElementById('playerNameInput');
-    const enterGameBtn = document.getElementById('enterGameBtn');
+    <script>
+        // ========== FIREBASE CONFIG (REPLACE WITH YOUR OWN) ==========
+        const firebaseConfig = {
+								  apiKey: "AIzaSyDWUq268u7nS1FBPN-Ga6Not07_b1BIr2s",
+								  authDomain: "myeduhub-games.firebaseapp.com",
+								  projectId: "myeduhub-games",
+								  storageBucket: "myeduhub-games.firebasestorage.app",
+								  messagingSenderId: "889099024670",
+								  appId: "1:889099024670:web:b09cc9c6b495448c14b10f"
+								};
+        firebase.initializeApp(firebaseConfig);
+        const db = firebase.firestore();
 
-    // ---------- GAME LEVELS ----------
-    const levels = {
-        1: { name: "Sunny Meadow", speedMin: 5.5, speedMax: 7.0, badChance: 0, goodChance: 0.15, timeLimit: 40, targetScore: 15, pointBad: 0, pointGood: 2, pointNormal: 1 },
-        2: { name: "Breezy Hill", speedMin: 4.0, speedMax: 5.5, badChance: 0, goodChance: 0.2, timeLimit: 40, targetScore: 20, pointBad: 0, pointGood: 2, pointNormal: 1 },
-        3: { name: "Windy Valley", speedMin: 3.0, speedMax: 4.5, badChance: 0.2, goodChance: 0.2, timeLimit: 35, targetScore: 25, pointBad: -1, pointGood: 2, pointNormal: 1 },
-        4: { name: "Stormy Sky", speedMin: 2.2, speedMax: 3.5, badChance: 0.3, goodChance: 0.25, timeLimit: 35, targetScore: 30, pointBad: -1, pointGood: 3, pointNormal: 1 },
-        5: { name: "Rainbow Challenge", speedMin: 1.5, speedMax: 2.8, badChance: 0.4, goodChance: 0.3, timeLimit: 30, targetScore: 35, pointBad: -1, pointGood: 4, pointNormal: 1 }
-    };
+        let deviceId = localStorage.getItem('deviceId');
+        if (!deviceId) {
+            deviceId = 'dev_' + Math.random().toString(36).substr(2, 16);
+            localStorage.setItem('deviceId', deviceId);
+        }
 
-    let currentLevel = 1;
-    let unlockedLevels = [1];
-    let gameActive = false, gameStarted = false;
-    let score = 0, timeLeft = 0, targetScore = 0, levelConfig = null;
-    let balloonInterval = null, timerInterval = null, targetReachedFlag = false;
-    let totalStarsEarned = 0;
+        let currentPlayerName = '';
+        let defaultAge = '7-9';
+        let defaultLang = 'bm';
 
-    // DOM elements (game)
-    const levelSelectorDiv = document.getElementById('levelSelector');
-    const gameArea = document.getElementById('gameArea');
-    const scoreSpan = document.getElementById('gameScore');
-    const timerSpan = document.getElementById('gameTimer');
-    const targetSpan = document.getElementById('targetScore');
-    const starsSpan = document.getElementById('starsEarned');
-    const restartBtn = document.getElementById('restartBtn');
-    const startBtn = document.getElementById('startBtn');
-    const currentLevelDisplay = document.getElementById('currentLevelDisplay');
+        // DOM elements for name screen
+        const nameScreen = document.getElementById('screen-name');
+        const mainApp = document.getElementById('mainApp');
+        const nameInput = document.getElementById('name-input');
+        const ageSelect = document.getElementById('init-age');
+        const langSelect = document.getElementById('init-lang');
+        const startAppBtn = document.getElementById('start-app-btn');
+        const tbPname = document.getElementById('tb-pname');
 
-    // Leaderboard – now using your existing zone collections
-    let currentLeaderboardLevel = 1;
-    let unsubscribeLeaderboard = null;
+        function updateTopbarName() { if (tbPname) tbPname.textContent = currentPlayerName || '-'; }
 
-    // Get Firestore collection name for a given level (1→leaderboard_zone1, etc.)
-    function getCollectionName(level) {
-        return `leaderboard_zone${level}`;
-    }
+        function startApp() {
+            const name = nameInput.value.trim();
+            if (!name) { alert("Sila masukkan nama anak"); nameInput.focus(); return; }
+            currentPlayerName = name;
+            defaultAge = ageSelect.value;
+            defaultLang = langSelect.value;
+            localStorage.setItem('playerName', name);
+            localStorage.setItem('playerAge', defaultAge);
+            localStorage.setItem('playerLang', defaultLang);
+            nameScreen.style.display = 'none';
+            mainApp.style.display = 'block';
+            updateTopbarName();
+            initAppAfterName();
+        }
+        startAppBtn.onclick = startApp;
+        nameInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') startApp(); });
 
-    function renderLeaderboard(level) {
-        if (unsubscribeLeaderboard) unsubscribeLeaderboard();
-        currentLeaderboardLevel = level;
-        const container = document.getElementById('leaderboardContent');
-        container.innerHTML = 'Loading leaderboard...';
-        const collectionName = getCollectionName(level);
-        const query = db.collection(collectionName)
-            .orderBy('score', 'desc')
-            .limit(10);
-        unsubscribeLeaderboard = query.onSnapshot(snapshot => {
-            if (snapshot.empty) {
-                container.innerHTML = '<p style="text-align:center;">✨ No scores yet. Play to be first!</p>';
+        function initAppAfterName() {
+            // Enable mode buttons
+            document.getElementById('gameModeBtn').classList.remove('disabled');
+            document.getElementById('quizModeBtn').classList.remove('disabled');
+            // Load balloon game
+            loadBalloonProgress();
+            renderBalloonLeaderboard(1);
+            loadBalloonLevel(1);
+            // Load quiz
+            loadQuizProgress();
+            renderQuizLeaderboard(1);
+            loadQuizLevel(1);
+            // Set active mode (game by default)
+            document.getElementById('gameScreen').classList.add('active');
+            document.getElementById('quizScreen').classList.remove('active');
+            document.getElementById('gameModeBtn').classList.add('active');
+            document.getElementById('quizModeBtn').classList.remove('active');
+        }
+
+        // ========== BALLOON GAME (unchanged) ==========
+        const balloonLevels = {
+            1: { name: "Sunny Meadow", speedMin: 4.0, speedMax: 6.0, badChance: 0, goodChance: 0.2, timeLimit: 40, targetScore: 15, pointBad: 0, pointGood: 2, pointNormal: 1, spawnDelay: 400 },
+            2: { name: "Breezy Hill", speedMin: 3.5, speedMax: 5.5, badChance: 0, goodChance: 0.25, timeLimit: 40, targetScore: 20, pointBad: 0, pointGood: 2, pointNormal: 1, spawnDelay: 380 },
+            3: { name: "Windy Valley", speedMin: 3.0, speedMax: 5.0, badChance: 0.15, goodChance: 0.25, timeLimit: 35, targetScore: 25, pointBad: -1, pointGood: 2, pointNormal: 1, spawnDelay: 350 },
+            4: { name: "Stormy Sky", speedMin: 2.5, speedMax: 4.5, badChance: 0.25, goodChance: 0.3, timeLimit: 35, targetScore: 30, pointBad: -1, pointGood: 3, pointNormal: 1, spawnDelay: 320 },
+            5: { name: "Rainbow Challenge", speedMin: 2.0, speedMax: 4.0, badChance: 0.35, goodChance: 0.35, timeLimit: 30, targetScore: 35, pointBad: -1, pointGood: 4, pointNormal: 1, spawnDelay: 300 }
+        };
+        let balloonCurrentLevel = 1, balloonUnlocked = [1], balloonGameActive = false, balloonGameStarted = false;
+        let balloonScore = 0, balloonTimeLeft = 0, balloonTarget = 0, balloonConfig = null, balloonInterval = null, balloonTimer = null, balloonTargetReached = false, balloonTotalStars = 0;
+        const balloonLevelSelector = document.getElementById('levelSelector');
+        const balloonGameArea = document.getElementById('gameArea');
+        const balloonScoreSpan = document.getElementById('gameScore');
+        const balloonTimerSpan = document.getElementById('gameTimer');
+        const balloonTargetSpan = document.getElementById('targetScore');
+        const balloonStarsSpan = document.getElementById('starsEarned');
+        const balloonRestartBtn = document.getElementById('restartBtn');
+        const balloonStartBtn = document.getElementById('startBtn');
+        const balloonCurrentDisplay = document.getElementById('currentLevelDisplay');
+        let balloonUnsubLeaderboard = null, balloonCurrentLeaderboard = 1;
+
+        function balloonGetCollection(level) { return `leaderboard_zone${level}`; }
+        function formatDate(ts) { if (!ts) return '?'; try { if (ts.toDate) return ts.toDate().toLocaleDateString(); const d = new Date(ts); if (!isNaN(d.getTime())) return d.toLocaleDateString(); } catch(e){} return '?'; }
+        function escapeHtml(str) { return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m])); }
+        function renderBalloonLeaderboard(level) {
+            if (balloonUnsubLeaderboard) balloonUnsubLeaderboard();
+            const container = document.getElementById('leaderboardContent');
+            container.innerHTML = 'Loading...';
+            const query = db.collection(balloonGetCollection(level)).orderBy('score', 'desc').limit(10);
+            balloonUnsubLeaderboard = query.onSnapshot(snap => {
+                if (snap.empty) { container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>'; return; }
+                let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+                let rank = 1;
+                snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${rank++}</td><td>${escapeHtml(d.name||'?')}</td><td>${d.score}</td><td>${'⭐'.repeat(d.stars||0)}${'☆'.repeat(5-(d.stars||0))}</td><td>${formatDate(d.timestamp)}</td></tr>`; });
+                container.innerHTML = html + '</table>';
+            });
+        }
+        async function saveBalloonScore(level, finalScore, stars) {
+            if (!currentPlayerName) currentPlayerName = 'Guest';
+            try { await db.collection(balloonGetCollection(level)).add({ name: currentPlayerName, deviceId, score: finalScore, stars, timestamp: firebase.firestore.FieldValue.serverTimestamp() }); } catch(e) { console.warn(e); } }
+        function copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!')); }
+        function showToast(msg, bg='#2ecc71') { const t=document.createElement('div'); t.textContent=msg; t.style.cssText=`position:fixed; bottom:20%; left:50%; transform:translateX(-50%); background:${bg}; color:white; padding:8px 16px; border-radius:50px; font-weight:bold; z-index:300; font-size:0.85rem;`; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); }
+        function loadBalloonProgress() { const s = localStorage.getItem('balloonUnlocked'); if(s) try{ balloonUnlocked = JSON.parse(s); }catch(e){} renderBalloonLevelButtons(); }
+        function saveBalloonProgress() { localStorage.setItem('balloonUnlocked', JSON.stringify(balloonUnlocked)); }
+        function unlockBalloonNext() { if(balloonCurrentLevel<5 && !balloonUnlocked.includes(balloonCurrentLevel+1)){ balloonUnlocked.push(balloonCurrentLevel+1); saveBalloonProgress(); renderBalloonLevelButtons(); showToast(`🎉 New level unlocked: ${balloonLevels[balloonCurrentLevel+1].name}!`); } }
+        function renderBalloonLevelButtons() {
+            balloonLevelSelector.innerHTML = '';
+            for(let i=1;i<=5;i++){ const btn=document.createElement('button'); btn.className='level-btn'; if(balloonCurrentLevel===i) btn.classList.add('active'); if(!balloonUnlocked.includes(i)) btn.classList.add('locked'); btn.textContent=balloonLevels[i].name; btn.onclick=()=>{ if(balloonUnlocked.includes(i)) loadBalloonLevel(i); else showToast(`🔒 Complete level ${i-1} first!`, '#e67e22'); }; balloonLevelSelector.appendChild(btn); }
+        }
+        function stopBalloonGame() { if(balloonInterval) clearInterval(balloonInterval); if(balloonTimer) clearInterval(balloonTimer); balloonGameActive=false; balloonGameStarted=false; }
+        function createBalloon() { if(!balloonGameActive||!balloonGameStarted) return; const cfg=balloonConfig; const isBad=(cfg.badChance>0 && Math.random()<cfg.badChance); const isGood=(!isBad && cfg.goodChance>0 && Math.random()<cfg.goodChance); const balloon=document.createElement('div'); balloon.className='balloon'; if(isBad) balloon.classList.add('bad'); if(isGood) balloon.classList.add('good'); const maxLeft=balloonGameArea.clientWidth-60; const leftPos=Math.random()*Math.max(10,maxLeft); balloon.style.left=leftPos+'px'; if(!isBad&&!isGood){ const hue=Math.random()*360; balloon.style.backgroundColor=`hsl(${hue},80%,65%)`; }else if(isGood) balloon.style.backgroundColor='gold'; else balloon.style.backgroundColor='#95a5a6'; const duration=cfg.speedMin+Math.random()*(cfg.speedMax-cfg.speedMin); balloon.style.animationDuration=duration+'s'; balloon.onclick=(e)=>{ e.stopPropagation(); if(!balloonGameActive||!balloonGameStarted) return; let points=0; if(isBad) points=cfg.pointBad; else if(isGood) points=cfg.pointGood; else points=cfg.pointNormal; if(points!==0){ balloonScore+=points; if(balloonScore<0) balloonScore=0; balloonScoreSpan.textContent=balloonScore; if(isGood&&cfg.pointGood>=3){ balloonTimeLeft+=2; updateBalloonTimer(); showToast('+2 sec!','#f1c40f'); } balloon.remove(); if(!balloonTargetReached && balloonScore>=balloonTarget){ balloonTargetReached=true; showToast('🎉 Target reached! Keep playing!'); } }else{ balloon.remove(); } }; balloonGameArea.appendChild(balloon); setTimeout(()=>{ if(balloon.parentNode) balloon.remove(); }, duration*1000); }
+        function updateBalloonTimer(){ balloonTimerSpan.textContent=Math.ceil(balloonTimeLeft); balloonTimerSpan.style.color=balloonTimeLeft<=5?'#e74c3c':'#E8B84B'; }
+        function startBalloonTimer(){ if(balloonTimer) clearInterval(balloonTimer); balloonTimer=setInterval(()=>{ if(!balloonGameActive||!balloonGameStarted) return; balloonTimeLeft-=0.1; if(balloonTimeLeft<=0){ balloonTimeLeft=0; updateBalloonTimer(); endBalloonGame(); }else updateBalloonTimer(); },100); }
+        function showBalloonNextPopup(finalScore,stars){
+            const overlay=document.createElement('div'); overlay.className='popup-overlay';
+            overlay.innerHTML=`<div class="popup-card"><h3>🎉 Level ${balloonCurrentLevel} Complete!</h3><p>Score: ${finalScore} / ${balloonTarget} &nbsp; ⭐ ${stars}/5</p><div class="share-buttons"><button id="shareWABtn">📱 WhatsApp</button><button id="shareFBBtn" class="fb">📘 Facebook</button><button id="copyMsgBtn">📋 Copy</button></div>${balloonCurrentLevel<5?'<p>Go to next level?</p>':'<p>You finished all levels!</p>'}<button id="popupNextBtn">${balloonCurrentLevel<5?'➡️ Next Level':'🏆 See Total Result'}</button><button id="popupCancelBtn" class="cancel">🔁 Stay here</button></div>`;
+            document.body.appendChild(overlay);
+            const msg = `${currentPlayerName} just completed Level ${balloonCurrentLevel} (${balloonConfig.name}) on My Edu Hub Balloon Pop!\n🎯 Score: ${finalScore} (Target: ${balloonTarget})\n⭐ Stars: ${stars}/5\n🎮 Play now at https://games.bijakeduhub.com/`;
+            const encoded=encodeURIComponent(msg);
+            document.getElementById('shareWABtn').onclick=()=>window.open(`https://wa.me/?text=${encoded}`,'_blank');
+            document.getElementById('shareFBBtn').onclick=()=>window.open(`https://www.facebook.com/sharer/sharer.php?u=https://games.bijakeduhub.com/&quote=${encoded}`,'_blank');
+            document.getElementById('copyMsgBtn').onclick=()=>copyToClipboard(msg);
+            document.getElementById('popupNextBtn').onclick=()=>{ overlay.remove(); if(balloonCurrentLevel<5){ loadBalloonLevel(balloonCurrentLevel+1); startBalloonGameLogic(); }else showBalloonFinalPopup(); };
+            document.getElementById('popupCancelBtn').onclick=()=>overlay.remove();
+        }
+        function showBalloonFinalPopup(){
+            const totalStars=balloonTotalStars; const maxStars=25; const pct=(totalStars/maxStars)*100;
+            let msg=`You collected ${totalStars} out of ${maxStars} stars! 🌟`; if(pct>=80) msg+=" Amazing! 🌟🌟🌟"; else if(pct>=50) msg+=" Good job! 👍"; else msg+=" Keep practicing! 💪";
+            const overlay=document.createElement('div'); overlay.className='popup-overlay';
+            overlay.innerHTML=`<div class="popup-card"><h3>🏆 Congratulations!</h3><p>${msg}</p><div class="share-buttons"><button id="shareFinalWABtn">📱 WhatsApp</button><button id="shareFinalFBBtn" class="fb">📘 Facebook</button><button id="copyFinalMsgBtn">📋 Copy</button></div><p>Do you want to beat this record?</p><button id="popupRestartBtn">🔄 Start from Level 1</button><button id="popupStayBtn" class="cancel">🏠 Stay here</button></div>`;
+            document.body.appendChild(overlay);
+            const shareText=`${currentPlayerName} completed all 5 levels of Balloon Pop on My Edu Hub!\n⭐ Total stars: ${totalStars}/25\n🎈 Can you beat this score? Play at https://games.bijakeduhub.com/`;
+            const encoded=encodeURIComponent(shareText);
+            document.getElementById('shareFinalWABtn').onclick=()=>window.open(`https://wa.me/?text=${encoded}`,'_blank');
+            document.getElementById('shareFinalFBBtn').onclick=()=>window.open(`https://www.facebook.com/sharer/sharer.php?u=https://games.bijakeduhub.com/&quote=${encoded}`,'_blank');
+            document.getElementById('copyFinalMsgBtn').onclick=()=>copyToClipboard(shareText);
+            document.getElementById('popupRestartBtn').onclick=()=>{ overlay.remove(); balloonTotalStars=0; loadBalloonLevel(1); };
+            document.getElementById('popupStayBtn').onclick=()=>overlay.remove();
+        }
+        async function endBalloonGame(){
+            if(!balloonGameActive) return; balloonGameActive=false; balloonGameStarted=false; clearInterval(balloonInterval); clearInterval(balloonTimer);
+            const finalScore=balloonScore; let stars=0; if(finalScore>=balloonTarget*1.5) stars=5; else if(finalScore>=balloonTarget*1.2) stars=4; else if(finalScore>=balloonTarget) stars=3; else if(finalScore>=balloonTarget*0.7) stars=2; else if(finalScore>=balloonTarget*0.4) stars=1;
+            balloonStarsSpan.textContent=stars; if(finalScore>=balloonTarget) balloonTotalStars+=stars;
+            await saveBalloonScore(balloonCurrentLevel, finalScore, stars);
+            if(finalScore>=balloonTarget){ unlockBalloonNext(); showToast(`🎉 Level complete! Score: ${finalScore} / ${balloonTarget}`); showBalloonNextPopup(finalScore, stars); }
+            else showToast(`😢 Time's up! Score: ${finalScore} / ${balloonTarget}. Try again!`, '#e67e22');
+            document.querySelectorAll('.balloon').forEach(b=>b.remove()); renderBalloonLeaderboard(balloonCurrentLeaderboard);
+        }
+        function loadBalloonLevel(levelNum){
+            stopBalloonGame(); balloonCurrentLevel=levelNum; balloonConfig=balloonLevels[levelNum]; if(!balloonConfig) return;
+            balloonCurrentDisplay.textContent=`Level ${levelNum}: ${balloonConfig.name}`; balloonScore=0; balloonTimeLeft=balloonConfig.timeLimit; balloonTarget=balloonConfig.targetScore; balloonTargetReached=false;
+            balloonScoreSpan.textContent='0'; balloonTimerSpan.textContent=balloonTimeLeft; balloonTargetSpan.textContent=balloonTarget; balloonStarsSpan.textContent='0'; updateBalloonTimer();
+            balloonGameArea.innerHTML=''; renderBalloonLevelButtons(); balloonGameActive=true; balloonGameStarted=false;
+        }
+        function startBalloonGameLogic(){ if(!balloonGameActive) return; if(balloonGameStarted) return; balloonGameStarted=true; balloonInterval=setInterval(()=>{ if(balloonGameActive&&balloonGameStarted) createBalloon(); }, balloonConfig.spawnDelay); startBalloonTimer(); }
+        balloonRestartBtn.onclick=()=>loadBalloonLevel(balloonCurrentLevel);
+        balloonStartBtn.onclick=()=>{ if(!balloonGameActive) loadBalloonLevel(balloonCurrentLevel); startBalloonGameLogic(); };
+        document.getElementById('showLevel1Lb').onclick=()=>renderBalloonLeaderboard(1);
+        document.getElementById('showLevel2Lb').onclick=()=>renderBalloonLeaderboard(2);
+        document.getElementById('showLevel3Lb').onclick=()=>renderBalloonLeaderboard(3);
+        document.getElementById('showLevel4Lb').onclick=()=>renderBalloonLeaderboard(4);
+        document.getElementById('showLevel5Lb').onclick=()=>renderBalloonLeaderboard(5);
+        loadBalloonProgress(); renderBalloonLeaderboard(1); loadBalloonLevel(1);
+
+        // ========== QUIZ (5 Levels) ==========
+        const quizLevels = {
+            1: { name: "Counting (Fruits)", generate: generateCountingQuestions },
+            2: { name: "Addition (small)", generate: generateAdditionQuestions },
+            3: { name: "Multiplication (small)", generate: generateMultQuestions.bind(null,2,6) },
+            4: { name: "Multiplication (big)", generate: generateMultQuestions.bind(null,5,12) },
+            5: { name: "Flags & Capitals", generate: generateCountryQuestions }
+        };
+
+        function generateCountingQuestions() {
+            const pairs = [];
+            const usedNumbers = new Set();
+            const fruitEmojis = ["🍎","🍌","🍊","🍇","🍉","🍒","🍓","🥝","🍑","🍍","🥭","🍋","🍈","🍐","🍏"];
+            while (pairs.length < 5) {
+                const count = Math.floor(Math.random() * 10) + 1; // 1-10
+                if (!usedNumbers.has(count)) {
+                    usedNumbers.add(count);
+                    const fruit = fruitEmojis[Math.floor(Math.random() * fruitEmojis.length)];
+                    const left = fruit.repeat(count);
+                    pairs.push({ left: left, right: count.toString() });
+                }
+            }
+            return pairs;
+        }
+
+        function generateAdditionQuestions() {
+            const pairs = [];
+            const usedResults = new Set();
+            while (pairs.length < 5) {
+                const a = Math.floor(Math.random() * 9) + 1;
+                const b = Math.floor(Math.random() * (10 - a)) + 1;
+                const sum = a + b;
+                if (sum <= 10 && !usedResults.has(sum)) {
+                    usedResults.add(sum);
+                    pairs.push({ left: `${a} + ${b}`, right: sum.toString() });
+                }
+            }
+            return pairs;
+        }
+
+        function generateMultQuestions(minF, maxF) {
+            const pairs = [];
+            const usedProducts = new Set();
+            while (pairs.length < 5) {
+                const a = Math.floor(Math.random() * (maxF - minF + 1)) + minF;
+                const b = Math.floor(Math.random() * (maxF - minF + 1)) + minF;
+                const product = a * b;
+                if (!usedProducts.has(product)) {
+                    usedProducts.add(product);
+                    pairs.push({ left: `${a} × ${b}`, right: product.toString() });
+                }
+            }
+            return pairs;
+        }
+
+        function generateCountryQuestions() {
+            const countries = [
+                { flag: "🇲🇾", capital: "Kuala Lumpur" },
+                { flag: "🇺🇸", capital: "Washington, D.C." },
+                { flag: "🇬🇧", capital: "London" },
+                { flag: "🇯🇵", capital: "Tokyo" },
+                { flag: "🇨🇳", capital: "Beijing" },
+                { flag: "🇮🇳", capital: "New Delhi" },
+                { flag: "🇫🇷", capital: "Paris" },
+                { flag: "🇩🇪", capital: "Berlin" },
+                { flag: "🇮🇹", capital: "Rome" },
+                { flag: "🇪🇸", capital: "Madrid" },
+                { flag: "🇧🇷", capital: "Brasília" },
+                { flag: "🇦🇺", capital: "Canberra" },
+                { flag: "🇨🇦", capital: "Ottawa" },
+                { flag: "🇰🇷", capital: "Seoul" },
+                { flag: "🇮🇩", capital: "Jakarta" }
+            ];
+            const shuffled = [...countries];
+            for (let i = shuffled.length - 1; i > 0; i--) { const j = Math.floor(Math.random()*(i+1)); [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]]; }
+            return shuffled.slice(0,5).map(c => ({ left: c.flag, right: c.capital }));
+        }
+
+        let quizCurrentLevel = 1, quizUnlocked = [1], quizPairs = [], quizLeftItems = [], quizRightItems = [], quizUserPairs = [], quizSelected = null, quizCompleted = false;
+        let quizScoreValue = 0, quizStars = 0;
+        const quizLevelSelector = document.getElementById('quizLevelSelector');
+        const quizCurrentDisplay = document.getElementById('quizCurrentLevelDisplay');
+        const quizScoreSpan = document.getElementById('quizScore');
+        const quizStarsSpan = document.getElementById('quizStars');
+        const quizMatchArea = document.getElementById('quizMatchArea');
+        const quizFeedbackDiv = document.getElementById('quizFeedback');
+        let quizUnsubLeaderboard = null;
+
+        function loadQuizProgress() { const s = localStorage.getItem('quizUnlocked'); if(s) try{ quizUnlocked = JSON.parse(s); }catch(e){} renderQuizLevelButtons(); }
+        function saveQuizProgress() { localStorage.setItem('quizUnlocked', JSON.stringify(quizUnlocked)); }
+        function unlockQuizNext() { if(quizCurrentLevel<5 && !quizUnlocked.includes(quizCurrentLevel+1)){ quizUnlocked.push(quizCurrentLevel+1); saveQuizProgress(); renderQuizLevelButtons(); showToast(`🎉 New quiz level unlocked: ${quizLevels[quizCurrentLevel+1].name}!`); } }
+        function renderQuizLevelButtons() {
+            quizLevelSelector.innerHTML = '';
+            for(let i=1;i<=5;i++){ const btn=document.createElement('button'); btn.className='level-btn'; if(quizCurrentLevel===i) btn.classList.add('active'); if(!quizUnlocked.includes(i)) btn.classList.add('locked'); btn.textContent=quizLevels[i].name; btn.onclick=()=>{ if(quizUnlocked.includes(i)) loadQuizLevel(i); else showToast(`🔒 Complete level ${i-1} first!`, '#e67e22'); }; quizLevelSelector.appendChild(btn); }
+        }
+
+        function renderQuiz() {
+            if (!quizMatchArea) return;
+            const leftHtml = quizLeftItems.map((item, idx) => `
+                <div class="match-item ${item.matched ? 'paired' : ''} ${quizSelected && quizSelected.side === 'left' && quizSelected.idx === idx ? 'selected' : ''}"
+                     data-side="left" data-idx="${idx}" data-match="${item.matchId}"
+                     onclick="selectQuizItem('left', ${idx}, ${item.matchId})">
+                    ${item.display}
+                </div>
+            `).join('');
+            const rightHtml = quizRightItems.map((item, idx) => `
+                <div class="match-item ${item.matched ? 'paired' : ''} ${quizSelected && quizSelected.side === 'right' && quizSelected.idx === idx ? 'selected' : ''}"
+                     data-side="right" data-idx="${idx}" data-match="${item.matchId}"
+                     onclick="selectQuizItem('right', ${idx}, ${item.matchId})">
+                    ${item.display}
+                </div>
+            `).join('');
+            quizMatchArea.innerHTML = `
+                <div class="match-wrapper" id="quizMatchWrapper">
+                    <svg class="match-svg" id="quizMatchSvg"></svg>
+                    <div class="match-grid">
+                        <div class="match-col"><div class="match-col-title">➕ Soalan</div>${leftHtml}</div>
+                        <div class="match-col"><div class="match-col-title">🔢 Jawapan</div>${rightHtml}</div>
+                    </div>
+                </div>
+            `;
+            setTimeout(() => drawQuizLines(false), 50);
+        }
+
+        function drawQuizLines(final = false) {
+            const svg = document.getElementById('quizMatchSvg');
+            const wrapper = document.getElementById('quizMatchWrapper');
+            if (!svg || !wrapper) return;
+            svg.setAttribute('width', wrapper.offsetWidth);
+            svg.setAttribute('height', wrapper.offsetHeight);
+            svg.innerHTML = '';
+            for (const pair of quizUserPairs) {
+                const leftEl = document.querySelector(`.match-item[data-side="left"][data-idx="${pair.leftIdx}"]`);
+                const rightEl = document.querySelector(`.match-item[data-side="right"][data-idx="${pair.rightIdx}"]`);
+                if (!leftEl || !rightEl) continue;
+                const wrapperRect = wrapper.getBoundingClientRect();
+                const lRect = leftEl.getBoundingClientRect();
+                const rRect = rightEl.getBoundingClientRect();
+                const lx = lRect.right - wrapperRect.left;
+                const ly = (lRect.top + lRect.height/2) - wrapperRect.top;
+                const rx = rRect.left - wrapperRect.left;
+                const ry = (rRect.top + rRect.height/2) - wrapperRect.top;
+                const mx = (lx + rx) / 2;
+                const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+                const color = final ? (quizLeftItems[pair.leftIdx].matchId === quizRightItems[pair.rightIdx].matchId ? '#2ECC71' : '#E74C3C') : '#9B9DA3';
+                const dash = final ? '' : '5,4';
+                path.setAttribute('d', `M${lx},${ly} C${mx},${ly} ${mx},${ry} ${rx},${ry}`);
+                path.setAttribute('stroke', color);
+                path.setAttribute('stroke-width', '3');
+                path.setAttribute('fill', 'none');
+                if (dash) path.setAttribute('stroke-dasharray', dash);
+                svg.appendChild(path);
+            }
+        }
+
+        window.selectQuizItem = function(side, idx, matchId) {
+            if (quizCompleted) return;
+            if (!currentPlayerName) { alert("Please set your name first!"); return; }
+            const items = side === 'left' ? quizLeftItems : quizRightItems;
+            if (items[idx].matched) return;
+            if (!quizSelected) {
+                quizSelected = { side, idx };
+                renderQuiz();
+                quizFeedbackDiv.innerHTML = '📌 Pilih padanan di sebelah lain';
                 return;
             }
-            let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
-            let rank = 1;
-            snapshot.forEach(doc => {
-                const data = doc.data();
-                html += `<tr>
-                    <td>${rank++}</td>
-                    <td>${escapeHtml(data.name)}</td>
-                    <td>${data.score}</td>
-                    <td>${'⭐'.repeat(data.stars)}${'☆'.repeat(3-data.stars)}</td>
-                    <td>${new Date(data.timestamp).toLocaleDateString()}</td>
-                </tr>`;
-            });
-            html += '</table>';
-            container.innerHTML = html;
-        }, error => {
-            console.error("Leaderboard error:", error);
-            container.innerHTML = `<p>Error loading leaderboard: ${error.message}</p>`;
-        });
-    }
-
-    function escapeHtml(str) {
-        return str.replace(/[&<>]/g, m => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;' }[m]));
-    }
-
-    async function saveScoreToFirebase(levelNum, finalScore, stars) {
-        if (!currentPlayerName || currentPlayerName === '') currentPlayerName = 'Guest';
-        const collectionName = getCollectionName(levelNum);
-        try {
-            await db.collection(collectionName).add({
-                name: currentPlayerName,
-                deviceId: currentDeviceId,
-                score: finalScore,
-                stars: stars,
-                timestamp: firebase.firestore.FieldValue.serverTimestamp()
-            });
-            console.log(`Score saved to ${collectionName}: ${finalScore}`);
-        } catch(e) {
-            console.warn("Failed to save score:", e);
-        }
-    }
-
-    // ---------- GAME LOGIC (identical to previous working version) ----------
-    function loadProgress() {
-        const saved = localStorage.getItem('balloonUnlocked');
-        if (saved) { try { unlockedLevels = JSON.parse(saved); } catch(e) {} }
-        renderLevelButtons();
-    }
-    function saveProgress() { localStorage.setItem('balloonUnlocked', JSON.stringify(unlockedLevels)); }
-    function unlockNextLevel() {
-        if (currentLevel < 5 && !unlockedLevels.includes(currentLevel+1)) {
-            unlockedLevels.push(currentLevel+1);
-            saveProgress();
-            renderLevelButtons();
-            showToastMessage(`🎉 New level unlocked: ${levels[currentLevel+1].name}! 🎉`);
-        }
-    }
-    function showToastMessage(msg, bg='#2ecc71') {
-        const toast = document.createElement('div');
-        toast.textContent = msg;
-        toast.style.cssText = `position:fixed; bottom:20%; left:50%; transform:translateX(-50%); background:${bg}; color:white; padding:10px 20px; border-radius:50px; font-weight:bold; z-index:300; font-size:0.9rem;`;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2000);
-    }
-    function renderLevelButtons() {
-        levelSelectorDiv.innerHTML = '';
-        for (let i=1; i<=5; i++) {
-            const btn = document.createElement('button');
-            btn.className = 'level-btn';
-            if (currentLevel === i) btn.classList.add('active');
-            if (!unlockedLevels.includes(i)) btn.classList.add('locked');
-            btn.textContent = levels[i].name;
-            btn.onclick = () => { if (unlockedLevels.includes(i)) loadLevel(i); else showToastMessage(`🔒 Complete level ${i-1} first!`, '#e67e22'); };
-            levelSelectorDiv.appendChild(btn);
-        }
-    }
-    function stopGame() {
-        if (balloonInterval) clearInterval(balloonInterval);
-        if (timerInterval) clearInterval(timerInterval);
-        gameActive = false;
-        gameStarted = false;
-    }
-    function createBalloon() {
-        if (!gameActive || !gameStarted) return;
-        const cfg = levelConfig;
-        const isBad = (cfg.badChance > 0 && Math.random() < cfg.badChance);
-        const isGood = (!isBad && cfg.goodChance > 0 && Math.random() < cfg.goodChance);
-        
-        const balloon = document.createElement('div');
-        balloon.className = 'balloon';
-        if (isBad) balloon.classList.add('bad');
-        if (isGood) balloon.classList.add('good');
-        
-        const maxLeft = gameArea.clientWidth - 60;
-        const leftPos = Math.random() * Math.max(10, maxLeft);
-        balloon.style.left = leftPos + 'px';
-        
-        if (!isBad && !isGood) {
-            const hue = Math.random() * 360;
-            balloon.style.backgroundColor = `hsl(${hue}, 80%, 65%)`;
-        } else if (isGood) {
-            balloon.style.backgroundColor = 'gold';
-        } else {
-            balloon.style.backgroundColor = '#95a5a6';
-        }
-        
-        const duration = cfg.speedMin + Math.random() * (cfg.speedMax - cfg.speedMin);
-        balloon.style.animationDuration = duration + 's';
-        
-        balloon.onclick = (e) => {
-            e.stopPropagation();
-            if (!gameActive || !gameStarted) return;
-            let points = 0;
-            if (isBad) points = cfg.pointBad;
-            else if (isGood) points = cfg.pointGood;
-            else points = cfg.pointNormal;
-            
-            if (points !== 0) {
-                score += points;
-                if (score < 0) score = 0;
-                scoreSpan.textContent = score;
-                showPopEffect(balloon.getBoundingClientRect(), points);
-                if (isGood && cfg.pointGood >= 3) {
-                    timeLeft += 2;
-                    updateTimerDisplay();
-                    showToastMessage('+2 sec!', '#f1c40f');
+            if (quizSelected.side === side) {
+                quizSelected = { side, idx };
+                renderQuiz();
+                return;
+            }
+            const leftIdx = side === 'left' ? idx : quizSelected.idx;
+            const rightIdx = side === 'right' ? idx : quizSelected.idx;
+            quizUserPairs = quizUserPairs.filter(p => p.leftIdx !== leftIdx && p.rightIdx !== rightIdx);
+            quizUserPairs.push({ leftIdx, rightIdx });
+            quizLeftItems[leftIdx].matched = true;
+            quizRightItems[rightIdx].matched = true;
+            quizSelected = null;
+            renderQuiz();
+            if (quizUserPairs.length === quizLeftItems.length) {
+                quizCompleted = true;
+                let correct = 0;
+                for (const pair of quizUserPairs) {
+                    if (quizLeftItems[pair.leftIdx].matchId === quizRightItems[pair.rightIdx].matchId) correct++;
                 }
-                balloon.remove();
-                if (!targetReachedFlag && score >= targetScore) {
-                    targetReachedFlag = true;
-                    showToastMessage('🎉 Target reached! Keep playing for extra points! 🎉', '#2ecc71');
+                quizScoreValue = correct;
+                quizStars = correct;
+                quizScoreSpan.innerText = `${quizScoreValue}/5`;
+                quizStarsSpan.innerHTML = '⭐'.repeat(quizStars) + '☆'.repeat(5-quizStars);
+                showQuizResultPopup(correct, 5);
+                if (currentPlayerName) {
+                    db.collection('quiz_level_scores').add({ name: currentPlayerName, deviceId, level: quizCurrentLevel, score: correct, stars: quizStars, timestamp: firebase.firestore.FieldValue.serverTimestamp() }).catch(console.warn);
+                    renderQuizLeaderboard(quizCurrentLevel);
+                }
+                // Unlock next level if score >= 3
+                if (correct >= 3 && quizCurrentLevel < 5 && !quizUnlocked.includes(quizCurrentLevel+1)) {
+                    quizUnlocked.push(quizCurrentLevel+1);
+                    saveQuizProgress();
+                    renderQuizLevelButtons();
+                    showToast(`🎉 New quiz level unlocked: ${quizLevels[quizCurrentLevel+1].name}!`);
                 }
             } else {
-                balloon.remove();
+                quizFeedbackDiv.innerHTML = `✅ ${quizUserPairs.length} / 5 padanan dibuat. Teruskan!`;
             }
+            drawQuizLines(false);
         };
-        gameArea.appendChild(balloon);
-        setTimeout(() => { if (balloon.parentNode) balloon.remove(); }, duration * 1000);
-    }
-    function showPopEffect(rect, points) {
-        const pop = document.createElement('div');
-        pop.className = 'score-pop';
-        const text = points > 0 ? `+${points}` : `${points}`;
-        pop.textContent = text;
-        pop.style.color = points > 0 ? '#2ecc71' : '#e74c3c';
-        pop.style.left = rect.left + 'px';
-        pop.style.top = rect.top + 'px';
-        document.body.appendChild(pop);
-        setTimeout(() => pop.remove(), 500);
-    }
-    function updateTimerDisplay() {
-        timerSpan.textContent = Math.ceil(timeLeft);
-        if (timeLeft <= 5) timerSpan.style.color = '#e74c3c';
-        else timerSpan.style.color = '#E8B84B';
-    }
-    function startTimer() {
-        if (timerInterval) clearInterval(timerInterval);
-        timerInterval = setInterval(() => {
-            if (!gameActive || !gameStarted) return;
-            timeLeft -= 0.1;
-            if (timeLeft <= 0) {
-                timeLeft = 0;
-                updateTimerDisplay();
-                endGame();
-            } else {
-                updateTimerDisplay();
-            }
-        }, 100);
-    }
-    function showNextLevelPopup() {
-        const overlay = document.createElement('div');
-        overlay.className = 'popup-overlay';
-        overlay.innerHTML = `
-            <div class="popup-card">
-                <h3>🎉 Level ${currentLevel} Complete!</h3>
-                <p>You earned ${starsSpan.textContent} stars!</p>
-                ${currentLevel < 5 ? '<p>Go to next level?</p>' : '<p>You finished all levels!</p>'}
-                <button id="popupNextBtn">${currentLevel < 5 ? '➡️ Next Level' : '🏆 See Total Result'}</button>
-                <button id="popupCancelBtn" class="cancel">🔁 Stay here</button>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-        document.getElementById('popupNextBtn').onclick = () => {
-            overlay.remove();
-            if (currentLevel < 5) {
-                loadLevel(currentLevel + 1);
-                startGame();
-            } else {
-                showFinalResultPopup();
-            }
-        };
-        document.getElementById('popupCancelBtn').onclick = () => { overlay.remove(); };
-    }
-    function showFinalResultPopup() {
-        const totalStars = totalStarsEarned;
-        const maxStars = 15;
-        const percentage = (totalStars / maxStars) * 100;
-        let message = `You collected ${totalStars} out of ${maxStars} stars! 🌟`;
-        if (percentage >= 80) message += " Amazing! 🌟🌟🌟";
-        else if (percentage >= 50) message += " Good job! 👍";
-        else message += " Keep practicing! 💪";
 
-        const overlay = document.createElement('div');
-        overlay.className = 'popup-overlay';
-        overlay.innerHTML = `
-            <div class="popup-card">
-                <h3>🏆 Congratulations!</h3>
-                <p>${message}</p>
-                <p>Do you want to beat this record?</p>
-                <button id="popupRestartBtn">🔄 Start from Level 1</button>
-                <button id="popupStayBtn" class="cancel">🏠 Stay here</button>
-            </div>
-        `;
-        document.body.appendChild(overlay);
-        document.getElementById('popupRestartBtn').onclick = () => {
-            overlay.remove();
-            totalStarsEarned = 0;
-            loadLevel(1);
-        };
-        document.getElementById('popupStayBtn').onclick = () => { overlay.remove(); };
-    }
-    async function endGame() {
-        if (!gameActive) return;
-        gameActive = false;
-        gameStarted = false;
-        clearInterval(balloonInterval);
-        clearInterval(timerInterval);
-        
-        const finalScore = score;
-        const stars = finalScore >= targetScore * 1.5 ? 3 : (finalScore >= targetScore ? 2 : (finalScore >= targetScore * 0.6 ? 1 : 0));
-        starsSpan.textContent = stars;
-        
-        if (finalScore >= targetScore) {
-            totalStarsEarned += stars;
+        function showQuizResultPopup(correct, total) {
+            const overlay = document.createElement('div');
+            overlay.className = 'popup-overlay';
+            const stars = correct;
+            const msg = `${currentPlayerName} completed ${quizLevels[quizCurrentLevel].name} quiz on My Edu Hub!\n✅ Correct: ${correct}/${total}\n⭐ Stars: ${stars}/5\n🎮 Play now at https://games.bijakeduhub.com/`;
+            const encoded = encodeURIComponent(msg);
+            const nextLevelBtn = (quizCurrentLevel < 5 && correct >= 3) ? `<button id="nextQuizLevelBtn">➡️ Next Level</button>` : '';
+            overlay.innerHTML = `
+                <div class="popup-card">
+                    <h3>🎉 Level ${quizCurrentLevel} Complete!</h3>
+                    <p>You got ${correct} out of ${total} correct!</p>
+                    <p>⭐ Stars: ${'⭐'.repeat(stars)}${'☆'.repeat(5-stars)}</p>
+                    <div class="share-buttons">
+                        <button id="shareQuizWAPopup">📱 WhatsApp</button>
+                        <button id="shareQuizFBPopup" class="fb">📘 Facebook</button>
+                        <button id="copyQuizPopup">📋 Copy</button>
+                    </div>
+                    ${nextLevelBtn}
+                    <button id="closeQuizPopup" class="cancel">Close</button>
+                </div>
+            `;
+            document.body.appendChild(overlay);
+            document.getElementById('shareQuizWAPopup').onclick = () => window.open(`https://wa.me/?text=${encoded}`, '_blank');
+            document.getElementById('shareQuizFBPopup').onclick = () => window.open(`https://www.facebook.com/sharer/sharer.php?u=https://games.bijakeduhub.com/&quote=${encoded}`, '_blank');
+            document.getElementById('copyQuizPopup').onclick = () => copyToClipboard(msg);
+            if (quizCurrentLevel < 5 && correct >= 3) {
+                document.getElementById('nextQuizLevelBtn').onclick = () => {
+                    overlay.remove();
+                    loadQuizLevel(quizCurrentLevel + 1);
+                };
+            }
+            document.getElementById('closeQuizPopup').onclick = () => overlay.remove();
         }
-        
-        await saveScoreToFirebase(currentLevel, finalScore, stars);
-        
-        if (finalScore >= targetScore) {
-            unlockNextLevel();
-            showToastMessage(`🎉 Level complete! Score: ${finalScore} / ${targetScore}`, '#2ecc71');
-            showNextLevelPopup();
+
+        function renderQuizLeaderboard(level) {
+            if (quizUnsubLeaderboard) quizUnsubLeaderboard();
+            const container = document.getElementById('quizLeaderboardContent');
+            container.innerHTML = 'Loading...';
+            const query = db.collection('quiz_level_scores').where('level', '==', level).orderBy('score', 'desc').orderBy('stars', 'desc').limit(10);
+            quizUnsubLeaderboard = query.onSnapshot(snap => {
+                if (snap.empty) { container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>'; return; }
+                let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+                let rank = 1;
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    html += `<tr>
+                        <td>${rank++}</td>
+                        <td>${escapeHtml(d.name||'?')}</td>
+                        <td>${d.score}/5</span></td>
+                        <td>${'⭐'.repeat(d.stars)}${'☆'.repeat(5-d.stars)}</span></td>
+                        <td>${formatDate(d.timestamp)}</span></td>
+                    </tr>`;
+                });
+                container.innerHTML = html + '</table>';
+            });
+        }
+
+        function loadQuizLevel(levelNum) {
+            quizCurrentLevel = levelNum;
+            quizCurrentDisplay.textContent = `Level ${levelNum}: ${quizLevels[levelNum].name}`;
+            const newPairs = quizLevels[levelNum].generate();
+            quizPairs = newPairs;
+            quizLeftItems = quizPairs.map((p, i) => ({ display: p.left, matchId: i, matched: false }));
+            quizRightItems = shuffle([...quizPairs.map((p, i) => ({ display: p.right, matchId: i, matched: false }))]);
+            quizUserPairs = [];
+            quizSelected = null;
+            quizCompleted = false;
+            quizScoreValue = 0;
+            quizStars = 0;
+            quizScoreSpan.innerText = '0/5';
+            quizStarsSpan.innerHTML = '☆☆☆☆☆';
+            quizFeedbackDiv.innerHTML = '';
+            renderQuiz();
+            renderQuizLevelButtons();
+        }
+
+        function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
+
+        // Replay button
+        document.getElementById('replayQuizBtn').onclick = () => loadQuizLevel(quizCurrentLevel);
+
+        // Leaderboard level buttons
+        document.getElementById('showQuizLevel1Lb').onclick = () => renderQuizLeaderboard(1);
+        document.getElementById('showQuizLevel2Lb').onclick = () => renderQuizLeaderboard(2);
+        document.getElementById('showQuizLevel3Lb').onclick = () => renderQuizLeaderboard(3);
+        document.getElementById('showQuizLevel4Lb').onclick = () => renderQuizLeaderboard(4);
+        document.getElementById('showQuizLevel5Lb').onclick = () => renderQuizLeaderboard(5);
+
+        // Mode switching
+        const gameScreenDiv = document.getElementById('gameScreen');
+        const quizScreenDiv = document.getElementById('quizScreen');
+        const gameBtn = document.getElementById('gameModeBtn');
+        const quizBtn = document.getElementById('quizModeBtn');
+        gameBtn.onclick = () => { if (!currentPlayerName) { alert("Please set your name first."); return; } gameScreenDiv.classList.add('active'); quizScreenDiv.classList.remove('active'); gameBtn.classList.add('active'); quizBtn.classList.remove('active'); };
+        quizBtn.onclick = () => { if (!currentPlayerName) { alert("Please set your name first."); return; } quizScreenDiv.classList.add('active'); gameScreenDiv.classList.remove('active'); quizBtn.classList.add('active'); gameBtn.classList.remove('active'); loadQuizLevel(quizCurrentLevel); renderQuizLeaderboard(quizCurrentLevel); };
+
+        // Auto-start if name exists
+        const savedName = localStorage.getItem('playerName');
+        if (savedName) {
+            currentPlayerName = savedName;
+            defaultAge = localStorage.getItem('playerAge') || '7-9';
+            defaultLang = localStorage.getItem('playerLang') || 'bm';
+            nameScreen.style.display = 'none';
+            mainApp.style.display = 'block';
+            updateTopbarName();
+            initAppAfterName();
         } else {
-            showToastMessage(`😢 Time's up! Score: ${finalScore} / ${targetScore}. Try again!`, '#e67e22');
+            nameScreen.style.display = 'flex';
+            mainApp.style.display = 'none';
         }
-        
-        const balloons = document.querySelectorAll('.balloon');
-        balloons.forEach(b => b.remove());
-        
-        renderLeaderboard(currentLeaderboardLevel);
-    }
-    function loadLevel(levelNum) {
-        stopGame();
-        currentLevel = levelNum;
-        levelConfig = levels[levelNum];
-        if (!levelConfig) return;
-        currentLevelDisplay.textContent = `Level ${levelNum}: ${levelConfig.name}`;
-        score = 0;
-        timeLeft = levelConfig.timeLimit;
-        targetScore = levelConfig.targetScore;
-        targetReachedFlag = false;
-        scoreSpan.textContent = '0';
-        timerSpan.textContent = timeLeft;
-        targetSpan.textContent = targetScore;
-        starsSpan.textContent = '0';
-        updateTimerDisplay();
-        gameArea.innerHTML = '';
-        renderLevelButtons();
-        gameActive = true;
-        gameStarted = false;
-    }
-    function startGame() {
-        if (!gameActive) return;
-        if (gameStarted) return;
-        gameStarted = true;
-        const intervalMs = Math.max(500, Math.floor(levelConfig.speedMin * 300));
-        balloonInterval = setInterval(() => {
-            if (gameActive && gameStarted) createBalloon();
-        }, intervalMs);
-        startTimer();
-    }
-
-    // Event listeners
-    restartBtn.onclick = () => loadLevel(currentLevel);
-    startBtn.onclick = () => {
-        if (!gameActive) loadLevel(currentLevel);
-        startGame();
-    };
-    document.getElementById('showLevel1Lb').onclick = () => renderLeaderboard(1);
-    document.getElementById('showLevel2Lb').onclick = () => renderLeaderboard(2);
-    document.getElementById('showLevel3Lb').onclick = () => renderLeaderboard(3);
-    document.getElementById('showLevel4Lb').onclick = () => renderLeaderboard(4);
-    document.getElementById('showLevel5Lb').onclick = () => renderLeaderboard(5);
-
-    // Name screen handler
-    enterGameBtn.onclick = () => {
-        let name = playerNameInput.value.trim();
-        if (!name) { alert("Please enter your name"); return; }
-        currentPlayerName = name;
-        localStorage.setItem('balloonPlayerName', name);
-        nameScreen.classList.remove('active');
-        gameScreen.classList.add('active');
-        loadProgress();
-        renderLeaderboard(1);
-        loadLevel(1);
-    };
-    if (currentPlayerName) {
-        nameScreen.classList.remove('active');
-        gameScreen.classList.add('active');
-        loadProgress();
-        renderLeaderboard(1);
-        loadLevel(1);
-    }
-</script>
+    </script>
 </body>
 </html>
