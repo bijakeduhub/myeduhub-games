@@ -20,7 +20,6 @@
             min-height: 100vh;
             padding: 15px;
         }
-        /* Shared container style (like quiz) */
         .game-wrapper, .name-container {
             max-width: 1000px;
             margin: 0 auto;
@@ -107,21 +106,6 @@
             cursor: pointer;
             box-shadow: 0 6px 20px rgba(201,150,58,0.4);
         }
-        .name-area {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        .name-area input {
-            padding: 10px 18px;
-            font-size: 1rem;
-            border-radius: 50px;
-            border: none;
-            text-align: center;
-            width: 200px;
-        }
         .level-selector {
             display: flex;
             flex-wrap: wrap;
@@ -130,20 +114,20 @@
             margin-bottom: 15px;
         }
         .level-btn {
-            background: #f9ca24;
-            border: none;
+            background: #1B2B6B;
+            border: 2px solid #C9963A;
             border-radius: 50px;
             padding: 8px 18px;
             font-size: 0.9rem;
             font-weight: bold;
+            color: white;
             cursor: pointer;
-            box-shadow: 0 3px 0 #e67e22;
-            transition: 0.1s;
+            transition: 0.2s;
         }
         .level-btn.active {
-            background: #f6e58d;
-            transform: translateY(2px);
-            box-shadow: 0 1px 0 #e67e22;
+            background: #C9963A;
+            color: #1B2B6B;
+            border-color: #E8B84B;
         }
         .level-btn.locked {
             opacity: 0.5;
@@ -154,8 +138,8 @@
             text-align: center;
             font-size: 1.1rem;
             font-weight: bold;
-            background: #ff6b6b;
-            color: white;
+            background: #C9963A;
+            color: #1B2B6B;
             display: inline-block;
             padding: 5px 20px;
             border-radius: 40px;
@@ -164,8 +148,8 @@
         .stats {
             display: flex;
             justify-content: space-between;
-            background: #2c3e50;
-            color: white;
+            background: #1B2B6B;
+            color: #E8B84B;
             padding: 10px 18px;
             border-radius: 50px;
             margin-bottom: 15px;
@@ -187,14 +171,14 @@
             font-weight: bold;
             font-size: 1rem;
             cursor: pointer;
-        }
-        .start-btn {
-            background: #2ecc71;
+            background: #C9963A;
             color: white;
+            box-shadow: 0 3px 0 #8B5E2A;
+            transition: 0.1s;
         }
-        .restart-btn {
-            background: #e67e22;
-            color: white;
+        .start-btn:active, .restart-btn:active {
+            transform: translateY(2px);
+            box-shadow: none;
         }
         .game-area {
             background: rgba(255,255,255,0.4);
@@ -202,7 +186,7 @@
             height: 480px;
             position: relative;
             overflow: hidden;
-            border: 4px solid white;
+            border: 4px solid #C9963A;
         }
         .balloon {
             position: absolute;
@@ -272,6 +256,7 @@
         .leaderboard h3 {
             margin: 0 0 10px 0;
             text-align: center;
+            color: #1B2B6B;
         }
         .leaderboard table {
             width: 100%;
@@ -279,7 +264,12 @@
             text-align: center;
             font-size: 0.8rem;
         }
-        .leaderboard th, .leaderboard td {
+        .leaderboard th {
+            background: #1B2B6B;
+            color: white;
+            padding: 8px;
+        }
+        .leaderboard td {
             padding: 8px;
             border-bottom: 1px solid #ddd;
         }
@@ -304,16 +294,17 @@
             width: 80%;
         }
         .popup-card button {
-            background: #2ecc71;
+            background: #C9963A;
             border: none;
             border-radius: 50px;
             padding: 10px 20px;
             margin: 10px;
             font-weight: bold;
             cursor: pointer;
+            color: white;
         }
         .popup-card .cancel {
-            background: #e74c3c;
+            background: #1B2B6B;
             color: white;
         }
         .screen {
@@ -330,7 +321,7 @@
     </style>
 </head>
 <body>
-<!-- NAME SCREEN (similar to quiz) -->
+<!-- NAME SCREEN (quiz theme) -->
 <div id="nameScreen" class="screen active">
     <div class="name-card">
         <div class="name-logo">🎓</div>
@@ -342,7 +333,7 @@
     </div>
 </div>
 
-<!-- GAME SCREEN -->
+<!-- GAME SCREEN (theme colours) -->
 <div id="gameScreen" class="screen">
     <div class="game-wrapper">
         <div class="dev-message">
@@ -373,11 +364,11 @@
         <div class="leaderboard">
             <h3>🏆 Global Leaderboard (Top 10)</h3>
             <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
-                <button id="showLevel1Lb">Level 1</button>
-                <button id="showLevel2Lb">Level 2</button>
-                <button id="showLevel3Lb">Level 3</button>
-                <button id="showLevel4Lb">Level 4</button>
-                <button id="showLevel5Lb">Level 5</button>
+                <button id="showLevel1Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 1</button>
+                <button id="showLevel2Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 2</button>
+                <button id="showLevel3Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 3</button>
+                <button id="showLevel4Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 4</button>
+                <button id="showLevel5Lb" class="level-btn" style="background:#1B2B6B; color:white;">Level 5</button>
             </div>
             <div id="leaderboardContent">Loading...</div>
         </div>
@@ -388,13 +379,13 @@
     // ==================== FIREBASE CONFIGURATION ====================
     // TODO: Replace with your own Firebase project config
     const firebaseConfig = {
-						  apiKey: "AIzaSyDWUq268u7nS1FBPN-Ga6Not07_b1BIr2s",
-						  authDomain: "myeduhub-games.firebaseapp.com",
-						  projectId: "myeduhub-games",
-						  storageBucket: "myeduhub-games.firebasestorage.app",
-						  messagingSenderId: "889099024670",
-						  appId: "1:889099024670:web:b09cc9c6b495448c14b10f"
-						};
+			  apiKey: "AIzaSyDWUq268u7nS1FBPN-Ga6Not07_b1BIr2s",
+			  authDomain: "myeduhub-games.firebaseapp.com",
+			  projectId: "myeduhub-games",
+			  storageBucket: "myeduhub-games.firebasestorage.app",
+			  messagingSenderId: "889099024670",
+			  appId: "1:889099024670:web:b09cc9c6b495448c14b10f"
+			};
 
     // Initialize Firebase
     firebase.initializeApp(firebaseConfig);
@@ -467,7 +458,7 @@
                 container.innerHTML = '<p style="text-align:center;">✨ No scores yet. Play to be first!</p>';
                 return;
             }
-            let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+            let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
             let rank = 1;
             snapshot.forEach(doc => {
                 const data = doc.data();
@@ -654,7 +645,7 @@
     function updateTimerDisplay() {
         timerSpan.textContent = Math.ceil(timeLeft);
         if (timeLeft <= 5) timerSpan.style.color = '#e74c3c';
-        else timerSpan.style.color = 'white';
+        else timerSpan.style.color = '#E8B84B';
     }
 
     function startTimer() {
