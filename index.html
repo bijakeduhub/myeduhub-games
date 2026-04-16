@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>🎈 Balloon Pop – EduPlay (Beta)</title>
+    <style>
+        * {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Comic Neue', 'Comic Sans MS', 'Chalkboard SE', cursive;
+            background: linear-gradient(145deg, #6dd5fa, #2980b9);
+            margin: 0;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .game-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255,255,240,0.95);
+            border-radius: 50px;
+            padding: 20px;
+            box-shadow: 0 15px 25px rgba(0,0,0,0.2);
+        }
+        .dev-message {
+            background: #f1c40f;
+            color: #2c3e50;
+            text-align: center;
+            padding: 12px;
+            border-radius: 60px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            border: 2px solid white;
+        }
+        h1 {
+            text-align: center;
+            color: #ff6b6b;
+            text-shadow: 2px 2px 0 #fff;
+            margin: 0 0 10px 0;
+            font-size: 2rem;
+        }
+        .name-area {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        .name-area input {
+            padding: 10px 18px;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            border: none;
+            text-align: center;
+            font-weight: bold;
+            width: 200px;
+        }
+        .name-area button {
+            background: #2c3e50;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .level-selector {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+        .level-btn {
+            background: #f9ca24;
+            border: none;
+            border-radius: 50px;
+            padding: 8px 18px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 3px 0 #e67e22;
+            transition: 0.1s;
+        }
+        .level-btn.active {
+            background: #f6e58d;
+            transform: translateY(2px);
+            box-shadow: 0 1px 0 #e67e22;
+        }
+        .level-btn.locked {
+            opacity: 0.5;
+            pointer-events: none;
+            filter: grayscale(0.2);
+        }
+        .current-level {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: #ff6b6b;
+            color: white;
+            display: inline-block;
+            padding: 5px 20px;
+            border-radius: 40px;
+            margin-bottom: 15px;
+            width: auto;
+        }
+        .stats {
+            display: flex;
+            justify-content: space-between;
+            background: #2c3e50;
+            color: white;
+            padding: 10px 18px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            font-size: 1rem;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .game-area {
+            background: rgba(255,255,255,0.4);
+            border-radius: 30px;
+            min-height: 480px;
+            position: relative;
+            overflow: hidden;
+            border: 4px solid white;
+        }
+        .balloon {
+            position: absolute;
+            width: 55px;
+            height: 65px;
+            border-radius: 50%;
+            cursor: pointer;
+            animation: floatUp linear forwards;
+            background-size: cover;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 15px;
+            background: brown;
+        }
+        .balloon.bad {
+            background: #95a5a6;
+            box-shadow: inset 0 0 0 2px #2c3e50;
+        }
+        .balloon.bad::before {
+            content: '❌';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .balloon.good {
+            background: gold;
+            box-shadow: 0 0 8px gold;
+        }
+        .balloon.good::before {
+            content: '⭐';
+            position: absolute;
+            top: 5px;
+            right: 8px;
+            font-size: 18px;
+        }
+        @keyframes floatUp {
+            0% { bottom: -80px; }
+            100% { bottom: 100%; }
+        }
+        .score-pop {
+            position: fixed;
+            font-size: 26px;
+            font-weight: bold;
+            pointer-events: none;
+            animation: popEffect 0.5s ease-out forwards;
+            z-index: 200;
+        }
+        @keyframes popEffect {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(1.3); opacity: 0; }
+        }
+        .leaderboard {
+            background: white;
+            border-radius: 30px;
+            padding: 15px;
+            margin-top: 20px;
+        }
+        .leaderboard h3 {
+            margin: 0 0 10px 0;
+            text-align: center;
+        }
+        .leaderboard table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        .leaderboard th, .leaderboard td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        button:active {
+            transform: scale(0.96);
+        }
+        .restart-btn {
+            background: #e67e22;
+            margin-top: 15px;
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+        @media (max-width: 600px) {
+            .balloon { width: 48px; height: 58px; }
+            .stats { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="game-wrapper">
+    <div class="dev-message">
+        🚧 This site is under development – more games & quizzes coming soon! Stay tuned. 🚧
+    </div>
+    <h1>🎈 Balloon Pop Adventure 🎈</h1>
+
+    <div class="name-area">
+        <input type="text" id="playerName" placeholder="Your name" maxlength="20">
+        <button id="setNameBtn">Set Name</button>
+    </div>
+
+    <div class="level-selector" id="levelSelector"></div>
+
+    <!-- Current level display -->
+    <div style="text-align: center;">
+        <div class="current-level" id="currentLevelDisplay">Level 1: Sunny Meadow</div>
+    </div>
+
+    <div class="stats">
+        <span>🎈 Score: <span id="gameScore">0</span></span>
+        <span>⏱️ Time: <span id="gameTimer">0</span>s</span>
+        <span>🎯 Target: <span id="targetScore">0</span></span>
+        <span>⭐ Stars: <span id="starsEarned">0</span></span>
+    </div>
+
+    <div class="game-area" id="gameArea"></div>
+    <button id="restartBtn" class="restart-btn">🔄 Restart Level</button>
+
+    <div class="leaderboard">
+        <h3>🏆 Hall of Fame (Best Scores)</h3>
+        <div style="display: flex; gap: 10px; justify-content: center; margin-bottom: 10px;">
+            <button id="showLevel1Lb">Level 1</button>
+            <button id="showLevel2Lb">Level 2</button>
+            <button id="showLevel3Lb">Level 3</button>
+            <button id="showLevel4Lb">Level 4</button>
+            <button id="showLevel5Lb">Level 5</button>
+        </div>
+        <div id="leaderboardContent"></div>
+    </div>
+</div>
+
+<script>
+    // ---------- LEVEL CONFIGURATION ----------
+    const levels = {
+        1: { name: "Sunny Meadow", speedMin: 5.5, speedMax: 7.0, badChance: 0, goodChance: 0.15, timeLimit: 30, targetScore: 15, pointBad: 0, pointGood: 2, pointNormal: 1 },
+        2: { name: "Breezy Hill", speedMin: 4.0, speedMax: 5.5, badChance: 0, goodChance: 0.2, timeLimit: 28, targetScore: 20, pointBad: 0, pointGood: 2, pointNormal: 1 },
+        3: { name: "Windy Valley", speedMin: 3.0, speedMax: 4.5, badChance: 0.2, goodChance: 0.2, timeLimit: 25, targetScore: 25, pointBad: -1, pointGood: 2, pointNormal: 1 },
+        4: { name: "Stormy Sky", speedMin: 2.2, speedMax: 3.5, badChance: 0.3, goodChance: 0.25, timeLimit: 22, targetScore: 30, pointBad: -1, pointGood: 3, pointNormal: 1 },
+        5: { name: "Rainbow Challenge", speedMin: 1.5, speedMax: 2.8, badChance: 0.4, goodChance: 0.3, timeLimit: 20, targetScore: 35, pointBad: -1, pointGood: 4, pointNormal: 1 }
+    };
+
+    // Game state
+    let currentLevel = 1;
+    let unlockedLevels = [1];
+    let playerName = localStorage.getItem('balloonPlayer') || '';
+    let gameActive = false;
+    let score = 0;
+    let timeLeft = 0;
+    let targetScore = 0;
+    let levelConfig = null;
+    let balloonInterval = null;
+    let timerInterval = null;
+    let targetReachedFlag = false;
+
+    // DOM elements
+    const playerNameInput = document.getElementById('playerName');
+    const setNameBtn = document.getElementById('setNameBtn');
+    const levelSelectorDiv = document.getElementById('levelSelector');
+    const gameArea = document.getElementById('gameArea');
+    const scoreSpan = document.getElementById('gameScore');
+    const timerSpan = document.getElementById('gameTimer');
+    const targetSpan = document.getElementById('targetScore');
+    const starsSpan = document.getElementById('starsEarned');
+    const restartBtn = document.getElementById('restartBtn');
+    const currentLevelDisplay = document.getElementById('currentLevelDisplay');
+
+    // Leaderboard storage (localStorage)
+    let leaderboard = {1:[],2:[],3:[],4:[],5:[]};
+
+    function loadLeaderboard() {
+        const stored = localStorage.getItem('balloonLeaderboard');
+        if (stored) {
+            try {
+                const data = JSON.parse(stored);
+                for (let lvl=1; lvl<=5; lvl++) {
+                    if (data[lvl]) leaderboard[lvl] = data[lvl];
+                }
+            } catch(e) {}
+        }
+        renderLeaderboard(currentLevel);
+    }
+
+    function saveLeaderboard() {
+        localStorage.setItem('balloonLeaderboard', JSON.stringify(leaderboard));
+    }
+
+    function addScoreToLeaderboard(level, name, finalScore, starsEarned) {
+        if (!name || name === '') name = 'Guest';
+        const entry = { name: name, score: finalScore, stars: starsEarned, date: new Date().toLocaleDateString() };
+        leaderboard[level].push(entry);
+        leaderboard[level].sort((a,b) => b.score - a.score);
+        if (leaderboard[level].length > 10) leaderboard[level] = leaderboard[level].slice(0,10);
+        saveLeaderboard();
+        renderLeaderboard(level);
+    }
+
+    function renderLeaderboard(level) {
+        const container = document.getElementById('leaderboardContent');
+        if (!container) return;
+        const entries = leaderboard[level] || [];
+        if (entries.length === 0) {
+            container.innerHTML = '<p style="text-align:center;">✨ No scores yet. Play to be first!</p>';
+            return;
+        }
+        let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+        entries.forEach((e, idx) => {
+            html += `<tr>
+                <td>${idx+1}</td>
+                <td>${escapeHtml(e.name)}</td>
+                <td>${e.score}</td>
+                <td>${'⭐'.repeat(e.stars)}${'☆'.repeat(3-e.stars)}</td>
+                <td>${e.date}</td>
+            </tr>`;
+        });
+        html += '</table>';
+        container.innerHTML = html;
+    }
+
+    function escapeHtml(str) {
+        return str.replace(/[&<>]/g, function(m) {
+            if (m === '&') return '&amp;';
+            if (m === '<') return '&lt;';
+            if (m === '>') return '&gt;';
+            return m;
+        });
+    }
+
+    function loadProgress() {
+        const saved = localStorage.getItem('balloonUnlocked');
+        if (saved) {
+            try {
+                const arr = JSON.parse(saved);
+                if (Array.isArray(arr)) unlockedLevels = arr;
+            } catch(e) {}
+        }
+        const savedName = localStorage.getItem('balloonPlayer');
+        if (savedName) {
+            playerName = savedName;
+            playerNameInput.value = playerName;
+        }
+        renderLevelButtons();
+    }
+
+    function saveProgress() {
+        localStorage.setItem('balloonUnlocked', JSON.stringify(unlockedLevels));
+        localStorage.setItem('balloonPlayer', playerName);
+    }
+
+    function unlockNextLevel() {
+        if (currentLevel < 5 && !unlockedLevels.includes(currentLevel+1)) {
+            unlockedLevels.push(currentLevel+1);
+            saveProgress();
+            renderLevelButtons();
+            showToastMessage(`🎉 New level unlocked: ${levels[currentLevel+1].name}! 🎉`);
+        }
+    }
+
+    function showToastMessage(msg, bg='#2ecc71') {
+        const toast = document.createElement('div');
+        toast.textContent = msg;
+        toast.style.position = 'fixed';
+        toast.style.bottom = '20%';
+        toast.style.left = '50%';
+        toast.style.transform = 'translateX(-50%)';
+        toast.style.backgroundColor = bg;
+        toast.style.color = 'white';
+        toast.style.padding = '10px 20px';
+        toast.style.borderRadius = '50px';
+        toast.style.fontWeight = 'bold';
+        toast.style.zIndex = '300';
+        toast.style.fontSize = '1rem';
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2000);
+    }
+
+    function renderLevelButtons() {
+        levelSelectorDiv.innerHTML = '';
+        for (let i = 1; i <= 5; i++) {
+            const btn = document.createElement('button');
+            btn.className = 'level-btn';
+            if (currentLevel === i) btn.classList.add('active');
+            if (!unlockedLevels.includes(i)) btn.classList.add('locked');
+            btn.textContent = `${levels[i].name}`;
+            btn.onclick = () => {
+                if (unlockedLevels.includes(i)) {
+                    loadLevel(i);
+                } else {
+                    showToastMessage(`🔒 Complete level ${i-1} first!`, '#e67e22');
+                }
+            };
+            levelSelectorDiv.appendChild(btn);
+        }
+    }
+
+    function createBalloon() {
+        if (!gameActive) return;
+        const cfg = levelConfig;
+        const isBad = (cfg.badChance > 0 && Math.random() < cfg.badChance);
+        const isGood = (!isBad && cfg.goodChance > 0 && Math.random() < cfg.goodChance);
+        
+        const balloon = document.createElement('div');
+        balloon.className = 'balloon';
+        if (isBad) balloon.classList.add('bad');
+        if (isGood) balloon.classList.add('good');
+        
+        const maxLeft = gameArea.clientWidth - 60;
+        const leftPos = Math.random() * Math.max(10, maxLeft);
+        balloon.style.left = leftPos + 'px';
+        
+        if (!isBad && !isGood) {
+            const hue = Math.random() * 360;
+            balloon.style.backgroundColor = `hsl(${hue}, 80%, 65%)`;
+        } else if (isGood) {
+            balloon.style.backgroundColor = 'gold';
+        } else {
+            balloon.style.backgroundColor = '#95a5a6';
+        }
+        
+        const duration = cfg.speedMin + Math.random() * (cfg.speedMax - cfg.speedMin);
+        balloon.style.animationDuration = duration + 's';
+        
+        balloon.onclick = (e) => {
+            e.stopPropagation();
+            if (!gameActive) return;
+            let points = 0;
+            if (isBad) points = cfg.pointBad;
+            else if (isGood) points = cfg.pointGood;
+            else points = cfg.pointNormal;
+            
+            if (points !== 0) {
+                score += points;
+                if (score < 0) score = 0;
+                scoreSpan.textContent = score;
+                showPopEffect(balloon.getBoundingClientRect(), points);
+                if (isGood && cfg.pointGood >= 3) {
+                    timeLeft += 2;
+                    updateTimerDisplay();
+                    showToastMessage('+2 sec!', '#f1c40f');
+                }
+                balloon.remove();
+                if (!targetReachedFlag && score >= targetScore) {
+                    targetReachedFlag = true;
+                    showToastMessage('🎉 Target reached! Keep playing for extra points! 🎉', '#2ecc71');
+                }
+            } else {
+                balloon.remove();
+            }
+        };
+        
+        gameArea.appendChild(balloon);
+        setTimeout(() => {
+            if (balloon.parentNode) balloon.remove();
+        }, duration * 1000);
+    }
+
+    function showPopEffect(rect, points) {
+        const pop = document.createElement('div');
+        pop.className = 'score-pop';
+        const text = points > 0 ? `+${points}` : `${points}`;
+        pop.textContent = text;
+        pop.style.color = points > 0 ? '#2ecc71' : '#e74c3c';
+        pop.style.left = rect.left + 'px';
+        pop.style.top = rect.top + 'px';
+        document.body.appendChild(pop);
+        setTimeout(() => pop.remove(), 500);
+    }
+
+    function updateTimerDisplay() {
+        timerSpan.textContent = Math.ceil(timeLeft);
+        if (timeLeft <= 5) timerSpan.style.color = '#e74c3c';
+        else timerSpan.style.color = 'white';
+    }
+
+    function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(() => {
+            if (!gameActive) return;
+            timeLeft -= 0.1;
+            if (timeLeft <= 0) {
+                timeLeft = 0;
+                updateTimerDisplay();
+                endGame();
+            } else {
+                updateTimerDisplay();
+            }
+        }, 100);
+    }
+
+    function endGame() {
+        if (!gameActive) return;
+        gameActive = false;
+        clearInterval(balloonInterval);
+        clearInterval(timerInterval);
+        
+        const finalScore = score;
+        const stars = finalScore >= targetScore * 1.5 ? 3 : (finalScore >= targetScore ? 2 : (finalScore >= targetScore * 0.6 ? 1 : 0));
+        starsSpan.textContent = stars;
+        
+        const displayName = playerName.trim() === '' ? 'Guest' : playerName;
+        addScoreToLeaderboard(currentLevel, displayName, finalScore, stars);
+        
+        if (finalScore >= targetScore) {
+            unlockNextLevel();
+            showToastMessage(`🎉 Level complete! Score: ${finalScore} / ${targetScore}`, '#2ecc71');
+        } else {
+            showToastMessage(`😢 Time's up! Score: ${finalScore} / ${targetScore}. Try again!`, '#e67e22');
+        }
+        
+        const balloons = document.querySelectorAll('.balloon');
+        balloons.forEach(b => b.remove());
+    }
+
+    function loadLevel(levelNum) {
+        if (balloonInterval) clearInterval(balloonInterval);
+        if (timerInterval) clearInterval(timerInterval);
+        gameActive = false;
+        
+        currentLevel = levelNum;
+        levelConfig = levels[levelNum];
+        if (!levelConfig) return;
+        
+        // Update current level display
+        currentLevelDisplay.textContent = `Level ${levelNum}: ${levelConfig.name}`;
+        
+        score = 0;
+        timeLeft = levelConfig.timeLimit;
+        targetScore = levelConfig.targetScore;
+        targetReachedFlag = false;
+        scoreSpan.textContent = '0';
+        timerSpan.textContent = timeLeft;
+        targetSpan.textContent = targetScore;
+        starsSpan.textContent = '0';
+        updateTimerDisplay();
+        
+        gameArea.innerHTML = '';
+        renderLevelButtons();
+        
+        gameActive = true;
+        const intervalMs = Math.max(500, Math.floor(levelConfig.speedMin * 300));
+        balloonInterval = setInterval(() => {
+            if (gameActive) createBalloon();
+        }, intervalMs);
+        startTimer();
+    }
+
+    setNameBtn.onclick = () => {
+        const newName = playerNameInput.value.trim();
+        if (newName !== '') {
+            playerName = newName;
+            saveProgress();
+            showToastMessage(`Hello, ${playerName}!`, '#2ecc71');
+        } else {
+            showToastMessage('Please enter a name', '#e67e22');
+        }
+    };
+
+    restartBtn.onclick = () => {
+        loadLevel(currentLevel);
+    };
+
+    document.getElementById('showLevel1Lb').onclick = () => renderLeaderboard(1);
+    document.getElementById('showLevel2Lb').onclick = () => renderLeaderboard(2);
+    document.getElementById('showLevel3Lb').onclick = () => renderLeaderboard(3);
+    document.getElementById('showLevel4Lb').onclick = () => renderLeaderboard(4);
+    document.getElementById('showLevel5Lb').onclick = () => renderLeaderboard(5);
+
+    loadProgress();
+    loadLeaderboard();
+    loadLevel(1);
+    if (playerName) playerNameInput.value = playerName;
+</script>
+</body>
+</html>
