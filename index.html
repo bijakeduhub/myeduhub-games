@@ -717,35 +717,45 @@
         }
 
         function renderQuizLeaderboard(level) {
-            if (quizUnsubLeaderboard) quizUnsubLeaderboard();
-            const container = document.getElementById('quizLeaderboardContent');
-            container.innerHTML = 'Loading...';
-            const collectionName = `quiz_level_scores${level}`;
-            const query = db.collection(collectionName).orderBy('score', 'desc').limit(10);
-            quizUnsubLeaderboard = query.onSnapshot(snap => {
-                if (snap.empty) {
-                    container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>';
-                    return;
-                }
-                let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></table>';
-                let rank = 1;
-                snap.forEach(doc => {
-                    const d = doc.data();
-                    const scoreNum = Number(d.score);
-                    html += `<tr>
-                        <td>${rank++}</td>
-                        <td>${escapeHtml(d.name || '?')}</td>
-                        <td>${scoreNum}/5</span></td>
-                        <td>${'⭐'.repeat(d.stars)}${'☆'.repeat(5 - d.stars)}</span></td>
-                        <td>${formatDate(d.timestamp)}</span></td>
-                    </tr>`;
-                });
-                container.innerHTML = html + '</table>';
-            }, err => {
-                console.error(err);
-                container.innerHTML = '<p>Error loading leaderboard.</p>';
-            });
-        }
+			if (quizUnsubLeaderboard) quizUnsubLeaderboard();
+			const container = document.getElementById('quizLeaderboardContent');
+			container.innerHTML = 'Loading...';
+			const collectionName = `quiz_level_scores${level}`;
+			const query = db.collection(collectionName).orderBy('score', 'desc').limit(10);
+			quizUnsubLeaderboard = query.onSnapshot(snap => {
+				if (snap.empty) {
+					container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>';
+					return;
+				}
+				// Build table with proper alignment
+				let html = '<table style="width:100%; border-collapse:collapse;">';
+				html += '<thead><tr style="background:#1B2B6B; color:white;">';
+				html += '<th style="padding:8px;">#</th>';
+				html += '<th style="padding:8px;">Name</th>';
+				html += '<th style="padding:8px;">Score</th>';
+				html += '<th style="padding:8px;">Stars</th>';
+				html += '<th style="padding:8px;">Date</th>';
+				html += '</tr></thead><tbody>';
+				let rank = 1;
+				snap.forEach(doc => {
+					const d = doc.data();
+					const scoreNum = Number(d.score);
+					const starsNum = Number(d.stars) || 0;
+					html += `<tr style="border-bottom:1px solid #ddd;">`;
+					html += `<td style="padding:8px; text-align:center;">${rank++}</td>`;
+					html += `<td style="padding:8px;">${escapeHtml(d.name || '?')}</td>`;
+					html += `<td style="padding:8px; text-align:center;">${scoreNum}/5</td>`;
+					html += `<td style="padding:8px; text-align:center;">${'⭐'.repeat(starsNum)}${'☆'.repeat(5 - starsNum)}</td>`;
+					html += `<td style="padding:8px; text-align:center;">${formatDate(d.timestamp)}</td>`;
+					html += `</tr>`;
+				});
+				html += '</tbody></table>';
+				container.innerHTML = html;
+			}, err => {
+				console.error(err);
+				container.innerHTML = '<p>Error loading leaderboard.</p>';
+			});
+		}
 
         function loadQuizLevel(levelNum) {
             quizCurrentLevel = levelNum;
