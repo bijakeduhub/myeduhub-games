@@ -344,7 +344,7 @@
             document.getElementById('quizModeBtn').classList.remove('active');
         }
 
-        // ========== BALLOON GAME (unchanged) ==========
+        // ========== BALLOON GAME ==========
         const balloonLevels = {
             1: { name: "Sunny Meadow", speedMin: 4.0, speedMax: 6.0, badChance: 0, goodChance: 0.2, timeLimit: 40, targetScore: 15, pointBad: 0, pointGood: 2, pointNormal: 1, spawnDelay: 400 },
             2: { name: "Breezy Hill", speedMin: 3.5, speedMax: 5.5, badChance: 0, goodChance: 0.25, timeLimit: 40, targetScore: 20, pointBad: 0, pointGood: 2, pointNormal: 1, spawnDelay: 380 },
@@ -375,15 +375,37 @@
             const query = db.collection(balloonGetCollection(level)).orderBy('score', 'desc').limit(10);
             balloonUnsubLeaderboard = query.onSnapshot(snap => {
                 if (snap.empty) { container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>'; return; }
-                let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+                let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
                 let rank = 1;
-                snap.forEach(doc => { const d = doc.data(); html += `<tr><td>${rank++}</td><td>${escapeHtml(d.name||'?')}</td><td>${d.score}</td><td>${'⭐'.repeat(d.stars||0)}${'☆'.repeat(5-(d.stars||0))}</td><td>${formatDate(d.timestamp)}</td></tr>`; });
+                snap.forEach(doc => {
+                    const d = doc.data();
+                    // Ensure score is a number for display
+                    const scoreNum = Number(d.score);
+                    html += `<tr>
+                        <td>${rank++}</td>
+                        <td>${escapeHtml(d.name || '?')}</td>
+                        <td>${scoreNum}</td>
+                        <td>${'⭐'.repeat(d.stars || 0)}${'☆'.repeat(5 - (d.stars || 0))}</td>
+                        <td>${formatDate(d.timestamp)}</td>
+                    </tr>`;
+                });
                 container.innerHTML = html + '</table>';
             });
         }
         async function saveBalloonScore(level, finalScore, stars) {
             if (!currentPlayerName) currentPlayerName = 'Guest';
-            try { await db.collection(balloonGetCollection(level)).add({ name: currentPlayerName, deviceId, score: finalScore, stars, timestamp: firebase.firestore.FieldValue.serverTimestamp() }); } catch(e) { console.warn(e); } }
+            // Ensure score is a number
+            const scoreNum = Number(finalScore);
+            try {
+                await db.collection(balloonGetCollection(level)).add({
+                    name: currentPlayerName,
+                    deviceId: deviceId,
+                    score: scoreNum,
+                    stars: Number(stars),
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } catch(e) { console.warn(e); }
+        }
         function copyToClipboard(text) { navigator.clipboard.writeText(text).then(() => showToast('Copied to clipboard!')); }
         function showToast(msg, bg='#2ecc71') { const t=document.createElement('div'); t.textContent=msg; t.style.cssText=`position:fixed; bottom:20%; left:50%; transform:translateX(-50%); background:${bg}; color:white; padding:8px 16px; border-radius:50px; font-weight:bold; z-index:300; font-size:0.85rem;`; document.body.appendChild(t); setTimeout(()=>t.remove(),2000); }
         function loadBalloonProgress() { const s = localStorage.getItem('balloonUnlocked'); if(s) try{ balloonUnlocked = JSON.parse(s); }catch(e){} renderBalloonLevelButtons(); }
@@ -462,7 +484,7 @@
             const usedNumbers = new Set();
             const fruitEmojis = ["🍎","🍌","🍊","🍇","🍉","🍒","🍓","🥝","🍑","🍍","🥭","🍋","🍈","🍐","🍏"];
             while (pairs.length < 5) {
-                const count = Math.floor(Math.random() * 10) + 1; // 1-10
+                const count = Math.floor(Math.random() * 10) + 1;
                 if (!usedNumbers.has(count)) {
                     usedNumbers.add(count);
                     const fruit = fruitEmojis[Math.floor(Math.random() * fruitEmojis.length)];
@@ -642,13 +664,12 @@
                     db.collection(`quiz_level_scores${quizCurrentLevel}`).add({
                         name: currentPlayerName,
                         deviceId: deviceId,
-                        score: correct,
-                        stars: quizStars,
+                        score: Number(correct),
+                        stars: Number(quizStars),
                         timestamp: firebase.firestore.FieldValue.serverTimestamp()
                     }).catch(console.warn);
                     renderQuizLeaderboard(quizCurrentLevel);
                 }
-                // Unlock next level if score >= 3
                 if (correct >= 3 && quizCurrentLevel < 5 && !quizUnlocked.includes(quizCurrentLevel+1)) {
                     quizUnlocked.push(quizCurrentLevel+1);
                     saveQuizProgress();
@@ -706,14 +727,15 @@
                     container.innerHTML = '<p>✨ No scores yet. Play to be first!</p>';
                     return;
                 }
-                let html = '<tr><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></tr>';
+                let html = '<table><th>#</th><th>Name</th><th>Score</th><th>Stars</th><th>Date</th></table>';
                 let rank = 1;
                 snap.forEach(doc => {
                     const d = doc.data();
+                    const scoreNum = Number(d.score);
                     html += `<tr>
                         <td>${rank++}</td>
                         <td>${escapeHtml(d.name || '?')}</td>
-                        <td>${d.score}/5</span></td>
+                        <td>${scoreNum}/5</span></td>
                         <td>${'⭐'.repeat(d.stars)}${'☆'.repeat(5 - d.stars)}</span></td>
                         <td>${formatDate(d.timestamp)}</span></td>
                     </tr>`;
@@ -746,17 +768,13 @@
 
         function shuffle(arr) { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; }
 
-        // Replay button
         document.getElementById('replayQuizBtn').onclick = () => loadQuizLevel(quizCurrentLevel);
-
-        // Leaderboard level buttons
         document.getElementById('showQuizLevel1Lb').onclick = () => renderQuizLeaderboard(1);
         document.getElementById('showQuizLevel2Lb').onclick = () => renderQuizLeaderboard(2);
         document.getElementById('showQuizLevel3Lb').onclick = () => renderQuizLeaderboard(3);
         document.getElementById('showQuizLevel4Lb').onclick = () => renderQuizLeaderboard(4);
         document.getElementById('showQuizLevel5Lb').onclick = () => renderQuizLeaderboard(5);
 
-        // Mode switching
         const gameScreenDiv = document.getElementById('gameScreen');
         const quizScreenDiv = document.getElementById('quizScreen');
         const gameBtn = document.getElementById('gameModeBtn');
@@ -764,7 +782,6 @@
         gameBtn.onclick = () => { if (!currentPlayerName) { alert("Please set your name first."); return; } gameScreenDiv.classList.add('active'); quizScreenDiv.classList.remove('active'); gameBtn.classList.add('active'); quizBtn.classList.remove('active'); };
         quizBtn.onclick = () => { if (!currentPlayerName) { alert("Please set your name first."); return; } quizScreenDiv.classList.add('active'); gameScreenDiv.classList.remove('active'); quizBtn.classList.add('active'); gameBtn.classList.remove('active'); loadQuizLevel(quizCurrentLevel); renderQuizLeaderboard(quizCurrentLevel); };
 
-        // Auto-start if name exists
         const savedName = localStorage.getItem('playerName');
         if (savedName) {
             currentPlayerName = savedName;
